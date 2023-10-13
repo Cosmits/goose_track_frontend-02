@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy, useEffect } from "react";
+import { lazy, useEffect } from 'react';
 
 // import Layout from "./Layout";
 // import PrivateRoute from "./PrivateRoute";
@@ -21,6 +21,7 @@ function App() {
     <AppWrapper>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
+          <Route path="/account" element={<FirstPage />} />
           <Route path="/first" element={<FirstPage />} />
           <Route path="/second" element={<SecondPage />}>
             <Route path=":half" element={<HalfPage />} />
