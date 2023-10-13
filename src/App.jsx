@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy, useEffect } from "react";
+// import { lazy, useEffect } from "react";
 
 // import Layout from "./Layout";
 // import PrivateRoute from "./PrivateRoute";
@@ -11,6 +11,7 @@ import HalfPage from './pages/HalfPage/HalfPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { AppWrapper } from './App.styled';
 
+
 const test = import.meta.env.VITE_API_TEST;
 
 // const Home = lazy(() => import("pages/Home"));
@@ -19,6 +20,7 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
+     
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route path="/first" element={<FirstPage />} />
