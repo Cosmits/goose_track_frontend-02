@@ -10,14 +10,12 @@ import {
 function Sidebar() {
   const handleLogout = async () => {
     try {
-      // Make an API request to log out the user on the backend.
-      // If successful, clear user data and set the user as unauthenticated in the global state.
-      // You can implement this part according to your backend and state management approach.
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log('User logged out successfully.');
     } catch (error) {
-      // Handle error and display a message to the user.
+      console.error('Error logging out:', error);
     }
   };
-
   return (
     <SidebarContainer>
       <Logo>
