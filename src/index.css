@@ -1,5 +1,6 @@
 :root {
   --black: #111111;
+  --letter-black: #171820;
   --white: #FFFFFF;
   --dark-gray: #13151A;
   --gray: #21222C;
@@ -34,6 +35,7 @@ body {
   color: #111111;
   width: 100%;
   height: 100vh;
+ 
 }
 
 h1,
@@ -43,7 +45,7 @@ h4,
 h5,
 h6,
 p {
-  margin-top: 0;
+  margin: 0;
 }
 
 a {
@@ -58,6 +60,7 @@ ul {
 
 img {
   display: block;
+ 
 }
 
 button {
