@@ -1,3 +1,24 @@
+:root {
+  --black: #111111;
+  --white: #FFFFFF;
+  --dark-gray: #13151A;
+  --gray: #21222C;
+  --input-gray: rgba(17, 17, 17, 0.15);
+  --orange: #FFAC33;
+  --main-blue: #3E85F3;
+  --hover-blue: #2B78EF;
+  --backdrop-blue: #DCEBF7;
+  --blue: #CAE8FF;
+  --light-blue: #E3F3FF;
+  --correct-color: #3CBC81;
+  --error-color: #DA1414;
+  --pink-gradient: linear-gradient(#FFD2DD 0%, #FFD2DD 100%);
+  --blue--gradient: linear-gradient(#3E85F3 0%, #3E85F3 100%);
+  --low-color: #72C2F8;
+  --medium-color:  #F3B249;
+  --high: #EA3D65;
+};
+
 @import-normalize;
 /* bring in normalize.css styles */
 
