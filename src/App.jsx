@@ -10,7 +10,7 @@ import SecondPage from './pages/SecondPage/SecondPage';
 import HalfPage from './pages/HalfPage/HalfPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { AppWrapper } from './App.styled';
-
+import { Auth } from './components/authSection/auth';
 
 const test = import.meta.env.VITE_API_TEST;
 
@@ -20,7 +20,7 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
-     
+      <Auth />
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route path="/first" element={<FirstPage />} />
