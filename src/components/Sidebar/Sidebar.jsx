@@ -14,7 +14,7 @@ function Sidebar() {
         <div>
           <Link to="/index" className='logo'>
             <img
-              src="\src\assets\goose_logo_desktop.png"
+              src="./src/assets/goose_logo_desktop.png"
               alt="GooseTrack Logo"
             />
             <p>GooseTrack</p>
