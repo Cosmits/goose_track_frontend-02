@@ -21,14 +21,16 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
-      <Sidebar /> {/* Keep the Sidebar component */}
       <Routes>
         <Route path="/" element={<SharedLayout />}>
+          {' '}
+          <SharedLayout>
+            <Sidebar /> {/* Keep the Sidebar component */}
+          </SharedLayout>
           <Route path="/first" element={<FirstPage />} />
           <Route path="/second" element={<SecondPage />}>
             <Route path=":half" element={<HalfPage />} />
           </Route>
-
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
