@@ -23,7 +23,7 @@ function App() {
   return (
     
     <AppWrapper>
-     
+     <Auth/>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           {' '}
