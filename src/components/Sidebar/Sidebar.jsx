@@ -12,13 +12,13 @@ function Sidebar() {
       {/* Use the styled component to apply styles */}
       <div className="sidebar">
         <div>
-          <a className="logo" href="#">
+          <Link to="/index" className='logo'>
             <img
               src="\src\assets\goose_logo_desktop.png"
               alt="GooseTrack Logo"
             />
             <p>GooseTrack</p>
-          </a>
+          </Link>
         </div>
         <div className="menu">
           <h5 className="user-panel">User Panel</h5>
@@ -132,8 +132,7 @@ function Sidebar() {
               </Link>
             </li>
             <button className="logout-button" onClick={handleLogout}>
-              <p className='logout-text'>Log Out</p>
-              {' '}
+              <p className="logout-text">Log Out</p>{' '}
               <svg
                 className="logout-svg"
                 xmlns="http://www.w3.org/2000/svg"
