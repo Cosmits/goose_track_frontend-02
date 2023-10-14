@@ -53,7 +53,7 @@ export const SidebarWrapper = styled.div`
       line-height: normal;
       width: 241px;
       height: 56px;
-      padding: 16px 165px 16px 20px;
+      padding: 16px 96px 16px 20px;
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
@@ -107,6 +107,12 @@ export const SidebarWrapper = styled.div`
 
         box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
       }
+      .logout-button{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around
+       }
     }
   }
 `;
