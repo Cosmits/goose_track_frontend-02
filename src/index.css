@@ -1,3 +1,6 @@
+@import-normalize;
+/* bring in normalize.css styles */
+
 :root {
   --black: #111111;
   --letter-black: #171820;
@@ -20,8 +23,6 @@
   --high: #EA3D65;
 };
 
-@import-normalize;
-/* bring in normalize.css styles */
 
 body {
   background-color: #000;
@@ -45,7 +46,7 @@ h4,
 h5,
 h6,
 p {
-  margin-top: 0;
+  margin: 0;
 }
 
 a {
