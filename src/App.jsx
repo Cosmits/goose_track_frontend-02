@@ -12,6 +12,7 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { AppWrapper } from './App.styled';
 import { Auth } from './components/authSection/auth';
 
+
 const test = import.meta.env.VITE_API_TEST;
 
 // const Home = lazy(() => import("pages/Home"));
@@ -19,6 +20,7 @@ const test = import.meta.env.VITE_API_TEST;
 function App() {
   console.log(test);
   return (
+    
     <AppWrapper>
       <Auth />
       <Routes>
@@ -27,7 +29,6 @@ function App() {
           <Route path="/second" element={<SecondPage />}>
             <Route path=":half" element={<HalfPage />} />
           </Route>
-
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
