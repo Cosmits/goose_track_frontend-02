@@ -12,6 +12,7 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { AppWrapper } from './App.styled';
 
 
+
 const test = import.meta.env.VITE_API_TEST;
 
 // const Home = lazy(() => import("pages/Home"));
@@ -21,7 +22,7 @@ function App() {
   return (
     
     <AppWrapper>
-     
+   
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route path="/first" element={<FirstPage />} />
