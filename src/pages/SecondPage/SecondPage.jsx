@@ -1,6 +1,8 @@
-import { Container, Block, Title, StyledLink } from './SecondPage.styled';
-import Modal from '../.././components/Modal/Modal';
 import React, { useState, useEffect } from 'react';
+
+import { Container, Block, Title, StyledLink } from './SecondPage.styled';
+import AddFeedbackModal from '../../components/AddFeedbackModal/AddFeedbackModal';
+// import Modal from '../.././components/Modal/Modal';
 
 const SecondPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,21 +39,8 @@ const SecondPage = () => {
         Feedback
       </button>
 
-      {isModalOpen && (
-        <Modal onClose={handleCloseModal}>
-          <h2>It's modal</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-            tincidunt sapien quis dolor accumsan, in dignissim metus fringilla.
-            Proin volutpat libero in ligula bibendum, nec condimentum justo
-            tincidunt. Sed viverra enim at massa feugiat, a tincidunt urna
-            eleifend.
-          </p>
-          <button type="button" onClick={handleCloseModal}>
-            X
-          </button>
-        </Modal>
-      )}
+      {isModalOpen && <AddFeedbackModal onClose={handleCloseModal} />}
+
       <Block>
         <Title>Second Page</Title>
         <StyledLink to="/second/5">Half</StyledLink>
