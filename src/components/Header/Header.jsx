@@ -22,6 +22,12 @@ export const Header = () => {
           </IconWrapper>
           Second
         </StyledLink>
+        <StyledLink to="/calendar">
+          <IconWrapper>
+            <use href={`${sprite}#icon-logo`} />
+          </IconWrapper>
+          Calndar
+        </StyledLink>
       </Navigation>
     </HeaderContainer>
   );
