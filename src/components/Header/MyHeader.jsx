@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import FeedbackBtn from './FeedbackBtn/FeedbackBtn';
 import UserInfo from './UserInfo/UserInfo';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
-import { HeaderWrapper } from './MyHeader.styled';
+import { HeaderUser, HeaderWrapper } from './MyHeader.styled';
 
 const MyHeader = () => {
   console.log('еейее');
@@ -22,11 +22,13 @@ const MyHeader = () => {
   return (
     <HeaderWrapper>
       <h2>Привіт</h2>
+      <HeaderUser>
       <FeedbackBtn />
       <ThemeToggler/>
             <Link to="/account">
         <UserInfo />
       </Link>
+      </HeaderUser>
     </HeaderWrapper>
   );
 };

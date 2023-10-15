@@ -1,10 +1,20 @@
+import { MoonSVG,ThemeButton } from "./ThemeToggler.styled"
+// import { useSelector, useDispatch } from 'react-redux';
+// import { toggleTheme } from './actions';
 
-import sprite from '../../../assets/sprite.svg';
 
 const ThemeToggler = () => {
+  
+    // const isDarkMode = useSelector(state => state.isDarkMode);
+    // const dispatch = useDispatch();
+  
+    // const handleThemeChange = () => {
+    //   dispatch(toggleTheme());
+    // };
+  
   return (
-      <svg><use href={`${sprite}#icon-moon`}></use></svg>
-    
+    //  <ThemeButton onClick={handleThemeChange}>{isDarkMode?<MoonSVG/>:<SunSVG/>}</ThemeButton>
+     <ThemeButton ><MoonSVG/></ThemeButton>
   )
 }
 
