@@ -1,19 +1,38 @@
+import {
+  ButtonContainer,
+  ContainerForm,
+  StyledCancel,
+  StyledEdit,
+  StyledInput,
+  StyledInputTime,
+  StyledLabel,
+  StyledTime,
+} from './TaskForm.styled';
+
 const TaskForm = () => {
+
+
+
   return (
-    <div>
+    <ContainerForm>
       <form>
-        <label>
+        <StyledLabel>
           Title
-          <input type="text" placeholder="Enter text" />
-        </label>
-        <label>
-          Start
-          <input type="time" />
-        </label>
-        <label>
-          End
-          <input type="time" />
-        </label>
+          <StyledInput type="text" placeholder="Enter text" />
+        </StyledLabel>
+
+        <StyledTime>
+          <StyledLabel>
+            Start
+            <StyledInputTime type="time" />
+          </StyledLabel>
+          <StyledLabel>
+            End
+            <StyledInputTime type="time" />
+          </StyledLabel>
+        </StyledTime>
+
+      <div>
         <label>
           <input type="radio" name="color" value="blue" checked />
           Low
@@ -26,10 +45,16 @@ const TaskForm = () => {
           <input type="radio" name="color" value="green" />
           High
         </label>
-        <button type="submit">Edit</button>
-        <button type="buttom">Cancel</button>
+      </div>
+
+        <ButtonContainer>
+          <StyledEdit type="submit">Edit</StyledEdit>
+          <StyledCancel type="buttom">Cancel</StyledCancel>
+        </ButtonContainer>
+
+
       </form>
-    </div>
+    </ContainerForm>
   );
 };
 
