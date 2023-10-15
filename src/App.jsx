@@ -10,7 +10,8 @@ import SecondPage from './pages/SecondPage/SecondPage';
 import HalfPage from './pages/HalfPage/HalfPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { AppWrapper } from './App.styled';
-// import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
+
+
 
 
 

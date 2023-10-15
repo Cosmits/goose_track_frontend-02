@@ -4,6 +4,7 @@
 :root {
   --black: #111111;
   --letter-black: #171820;
+  --letter-gray: #343434;
   --white: #FFFFFF;
   --dark-gray: #13151A;
   --gray: #21222C;
@@ -36,8 +37,6 @@ body {
   color: #111111;
   width: 100%;
   height: 100vh;
- 
- 
 }
 
 h1,
