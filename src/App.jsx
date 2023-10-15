@@ -21,15 +21,12 @@ const test = import.meta.env.VITE_API_TEST;
 function App() {
   console.log(test);
   return (
-    
     <AppWrapper>
-     <Auth/>
+      <Auth />
+      <Sidebar /> {/* Keep the Sidebar component */}
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           {' '}
-          <SharedLayout>
-            <Sidebar /> {/* Keep the Sidebar component */}
-          </SharedLayout>
           <Route path="/first" element={<FirstPage />} />
           <Route path="/second" element={<SecondPage />}>
             <Route path=":half" element={<HalfPage />} />
