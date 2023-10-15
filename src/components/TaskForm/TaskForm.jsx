@@ -6,9 +6,14 @@ const TaskForm = () => {
           Title
           <input type="text" placeholder="Enter text" />
         </label>
-        {/* <label>
-          <input type="text" name="Enter text" />
-        </label> */}
+        <label>
+          Start
+          <input type="time" />
+        </label>
+        <label>
+          End
+          <input type="time" />
+        </label>
         <label>
           <input type="radio" name="color" value="blue" checked />
           Low
