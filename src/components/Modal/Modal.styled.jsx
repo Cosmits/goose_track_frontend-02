@@ -14,6 +14,7 @@ export const ModalBackdrop = styled.div`
 `;
 
 export const ModalContent = styled.div`
+  position: fixed;
   justify-content: center;
   align-items: center;
   background-color: var(--white);
