@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy, useEffect } from 'react';
+// import { lazy, useEffect } from 'react';
 
 // import Layout from "./Layout";
 // import PrivateRoute from "./PrivateRoute";
