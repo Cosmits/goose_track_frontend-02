@@ -122,8 +122,8 @@ export const DeleteIcon = styled(RiDeleteBin6Line)`
   justify-content: center;
   align-items: center;
   fill: var(--high);
-  border-radius: 50px;
   background: rgba(234, 61, 101, 0.2);
+  border-radius: 50px;
   cursor: pointer;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   :hover {
@@ -146,7 +146,7 @@ export const CloseBtn = styled(CgClose)`
     color: var(--accent);
   }
 
-  @media (min-width: 767px) {
+  @media screen and (min-width: 767px) {
     top: 18px;
     right: 18px;
   }
