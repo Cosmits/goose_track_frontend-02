@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const SidebarWrapper = styled.div`
+width: 25%;
   ul,
   li {
     text-decoration: none;
