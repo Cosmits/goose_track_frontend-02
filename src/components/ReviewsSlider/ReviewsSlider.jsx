@@ -1,11 +1,17 @@
 // Illia Shatokhin
 
-import { Header } from './ReviewsSlider.styled';
+import Arrows from './Arrows/Arrows';
+import { ReviewsSection, Title } from './ReviewsSlider.styled';
+import Slider from './Slider/Slider';
+
+// import { Header } from './ReviewsSlider.styled';
 
 export default function ReviewsSlider() {
   return (
-    <section>
-      <Header />
-    </section>
+    <ReviewsSection>
+      <Title>Reviews</Title>
+      <Slider />
+      <Arrows />
+    </ReviewsSection>
   );
 }
