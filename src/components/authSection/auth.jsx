@@ -11,6 +11,7 @@ import {
   StyledFiLogIn,
   Wrap,
   NavItem,
+  AuthHeaderSpan,
 } from './authSection.styled';
 import gooseLogo from '../../assets/GOOSE_logo.png';
 import { Route, Routes } from 'react-router';
@@ -20,7 +21,9 @@ export const Auth = () => {
     <AuthSection>
       <AuthContainer>
         <AuthLogo src={gooseLogo} alt="Goose Track Logo" />
-        <AuthHeader>Goose Track</AuthHeader>
+        <AuthHeader>
+          G<AuthHeaderSpan>oo</AuthHeaderSpan>se Track
+        </AuthHeader>
         <AuthNav>
           <NavItem>
             <LoginLink to="/login">
