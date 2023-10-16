@@ -2,13 +2,16 @@
 // import { useSearchParams } from 'react-router-dom';
 
 import { Link } from 'react-router-dom';
-import FeedbackBtn from './FeedbackBtn/FeedbackBtn';
 import UserInfo from './UserInfo/UserInfo';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
-import { HeaderUser, HeaderWrapper } from './MyHeader.styled';
+import { BurgerMenu, HeaderUser, HeaderWrapper } from './MyHeader.styled';
+import AddFeedbackBtn from './FeedbackBtn/AddFeedbackBtn';
+import { useScreenSize } from '../../hooks/useScreenSize';
+
 
 const MyHeader = () => {
-  console.log('еейее');
+  const {isDesktop} = useScreenSize();
+ 
   // const [title, setTitle] = useState("");
   // const [searchParams] = useSearchParams();
   // const searchTerm = searchParams.get('query');
@@ -21,9 +24,10 @@ const MyHeader = () => {
 
   return (
     <HeaderWrapper>
-      <h2>Привіт</h2>
+      {isDesktop&&<h2>Привіт</h2>}
+      {!isDesktop && <BurgerMenu/>}
       <HeaderUser>
-      <FeedbackBtn />
+      <AddFeedbackBtn />
       <ThemeToggler/>
             <Link to="/account">
         <UserInfo />
