@@ -27,7 +27,7 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
-     <MyHeader/>
+      <MyHeader />
      <Auth/>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
