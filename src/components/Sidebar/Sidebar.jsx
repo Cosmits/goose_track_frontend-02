@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SidebarWrapper } from './Sidebar.styled'; // Import the styled component
 
@@ -5,20 +6,73 @@ function Sidebar() {
   const handleLogout = () => {
     // Handle your logout logic here
   };
+  //const isTablet = useMediaQuery({ maxWidth: 1440 });
+  useEffect(() => {
+    // Function to open the sidebar
+    function openSidebar() {
+      document.getElementById('sidebar').classList.add('open');
+    }
 
+    // Function to close the sidebar
+    function closeSidebar() {
+      document.getElementById('sidebar').classList.remove('open');
+    }
+
+    // Add event listeners to the buttons
+    document
+      .getElementById('open-burger')
+      .addEventListener('click', openSidebar);
+    document
+      .getElementById('close-button')
+      .addEventListener('click', closeSidebar);
+
+    return () => {
+      // Clean up event listeners when the component unmounts
+      document
+        .getElementById('open-burger')
+        .removeEventListener('click', openSidebar);
+      document
+        .getElementById('close-button')
+        .removeEventListener('click', closeSidebar);
+    };
+  }, []);
   return (
     <SidebarWrapper>
-      {' '}
-      {/* Use the styled component to apply styles */}
-      <div className="sidebar">
-        <div>
-          <Link to="/index" className='logo'>
+      {/* <button id="open-burger">OPEN</button>*/}{' '}
+      <div id="sidear" className="sidebar">
+        <div className="logo-class">
+          <Link to="/index" className="logo">
             <img
+              className="logo-img"
               src="./src/images/goose_logo_desktop.png"
               alt="GooseTrack Logo"
             />
-            <p>GooseTrack</p>
+            <p className="logo-text">GooseTrack</p>
           </Link>
+          <button id="close-button" className="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="34"
+              height="34"
+              viewBox="0 0 34 34"
+              fill="none"
+            >
+              <path
+                d="M25.5 8.5L8.5 25.5"
+                stroke="#343434"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M8.5 8.5L25.5 25.5"
+                stroke="#343434"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
         </div>
         <div className="menu">
           <h5 className="user-panel">User Panel</h5>

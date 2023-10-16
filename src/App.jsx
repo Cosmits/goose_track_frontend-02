@@ -13,6 +13,7 @@ import { AppWrapper } from './App.styled';
 import MyHeader from './components/Header/myHeader';
 
 import { Auth } from './components/authSection/auth';
+import Sidebar from './components/Sidebar/Sidebar';
 
 // import Sidebar from './components/Sidebar/Sidebar';
 
@@ -27,7 +28,8 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
-     <MyHeader/>
+      <MyHeader />
+      <Sidebar/>
      <Auth/>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
