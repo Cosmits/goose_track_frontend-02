@@ -1,19 +1,35 @@
 // Serhii
+import {
+  StyledAcountWrapperDiv,
+  StyledAvatarDiv,
+  StyledAvatarImgThumb,
+  StyledAvatarImg,
+  StyledAddAvatarBtn,
+  StyledUserInfoThumb,
+  StyledUserNameP,
+  StyledUserStatusP,
+} from './AccountPage.styled';
+import { UserForm } from '../components/UserForm/UserForm';
+import examplePicture from '../assets/background.png';
+import plusSVG from '../../public/plus.svg';
 
-import React from 'react';
-import StyledText from './AccountPage.styled';
-import UserForm from '../components/UserForm/UserForm';
-
-console.log('React: ', React);
-
-const AccountPage = () => {
+export const AccountPage = () => {
   return (
-    <>
-      <UserForm>
-        <StyledText>Hello</StyledText>
-      </UserForm>
-    </>
+    <StyledAcountWrapperDiv>
+      <StyledAvatarDiv>
+        <StyledAvatarImgThumb>
+          <StyledAvatarImg src={examplePicture} alt="Avatar" />
+        </StyledAvatarImgThumb>
+
+        <StyledAddAvatarBtn>
+          <img src={plusSVG} width="18px" height="18px"></img>
+        </StyledAddAvatarBtn>
+      </StyledAvatarDiv>
+      <StyledUserInfoThumb>
+        <StyledUserNameP>Nadiia Doe</StyledUserNameP>
+        <StyledUserStatusP>User</StyledUserStatusP>
+      </StyledUserInfoThumb>
+      <UserForm />
+    </StyledAcountWrapperDiv>
   );
 };
-
-export default AccountPage;
