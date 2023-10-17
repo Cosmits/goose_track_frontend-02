@@ -29,14 +29,11 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
-<<<<<<< HEAD
       <Auth />
       <Discription />
       <StatisticsPage/>
-=======
      <MyHeader/>
      <Auth/>
->>>>>>> main
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route path="/account" element={<FirstPage />} />

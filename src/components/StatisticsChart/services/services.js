@@ -26,14 +26,55 @@ export const fetchAllTasks = async () => {
 
 
 
-export function getMonthProcentage(tasks){
+export function getMonthPercentage(tasks, category){
+
 const totalTasks = tasks.length;
+let percentage = 0;
 console.log(totalTasks)
+
+switch(category){
+case 'to-do':
 const filterTodo = tasks.filter(task=>task.category === 'to-do')
-console.log(filterTodo)
-// const toDoTaskProcentage = `${(filterTodo.length/totalTasks) * 100}%`
-// console.log(toDoTaskProcentage)
-return (filterTodo.length/totalTasks) * 100;
+percentage = (filterTodo.length/totalTasks) * 100;
+console.log(percentage)
+break;
+
+case 'in-progress':
+    const filterInProgress = tasks.filter(task =>task.category === 'in-progress')
+    percentage = (filterInProgress.length/totalTasks) * 100;
+    console.log(percentage)
+break
+
+case 'done':
+    const filterDone = tasks.filter(task => task.category === 'done')
+    percentageprocentage = (filterDone.length/totalTasks) * 100;
+    console.log(percentage)
+    break;
+
+    default:
+      percentage = 0;
+}
+
+return percentage;
+// console.log(filterTodo)
+// const filterInProgres = tasks.filter(task => task.category ==='in-progress')
+// const inProgres = (filterInProgres.length/totalTasks) * 100;
+// console.log(filterInProgres)
+// const filterDone = tasks.filter(task => task.category === 'done')
+// const done = (filterDone.length/totalTasks) * 100;
+// console.log(filterDone)
+// return (filterTodo.length/totalTasks) * 100;
 
 }
+
+
+const toDoPercentage = getMonthPercentage(tasks, 'to-do');
+console.log(`Відсоток завдань в категорії "to-do": ${toDoPercentage}%`);
+
+
+const inProgressPercentage = getMonthPercentage(tasks, 'in-progress');
+console.log(`Відсоток завдань в категорії "in-progress": ${inProgressPercentage}%`);
+
+const donePercentage = getMonthPercentage(tasks, 'done');
+console.log(`Відсоток завдань в категорії "done": ${donePercentage}%`);
 // getMonthProcentage(tasks)

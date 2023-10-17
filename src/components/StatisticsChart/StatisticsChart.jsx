@@ -6,7 +6,7 @@ import { getMonthProcentage } from './services/services.js'
 import { useEffect, useState } from 'react';
 
 
-fetchAllTasks();
+// fetchAllTasks();
 
 const CustomBarShape = (props) => {
   const { x, y, width, height, fill, radius } = props;
@@ -20,36 +20,52 @@ const CustomBarShape = (props) => {
 
 
 
-export const StatisticsChart = () => {
-  const [toDoTaskProcentage, setToDoTaskProcentage] = useState(0);
-  const [a, setA] = useState(null)
+export const StatisticsChart = ({tasks}) => {
+
+  // const [a, setA] = useState(null)
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const tasksData = await fetchAllTasks();
+  //     setA(getMonthProcentage(tasksData));
+  //     console.log("Відсотки", a, typeof a)
+  //     // setToDoTaskProcentage(percentage);
+  //   };
+
+  //   fetchData();
+  // }, [a]);
+
+  const [ percentages, setPercentages] = useState({
+    toDo: 0,
+    inProgress: 0,
+    done: 0,
+  });
+
   useEffect(() => {
     const fetchData = async () => {
       const tasksData = await fetchAllTasks();
-      setA(getMonthProcentage(tasksData));
+      const percentages = getMonthProcentage(tasksData);
+      setPercentages(percentages);
       console.log("Відсотки", a, typeof a)
       // setToDoTaskProcentage(percentage);
     };
 
     fetchData();
-  }, [a]);
-
-
+  }, [tasks ]);
 
   const data = [
     {
       "name": "To Do",
-      "uv": a,
+      "uv": percentages.toDo,
       "pv": 50
     },
     {
       "name": "In Progress",
-      "uv": 80,
+      "uv": percentages.inProgress,
       "pv": 75
     },
     {
       "name": "Done",
-      "uv": 50,
+      "uv": percentages.done,
       "pv": 90
     },
   ];
