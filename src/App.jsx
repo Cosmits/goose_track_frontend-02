@@ -14,7 +14,8 @@ import MyHeader from './components/Header/myHeader';
 
 import { Auth } from './components/authSection/auth';
 import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
-import { Discription } from './components/Discription/Discription.jsx';
+// import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
+// import { Discription } from './components/Discription/Discription.jsx';
 
 // import Sidebar from './components/Sidebar/Sidebar';
 
@@ -30,8 +31,10 @@ function App() {
   return (
     <AppWrapper>
       <Auth />
-      <Discription />
-      <StatisticsPage/>
+      <StatisticsPage />
+      {/* <Discription /> */}
+      {/* <StatisticsPage/> */}
+
      <MyHeader/>
      <Auth/>
       <Routes>

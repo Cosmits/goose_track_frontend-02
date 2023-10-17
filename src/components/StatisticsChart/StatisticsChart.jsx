@@ -1,7 +1,7 @@
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 import { StyledContainer, StyledParagraph, ChartBarIcon, BarContainer } from './StatisticsChart.styled';
-import { fetchByMonthTasks, fetchByDayTasks } from './services/services.js';
-import { getMonthProcentage } from './services/services.js'
+ import { fetchByMonthTasks, fetchByDayTasks } from './services/services.js';
+ import { getMonthPercentage } from './services/services.js'
 
 import { useEffect, useState } from 'react';
 // import { useScreenSize } from '../../hooks/useScreenSize';
@@ -35,59 +35,63 @@ export const StatisticsChart = ({ tasks }) => {
   //   fetchData();
   // }, [a]);
 
-  const [byMonth, setByMonth] = useState({
-    toDo: 0,
-    inProgress: 0,
-    done: 0,
-  });
-  const [byDay, setByDay] = useState({
-    toDo: 0,
-    inProgress: 0,
-    done: 0,
-  });
+  // const [byMonth, setByMonth] = useState({
+  //   toDo: 0,
+  //   inProgress: 0,
+  //   done: 0,
+  // });
+  // const [byDay, setByDay] = useState({
+  //   toDo: 0,
+  //   inProgress: 0,
+  //   done: 0,
+  // });
 
 
   useEffect(() => {
     const fetchData = async () => {
       const tasksData = await fetchByMonthTasks();
-      const byMonth = getMonthProcentage(tasksData);
+      const byMonth =  getMonthPercentage(tasksData);
       setByMonth(byMonth);
 
-      console.log("Відсотки", a, typeof a)
-
     };
 
     fetchData();
   }, [tasks]);
 
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const tasksData = await fetchByDayTasks();
-      const byDay = getMonthProcentage(tasksData);
-      setByDay(byDay);
-      console.log("Відсотки", a, typeof a)
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const tasksData = await fetchByDayTasks();
+  //     const byDay = getMonthProcentage(tasksData);
+  //     setByDay(byDay);
+  //     console.log("Відсотки", a, typeof a)
+  //   };
 
-    fetchData();
-  }, [tasks]);
+  //   fetchData();
+  // }, [tasks]);
 
 
   const data = [
     {
       "name": "To Do",
-      "uv": byMonth.toDo,
-      "pv": byDay.toDo
+      // "uv": byMonth.toDo,
+      // "pv": byDay.toDo,
+       "uv": 20,
+      "pv": 50,
     },
     {
       "name": "In Progress",
-      "uv": byMonth.inProgress,
-      "pv": byDay.inProgress,
+      // "uv": byMonth.inProgress,
+      // "pv": byDay.inProgress,
+      "uv": 20,
+      "pv": 50,
     },
     {
       "name": "Done",
-      "uv": byMonth.done,
-      "pv": byDay.done,
+      // "uv": byMonth.done,
+      // "pv": byDay.done,
+      "uv": 20,
+      "pv": 50,
     },
   ];
 

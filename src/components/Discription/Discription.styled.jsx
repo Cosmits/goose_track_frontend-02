@@ -107,16 +107,21 @@ max-width: 275px;
 `
 
 export const DiscriptionImg = styled.img`
-width: 335px;
-height: 457px;
-
+max-width: 335px;
+max-height: 457px;
+object-fit: contain;
 
 @media screen and (min-width: 768px){
-width: 704px;
-height: 700px;
+max-width: 704px;
+max-height: 700px;
     }
 
 @media screen and (min-width: 1440px){
-width: 604px;
-height: 700px;
+max-width: 604px;
+max-height: 700px;
     }`
+
+    // export const Image = styled.img`
+    //  object-fit: contain;
+    
+    // `

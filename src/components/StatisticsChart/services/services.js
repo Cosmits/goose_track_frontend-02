@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = 'https://goose-track-backend-02.onrender.com';
-const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmQxZDY0OWEwMTY2MGRjN2FlYTAzYiIsImlhdCI6MTY5NzQ3MTYxNSwiZXhwIjoxNjk3NTU0NDE1fQ.hS_vpDgPgUQwlP1wOFUA9rSepxcZqiZVMJhGOKCNYds'; 
+const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmQxZDY0OWEwMTY2MGRjN2FlYTAzYiIsImlhdCI6MTY5NzU1OTU3MiwiZXhwIjoxNjk3NjQyMzcyfQ.YWhoaXppKUv0qRWAlksvOlKu3GLXXu5kEHnzeCXbxZw'; 
 const currentMonth = '2023-10'; 
 const currentDay = '2023-10-01'
 
@@ -46,7 +46,7 @@ export const fetchByDayTasks = async () => {
 
 
 
-export function getMonthPercentage(tasks, category){
+export function getMonthPercentage(tasks){
 
 const totalTasks = tasks.length;
 let percentage = 0;
@@ -73,9 +73,12 @@ case 'done':
 
     default:
       percentage = 0;
+console.log(percentage)
 }
-
 return percentage;
+
+
+
 // console.log(filterTodo)
 // const filterInProgres = tasks.filter(task => task.category ==='in-progress')
 // const inProgres = (filterInProgres.length/totalTasks) * 100;
@@ -86,15 +89,15 @@ return percentage;
 // return (filterTodo.length/totalTasks) * 100;
 
 }
+// getMonthPercentage(tasks, category)
+
+// const toDoPercentage = getMonthPercentage(tasks, 'to-do');
+// console.log(`Відсоток завдань в категорії "to-do": ${toDoPercentage}%`);
 
 
-const toDoPercentage = getMonthPercentage(tasks, 'to-do');
-console.log(`Відсоток завдань в категорії "to-do": ${toDoPercentage}%`);
+// const inProgressPercentage = getMonthPercentage(tasks, 'in-progress');
+// console.log(`Відсоток завдань в категорії "in-progress": ${inProgressPercentage}%`);
 
-
-const inProgressPercentage = getMonthPercentage(tasks, 'in-progress');
-console.log(`Відсоток завдань в категорії "in-progress": ${inProgressPercentage}%`);
-
-const donePercentage = getMonthPercentage(tasks, 'done');
-console.log(`Відсоток завдань в категорії "done": ${donePercentage}%`);
+// const donePercentage = getMonthPercentage(tasks, 'done');
+// console.log(`Відсоток завдань в категорії "done": ${donePercentage}%`);
 // getMonthProcentage(tasks)

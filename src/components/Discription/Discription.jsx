@@ -20,7 +20,7 @@ import deskCalendarImgRetine from '../../images/discription/desk-calendar@2x.jpg
 import deskTaskImg from '../../images/discription/desk-tasks@1x.jpg'
 import deskTaskImgRetine from '../../images/discription/desk-tasks@2x.jpg'
 
-import { MiddleItem, StyledContainer, StyledDiscripTitle, StyledDiscription, StyledItem, StyledList, StyledNumberPar, StyledPreTitle } from './Discription.styled';
+import { DiscriptionImg, MiddleItem, StyledContainer, StyledDiscripTitle, StyledDiscription, StyledItem, StyledList, StyledNumberPar, StyledPreTitle } from './Discription.styled';
 import { useScreenSize } from '../../hooks/useScreenSize';
 
 
@@ -38,13 +38,19 @@ export const Discription = () => {
                     <StyledDiscription>GooseTrack's Calendar view provides a comprehensive overview of your schedule, displaying all your tasks, events, and appointments in a visually appealing and intuitive layout.</StyledDiscription>
                 </div>
                 {/* <MediaQuery minWidth={1440}> */}
-                {isDesktop && <img src={isRetina ? deskCalendarImgRetine : deskCalendarImg} alt="Calendar" />}
+                {isDesktop && <DiscriptionImg src={isRetina ? deskCalendarImgRetine : deskCalendarImg} alt="Calendar"
+                //  width={604} height={700}
+                 />}
                 {/* </MediaQuery> */}
                 {/* <MediaQuery minWidth={768}> */}
-                {isTablet && <img src={isRetina ? tabletCalendarImgRetine : tabletCalendarImg} alt="Calendar" />}
+                {isTablet && <DiscriptionImg src={isRetina ? tabletCalendarImgRetine : tabletCalendarImg} alt="Calendar" 
+                // width={704} height={700}
+                />}
                 {/* </MediaQuery> */}
                 {/* <MediaQuery minWidth={375}> */}
-                {isMobile && <img src={isRetina ? calendarImgRetine : calendarImg} alt="Calendar" />}
+                {isMobile && <DiscriptionImg src={isRetina ? calendarImgRetine : calendarImg} alt="Calendar"
+                //  width={335} height={457}
+                 />}
                 {/* </MediaQuery> */}
             </StyledItem>
             <MiddleItem>
@@ -55,13 +61,19 @@ export const Discription = () => {
                 </StyledContainer>
                 {/* <img src={isRetina ?  sidebarImgRetine : sidebarImg} alt="Sidebar" /> */}
                 {/* <MediaQuery minWidth={1440}> */}
-                {isDesktop && <img src={isRetina ? desktSidebarImgRetine : deckSidebarImg} alt="Sidebar" />}
+                {isDesktop && <DiscriptionImg src={isRetina ? desktSidebarImgRetine : deckSidebarImg} alt="Sidebar"
+                //  width={604} height={700}
+                 />}
                 {/* </MediaQuery>
                 <MediaQuery minWidth={768}> */}
-                {isTablet && <img src={isRetina ? tabletTaskImgRetine : tabletTaskImg} alt="Sidebar" />}
+                {isTablet && <DiscriptionImg src={isRetina ? tabletTaskImgRetine : tabletTaskImg} alt="Sidebar"
+                //  width={704} height={700}
+                 />}
                 {/* </MediaQuery> */}
                 {/* <MediaQuery minWidth={375}> */}
-                {isMobile && <img src={isRetina ? sidebarImgRetine : sidebarImg} alt="Sidebar" />}
+                {isMobile && <DiscriptionImg src={isRetina ? sidebarImgRetine : sidebarImg} alt="Sidebar" 
+                // width={335} height={457}
+                />}
                 {/* </MediaQuery> */}
             </MiddleItem>
             <StyledItem>
@@ -73,13 +85,19 @@ export const Discription = () => {
                 </div>
                 {/* <img src={isRetina ? taskImgRetine : taskImg} alt="Task example" /> */}
                 {/* <MediaQuery minWidth={1440}> */}
-                {isDesktop && <img src={isRetina ? deskTaskImgRetine : deskTaskImg} alt="Task example" />}
+                {isDesktop && <DiscriptionImg src={isRetina ? deskTaskImgRetine : deskTaskImg} alt="Task example"  
+                // width={604} height={700}
+                />}
                 {/* </MediaQuery>
                 <MediaQuery minWidth={768}> */}
-                {isTablet && <img src={isRetina ? tabletSidebarImgRetine : tabletSidebarImg} alt="Task example" />}
+                {isTablet && <DiscriptionImg src={isRetina ? tabletSidebarImgRetine : tabletSidebarImg} alt="Task example"
+                //  width={704} height={700}
+                 />}
                 {/* </MediaQuery>
                 <MediaQuery minWidth={375}> */}
-                {isMobile && <img src={isRetina ? taskImgRetine : taskImg} alt="Task example" />}
+                {isMobile && <DiscriptionImg src={isRetina ? taskImgRetine : taskImg} alt="Task example"
+                //  width={335} height={457}
+                 />}
                 {/* </MediaQuery> */}
             </StyledItem>
         </StyledList>
