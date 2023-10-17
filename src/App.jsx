@@ -30,7 +30,7 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
-      <Auth />
+     
       <StatisticsPage />
       {/* <Discription /> */}
       {/* <StatisticsPage/> */}
