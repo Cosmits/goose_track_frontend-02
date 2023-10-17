@@ -19,7 +19,7 @@ export default function ReviewsSlider() {
         const { data } = response;
         setReviews(data);
       } catch (error) {
-        console.log(error);
+        console.log('error', error);
       }
     };
 
@@ -30,8 +30,7 @@ export default function ReviewsSlider() {
     <ReviewsWrapper>
       <Container>
         <Title>Reviews</Title>
-        {reviews && <Slider reviews={reviews} />}
-        <Arrows />
+        <Slider reviews={reviews} />
       </Container>
     </ReviewsWrapper>
   );
