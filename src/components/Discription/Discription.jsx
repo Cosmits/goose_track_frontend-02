@@ -1,17 +1,33 @@
-import { useMediaQuery } from 'react-responsive';
+import MediaQuery, { useMediaQuery } from 'react-responsive';
 import sidebarImg from '../../images/discription/mobile-sideBar@1x.jpg';
-import sudebarImgRetine from '../../images/discription/mobile-sideBar@2x.jpg'
+import sidebarImgRetine from '../../images/discription/mobile-sideBar@2x.jpg'
 import calendarImg from '../../images/discription/mobile-calendar@1x.jpg';
 import calendarImgRetine from '../../images/discription/mobile-calendar@2x.jpg';
 import taskImg from '../../images/discription/mobile-tasks@1x.jpg'
 import taskImgRetine from '../../images/discription/mobile-tasks@2x.jpg'
+
+import tabletSidebarImg from '../../images/discription/tablet-sideBar@1x.jpg';
+import tabletSidebarImgRetine from '../../images/discription/tablet-sideBar@2x.jpg'
+import tabletCalendarImg from '../../images/discription/tablet-calendar@1x.jpg';
+import tabletCalendarImgRetine from '../../images/discription/tablet-calendar@2x.jpg';
+import tabletTaskImg from '../../images/discription/tablet-tasks@1x.jpg'
+import tabletTaskImgRetine from '../../images/discription/tablet-tasks@2x.jpg'
+
+import deckSidebarImg from '../../images/discription/desk-sideBar@1x.jpg';
+import desktSidebarImgRetine from '../../images/discription/desk-sideBar@2x.jpg'
+import deskCalendarImg from '../../images/discription/desk-calendar@1x.jpg';
+import deskCalendarImgRetine from '../../images/discription/desk-calendar@2x.jpg';
+import deskTaskImg from '../../images/discription/desk-tasks@1x.jpg'
+import deskTaskImgRetine from '../../images/discription/desk-tasks@2x.jpg'
+
 import { MiddleItem, StyledContainer, StyledDiscripTitle, StyledDiscription, StyledItem, StyledList, StyledNumberPar, StyledPreTitle } from './Discription.styled';
+import { useScreenSize } from '../../hooks/useScreenSize';
 
 
 export const Discription = () => {
 
     const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
-
+    const { isDesktop, isTablet, isMobile } = useScreenSize();
     return (
         <StyledList>
             <StyledItem>
@@ -21,7 +37,15 @@ export const Discription = () => {
                     <StyledDiscripTitle>View</StyledDiscripTitle>
                     <StyledDiscription>GooseTrack's Calendar view provides a comprehensive overview of your schedule, displaying all your tasks, events, and appointments in a visually appealing and intuitive layout.</StyledDiscription>
                 </div>
-                <img src={isRetina ? calendarImgRetine : calendarImg} alt="Calendar" />
+                {/* <MediaQuery minWidth={1440}> */}
+                {isDesktop && <img src={isRetina ? deskCalendarImgRetine : deskCalendarImg} alt="Calendar" />}
+                {/* </MediaQuery> */}
+                {/* <MediaQuery minWidth={768}> */}
+                {isTablet && <img src={isRetina ? tabletCalendarImgRetine : tabletCalendarImg} alt="Calendar" />}
+                {/* </MediaQuery> */}
+                {/* <MediaQuery minWidth={375}> */}
+                {isMobile && <img src={isRetina ? calendarImgRetine : calendarImg} alt="Calendar" />}
+                {/* </MediaQuery> */}
             </StyledItem>
             <MiddleItem>
                 <StyledContainer >
@@ -29,7 +53,16 @@ export const Discription = () => {
                     <StyledDiscripTitle>Sidebar</StyledDiscripTitle>
                     <StyledDiscription>GooseTrack offers easy access to your account settings, calendar, and filters. The "My Account" section allows you to manage your profile information and preferences, while the calendar provides a quick and convenient way to view your upcoming events and tasks.</StyledDiscription>
                 </StyledContainer>
-                <img src={isRetina ?  sudebarImgRetine : sidebarImg} alt="Sidebar" />
+                {/* <img src={isRetina ?  sidebarImgRetine : sidebarImg} alt="Sidebar" /> */}
+                {/* <MediaQuery minWidth={1440}> */}
+                {isDesktop && <img src={isRetina ? desktSidebarImgRetine : deckSidebarImg} alt="Sidebar" />}
+                {/* </MediaQuery>
+                <MediaQuery minWidth={768}> */}
+                {isTablet && <img src={isRetina ? tabletTaskImgRetine : tabletTaskImg} alt="Sidebar" />}
+                {/* </MediaQuery> */}
+                {/* <MediaQuery minWidth={375}> */}
+                {isMobile && <img src={isRetina ? sidebarImgRetine : sidebarImg} alt="Sidebar" />}
+                {/* </MediaQuery> */}
             </MiddleItem>
             <StyledItem>
                 <div>
@@ -38,7 +71,16 @@ export const Discription = () => {
                     <StyledDiscripTitle>One</StyledDiscripTitle>
                     <StyledDiscription>GooseTrack is an all-in-one productivity tool that helps you stay on top of your tasks, events, and deadlines. Say goodbye to scattered to-do lists and hello to streamlined productivity with GooseTrack.</StyledDiscription>
                 </div>
-                <img src={isRetina ? taskImgRetine : taskImg} alt="Task example" />
+                {/* <img src={isRetina ? taskImgRetine : taskImg} alt="Task example" /> */}
+                {/* <MediaQuery minWidth={1440}> */}
+                {isDesktop && <img src={isRetina ? deskTaskImgRetine : deskTaskImg} alt="Task example" />}
+                {/* </MediaQuery>
+                <MediaQuery minWidth={768}> */}
+                {isTablet && <img src={isRetina ? tabletSidebarImgRetine : tabletSidebarImg} alt="Task example" />}
+                {/* </MediaQuery>
+                <MediaQuery minWidth={375}> */}
+                {isMobile && <img src={isRetina ? taskImgRetine : taskImg} alt="Task example" />}
+                {/* </MediaQuery> */}
             </StyledItem>
         </StyledList>
     )
