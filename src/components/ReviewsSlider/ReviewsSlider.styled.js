@@ -2,11 +2,7 @@ import styled from 'styled-components';
 
 //Illia Shatokhin
 // media 375,768,1440
-export const ReviewsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+export const ReviewsWrapper = styled.div``;
 
 export const Title = styled.h2`
   margin-bottom: 40px;
@@ -17,6 +13,7 @@ export const Title = styled.h2`
   font-weight: 700;
   line-height: ${() => 32 / 28}; /* 110% */
   text-transform: uppercase;
+  text-align: center;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 50px;

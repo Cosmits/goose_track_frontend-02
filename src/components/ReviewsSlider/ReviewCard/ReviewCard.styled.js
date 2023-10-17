@@ -1,20 +1,4 @@
 import styled from 'styled-components';
-import { AiFillStar } from 'react-icons/ai';
-
-export const FillStar = styled(AiFillStar)`
-  fill: #ffac33;
-`;
-
-export const Star = styled(AiFillStar)`
-  width: 14px;
-  height: 14px;
-  fill: ${(prop) => prop};
-`;
-
-export const StarWrapper = styled.div`
-  display: flex;
-  gap: 10px;
-`;
 
 export const Card = styled.div`
   box-sizing: border-box;
@@ -45,7 +29,7 @@ export const CardText = styled.div`
   text-align: left;
 `;
 
-export const Avatar = styled.div`
+export const AvatarName = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,6 +37,17 @@ export const Avatar = styled.div`
   height: 50px;
   border-radius: 50%;
   background-color: gray;
+  flex-shrink: 0;
+`;
+
+export const AvatarPicture = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(${({ src }) => src});
   flex-shrink: 0;
 `;
 

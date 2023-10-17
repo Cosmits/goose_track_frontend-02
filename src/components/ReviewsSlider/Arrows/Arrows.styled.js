@@ -26,4 +26,5 @@ export const RightArrow = styled(BsArrowRight)`
 export const ArrowsWrapper = styled.div`
   display: flex;
   gap: 25px;
+  justify-content: center;
 `;

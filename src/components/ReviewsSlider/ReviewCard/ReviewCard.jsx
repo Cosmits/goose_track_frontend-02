@@ -1,37 +1,26 @@
+import Stars from '../Stars/Stars';
 import {
-  Avatar,
+  AvatarName,
+  AvatarPicture,
   Card,
   Name,
   CardInfo,
   CardText,
   Comment,
-  Star,
-  StarWrapper,
 } from './ReviewCard.styled';
 
-function star(rating) {
-  const ratingArr = [1, 2, 3, 4, 5];
-  return (
-    <StarWrapper>
-      {ratingArr.map((rate) =>
-        rate <= rating ? (
-          <Star key={rate} color="#ffac33" />
-        ) : (
-          <Star key={rate} color="#cec9c1" />
-        ),
-      )}
-    </StarWrapper>
-  );
-}
-
-export default function ReviewCard({ name, rating, comment }) {
+export default function ReviewCard({ name, rating, comment, avatar }) {
   return (
     <Card>
       <CardInfo>
-        <Avatar>{name[0]}</Avatar>
+        {avatar ? (
+          <AvatarPicture src={avatar} />
+        ) : (
+          <AvatarName>{name[0]}</AvatarName>
+        )}
         <CardText>
           <Name>{name}</Name>
-          {star(rating)}
+          <Stars rating={rating} />
         </CardText>
       </CardInfo>
       <Comment>{comment}</Comment>

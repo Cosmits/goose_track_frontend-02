@@ -13,7 +13,6 @@ import { AppWrapper } from './App.styled';
 import MyHeader from './components/Header/myHeader';
 
 import { Auth } from './components/authSection/auth';
-import ReviewsSlider from './components/ReviewsSlider/ReviewsSlider';
 
 // import Sidebar from './components/Sidebar/Sidebar';
 
@@ -22,11 +21,11 @@ const test = import.meta.env.VITE_API_TEST;
 // const Home = lazy(() => import("pages/Home"));
 
 function App() {
+  console.log(test);
   return (
     <AppWrapper>
-      <ReviewsSlider />
-      {/* <MyHeader/>
-     <Auth/>
+      <MyHeader />
+      <Auth />
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route path="/account" element={<FirstPage />} />
@@ -37,7 +36,7 @@ function App() {
 
           <Route path="*" element={<ErrorPage />} />
         </Route>
-      </Routes> */}
+      </Routes>
     </AppWrapper>
   );
 }
