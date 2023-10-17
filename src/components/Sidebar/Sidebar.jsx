@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SidebarWrapper } from './Sidebar.styled'; // Import the styled component
 
@@ -7,35 +6,6 @@ function Sidebar() {
     // Handle your logout logic here
   };
   //const isTablet = useMediaQuery({ maxWidth: 1440 });
-  useEffect(() => {
-    // Function to open the sidebar
-    function openSidebar() {
-      document.getElementById('sidebar').classList.add('open');
-    }
-
-    // Function to close the sidebar
-    function closeSidebar() {
-      document.getElementById('sidebar').classList.remove('open');
-    }
-
-    // Add event listeners to the buttons
-    document
-      .getElementById('open-burger')
-      .addEventListener('click', openSidebar);
-    document
-      .getElementById('close-button')
-      .addEventListener('click', closeSidebar);
-
-    return () => {
-      // Clean up event listeners when the component unmounts
-      document
-        .getElementById('open-burger')
-        .removeEventListener('click', openSidebar);
-      document
-        .getElementById('close-button')
-        .removeEventListener('click', closeSidebar);
-    };
-  }, []);
   return (
     <SidebarWrapper>
       {/* <button id="open-burger">OPEN</button>*/}{' '}
