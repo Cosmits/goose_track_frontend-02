@@ -1,5 +1,5 @@
-import { ReactComponent as ArrowLeft } from '../../../icons/ReviewsSlider/reviews-slider-left-arrow.svg';
-import { ReactComponent as ArrowRight } from '../../../icons/ReviewsSlider/reviews-slider-right-arrow.svg';
+import { ReactComponent as ArrowLeft } from '../../../../icons/ReviewsSlider/reviews-slider-left-arrow.svg';
+import { ReactComponent as ArrowRight } from '../../../../icons/ReviewsSlider/reviews-slider-right-arrow.svg';
 import styled from 'styled-components';
 
 export const LeftArrow = styled(ArrowLeft)`

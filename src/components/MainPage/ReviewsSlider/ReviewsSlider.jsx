@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from 'react';
 
-import reviewsApi from '../../services/reviews-api';
+import reviewsApi from '../../../services/reviews-api';
 
-import { Container } from '../../Styles/Container';
-import Arrows from './Arrows/Arrows';
+import { Container } from '../../../Styles/Container';
 import Slider from './Slider/Slider';
 import { ReviewsWrapper, Title } from './ReviewsSlider.styled';
 
