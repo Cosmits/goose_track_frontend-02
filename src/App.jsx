@@ -13,7 +13,6 @@ import { AppWrapper } from './App.styled';
 import { Auth } from './components/authSection/auth';
 
 import Sidebar from './components/Sidebar/Sidebar';
-import TaskForm from './components/TaskForm/taskForm';
 
 const test = import.meta.env.VITE_API_TEST;
 
@@ -23,7 +22,7 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
-     <MyHeader/>
+      <Sidebar/>
      <Auth/>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
