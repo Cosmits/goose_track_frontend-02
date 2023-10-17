@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from 'react';
 
-import reviewsApi from '../../services/reviews-api';
+import reviewsApi from '../../../services/reviews-api';
 
-import { Container } from '../../Styles/Container';
-import Arrows from './Arrows/Arrows';
+import { Container } from '../../../Styles/Container';
 import Slider from './Slider/Slider';
 import { ReviewsWrapper, Title } from './ReviewsSlider.styled';
 
@@ -19,7 +18,7 @@ export default function ReviewsSlider() {
         const { data } = response;
         setReviews(data);
       } catch (error) {
-        console.log(error);
+        console.log('error', error);
       }
     };
 
@@ -30,8 +29,7 @@ export default function ReviewsSlider() {
     <ReviewsWrapper>
       <Container>
         <Title>Reviews</Title>
-        {reviews && <Slider reviews={reviews} />}
-        <Arrows />
+        <Slider reviews={reviews} />
       </Container>
     </ReviewsWrapper>
   );
