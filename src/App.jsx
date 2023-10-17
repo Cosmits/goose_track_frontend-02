@@ -6,7 +6,7 @@ import Layout from './components/Layout/Layout';
 
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage/LoginPage';
-import RegisterPage from './pages/RegisterPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 import AccountPage from './pages/AccountPage';
 import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -25,16 +25,15 @@ function App() {
         element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />}
         index
       />
-      <Route path="/:verificationToken"
+      <Route path="/register"
         element={<RestrictedRoute redirectTo="/calendar" component={<RegisterPage />} />}
-        index
       />
       <Route path="/login"
         element={<RestrictedRoute redirectTo="/calendar" component={<LoginPage />} />}
       />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route        path="/"
-        element={<PrivateRoute redirectTo="/login" component={<Layout />} />}
+      <Route path="/"
+        element={<PrivateRoute redirectTo="/login"
+          component={<Layout />} />}
       >
         <Route path="account" element={<AccountPage />} />
         <Route path="calendar" element={<CalendarPage />}>
