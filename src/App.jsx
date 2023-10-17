@@ -11,6 +11,8 @@ import HalfPage from './pages/HalfPage/HalfPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { AppWrapper } from './App.styled';
 import { Auth } from './components/authSection/auth';
+import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
+import { Discription } from './components/Discription/Discription.jsx';
 
 
 
@@ -26,6 +28,8 @@ function App() {
     
     <AppWrapper>
       <Auth />
+      <Discription />
+      <StatisticsPage/>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route path="/first" element={<FirstPage />} />

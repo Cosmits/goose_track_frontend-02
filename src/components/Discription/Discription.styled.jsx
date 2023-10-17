@@ -60,7 +60,8 @@ display: inline-block;
 font-family: 'Inter';
 font-size: 32px;
 font-weight: 700,
-line-height: calc(40/32);
+/* line-height: calc(40/32); */
+line-height: 1.25;
 padding: 8px 18px;
 text-transform: uppercase;
 color: var(--main-blue); 
@@ -78,7 +79,8 @@ export const StyledDiscripTitle = styled.h2`
 font-family: 'Inter';
 font-size: 32px;
 font-weight: 700,
-line-height: calc(40/32);
+line-height: 1.25;
+/* line-height: calc(40/32); */
 text-transform: uppercase;
 color: var(--letter-black); 
 margin-bottom: 14px;
