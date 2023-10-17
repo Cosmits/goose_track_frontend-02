@@ -139,7 +139,7 @@ export const SidebarWrapper = styled.div`
       display: block;
       background-color: transparent;
       color: black; // Text color: ;
-      font-size: 34px; // Adjust the font size as needed
+      font-size: 34px; 
       border: none;
       cursor: pointer;
     }
