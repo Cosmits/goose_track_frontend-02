@@ -4,6 +4,7 @@
 :root {
   --black: #111111;
   --letter-black: #171820;
+  --letter-gray: #343434;
   --white: #FFFFFF;
   --dark-gray: #13151A;
   --gray: #21222C;
@@ -16,7 +17,7 @@
   --light-blue: #E3F3FF;
   --correct-color: #3CBC81;
   --error-color: #DA1414;
-  --pink-gradient: linear-gradient(#FFD2DD 0%, #FFD2DD 100%);
+  --pink-gradient: linear-gradient(#FFFFFF, #FFD2DD);
   --blue--gradient: linear-gradient(#3E85F3 0%, #3E85F3 100%);
   --low-color: #72C2F8;
   --medium-color:  #F3B249;
@@ -36,7 +37,6 @@ body {
   color: #111111;
   width: 100%;
   height: 100vh;
- 
 }
 
 h1,

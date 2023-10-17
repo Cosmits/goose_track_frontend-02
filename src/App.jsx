@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy, useEffect } from 'react';
+// import { lazy, useEffect } from 'react';
 
 // import Layout from "./Layout";
 // import PrivateRoute from "./PrivateRoute";
@@ -23,8 +23,8 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
+     <MyHeader/>
      <Auth/>
-     <TaskForm />
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route path="/account" element={<FirstPage />} />
