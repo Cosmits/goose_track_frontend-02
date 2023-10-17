@@ -13,11 +13,9 @@ import { AppWrapper } from './App.styled';
 import MyHeader from './components/Header/myHeader';
 
 import { Auth } from './components/authSection/auth';
+import ReviewsSlider from './components/ReviewsSlider/ReviewsSlider';
 
 // import Sidebar from './components/Sidebar/Sidebar';
-
-
-
 
 const test = import.meta.env.VITE_API_TEST;
 
@@ -26,7 +24,8 @@ const test = import.meta.env.VITE_API_TEST;
 function App() {
   return (
     <AppWrapper>
-     <MyHeader/>
+      <ReviewsSlider />
+      {/* <MyHeader/>
      <Auth/>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
@@ -38,7 +37,7 @@ function App() {
 
           <Route path="*" element={<ErrorPage />} />
         </Route>
-      </Routes>
+      </Routes> */}
     </AppWrapper>
   );
 }

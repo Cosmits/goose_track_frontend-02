@@ -1,4 +1,4 @@
-import { LeftArrow, RightArrow, ArrowsWrapper } from './Arrows.styled';
+import { ArrowsWrapper, LeftArrow, RightArrow } from './Arrows.styled';
 
 export default function Arrows(params) {
   return (

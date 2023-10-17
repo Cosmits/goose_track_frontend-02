@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 //Illia Shatokhin
 // media 375,768,1440
-export const ReviewsSection = styled.section`
-  text-align: center;
+export const ReviewsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Title = styled.h2`
