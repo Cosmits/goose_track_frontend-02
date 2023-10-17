@@ -12,7 +12,7 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { AppWrapper } from './App.styled';
 import { Auth } from './components/authSection/auth';
 
-// import Sidebar from './components/Sidebar/Sidebar';
+import Sidebar from './components/Sidebar/Sidebar';
 
 
 
@@ -25,7 +25,7 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
-     <MyHeader/>
+      <Sidebar />
      <Auth/>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
