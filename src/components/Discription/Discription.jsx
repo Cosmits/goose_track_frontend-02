@@ -37,21 +37,13 @@ export const Discription = () => {
                     <StyledDiscripTitle>View</StyledDiscripTitle>
                     <StyledDiscription>GooseTrack's Calendar view provides a comprehensive overview of your schedule, displaying all your tasks, events, and appointments in a visually appealing and intuitive layout.</StyledDiscription>
                 </div>
-                {/* <MediaQuery minWidth={1440}> */}
-                {isDesktop && <DiscriptionImg src={isRetina ? deskCalendarImgRetine : deskCalendarImg} alt="Calendar"
-                //  width={604} height={700}
-                 />}
-                {/* </MediaQuery> */}
-                {/* <MediaQuery minWidth={768}> */}
-                {isTablet && <DiscriptionImg src={isRetina ? tabletCalendarImgRetine : tabletCalendarImg} alt="Calendar" 
-                // width={704} height={700}
-                />}
-                {/* </MediaQuery> */}
-                {/* <MediaQuery minWidth={375}> */}
-                {isMobile && <DiscriptionImg src={isRetina ? calendarImgRetine : calendarImg} alt="Calendar"
-                //  width={335} height={457}
-                 />}
-                {/* </MediaQuery> */}
+
+                {isDesktop && <DiscriptionImg src={isRetina ? deskCalendarImgRetine : deskCalendarImg} alt="Calendar" />}
+
+                {isTablet && <DiscriptionImg src={isRetina ? tabletCalendarImgRetine : tabletCalendarImg} alt="Calendar" />}
+
+                {isMobile && <DiscriptionImg src={isRetina ? calendarImgRetine : calendarImg} alt="Calendar" />}
+
             </StyledItem>
             <MiddleItem>
                 <StyledContainer >
@@ -59,22 +51,12 @@ export const Discription = () => {
                     <StyledDiscripTitle>Sidebar</StyledDiscripTitle>
                     <StyledDiscription>GooseTrack offers easy access to your account settings, calendar, and filters. The "My Account" section allows you to manage your profile information and preferences, while the calendar provides a quick and convenient way to view your upcoming events and tasks.</StyledDiscription>
                 </StyledContainer>
-                {/* <img src={isRetina ?  sidebarImgRetine : sidebarImg} alt="Sidebar" /> */}
-                {/* <MediaQuery minWidth={1440}> */}
-                {isDesktop && <DiscriptionImg src={isRetina ? desktSidebarImgRetine : deckSidebarImg} alt="Sidebar"
-                //  width={604} height={700}
-                 />}
-                {/* </MediaQuery>
-                <MediaQuery minWidth={768}> */}
-                {isTablet && <DiscriptionImg src={isRetina ? tabletTaskImgRetine : tabletTaskImg} alt="Sidebar"
-                //  width={704} height={700}
-                 />}
-                {/* </MediaQuery> */}
-                {/* <MediaQuery minWidth={375}> */}
-                {isMobile && <DiscriptionImg src={isRetina ? sidebarImgRetine : sidebarImg} alt="Sidebar" 
-                // width={335} height={457}
-                />}
-                {/* </MediaQuery> */}
+
+                {isDesktop && <DiscriptionImg src={isRetina ? desktSidebarImgRetine : deckSidebarImg} alt="Sidebar" />}
+
+                {isTablet && <DiscriptionImg src={isRetina ? tabletTaskImgRetine : tabletTaskImg} alt="Sidebar" />}
+
+                {isMobile && <DiscriptionImg src={isRetina ? sidebarImgRetine : sidebarImg} alt="Sidebar" />}
             </MiddleItem>
             <StyledItem>
                 <div>
@@ -83,22 +65,11 @@ export const Discription = () => {
                     <StyledDiscripTitle>One</StyledDiscripTitle>
                     <StyledDiscription>GooseTrack is an all-in-one productivity tool that helps you stay on top of your tasks, events, and deadlines. Say goodbye to scattered to-do lists and hello to streamlined productivity with GooseTrack.</StyledDiscription>
                 </div>
-                {/* <img src={isRetina ? taskImgRetine : taskImg} alt="Task example" /> */}
-                {/* <MediaQuery minWidth={1440}> */}
-                {isDesktop && <DiscriptionImg src={isRetina ? deskTaskImgRetine : deskTaskImg} alt="Task example"  
-                // width={604} height={700}
-                />}
-                {/* </MediaQuery>
-                <MediaQuery minWidth={768}> */}
-                {isTablet && <DiscriptionImg src={isRetina ? tabletSidebarImgRetine : tabletSidebarImg} alt="Task example"
-                //  width={704} height={700}
-                 />}
-                {/* </MediaQuery>
-                <MediaQuery minWidth={375}> */}
-                {isMobile && <DiscriptionImg src={isRetina ? taskImgRetine : taskImg} alt="Task example"
-                //  width={335} height={457}
-                 />}
-                {/* </MediaQuery> */}
+                {isDesktop && <DiscriptionImg src={isRetina ? deskTaskImgRetine : deskTaskImg} alt="Task example" />}
+
+                {isTablet && <DiscriptionImg src={isRetina ? tabletSidebarImgRetine : tabletSidebarImg} alt="Task example" />}
+
+                {isMobile && <DiscriptionImg src={isRetina ? taskImgRetine : taskImg} alt="Task example" />}
             </StyledItem>
         </StyledList>
     )
