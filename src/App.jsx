@@ -14,6 +14,9 @@ import { Auth } from './components/authSection/auth';
 
 import Sidebar from './components/Sidebar/Sidebar';
 
+
+
+
 const test = import.meta.env.VITE_API_TEST;
 
 // const Home = lazy(() => import("pages/Home"));
@@ -22,7 +25,7 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
-      <Sidebar/>
+      <Sidebar />
      <Auth/>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
