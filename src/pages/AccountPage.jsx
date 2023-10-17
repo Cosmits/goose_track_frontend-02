@@ -11,7 +11,7 @@ import {
 } from './AccountPage.styled';
 import { UserForm } from '../components/UserForm/UserForm';
 import examplePicture from '../assets/background.png';
-import plusSVG from '../../public/plus.svg';
+import plusSVG from '../../src/assets/plus.svg';
 
 export const AccountPage = () => {
   return (
