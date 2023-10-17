@@ -59,7 +59,7 @@ export const StyledPreTitle = styled.p`
 display: inline-block;
 font-family: 'Inter';
 font-size: 32px;
-font-weight: 700,
+font-weight: 700;
 line-height: calc(40/32);
 padding: 8px 18px;
 text-transform: uppercase;
@@ -74,27 +74,27 @@ line-height: calc(44/40);
     }
 `
 
-export const StyledDiscripTitle = styled.h2`
+export const StyledDescriptionTitle = styled.h2`
 font-family: 'Inter';
 font-size: 32px;
-font-weight: 700,
+font-weight: 700;
 line-height: calc(40/32);
 text-transform: uppercase;
 color: var(--letter-black); 
 margin-bottom: 14px;
 
 @media screen and (min-width: 768px){
-font-size: 40px;
-line-height: calc(44/40);
-margin-bottom: 24px;
+    font-size: 40px;
+    line-height: calc(44/40);
+    margin-bottom: 24px;
    
-    }
+}
 `
 
-export const StyledDiscription = styled.p`
+export const StyledDescription = styled.p`
 font-family: 'Inter';
 font-size: 14px;
-font-weight: 500,
+font-weight: 500;
 line-height: calc(18/14);
 color: var(--black); 
 max-width: 335px;
@@ -104,7 +104,7 @@ max-width: 275px;
     }
 `
 
-export const DiscriptionImg = styled.img`
+export const DescriptionImg = styled.img`
 width: 335px;
 height: 457px;
 
