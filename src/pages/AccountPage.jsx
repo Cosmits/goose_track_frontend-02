@@ -11,9 +11,9 @@ import {
 } from './AccountPage.styled';
 import { UserForm } from '../components/UserForm/UserForm';
 import examplePicture from '../assets/background.png';
-import plusSVG from '../../src/assets/plus.svg';
+import plusSVG from '../images/AccountPage/plus.svg';
 
-export const AccountPage = () => {
+const AccountPage = () => {
   return (
     <StyledAcountWrapperDiv>
       <StyledAvatarDiv>
@@ -33,3 +33,5 @@ export const AccountPage = () => {
     </StyledAcountWrapperDiv>
   );
 };
+
+export default AccountPage;

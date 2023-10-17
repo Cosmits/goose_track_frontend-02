@@ -1,8 +1,7 @@
-import React from "react";
 // import LoginForm from "components/LoginForm/LoginForm";
 
 const RegisterPage = () => {
-  return <Text> RegisterPage </Text>
+  return <text> RegisterPage </text>
 };
 
 export default RegisterPage;

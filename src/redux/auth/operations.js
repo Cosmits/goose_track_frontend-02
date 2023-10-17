@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://goose-track-backend-02.onrender.com/users';
+axios.defaults.baseURL = 'https://goose-track-backend-02.onrender.com/';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -12,23 +13,23 @@ const setAuthHeader = token => {
 // };
 
 export const register = createAsyncThunk(
-  '/register',
-  async (formData, thunkAPI) => {
+  'users/register',
+  async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post('/register', formData);
+      const response = await axios.post('users/register', credentials);
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
       if (error.response) {
         const { status } = error.response;
         if (status === 400) {
-          console.log('User register error.');
+          toast.error('User register error.');
         }
         if (status === 409) {
-          console.log('User already exists.');
+          toast.error('User already exists.');
         }
         if (status === 500) {
-          console.log('Server error.');
+          toast.error('Server error.');
         }
       }
       return thunkAPI.rejectWithValue(error.message);
@@ -37,27 +38,28 @@ export const register = createAsyncThunk(
 );
 
 export const logIn = createAsyncThunk(
-  '/login',
-  async (credentials, thunkAPI) => {
+  'users/login',
+  async (formData, thunkAPI) => {
     try {
-      const response = await axios.post('/login', credentials);
+      const response = await axios.post('/users/login', formData);
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
       if (error.response) {
         const { status } = error.response;
         if (status === 400) {
-          console.log('User login error.');
+          toast.error('User login error.');
         }
         if (status === 401) {
-          console.log('Email or password is wrong.');
+          toast.error('Email or password is wrong.');
         }
         if (status === 500) {
-          console.log('Server error.');
+          toast.error('Server error.');
         }
       }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
 
