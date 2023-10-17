@@ -1,9 +1,10 @@
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 import { StyledContainer, StyledParagraph, ChartBarIcon, BarContainer } from './StatisticsChart.styled';
-import { fetchAllTasks } from './services/services.js';
+import { fetchByMonthTasks, fetchByDayTasks } from './services/services.js';
 import { getMonthProcentage } from './services/services.js'
 
 import { useEffect, useState } from 'react';
+// import { useScreenSize } from '../../hooks/useScreenSize';
 
 
 // fetchAllTasks();
@@ -20,8 +21,8 @@ const CustomBarShape = (props) => {
 
 
 
-export const StatisticsChart = ({tasks}) => {
-
+export const StatisticsChart = ({ tasks }) => {
+  // const {isDesktop, isTablet, isMobile} = useScreenSize();
   // const [a, setA] = useState(null)
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -34,39 +35,59 @@ export const StatisticsChart = ({tasks}) => {
   //   fetchData();
   // }, [a]);
 
-  const [ percentages, setPercentages] = useState({
+  const [byMonth, setByMonth] = useState({
+    toDo: 0,
+    inProgress: 0,
+    done: 0,
+  });
+  const [byDay, setByDay] = useState({
     toDo: 0,
     inProgress: 0,
     done: 0,
   });
 
+
   useEffect(() => {
     const fetchData = async () => {
-      const tasksData = await fetchAllTasks();
-      const percentages = getMonthProcentage(tasksData);
-      setPercentages(percentages);
+      const tasksData = await fetchByMonthTasks();
+      const byMonth = getMonthProcentage(tasksData);
+      setByMonth(byMonth);
+
       console.log("Відсотки", a, typeof a)
-      // setToDoTaskProcentage(percentage);
+
     };
 
     fetchData();
-  }, [tasks ]);
+  }, [tasks]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const tasksData = await fetchByDayTasks();
+      const byDay = getMonthProcentage(tasksData);
+      setByDay(byDay);
+      console.log("Відсотки", a, typeof a)
+    };
+
+    fetchData();
+  }, [tasks]);
+
 
   const data = [
     {
       "name": "To Do",
-      "uv": percentages.toDo,
-      "pv": 50
+      "uv": byMonth.toDo,
+      "pv": byDay.toDo
     },
     {
       "name": "In Progress",
-      "uv": percentages.inProgress,
-      "pv": 75
+      "uv": byMonth.inProgress,
+      "pv": byDay.inProgress,
     },
     {
       "name": "Done",
-      "uv": percentages.done,
-      "pv": 90
+      "uv": byMonth.done,
+      "pv": byDay.done,
     },
   ];
 

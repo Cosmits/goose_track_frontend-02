@@ -2,10 +2,11 @@ import axios from 'axios';
 
 const BASE_URL = 'https://goose-track-backend-02.onrender.com';
 const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmQxZDY0OWEwMTY2MGRjN2FlYTAzYiIsImlhdCI6MTY5NzQ3MTYxNSwiZXhwIjoxNjk3NTU0NDE1fQ.hS_vpDgPgUQwlP1wOFUA9rSepxcZqiZVMJhGOKCNYds'; 
-const targetMonth = '2023-10'; 
+const currentMonth = '2023-10'; 
+const currentDay = '2023-10-01'
 
 
-export const fetchAllTasks = async () => {
+export const fetchByMonthTasks = async () => {
     const config = {
         headers: {
             Authorization: `Bearer ${ACCESS_TOKEN}`
@@ -13,15 +14,34 @@ export const fetchAllTasks = async () => {
     };
 
     try {
-        const response = await axios.get(`${BASE_URL}/tasks?date=${targetMonth}`, config);
+        const response = await axios.get(`${BASE_URL}/tasks?date=${currentMonth}`, config);
         const tasks = response.data;
         console.log('Отримані таски:', tasks);
         return tasks;
     } catch (error) {
         console.error('Помилка запиту:', error);
-        throw error;
     }
 }
+
+
+
+export const fetchByDayTasks = async () => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${ACCESS_TOKEN}`
+        }
+    };
+
+    try {
+        const response = await axios.get(`${BASE_URL}/tasks?date=${currentDay}`, config);
+        const tasks = response.data;
+        console.log('Отримані таски:', tasks);
+        return tasks;
+    } catch (error) {
+        console.error('Помилка запиту:', error);
+    }
+}
+
 
 
 
