@@ -13,9 +13,7 @@ import { AppWrapper } from './App.styled';
 import MyHeader from './components/Header/myHeader';
 
 import { Auth } from './components/authSection/auth';
-import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
-// import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
-// import { Discription } from './components/Discription/Discription.jsx';
+
 
 // import Sidebar from './components/Sidebar/Sidebar';
 
@@ -30,11 +28,6 @@ function App() {
   console.log(test);
   return (
     <AppWrapper>
-     
-      <StatisticsPage />
-      {/* <Discription /> */}
-      {/* <StatisticsPage/> */}
-
      <MyHeader/>
      <Auth/>
       <Routes>

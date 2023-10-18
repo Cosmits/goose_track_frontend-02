@@ -75,7 +75,7 @@ line-height: calc(44/40);
     }
 `
 
-export const StyledDiscripTitle = styled.h2`
+export const StyledDescripTitle = styled.h2`
 font-family: 'Inter';
 font-size: 32px;
 font-weight: 700,
@@ -93,7 +93,7 @@ margin-bottom: 24px;
     }
 `
 
-export const StyledDiscription = styled.p`
+export const StyledDescription = styled.p`
 font-family: 'Inter';
 font-size: 14px;
 font-weight: 500,
@@ -106,7 +106,7 @@ max-width: 275px;
     }
 `
 
-export const DiscriptionImg = styled.img`
+export const DescriptionImg = styled.img`
 max-width: 335px;
 max-height: 457px;
 object-fit: contain;
