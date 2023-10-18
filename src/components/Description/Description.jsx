@@ -1,4 +1,4 @@
-import { useMediaQuery } from 'react-responsive';
+import MediaQuery, { useMediaQuery } from 'react-responsive';
 import sidebarImg from '../../images/Description/mobile-sideBar@1x.jpg';
 import sidebarImgRetina from '../../images/Description/mobile-sideBar@2x.jpg'
 import calendarImg from '../../images/Description/mobile-calendar@1x.jpg';
@@ -11,19 +11,16 @@ import tabletSidebarImgRetina from '../../images/Description/tablet-sideBar@2x.j
 import tabletCalendarImg from '../../images/Description/tablet-calendar@1x.jpg';
 import tabletCalendarImgRetina from '../../images/Description/tablet-calendar@2x.jpg';
 import tabletTaskImg from '../../images/Description/tablet-tasks@1x.jpg'
-import tabletTaskImgRetine from '../../images/Description/tablet-tasks@2x.jpg'
+import tabletTaskImgRetina from '../../images/Description/tablet-tasks@2x.jpg'
 
-import deskSidebarImg from '../../images/Description/desk-sideBar@1x.jpg';
+import deckSidebarImg from '../../images/Description/desk-sideBar@1x.jpg';
 import deskSidebarImgRetina from '../../images/Description/desk-sideBar@2x.jpg'
 import deskCalendarImg from '../../images/Description/desk-calendar@1x.jpg';
 import deskCalendarImgRetina from '../../images/Description/desk-calendar@2x.jpg';
 import deskTaskImg from '../../images/Description/desk-tasks@1x.jpg'
 import deskTaskImgRetina from '../../images/Description/desk-tasks@2x.jpg'
 
-import {
-    DescriptionImg, MiddleItem, StyledContainer, StyledDescriptionTitle,
-    StyledDescription, StyledItem, StyledList, StyledNumberPar, StyledPreTitle
-} from './Description.styled';
+import { DescriptionImg, MiddleItem, StyledContainer, StyledDescriptionTitle, StyledDescription, StyledItem, StyledList, StyledNumberPar, StyledPreTitle } from './Description.styled';
 import { useScreenSize } from '../../hooks/useScreenSize';
 
 
@@ -38,8 +35,7 @@ export const Description = () => {
                     <StyledNumberPar>1.</StyledNumberPar>
                     <StyledPreTitle>Calendar</StyledPreTitle>
                     <StyledDescriptionTitle>View</StyledDescriptionTitle>
-                    <StyledDescription>GooseTrack's Calendar view provides a comprehensive overview of your schedule,
-                        displaying all your tasks, events, and appointments in a visually appealing and intuitive layout.</StyledDescription>
+                    <StyledDescription>GooseTrack's Calendar view provides a comprehensive overview of your schedule, displaying all your tasks, events, and appointments in a visually appealing and intuitive layout.</StyledDescription>
                 </div>
 
                 {isDesktop && <DescriptionImg src={isRetina ? deskCalendarImgRetina : deskCalendarImg} alt="Calendar" />}
@@ -53,14 +49,12 @@ export const Description = () => {
                 <StyledContainer >
                     <StyledNumberPar>2.</StyledNumberPar>
                     <StyledDescriptionTitle>Sidebar</StyledDescriptionTitle>
-                    <StyledDescription>GooseTrack offers easy access to your account settings, calendar, and filters.
-                        The "My Account" section allows you to manage your profile information and preferences,
-                        while the calendar provides a quick and convenient way to view your upcoming events and tasks.</StyledDescription>
+                    <StyledDescription>GooseTrack offers easy access to your account settings, calendar, and filters. The "My Account" section allows you to manage your profile information and preferences, while the calendar provides a quick and convenient way to view your upcoming events and tasks.</StyledDescription>
                 </StyledContainer>
 
-                {isDesktop && <DescriptionImg src={isRetina ? deskSidebarImgRetina : deskSidebarImg} alt="Sidebar" />}
+                {isDesktop && <DescriptionImg src={isRetina ? deskSidebarImgRetina : deckSidebarImg} alt="Sidebar" />}
 
-                {isTablet && <DescriptionImg src={isRetina ? tabletTaskImgRetine : tabletTaskImg} alt="Sidebar" />}
+                {isTablet && <DescriptionImg src={isRetina ? tabletTaskImgRetina : tabletTaskImg} alt="Sidebar" />}
 
                 {isMobile && <DescriptionImg src={isRetina ? sidebarImgRetina : sidebarImg} alt="Sidebar" />}
             </MiddleItem>

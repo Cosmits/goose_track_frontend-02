@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const BASE_URL = 'https://goose-track-backend-02.onrender.com';
-const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmQxZDY0OWEwMTY2MGRjN2FlYTAzYiIsImlhdCI6MTY5NzU1OTU3MiwiZXhwIjoxNjk3NjQyMzcyfQ.YWhoaXppKUv0qRWAlksvOlKu3GLXXu5kEHnzeCXbxZw'; 
-const currentMonth = '2023-10'; 
-const currentDay = '2023-10-01'
+const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmQxZDY0OWEwMTY2MGRjN2FlYTAzYiIsImlhdCI6MTY5NzYxNDMzNiwiZXhwIjoxNjk3Njk3MTM2fQ.9FvOQrbyEoltw8Ilc5mrNp6U5invvIfy0iGo8rb8Jl0';
+const currentMonth = '2023-10';
+const currentDay = '2023-10-02'
 
 
 export const fetchByMonthTasks = async () => {
@@ -35,7 +35,7 @@ export const fetchByDayTasks = async () => {
     try {
         const response = await axios.get(`${BASE_URL}/tasks?date=${currentDay}`, config);
         const tasks = response.data;
-        console.log('Отримані таски:', tasks);
+        console.log('Отримані таски за День:', tasks);
         return tasks;
     } catch (error) {
         console.error('Помилка запиту:', error);
@@ -46,36 +46,41 @@ export const fetchByDayTasks = async () => {
 
 
 
-export function getMonthPercentage(tasks){
+export function getPercentage(tasks) {
+    // console.log('Прийшли таски:', tasks)
 
-const totalTasks = tasks.length;
-let percentage = 0;
-console.log(totalTasks)
+    const todoTasks = tasks.filter(task => task.category === 'to-do');
+    const inProgressTasks = tasks.filter(task => task.category === 'in-progress');
+    const doneTasks = tasks.filter(task => task.category === 'done');
 
-switch(category){
-case 'to-do':
-const filterTodo = tasks.filter(task=>task.category === 'to-do')
-percentage = (filterTodo.length/totalTasks) * 100;
-console.log(percentage)
-break;
 
-case 'in-progress':
-    const filterInProgress = tasks.filter(task =>task.category === 'in-progress')
-    percentage = (filterInProgress.length/totalTasks) * 100;
-    console.log(percentage)
-break
+    const totalTasks = tasks.length;
+    // console.log(totalTasks) ;
 
-case 'done':
-    const filterDone = tasks.filter(task => task.category === 'done')
-    percentageprocentage = (filterDone.length/totalTasks) * 100;
-    console.log(percentage)
-    break;
+    const todoPercentage = parseInt((todoTasks.length / totalTasks) * 100);
+    const inProgressPercentage = parseInt((inProgressTasks.length / totalTasks) * 100);
+    const donePercentage = parseInt((doneTasks.length / totalTasks) * 100);
 
-    default:
-      percentage = 0;
-console.log(percentage)
+    //   const category = {
+
+    //     todo: todoPercentage,
+    //     inProgress: inProgressPercentage,
+    //     done: donePercentage,
+    //   };
+    //   console.log(category) ;
+    return {
+
+        todo: todoPercentage,
+        inProgress: inProgressPercentage,
+        done: donePercentage,
+    };
+
+
 }
-return percentage;
+
+
+
+
 
 
 
@@ -87,17 +92,3 @@ return percentage;
 // const done = (filterDone.length/totalTasks) * 100;
 // console.log(filterDone)
 // return (filterTodo.length/totalTasks) * 100;
-
-}
-// getMonthPercentage(tasks, category)
-
-// const toDoPercentage = getMonthPercentage(tasks, 'to-do');
-// console.log(`Відсоток завдань в категорії "to-do": ${toDoPercentage}%`);
-
-
-// const inProgressPercentage = getMonthPercentage(tasks, 'in-progress');
-// console.log(`Відсоток завдань в категорії "in-progress": ${inProgressPercentage}%`);
-
-// const donePercentage = getMonthPercentage(tasks, 'done');
-// console.log(`Відсоток завдань в категорії "done": ${donePercentage}%`);
-// getMonthProcentage(tasks)

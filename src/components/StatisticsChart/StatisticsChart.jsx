@@ -1,13 +1,12 @@
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 import { StyledContainer, StyledParagraph, ChartBarIcon, BarContainer } from './StatisticsChart.styled';
- import { fetchByMonthTasks, fetchByDayTasks } from './services/services.js';
- import { getMonthPercentage } from './services/services.js'
+import { fetchByDayTasks, fetchByMonthTasks } from './services/services.js';
+import { getPercentage } from './services/services.js'
 
 import { useEffect, useState } from 'react';
 // import { useScreenSize } from '../../hooks/useScreenSize';
 
 
-// fetchAllTasks();
 
 const CustomBarShape = (props) => {
   const { x, y, width, height, fill, radius } = props;
@@ -22,76 +21,53 @@ const CustomBarShape = (props) => {
 
 
 export const StatisticsChart = ({ tasks }) => {
-  // const {isDesktop, isTablet, isMobile} = useScreenSize();
-  // const [a, setA] = useState(null)
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const tasksData = await fetchAllTasks();
-  //     setA(getMonthProcentage(tasksData));
-  //     console.log("Відсотки", a, typeof a)
-  //     // setToDoTaskProcentage(percentage);
-  //   };
 
-  //   fetchData();
-  // }, [a]);
+  const [monthPercentage, setMonthPercentage] = useState({});
+  const [dayPercentage, setDayPercentage] = useState({});
 
-  // const [byMonth, setByMonth] = useState({
-  //   toDo: 0,
-  //   inProgress: 0,
-  //   done: 0,
-  // });
-  // const [byDay, setByDay] = useState({
-  //   toDo: 0,
-  //   inProgress: 0,
-  //   done: 0,
-  // });
 
 
   useEffect(() => {
     const fetchData = async () => {
-      const tasksData = await fetchByMonthTasks();
-      const byMonth =  getMonthPercentage(tasksData);
-      setByMonth(byMonth);
-
+      const monthTasksData = await fetchByMonthTasks();
+      // console.log("DATA:", monthTasksData)
+      const monthTasks = monthTasksData.data;
+      setMonthPercentage(getPercentage(monthTasks));
     };
 
     fetchData();
   }, [tasks]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const dayTasksData = await fetchByDayTasks();
+      // console.log('DAY DATA', dayTasksData);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const tasksData = await fetchByDayTasks();
-  //     const byDay = getMonthProcentage(tasksData);
-  //     setByDay(byDay);
-  //     console.log("Відсотки", a, typeof a)
-  //   };
+      const dayTasks = dayTasksData.data;
+      setDayPercentage(getPercentage(dayTasks))
+    };
+    fetchData();
 
-  //   fetchData();
-  // }, [tasks]);
+  }, [tasks])
 
 
+  const { todo: monthTodo, inProgress: monthInProgress, done: monthDone } = monthPercentage;
+  const { todo: dayTodo, inProgress: dayInProgress, done: dayDone } = dayPercentage;
   const data = [
     {
       "name": "To Do",
-      // "uv": byMonth.toDo,
-      // "pv": byDay.toDo,
-       "uv": 20,
-      "pv": 50,
+      "uv": monthTodo || 0,
+      "pv": dayTodo || 0,
     },
     {
       "name": "In Progress",
-      // "uv": byMonth.inProgress,
-      // "pv": byDay.inProgress,
-      "uv": 20,
-      "pv": 50,
+      "uv": monthInProgress || 0,
+      "pv": dayInProgress,
     },
     {
       "name": "Done",
-      // "uv": byMonth.done,
-      // "pv": byDay.done,
-      "uv": 20,
-      "pv": 50,
+      "uv": monthDone || 0,
+      "pv": dayDone,
     },
   ];
 
@@ -121,14 +97,14 @@ export const StatisticsChart = ({ tasks }) => {
           <CartesianGrid stroke=" var(--light-blue)" vertical={false} />
           <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{
             fontSize: 12,
-            fontFamily: 'Inter',
+            fontFamily: 'InterTight',
             lineHeight: 1.3,
             fontWeight: 400,
             fill: '#343434',
           }}
             tickMargin={19}
           />
-          <YAxis label={{ value: 'Tasks', position: "top", offset: 24, fill: '#343434', fontSize: 14, fontWeight: 600, dx: -20, }}
+          <YAxis label={{ value: 'Tasks', position: "top", offset: 24, fill: '#343434', fontSize: 14, fontWeight: 600, dx: -20, fontFamily: 'InterTight' }}
             width={1} domain={[0, 100]}
             tickCount={6}
             axisLine={false}
@@ -136,7 +112,7 @@ export const StatisticsChart = ({ tasks }) => {
             tickMargin={14}
             tick={{
               fontSize: 12,
-              fontFamily: 'Inter',
+              fontFamily: 'InterTight',
               lineHeight: 1.3,
               fontWeight: 400,
               fill: '#343434',
@@ -150,7 +126,7 @@ export const StatisticsChart = ({ tasks }) => {
               position: 'top',
               fill: '#343434',
               fontSize: 12,
-              fontFamily: 'Inter',
+              fontFamily: 'InterTight',
               lineHeight: 1.3,
               fontWeight: 500,
             }}
@@ -162,7 +138,7 @@ export const StatisticsChart = ({ tasks }) => {
               position: 'top',
               fill: '#343434',
               fontSize: 12,
-              fontFamily: 'Inter',
+              fontFamily: 'InterTight',
               lineHeight: 1.3,
               fontWeight: 500,
             }}
@@ -173,3 +149,17 @@ export const StatisticsChart = ({ tasks }) => {
     </>
   );
 };
+
+
+// const {isDesktop, isTablet, isMobile} = useScreenSize();
+// const [a, setA] = useState(null)
+// useEffect(() => {
+//   const fetchData = async () => {
+//     const tasksData = await fetchAllTasks();
+//     setA(getMonthProcentage(tasksData));
+//     console.log("Відсотки", a, typeof a)
+//     // setToDoTaskProcentage(percentage);
+//   };
+
+//   fetchData();
+// }, [a]);
