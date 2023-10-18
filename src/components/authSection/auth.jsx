@@ -14,7 +14,6 @@ import {
   AuthHeaderSpan,
 } from './authSection.styled';
 import gooseLogo from '../../images/Auth_mainpage/GOOSE_logo.png';
-// import { Route, Routes } from 'react-router';
 
 export const Auth = () => {
   return (
@@ -39,16 +38,6 @@ export const Auth = () => {
             <SignupLink to="/register">Sign up</SignupLink>
           </NavItem>
         </AuthNav>
-        {/* <Routes>
-          <Route
-            path="/login"
-            // element={}
-          />
-          <Route
-            path="/register"
-            // element={}
-          />
-        </Routes> */}
       </AuthContainer>
     </AuthSection>
   );
