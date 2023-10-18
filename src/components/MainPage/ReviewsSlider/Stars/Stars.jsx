@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Star, StarWrapper } from './Stars.styled';
 
 export default function Stars({ rating }) {
@@ -10,3 +12,7 @@ export default function Stars({ rating }) {
     </StarWrapper>
   );
 }
+
+Stars.propTypes = {
+  rating: PropTypes.number,
+};

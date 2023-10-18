@@ -1,16 +1,17 @@
+import PropTypes from 'prop-types';
+
 import { ArrowsWrapper, LeftArrow, RightArrow } from './Arrows.styled';
 
-export default function Arrows({ next, previous, goToSlide, ...rest }) {
-  const {
-    carouselState: { currentSlide },
-  } = rest;
+export default function Arrows({ next, previous }) {
   return (
     <ArrowsWrapper>
-      <LeftArrow
-        className={currentSlide === 0 ? 'disable' : ''}
-        onClick={() => previous()}
-      />
+      <LeftArrow onClick={() => previous()} />
       <RightArrow onClick={() => next()} />
     </ArrowsWrapper>
   );
 }
+
+Arrows.propTypes = {
+  next: PropTypes.func,
+  previous: PropTypes.func,
+};
