@@ -31,7 +31,6 @@ export const AuthHeader = styled.h1`
   color: var(--white, #fff);
   font-family: Inter;
   font-size: 44px;
-  font-style: normal;
   font-weight: 700;
   line-height: 1.09;
 
@@ -120,7 +119,6 @@ export const LoginSpan = styled.span`
 
   font-family: Inter;
   font-size: 14px;
-  font-style: normal;
   font-weight: 600;
   line-height: 1.28;
   letter-spacing: -0.28px;
@@ -141,7 +139,6 @@ export const SignupLink = styled(NavLink)`
 
   font-family: Inter;
   font-size: 12px;
-  font-style: normal;
   font-weight: 600;
   line-height: 1.16;
 
