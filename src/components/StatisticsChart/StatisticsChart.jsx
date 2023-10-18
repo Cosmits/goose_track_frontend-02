@@ -1,5 +1,5 @@
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
-import { StyledContainer, StyledParagraph, ChartBarIcon, BarContainer } from './StatisticsChart.styled';
+import { StyledContainer, StyledParagraph, BarContainer, MonthIcon, DayIcon } from './StatisticsChart.styled';
 import { fetchByDayTasks, fetchByMonthTasks } from './services/services.js';
 import { getPercentage } from './services/services.js'
 
@@ -16,8 +16,6 @@ const CustomBarShape = (props) => {
     <path d={`M${x},${y + radius} L${x},${y + height - radius} Q${x},${y + height} ${x + radius},${y + height} L${x + width - radius},${y + height} Q${x + width},${y + height} ${x + width},${y + height - radius} L${x + width},${y + radius} Q${x + width},${y} ${x + width - radius},${y} L${x + radius},${y} Q${x},${y} ${x},${y + radius}`} fill={fill} />
   );
 };
-
-
 
 
 export const StatisticsChart = ({ tasks }) => {
@@ -75,13 +73,13 @@ export const StatisticsChart = ({ tasks }) => {
   return (
     <>
       <BarContainer>
-        <ChartBarIcon ></ChartBarIcon>
+        <MonthIcon ></MonthIcon>
         <StyledParagraph>By Day</StyledParagraph>
-        <ChartBarIcon ></ChartBarIcon>
+        <DayIcon></DayIcon>
         <StyledParagraph>By Month</StyledParagraph>
       </BarContainer>
       <StyledContainer >
-        <BarChart width={279} height={266} data={data} margin={{ left: 36, bottom: 8 }} barGap={8}
+        <BarChart width={279} height={266} data={data} margin={{ left: 39, bottom: 8 }} barGap={8}
         //  barCategoryGap='160'
         >
           <defs>
@@ -116,9 +114,10 @@ export const StatisticsChart = ({ tasks }) => {
               lineHeight: 1.3,
               fontWeight: 400,
               fill: '#343434',
-            }} />
+            }}
+             />
           <Tooltip />
-          <Legend align='right' verticalAlign="top" height={34} />
+           <Legend align='left' verticalAlign="top" height={34} /> 
           <Bar dataKey="pv" barSize={22}
             fill="url(#pinkGradient)"
             shape={<CustomBarShape radius={8} />}
@@ -126,11 +125,13 @@ export const StatisticsChart = ({ tasks }) => {
               position: 'top',
               fill: '#343434',
               fontSize: 12,
-              fontFamily: 'InterTight',
+              fontFamily: 'Poppins',
               lineHeight: 1.3,
               fontWeight: 500,
+              formatter: (value) => `${value}%`,
             }}
-            legendType="none" />
+            legendType="none"
+            />
           <Bar dataKey="uv" barSize={22}
             fill="url(#blueGradient)"
             shape={<CustomBarShape radius={8} />}
@@ -138,9 +139,10 @@ export const StatisticsChart = ({ tasks }) => {
               position: 'top',
               fill: '#343434',
               fontSize: 12,
-              fontFamily: 'InterTight',
+              fontFamily: 'Poppins',
               lineHeight: 1.3,
               fontWeight: 500,
+              formatter: (value) => `${value}%`,
             }}
 
             legendType="none" />
