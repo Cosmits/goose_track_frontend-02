@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Card = styled.div`
-  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 8px;
   border: 1px solid rgba(17, 17, 17, 0.1);
 
@@ -53,8 +54,6 @@ export const AvatarPicture = styled.div`
 
 export const Name = styled.p`
   color: #343434;
-
-  /* font-family: Inter; */
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -67,8 +66,6 @@ export const Comment = styled.p`
   color: rgba(17, 17, 17, 0.7);
 
   text-align: left;
-
-  /* font-family: Inter; */
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
