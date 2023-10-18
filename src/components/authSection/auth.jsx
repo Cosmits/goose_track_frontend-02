@@ -13,8 +13,8 @@ import {
   NavItem,
   AuthHeaderSpan,
 } from './authSection.styled';
-import gooseLogo from '../../assets/GOOSE_logo.png';
-import { Route, Routes } from 'react-router';
+import gooseLogo from '../../images/Auth_mainpage/GOOSE_logo.png';
+// import { Route, Routes } from 'react-router';
 
 export const Auth = () => {
   return (
@@ -39,7 +39,7 @@ export const Auth = () => {
             <SignupLink to="/register">Sign up</SignupLink>
           </NavItem>
         </AuthNav>
-        <Routes>
+        {/* <Routes>
           <Route
             path="/login"
             // element={}
@@ -48,7 +48,7 @@ export const Auth = () => {
             path="/register"
             // element={}
           />
-        </Routes>
+        </Routes> */}
       </AuthContainer>
     </AuthSection>
   );
