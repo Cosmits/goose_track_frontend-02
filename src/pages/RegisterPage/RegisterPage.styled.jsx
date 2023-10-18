@@ -29,7 +29,7 @@ export const AuthFormWrap = styled.div`
 
 export const PictureWrap = styled.div`
   position:absolute;
-  bottom:-8px;
+  bottom:0;
   left:49px;
 
    @media screen and (max-width: 1439px) {

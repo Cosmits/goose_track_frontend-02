@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 
 export const Title = styled.h1`
   margin-bottom: 32px;
@@ -7,7 +8,6 @@ export const Title = styled.h1`
   font-size: 18px;
   font-weight: 600;
   line-height: 1.33;
-  font-family: Inter,sans-serif;
   
    @media screen and (min-width: 768px) {
     margin-bottom: 40px;
@@ -17,7 +17,11 @@ export const Title = styled.h1`
 `;
 
 export const List = styled.ul`
- margin-bottom: 48px;
+ margin-bottom: 32px;
+
+ @media screen and (min-width: 768px) {
+    margin-bottom: 48px;
+  }
 `;
 
 export const InputWrap = styled.li`
@@ -37,7 +41,6 @@ export const Label = styled.label`
   font-size: 12px;
   font-weight: 600;
   line-height: 1.21;
-  font-family: Inter,sans-serif;
   color: ${props => props.className === 'error' ? '#ff0000' : props.className === 'success' ? '#3cbc81' : '#000'};
 
  @media screen and (min-width: 768px) {
@@ -100,7 +103,6 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   color: #ffffff;
-  font-family: Inter, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.29;
@@ -121,10 +123,19 @@ export const Button = styled.button`
   }
 `;
 
+export const LogInPicture = styled.img`
+  width: 18px;
+  height:18px;
+
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height:20px;
+  }
+`
+
 export const Error = styled.p`
   margin-top:8px;
   margin-left:14px;
-  font-family: Inter,sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.17;
@@ -132,5 +143,40 @@ export const Error = styled.p`
 
    @media screen and (min-width: 768px) {
     margin-left:18px;
+  }
+`;
+
+export const PasswordButton = styled.button`
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 38px;
+  right: 14px;
+  padding: 0;
+
+   @media screen and (min-width: 768px) {
+    right: 18px;
+    top:42px;
+  }
+`;
+
+export const DontShowIcon = styled(AiFillEye)`
+  fill: #3E85F3;
+  width: 18px;
+  height: 18px;
+
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+`;
+export const ShowIcon = styled(AiFillEyeInvisible)`
+  fill: #3E85F3;
+  width: 18px;
+  height: 18px;
+
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
   }
 `;

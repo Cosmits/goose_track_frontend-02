@@ -3,8 +3,8 @@
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import AuthNavigate from '../../components/AuthNavigate/AuthNavigate';
 import { AuthFormWrap, AuthPageWrap, PictureWrap } from './RegisterPage.styled';
-import gooseRegister from '../../images/goose_register@1x.png';
-import gooseRegisterImg from '../../images/goose_register@2x.png';
+import gooseRegister from '../../images/RegisterPage/goose_register@1x.png';
+import gooseRegisterImg from '../../images/RegisterPage/goose_register@2x.png';
 
 const RegisterPage = () => {
   return (
