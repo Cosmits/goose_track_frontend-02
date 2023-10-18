@@ -1,16 +1,10 @@
-// import { useEffect } from 'react';
+
 import { AddFeedbackButton } from './AddFeedbackBtn.styled';
-// import { useDispatch } from 'react-redux';
 
-const AddFeedbackBtn = () => {
-  // const dispatch = useDispatch();
 
-  //   useEffect(() => {
-  //       dispatch(fetchReviewById());
-  //   }, [dispatch]);
-
-  // return <AddFeedbackButton onClick={showModal}> Feedback</AddFeedbackButton>;
-  return <AddFeedbackButton> Feedback</AddFeedbackButton>;
-};
+const AddFeedbackBtn = ({openModal}) => {
+  
+  return <AddFeedbackButton onClick={openModal}> Feedback</AddFeedbackButton>;
+ };
 
 export default AddFeedbackBtn;

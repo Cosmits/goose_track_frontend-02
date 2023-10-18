@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import Modal from '../Modal/Modal';
 import FeedbackForm from '../FeedbackForm/FeedbackForm';
 

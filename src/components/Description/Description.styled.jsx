@@ -44,7 +44,7 @@ flex-direction: row-reverse;
 
 
 export const StyledNumberPar = styled.p`
-font-family: 'Inter';
+font-family: 'InterTight';
 font-size: 80px;
 font-weight: 700;
 color: var(--main-blue); 
@@ -57,10 +57,11 @@ margin-bottom: 14px;
 `
 export const StyledPreTitle = styled.p`
 display: inline-block;
-font-family: 'Inter';
+font-family: 'InterTight';
 font-size: 32px;
 font-weight: 700;
-line-height: calc(40/32);
+/* line-height: calc(40/32); */
+line-height: 1.25;
 padding: 8px 18px;
 text-transform: uppercase;
 color: var(--main-blue); 
@@ -75,10 +76,11 @@ line-height: calc(44/40);
 `
 
 export const StyledDescriptionTitle = styled.h2`
-font-family: 'Inter';
+font-family: 'InterTight';
 font-size: 32px;
 font-weight: 700;
-line-height: calc(40/32);
+line-height: 1.25;
+/* line-height: calc(40/32); */
 text-transform: uppercase;
 color: var(--letter-black); 
 margin-bottom: 14px;
@@ -92,7 +94,7 @@ margin-bottom: 14px;
 `
 
 export const StyledDescription = styled.p`
-font-family: 'Inter';
+font-family: 'InterTight';
 font-size: 14px;
 font-weight: 500;
 line-height: calc(18/14);
@@ -105,16 +107,21 @@ max-width: 275px;
 `
 
 export const DescriptionImg = styled.img`
-width: 335px;
-height: 457px;
-
+max-width: 335px;
+max-height: 457px;
+object-fit: contain;
 
 @media screen and (min-width: 768px){
-width: 704px;
-height: 700px;
+max-width: 704px;
+max-height: 700px;
     }
 
 @media screen and (min-width: 1440px){
-width: 604px;
-height: 700px;
+max-width: 604px;
+max-height: 700px;
     }`
+
+    // export const Image = styled.img`
+    //  object-fit: contain;
+    
+    // `
