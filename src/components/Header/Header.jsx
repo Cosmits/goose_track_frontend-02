@@ -35,19 +35,20 @@ const Header = ({ openSideBar }) => {
     setShowModal(false);
   };
 
-  useEffect(() => {
-    const path = location.pathname;
-    switch (path) {
-      case '/calendar':
-        setCurrentPage('Calendar');
-        break;
-      case '/statistics':
-        setCurrentPage('Statistics');
-        break;
-      default:
-        setCurrentPage('User Profile');
-    }
-  }, [location.pathname]);
+ useEffect(() => {
+  const path = location.pathname;
+
+  switch (path) {
+    case '/calendar':
+      setCurrentPage('Calendar');
+      break;
+    case '/statistics':
+      setCurrentPage('Statistics');
+      break;
+    default:
+      setCurrentPage('User Profile');
+  }
+}, [location.pathname]);
 
   return (
     <HeaderWrapper>
