@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL = 'https://goose-track-backend-02.onrender.com';
 const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmQxZDY0OWEwMTY2MGRjN2FlYTAzYiIsImlhdCI6MTY5NzYxNDMzNiwiZXhwIjoxNjk3Njk3MTM2fQ.9FvOQrbyEoltw8Ilc5mrNp6U5invvIfy0iGo8rb8Jl0';
 const currentMonth = '2023-10';
-const currentDay = '2023-10-02'
+const currentDay = '2023-10-01'
 
 
 export const fetchByMonthTasks = async () => {

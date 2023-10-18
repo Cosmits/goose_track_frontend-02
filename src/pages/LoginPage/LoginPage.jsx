@@ -1,3 +1,5 @@
+// Yulia
+
 import LoginForm from '../../components/LoginForm/LoginForm';
 import AuthNavigate from '../../components/AuthNavigate/AuthNavigate';
 import gooseLogin from '../../images/LoginPage/goose_login@1x.png';
