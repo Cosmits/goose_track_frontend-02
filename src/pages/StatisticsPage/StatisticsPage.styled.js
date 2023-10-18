@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-padding: 0px 20px;
- /* background: linear-gradient(#FFFFFF, #FFD2DD);  */
+width: 335px;
+height: 684;
+ padding: 28px 14px;
  border: 1px solid red;
  border-radius: 16px;
-/* background: var(--pink-gradient) */
+
 `

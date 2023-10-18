@@ -13,6 +13,8 @@ import {
 import { authReducer } from './auth/slice';
 import { reviewsApi } from './reviews/reviewsApi';
 import { tasksApi } from './tasks/tasksApi';
+import { themeReducer } from './theme/themeSlice';
+
 import storage from 'redux-persist/lib/storage';
 
 const authPersistConfig = {
@@ -26,6 +28,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     [reviewsApi.reducerPath]: reviewsApi.reducer,
     [tasksApi.reducerPath]: tasksApi.reducer,
+    theme: themeReducer,
   },
 
   middleware: getDefaultMiddleware => [

@@ -29,6 +29,7 @@ console.log(location)
 
  useEffect(() => {
   const path = location.pathname;
+
   switch (path) {
     case '/calendar':
       setCurrentPage('Calendar');

@@ -8,7 +8,7 @@
 }
 
 :root {
-  /* --black: #111111;
+   --black: #111111;
   --letter-black: #171820;
   --letter-gray: #343434;
   --white: #ffffff;
@@ -24,10 +24,12 @@
   --correct-color: #3CBC81;
   --error-color: #DA1414;
   --pink-gradient: linear-gradient(#FFFFFF, #FFD2DD);
-  --blue--gradient: linear-gradient(#3E85F3 0%, #3E85F3 100%);
+  --gradient-pink: #FFD2DD;
+  --blue--gradient: linear-gradient(#FFFFFF, #3E85F3);
+  --gradient-blue: #3E85F3;
   --low-color: #72C2F8;
   --medium-color: #F3B249;
-  --high: #EA3D65; */
+  --high: #EA3D65; 
 }
 
 @font-face {
