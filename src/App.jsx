@@ -1,47 +1,53 @@
 import { Route, Routes } from 'react-router-dom';
-// import { lazy, useEffect } from 'react';
 
-// import Layout from "./Layout";
-// import PrivateRoute from "./PrivateRoute";
+import RestrictedRoute from './components/RestrictedRoute';
+import PrivateRoute from './components/PrivateRoute';
+import Layout from './components/Layout/Layout';
 
-import SharedLayout from './components/SharedLayout/SharedLayout';
-import FirstPage from './pages/FirstPage/FirstPage';
-import SecondPage from './pages/SecondPage/SecondPage';
-import HalfPage from './pages/HalfPage/HalfPage';
-import ErrorPage from './pages/ErrorPage/ErrorPage';
-import { AppWrapper } from './App.styled';
-import MyHeader from './components/Header/myHeader';
-
-import { Auth } from './components/authSection/auth';
+import MainPage from './pages/MainPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
+import AccountPage from './pages/AccountPage';
+import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
+import NotFoundPage from './pages/NotFoundPage';
+import CalendarPage from './pages/CalendarPage';
 
 
-// import Sidebar from './components/Sidebar/Sidebar';
-
-
-
-
-const test = import.meta.env.VITE_API_TEST;
-
-// const Home = lazy(() => import("pages/Home"));
+// const test = import.meta.env.VITE_API_TEST;
 
 function App() {
-  console.log(test);
-  return (
-    <AppWrapper>
-     <MyHeader/>
-     <Auth/>
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route path="/account" element={<FirstPage />} />
-          <Route path="/first" element={<FirstPage />} />
-          <Route path="/second" element={<SecondPage />}>
-            <Route path=":half" element={<HalfPage />} />
-          </Route>
 
-          <Route path="*" element={<ErrorPage />} />
+  //  console.log(test);
+
+  return (
+    <Routes>
+      <Route path="/"
+        element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />}
+        index
+      />
+      <Route path="/register"
+        element={<RestrictedRoute redirectTo="/calendar" component={<RegisterPage />} />}
+      />
+      <Route path="/login"
+        element={<RestrictedRoute redirectTo="/calendar" component={<LoginPage />} />}
+      />
+      <Route path="/"
+        element={<PrivateRoute redirectTo="/login"
+          component={<Layout />} />}
+      >
+        <Route path="account" element={<AccountPage />} />
+        <Route path="calendar" element={<CalendarPage />}>
+          {/* <Route path="month/:currentDate" element={<ChoosedMonth />} /> */}
+          {/* <Route path="day/:currentDay" element={<ChoosedDay />} /> */}
         </Route>
-      </Routes>
-    </AppWrapper>
+        <Route path="statistics" element={<StatisticsPage />}>
+          <Route path=":currentDate" element={<StatisticsPage />} />
+        </Route>
+      </Route>
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
+
 }
+
 export default App;
