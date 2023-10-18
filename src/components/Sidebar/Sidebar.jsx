@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom';
 import { SidebarWrapper } from './Sidebar.styled'; // Import the styled component
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../redux/auth/operations';
 
 function Sidebar() {
+  const dispatch = useDispatch();
+
   const handleLogout = () => {
-    // Handle your logout logic here
+    dispatch(logOut());
   };
+
   //const isTablet = useMediaQuery({ maxWidth: 1440 });
   return (
     <SidebarWrapper>

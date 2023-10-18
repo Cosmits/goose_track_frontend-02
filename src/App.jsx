@@ -1,4 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getCurrentUser } from './redux/auth/operations';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -20,6 +24,14 @@ import CalendarPage from './pages/CalendarPage';
 function App() {
 
   //  console.log(test);
+
+  const dispatch = useDispatch();
+  
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
 
   return (
     <>
