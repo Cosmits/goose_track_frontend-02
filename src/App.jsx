@@ -1,17 +1,22 @@
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getCurrentUser } from './redux/auth/operations';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import RestrictedRoute from './components/RestrictedRoute';
 import PrivateRoute from './components/PrivateRoute';
-import Layout from './components/Layout/Layout';
+import MainLayout from './components/MainLayout/MainLayout';
 
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage/LoginPage';
-import RegisterPage from './pages/RegisterPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 import AccountPage from './pages/AccountPage';
 import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import CalendarPage from './pages/CalendarPage';
-
 
 // const test = import.meta.env.VITE_API_TEST;
 
@@ -19,22 +24,30 @@ function App() {
 
   //  console.log(test);
 
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
+
   return (
+    <>
     <Routes>
       <Route path="/"
         element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />}
         index
       />
-      <Route path="/:verificationToken"
+      <Route path="/register"
         element={<RestrictedRoute redirectTo="/calendar" component={<RegisterPage />} />}
-        index
       />
       <Route path="/login"
         element={<RestrictedRoute redirectTo="/calendar" component={<LoginPage />} />}
       />
       <Route path="/register" element={<RegisterPage />} />
       <Route        path="/"
-        element={<PrivateRoute redirectTo="/login" component={<Layout />} />}
+        element={<PrivateRoute redirectTo="/login" component={<MainLayout />} />}
       >
         <Route path="account" element={<AccountPage />} />
         <Route path="calendar" element={<CalendarPage />}>
@@ -46,7 +59,9 @@ function App() {
         </Route>
       </Route>
       <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+      </Routes>
+       <ToastContainer autoClose={2000} />
+      </>
   );
 
 }
