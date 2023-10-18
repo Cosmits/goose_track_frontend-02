@@ -7,8 +7,10 @@ export const LeftArrow = styled(ArrowLeft)`
   height: 50px;
   cursor: pointer;
   fill: #111111;
+  transition: fill 300ms linear;
 
-  &:hover {
+  &:hover,
+  &:focus {
     fill: #3e85f3;
   }
 
@@ -23,8 +25,10 @@ export const RightArrow = styled(ArrowRight)`
   height: 50px;
   cursor: pointer;
   fill: #111111;
+  transition: fill 300ms linear;
 
-  &:hover {
+  &:hover,
+  &:focus {
     fill: #3e85f3;
   }
 
@@ -43,5 +47,9 @@ export const ArrowsWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     margin-top: 18px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 32px;
   }
 `;

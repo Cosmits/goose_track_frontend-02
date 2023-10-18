@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import Stars from '../Stars/Stars';
 import {
   AvatarName,
@@ -13,7 +15,7 @@ export default function ReviewCard({
   name = 'No name',
   rating = 5,
   comment = 'No comment',
-  avatar,
+  avatar = null,
 }) {
   return (
     <Card>
@@ -32,3 +34,10 @@ export default function ReviewCard({
     </Card>
   );
 }
+
+ReviewCard.propTypes = {
+  name: PropTypes.string,
+  rating: PropTypes.number,
+  comment: PropTypes.string,
+  avatar: PropTypes.string,
+};
