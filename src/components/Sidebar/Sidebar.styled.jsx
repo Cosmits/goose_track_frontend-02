@@ -3,10 +3,10 @@ import styled from 'styled-components';
 export const SidebarWrapper = styled.div`
   width: 289px;
   height: 100vh;
-  position: fixed;
+  /* position: fixed;
   z-index: 15;
   top: 0;
-  left: 0;
+  left: 0; */
   border-right: 1px solid rgba(220, 227, 229, 0.5);
 
   background: #fff;
@@ -144,7 +144,7 @@ export const SidebarWrapper = styled.div`
     display: none;
   }
   @media (max-width: 1200px) {
-    display: none;
+    display: block;
     .logo .logo-text {
       font-size: 16px;
     }
