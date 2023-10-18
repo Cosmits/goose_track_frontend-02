@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import reviewsApi from '../../../services/reviews-api';
 
-import { Container } from '../../../Styles/Container';
+import { Container } from '../../../Styles/Container.styled';
 import Slider from './Slider/Slider';
 import { ReviewsWrapper, Title } from './ReviewsSlider.styled';
 import { ColorRing } from 'react-loader-spinner';

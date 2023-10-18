@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import RestrictedRoute from './components/RestrictedRoute';
 import PrivateRoute from './components/PrivateRoute';
-import Layout from './components/Layout/Layout';
+import MainLayout from './components/MainLayout/MainLayout';
 
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage/LoginPage';
@@ -34,9 +34,9 @@ function App() {
       <Route path="/login"
         element={<RestrictedRoute redirectTo="/calendar" component={<LoginPage />} />}
       />
-      <Route path="/"
-        element={<PrivateRoute redirectTo="/login"
-          component={<Layout />} />}
+      <Route path="/register" element={<RegisterPage />} />
+      <Route        path="/"
+        element={<PrivateRoute redirectTo="/login" component={<MainLayout />} />}
       >
         <Route path="account" element={<AccountPage />} />
         <Route path="calendar" element={<CalendarPage />}>
