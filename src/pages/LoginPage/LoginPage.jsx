@@ -27,7 +27,7 @@ const LoginPage = () => {
               height={521}
             />
           </picture>
-        </PictureWrap>
+      </PictureWrap>
     </AuthPageWrap>
   );
 };
