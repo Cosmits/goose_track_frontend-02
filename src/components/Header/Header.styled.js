@@ -6,6 +6,12 @@ export const HeaderWrapper = styled.header`
 display: flex;
 align-items:center;
 justify-content: space-between;
+margin-bottom:64px;
+
+@media screen and (min-width: 1440px){
+margin-bottom:32px;
+}
+
 `
 export const HeaderUser = styled.div `
 display:flex;
@@ -16,6 +22,7 @@ width:34px;
 height:34px;`
 
 export const HeaderCurrentPage = styled.h2`
+font-family: inherit;
 font-size:32px;
 font-weight: 700;
 line-height: 1;
@@ -27,15 +34,15 @@ gap: 8px;`
 
 export const NoTaskTitle = styled.p`
 color: #111;
-font-family: Inter;
+font-family: inherit;
 font-size: 14px;
 font-weight: 600;
 line-height: 1.28;
 margin-top:8px;
 `
-export const HeaderLink = styled.a`
+export const HeaderTask = styled.a`
 color: #3E85F3;
-font-family: Inter;
+font-family: inherit;
 font-size: 14px;
 font-weight: 600;
 line-height: 1.28;

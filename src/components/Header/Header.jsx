@@ -7,7 +7,7 @@ import ThemeToggler from './ThemeToggler/ThemeToggler';
 import {
   BurgerMenu,
   HeaderCurrentPage,
-  HeaderLink,
+  HeaderTask,
   HeaderUser,
   HeaderWrapper,
   LogoHeader,
@@ -56,7 +56,7 @@ const Header = ({ openSideBar }) => {
       <LogoHeader src={logoHeader} alt="LogoHeader"/>
       <div>
         <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
-        <NoTaskTitle><HeaderLink href="/task">Let go</HeaderLink> of the past and focus on the present!</NoTaskTitle>
+        <NoTaskTitle><HeaderTask>Let go</HeaderTask> of the past and focus on the present!</NoTaskTitle>
         </div></NoTaskWrapper>}
        {/* {isDesktop && <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>} */}
       {/* {(isDesktop & currentPage==="calendar/day") && <LogoHeader/>} */}
