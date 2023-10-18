@@ -1,24 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { FiLogIn } from 'react-icons/fi';
+import { GlobalStyle } from '../../../Styles/GlobalStyles';
 
 export const AuthSection = styled.section`
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--main-blue, #3e85f3);
 `;
 
 export const AuthContainer = styled.div`
-  /* box-sizing: border-box;
-  margin: -8px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: var(--main-blue, #3e85f3); */
+  flex-direction: column;
 `;
 
 export const AuthLogo = styled.img`
@@ -29,10 +25,12 @@ export const AuthLogo = styled.img`
 
 export const AuthHeader = styled.h1`
   color: var(--white, #fff);
-  /* font-family: Inter; */
+
+  font-family: ${GlobalStyle.InterTightBold};
   font-size: 44px;
   font-weight: 700;
   line-height: 1.09;
+  margin: 0 auto;
 
   @media screen and (min-width: 768px) {
     font-size: 100px;
@@ -80,7 +78,7 @@ export const LoginLink = styled(NavLink)`
 
 export const LoginBtn = styled.button`
   display: flex;
-  padding: 14px 32px;
+  padding: 14px 31px;
 
   width: 130px;
   height: 48px;
@@ -115,9 +113,8 @@ export const Wrap = styled.div`
 `;
 
 export const LoginSpan = styled.span`
-  display: flex;
-
-  /* font-family: Inter; */
+  display: block;
+  font-family: ${GlobalStyle.InterTightMedium};
   font-size: 14px;
   font-weight: 600;
   line-height: 1.28;
@@ -137,7 +134,7 @@ export const StyledFiLogIn = styled(FiLogIn)`
 export const SignupLink = styled(NavLink)`
   display: block;
 
-  /* font-family: Inter; */
+  font-family: ${GlobalStyle.InterTightMedium};
   font-size: 12px;
   font-weight: 600;
   line-height: 1.16;
