@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 
 import RestrictedRoute from './components/RestrictedRoute';
 import PrivateRoute from './components/PrivateRoute';
-import Layout from './components/Layout/Layout';
 
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage/LoginPage';
@@ -11,6 +10,7 @@ import AccountPage from './pages/AccountPage';
 import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import CalendarPage from './pages/CalendarPage';
+import MainLayout from './components/MainLayout/MainLayout';
 
 
 // const test = import.meta.env.VITE_API_TEST;
@@ -34,7 +34,7 @@ function App() {
       />
       <Route path="/register" element={<RegisterPage />} />
       <Route        path="/"
-        element={<PrivateRoute redirectTo="/login" component={<Layout />} />}
+        element={<PrivateRoute redirectTo="/login" component={<MainLayout />} />}
       >
         <Route path="account" element={<AccountPage />} />
         <Route path="calendar" element={<CalendarPage />}>
