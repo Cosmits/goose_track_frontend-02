@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Card = styled.div`
+  height: 194px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 8px;
@@ -8,7 +9,7 @@ export const Card = styled.div`
 
   @media screen and (min-width: 375px) {
     width: 335px;
-    padding: 24px 20px 24px 24px;
+    padding: 24px;
 
     display: flex;
     flex-direction: column;
@@ -16,8 +17,9 @@ export const Card = styled.div`
   }
 
   @media screen and (min-width: 768px) {
+    height: 187px;
     width: 580px;
-    padding: 32px 32px 50px 32px;
+    padding: 32px;
   }
 `;
 
@@ -63,8 +65,9 @@ export const Name = styled.p`
 `;
 
 export const Comment = styled.p`
+  max-height: 72px;
+  overflow-y: auto;
   color: rgba(17, 17, 17, 0.7);
-
   text-align: left;
   font-size: 14px;
   font-style: normal;
