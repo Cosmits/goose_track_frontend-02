@@ -44,7 +44,7 @@ flex-direction: row-reverse;
 
 
 export const StyledNumberPar = styled.p`
-font-family: 'Inter';
+font-family: 'InterTight';
 font-size: 80px;
 font-weight: 700;
 color: var(--main-blue); 
@@ -57,7 +57,7 @@ margin-bottom: 14px;
 `
 export const StyledPreTitle = styled.p`
 display: inline-block;
-font-family: 'Inter';
+font-family: 'InterTight';
 font-size: 32px;
 font-weight: 700;
 /* line-height: calc(40/32); */
@@ -76,7 +76,7 @@ line-height: calc(44/40);
 `
 
 export const StyledDescripTitle = styled.h2`
-font-family: 'Inter';
+font-family: 'InterTight';
 font-size: 32px;
 font-weight: 700;
 line-height: 1.25;
@@ -94,7 +94,7 @@ margin-bottom: 14px;
 `
 
 export const StyledDescription = styled.p`
-font-family: 'Inter';
+font-family: 'InterTight';
 font-size: 14px;
 font-weight: 500;
 line-height: calc(18/14);
