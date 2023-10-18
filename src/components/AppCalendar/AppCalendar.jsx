@@ -46,8 +46,6 @@ function eventStyleGetter(task) {
   };
 }
 
-
-
 const formats = {
   dateFormat: (date, culture, localizer) => localizer.format(date, 'D', culture),
 };
