@@ -96,7 +96,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
   .date-picker-btn-prev,
   .date-picker-btn-next {
     display: block;
-    padding: 8px 10px;
+    padding: 8px 14px;
     border: 1px solid #DCE3E5;
     background-color: #fff;
     color: #DCE3E5;
