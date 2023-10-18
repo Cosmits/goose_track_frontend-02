@@ -29,7 +29,7 @@ export const AuthLogo = styled.img`
 
 export const AuthHeader = styled.h1`
   color: var(--white, #fff);
-  font-family: Inter;
+  /* font-family: Inter; */
   font-size: 44px;
   font-weight: 700;
   line-height: 1.09;
@@ -117,7 +117,7 @@ export const Wrap = styled.div`
 export const LoginSpan = styled.span`
   display: flex;
 
-  font-family: Inter;
+  /* font-family: Inter; */
   font-size: 14px;
   font-weight: 600;
   line-height: 1.28;
@@ -137,7 +137,7 @@ export const StyledFiLogIn = styled(FiLogIn)`
 export const SignupLink = styled(NavLink)`
   display: block;
 
-  font-family: Inter;
+  /* font-family: Inter; */
   font-size: 12px;
   font-weight: 600;
   line-height: 1.16;
