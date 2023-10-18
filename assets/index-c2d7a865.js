@@ -988,6 +988,24 @@ max-height: 700px;
   font-weight: 500;
   line-height: ${()=>18/14};
 
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 12px;
+    background: #f2f2f2;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: #e7e5e5;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #3e85f3;
+  }
+
   @media screen and (min-width: 768px) {
     margin-left: 68px;
   }
