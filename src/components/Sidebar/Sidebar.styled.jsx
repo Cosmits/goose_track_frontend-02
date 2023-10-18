@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 
 export const SidebarWrapper = styled.div`
-  width: 25%;
+  width: 289px;
+  height: 100vh;
+  position: fixed;
+  z-index: 15;
+  top: 0;
+  left: 0;
   border-right: 1px solid rgba(220, 227, 229, 0.5);
 
   background: #fff;
@@ -21,10 +26,8 @@ export const SidebarWrapper = styled.div`
 
     body {
       border-right: 1px solid rgba(220, 227, 229, 0.5);
-
       background: #fff;
     }
-
     .logo-text {
       color: #3e85f3;
       font-family: 'Inter', sans-serif;
@@ -56,7 +59,7 @@ export const SidebarWrapper = styled.div`
       font-style: normal;
       font-weight: 600;
       line-height: normal;
-      padding: 16px 96px 16px 20px;
+      padding: 16px 16px 16px 20px;
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
@@ -85,7 +88,8 @@ export const SidebarWrapper = styled.div`
         text-decoration: none;
       }
       button {
-        margin-top: 423px;
+        cursor: pointer;
+        //margin-top: 423px;
         margin-left: 16px;
         margin-right: 16px;
         margin-bottom: 24px;
@@ -100,6 +104,14 @@ export const SidebarWrapper = styled.div`
         border: 0;
         box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
         transition: all 0.3s;
+      }
+      .bottom-button-container {
+        display: flex;
+        justify-content: left;
+        align-items: flex-end;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
       }
       button:hover,
       button:focus {
@@ -118,7 +130,7 @@ export const SidebarWrapper = styled.div`
         padding-bottom: 16px;
         padding-right: 18px;
       }
-      .logout-text{
+      .logout-text {
         margin-right: 11px;
       }
     }
@@ -131,17 +143,23 @@ export const SidebarWrapper = styled.div`
   .icon {
     display: none;
   }
-  @media (max-width: 1440px) {
+  @media (max-width: 1200px) {
+    display: none;
     .logo .logo-text {
       font-size: 16px;
     }
     .icon {
       display: block;
       background-color: transparent;
-      color: black; // Text color: ;
-      font-size: 34px; 
+      color: black;
+      font-size: 34px;
       border: none;
       cursor: pointer;
+    }
+    .panel-instrument {
+      a {
+        padding-right: 70px;
+      }
     }
     .logo-img {
       content: url(./src/images/goose_logo_tablet.png);
@@ -149,6 +167,12 @@ export const SidebarWrapper = styled.div`
     .menu {
       margin-left: 34px;
       margin-right: 34px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .panel-instrument {
+      font-size: 14px;
     }
   }
 `;
