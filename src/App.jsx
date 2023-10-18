@@ -13,6 +13,7 @@ import AccountPage from './pages/AccountPage';
 import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import CalendarPage from './pages/CalendarPage';
+import { Container } from './Styles/Container.styled';
 
 
 // const test = import.meta.env.VITE_API_TEST;
@@ -22,7 +23,7 @@ function App() {
   //  console.log(test);
 
   return (
-    <>
+    <Container>
     <Routes>
       <Route path="/"
         element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />}
@@ -50,7 +51,7 @@ function App() {
       <Route path="*" element={<NotFoundPage />} />
       </Routes>
        <ToastContainer autoClose={2000} />
-      </>
+      </Container>
   );
 
 }

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 
 export const Title = styled.h1`
   margin-bottom: 32px;
@@ -142,5 +143,40 @@ export const Error = styled.p`
 
    @media screen and (min-width: 768px) {
     margin-left:18px;
+  }
+`;
+
+export const PasswordButton = styled.button`
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 38px;
+  right: 14px;
+  padding: 0;
+
+   @media screen and (min-width: 768px) {
+    right: 18px;
+    top:42px;
+  }
+`;
+
+export const DontShowIcon = styled(AiFillEye)`
+  fill: #3E85F3;
+  width: 18px;
+  height: 18px;
+
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+`;
+export const ShowIcon = styled(AiFillEyeInvisible)`
+  fill: #3E85F3;
+  width: 18px;
+  height: 18px;
+
+  @media screen and (min-width: 768px) {
+    width: 20px;
+    height: 20px;
   }
 `;

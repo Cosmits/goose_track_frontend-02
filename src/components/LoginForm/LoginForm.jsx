@@ -4,12 +4,14 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 import { logIn } from '../../redux/auth/operations';
-import { Button, Error, Icon, Input, InputWrap, Label, List, LogInPicture, Title } from '../RegisterForm/AuthForm.styled';
+import { Button, DontShowIcon, Error, Icon, Input, InputWrap, Label, List, LogInPicture, PasswordButton, ShowIcon, Title } from '../RegisterForm/AuthForm.styled';
 import SuccessIcon from '../../images/RegisterPage/success.svg';
 import ErrorIcon from '../../images/RegisterPage/error.svg';
 import LogInIcon from '../../images/RegisterPage/login.svg';
+
 
 const ErrorMessages = ({ name }) => {
     return (
@@ -35,6 +37,11 @@ const schema = yup.object().shape({
 });
 
 const LoginForm = () => {
+    const [showPassword, setShowPassword] = useState(false);
+    const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
+    };
+
     const dispatch = useDispatch();
 
     const handleLogInSubmit = (values, { resetForm }) => {
@@ -85,7 +92,8 @@ const LoginForm = () => {
                                 className={touched.password ? errors.password ? 'error' : 'success' : ''}>Password
                             </Label>
                             <Input
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
+                                value={values.password}
                                 id="password"
                                 name="password"
                                 autoComplete="off"
@@ -93,11 +101,18 @@ const LoginForm = () => {
                                 className={ touched.password ? errors.password ? 'error' : 'success' : ''}
                             />
                             <ErrorMessages name="password" />
-                            {errors.password && touched.password
-                                ? (<Icon src={ErrorIcon} />)
-                                : values.password && !errors.password
-                                    ? (<Icon src={SuccessIcon} />)
-                                    : null}
+
+                            <PasswordButton
+                type="button"
+                onClick={handleTogglePassword}
+              >
+                {showPassword ? (
+                  <DontShowIcon />
+                ) : (
+                  <ShowIcon />
+                )}
+                            </PasswordButton>
+
                         </InputWrap>
                     </List>
 
