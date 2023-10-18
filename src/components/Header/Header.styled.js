@@ -13,3 +13,9 @@ display:flex;
 export const BurgerMenu = styled(RxHamburgerMenu)`
 width:34px;
 height:34px;`
+
+export const HeaderCurrentPage = styled.h2`
+font-size:32px;
+font-weight: 700;
+line-height: 1;
+`
