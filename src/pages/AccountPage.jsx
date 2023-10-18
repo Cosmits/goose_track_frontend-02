@@ -1,19 +1,8 @@
 // Serhii
-
-import React from 'react';
-import StyledText from './AccountPage.styled';
-import UserForm from '../components/UserForm/UserForm';
-
-console.log('React: ', React);
-// import LoginForm from "components/LoginForm/LoginForm";
+import { UserForm } from '../components/AccountPage/UserForm/UserForm';
 
 const AccountPage = () => {
-  return (
-    <>
-      <StyledText> AccountPage </StyledText>
-      <UserForm></UserForm>
-    </>
-  );
+  return <UserForm />;
 };
 
 export default AccountPage;

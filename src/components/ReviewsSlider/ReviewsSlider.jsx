@@ -1,3 +1,0 @@
-// Illia Shatokhin
-
-const ReviewsSlider = () => {};
