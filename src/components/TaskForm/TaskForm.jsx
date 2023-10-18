@@ -11,7 +11,16 @@ import {
 } from './TaskForm.styled';
 
 const TaskForm = ({ initialData, closeModal }) => {
-  const [formData, setFormData] = useState(initialData || { title: '', start: '', end: '', priority: 'low', date: '', category: 'to-do' });
+  const [formData, setFormData] = useState(
+    initialData || {
+      title: '',
+      start: '',
+      end: '',
+      priority: 'low',
+      date: '',
+      category: 'to-do',
+    },
+  );
   const [isEditing, setIsEditing] = useState(!!initialData);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -26,15 +35,8 @@ const TaskForm = ({ initialData, closeModal }) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      //Дописати код для відправки даних на бекенд та обробки успішної відповіді
-      closeModal();
-    } catch (error) {
-      // Обробка помилки
-      setErrorMessage('An error occurred while saving the task');
-    }
+  const handleSubmit = event => {
+    event.preventDefault();
   };
 
   const handleCancel = () => {
@@ -170,12 +172,13 @@ const TaskForm = ({ initialData, closeModal }) => {
         {errorMessage && <div>{errorMessage}</div>}
 
         <ButtonContainer>
-          <StyledEdit type="submit">{isEditing ? 'Edit' : 'Create'}Edit</StyledEdit>
+          <StyledEdit type="submit">
+            {isEditing ? 'Edit' : 'Create'}Edit
+          </StyledEdit>
           <StyledCancel type="button" onClick={handleCancel}>
             Cancel
           </StyledCancel>
         </ButtonContainer>
-
       </form>
     </ContainerForm>
   );

@@ -63,7 +63,6 @@ export const StyledEdit = styled.button`
   width: 178px;
   height: 48px;
   border-radius: 8px;
-  /* margin-right: 10px; */
   margin-top: 20px;
   color: #ffff;
   background-color: #3E85F3;
