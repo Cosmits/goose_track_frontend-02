@@ -75,7 +75,7 @@ line-height: calc(44/40);
     }
 `
 
-export const StyledDescripTitle = styled.h2`
+export const StyledDescriptionTitle = styled.h2`
 font-family: 'InterTight';
 font-size: 32px;
 font-weight: 700;

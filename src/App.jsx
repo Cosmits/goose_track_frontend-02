@@ -20,8 +20,6 @@ function App() {
   //  console.log(test);
 
   return (
-    <>
-    <StatisticsPage />
     <Routes>
       <Route path="/"
         element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />}
@@ -48,7 +46,6 @@ function App() {
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
-    </>
   );
 
 }
