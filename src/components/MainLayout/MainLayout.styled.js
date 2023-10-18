@@ -6,7 +6,7 @@ export const MainLayoutWrapper = styled.div`
   
 `
 export const PageWrapper = styled.div`
-  background-color: #F7F6F9;
+  background-color: ${({ theme }) => theme.mainBGColor};
   width:1151px;
   padding: 24px 20px;
 

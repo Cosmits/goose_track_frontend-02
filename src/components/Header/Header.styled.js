@@ -33,14 +33,14 @@ align-items:center;
 gap: 8px;`
 
 export const NoTaskTitle = styled.p`
-color: #111;
+color: ${({ theme }) => theme.mainTextColor};
 font-family: inherit;
 font-size: 14px;
 font-weight: 600;
 line-height: 1.28;
 margin-top:8px;
 `
-export const HeaderTask = styled.a`
+export const HeaderTask = styled.span`
 color: #3E85F3;
 font-family: inherit;
 font-size: 14px;
