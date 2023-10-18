@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import RestrictedRoute from './components/RestrictedRoute';
 import PrivateRoute from './components/PrivateRoute';
+import MainLayout from './components/MainLayout/MainLayout';
 
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage/LoginPage';
@@ -12,7 +13,6 @@ import AccountPage from './pages/AccountPage';
 import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import CalendarPage from './pages/CalendarPage';
-import MainLayout from './components/MainLayout/MainLayout';
 
 
 // const test = import.meta.env.VITE_API_TEST;
