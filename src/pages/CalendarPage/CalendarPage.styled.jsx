@@ -4,12 +4,6 @@ export const Section = styled.div`
   
 `;
 
-export const Container = styled.div`
-  margin-left: auto;
-  max-width: 1151px;
-  padding: 0 32px;
-`;
-
 export const Title = styled.h1`
   margin: 0;
   margin-right: 10px;

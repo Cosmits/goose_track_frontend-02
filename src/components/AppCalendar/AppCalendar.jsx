@@ -4,6 +4,7 @@ import moment from 'moment';
 import { AppCalendarGlobalStyles, Container } from './AppCalendar.styled';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import taskList from '../../mock/tasks';
+import { useNavigate } from 'react-router-dom';
 
 moment.locale('uk', {
     week: {
@@ -12,31 +13,6 @@ moment.locale('uk', {
 });
 
 const localizer = momentLocalizer(moment);
-
-// const tasks = [
-//   {
-//     id: 0,
-//     title: 'All Day Event very long title',
-//     allDay: true,
-//     start: new Date(2023, 9, 7),
-//     end: new Date(2023, 9, 7),
-//     priority: 'high'
-//   },
-//   {
-//     id: 1,
-//     title: 'Long Event',
-//     start: new Date(2023, 9, 15),
-//     end: new Date(2023, 9, 15),
-//     priority: 'low'
-//   },
-//   {
-//     id: 2,
-//     title: 'DTS STARTS',
-//     start: new Date(2023, 9, 20),
-//     end: new Date(2023, 9, 20),
-//     priority: 'medium'
-//   }
-// ];
 
 const data = (date, start, end) => {
   const [year, month, day] = date.split('-')
@@ -70,12 +46,15 @@ function eventStyleGetter(task) {
   };
 }
 
+
+
 const formats = {
   dateFormat: (date, culture, localizer) => localizer.format(date, 'D', culture),
 };
 
 const AppCalendar = ({toolbar}) => {
   const [task, setTask] = useState([]);
+  const navigate = useNavigate();
 
   const listModifier = (list) => {
     const newList = list.map(item => {
@@ -98,17 +77,23 @@ const AppCalendar = ({toolbar}) => {
     listModifier(taskList)
   }, []);
 
+  const handleNavigate = (date) => {
+    const formattedDate = moment(date).format('YYYY-MM-DD');
+    navigate(`/calendar/day/${formattedDate}`);
+  };
+
   return (
     <>
       <Container>
         <Calendar
           formats={formats}
-          views={['month', 'day']}
+          views={['month']}
           localizer={localizer}
           events={task}      
           components={{toolbar: toolbar}}
           eventPropGetter={eventStyleGetter}
           showAllEvents={true}
+          onNavigate = {handleNavigate}
         />
         <AppCalendarGlobalStyles />
       </Container>
