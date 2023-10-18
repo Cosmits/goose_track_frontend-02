@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import RestrictedRoute from './components/RestrictedRoute';
 import PrivateRoute from './components/PrivateRoute';
@@ -20,6 +22,7 @@ function App() {
   //  console.log(test);
 
   return (
+    <>
     <Routes>
       <Route path="/"
         element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />}
@@ -45,7 +48,9 @@ function App() {
         </Route>
       </Route>
       <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+      </Routes>
+       <ToastContainer autoClose={2000} />
+      </>
   );
 
 }
