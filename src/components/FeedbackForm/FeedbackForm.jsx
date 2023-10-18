@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
 import {
@@ -21,6 +21,7 @@ import {
   TextArea,
   TextAreaLabel,
 } from './FeedbackForm.styled';
+import { useEffect, useState } from 'react';
 
 const FeedbackForm = ({ onClose }) => {
   const [rating, setRating] = useState(5);
