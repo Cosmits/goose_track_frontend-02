@@ -1,4 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getCurrentUser } from './redux/auth/operations';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,8 +17,6 @@ import AccountPage from './pages/AccountPage';
 import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import CalendarPage from './pages/CalendarPage';
-import { Container } from './Styles/Container.styled';
-
 
 // const test = import.meta.env.VITE_API_TEST;
 
@@ -22,8 +24,16 @@ function App() {
 
   //  console.log(test);
 
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
+
   return (
-    <Container>
+    <>
     <Routes>
       <Route path="/"
         element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />}
@@ -51,7 +61,7 @@ function App() {
       <Route path="*" element={<NotFoundPage />} />
       </Routes>
        <ToastContainer autoClose={2000} />
-      </Container>
+      </>
   );
 
 }
