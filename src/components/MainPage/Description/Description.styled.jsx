@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 
 
-export const StyledList = styled.ul`
+export const DescriptionList = styled.ul`
 display: flex;
 flex-direction: column;
 align-items: center;
+background-color: var(--white);
 `
 
 
@@ -16,7 +17,7 @@ export const StyledContainer = styled.div`
 `
 
 
-export const StyledItem = styled.li`
+export const DescriptionItem = styled.li`
 display: flex;
 flex-direction: column;
 gap: 40px;
@@ -35,7 +36,7 @@ gap: 228px ;
     }
 `
 
-export const MiddleItem = styled(StyledItem)`
+export const MiddleItem = styled(DescriptionItem)`
 
  @media screen and (min-width: 1440px){
 flex-direction: row-reverse;
@@ -43,7 +44,7 @@ flex-direction: row-reverse;
 `
 
 
-export const StyledNumberPar = styled.p`
+export const StyledNumber = styled.p`
 font-family: 'InterTight';
 font-size: 80px;
 font-weight: 700;
@@ -55,7 +56,7 @@ margin-bottom: 14px;
    font-size: 104px;
     }
 `
-export const StyledPreTitle = styled.p`
+export const DescriptionPreTitle = styled.p`
 display: inline-block;
 font-family: 'InterTight';
 font-size: 32px;
@@ -75,7 +76,7 @@ line-height: calc(44/40);
     }
 `
 
-export const StyledDescriptionTitle = styled.h2`
+export const DescriptionTitle = styled.h2`
 font-family: 'InterTight';
 font-size: 32px;
 font-weight: 700;
