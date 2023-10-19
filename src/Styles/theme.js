@@ -3,8 +3,11 @@ export const lightTheme = {
   secondaryBgColor: '#FFFFFF',
   mainTextColor: '#111111',
   secondaryTextColor: '#343434',
-  activeBtn:'#CAE8FF',
-  noActiveBtn:'#E3F3FF',
+  btnActive:'#CAE8FF',
+  btnNoActive:'#E3F3FF',
+  btnTextColor:'#3E85F3',
+  mainSideBarText:"rgba(52, 52, 52, 0.50)",
+
 };
 
 export const darkTheme = {
@@ -12,6 +15,8 @@ export const darkTheme = {
   secondaryBgColor: '#21222C',
   mainTextColor: '#FFFFFF',
   secondaryTextColor: '#FFFFFF',
-  activeBtn:'#3E85F3',
-  noActiveBtn:'#21222C',
+  btnActiveBGColor:'#3E85F3',
+  btnNoActiveBGcolor:'#21222C',
+  btnActiveTextColor:'#FFF',
+  mainSideBarText:"#FFF;",
 };
