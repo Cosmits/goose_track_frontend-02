@@ -6,6 +6,8 @@ display: flex;
 flex-direction: column;
 align-items: center;
 background-color: var(--white);
+font-family: 'InterTightBold';
+font-weight: 700; 
 `
 
 
@@ -31,7 +33,6 @@ margin-top: 64px;
 @media screen and (min-width: 1440px){
 display: flex;
 flex-direction: row;
-/* justify-content: space-between; */
 gap: 228px ;
     }
 `
@@ -45,23 +46,20 @@ flex-direction: row-reverse;
 
 
 export const StyledNumber = styled.p`
-font-family: 'InterTight';
 font-size: 80px;
-font-weight: 700;
+/* font-weight: 700; */
 color: var(--main-blue); 
 margin-bottom: 14px;
-
 
  @media screen and (min-width: 768px){
    font-size: 104px;
     }
 `
+
 export const DescriptionPreTitle = styled.p`
 display: inline-block;
-font-family: 'InterTight';
 font-size: 32px;
-font-weight: 700;
-/* line-height: calc(40/32); */
+/* font-weight: 700; */
 line-height: 1.25;
 padding: 8px 18px;
 text-transform: uppercase;
@@ -77,11 +75,9 @@ line-height: calc(44/40);
 `
 
 export const DescriptionTitle = styled.h2`
-font-family: 'InterTight';
 font-size: 32px;
-font-weight: 700;
+/* font-weight: 700; */
 line-height: 1.25;
-/* line-height: calc(40/32); */
 text-transform: uppercase;
 color: var(--letter-black); 
 margin-bottom: 14px;
@@ -95,7 +91,7 @@ margin-bottom: 14px;
 `
 
 export const StyledDescription = styled.p`
-font-family: 'InterTight';
+font-family: 'PoppinsMedium';
 font-size: 14px;
 font-weight: 500;
 line-height: calc(18/14);
@@ -122,7 +118,4 @@ max-width: 604px;
 max-height: 700px;
     }`
 
-    // export const Image = styled.img`
-    //  object-fit: contain;
     
-    // `

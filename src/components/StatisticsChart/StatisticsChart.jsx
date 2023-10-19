@@ -1,7 +1,8 @@
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
-import { StyledContainer, StyledParagraph, BarContainer, MonthIcon, DayIcon } from './StatisticsChart.styled';
+import { StatisticsContainer, StyledContainer, StyledParagraph, BarContainer, MonthIcon, DayIcon } from './StatisticsChart.styled';
 import { fetchByDayTasks, fetchByMonthTasks } from './services/services.js';
 import { getPercentage } from './services/services.js'
+import { useScreenSize } from '../../hooks/useScreenSize';
 
 import { useEffect, useState } from 'react';
 // import { useScreenSize } from '../../hooks/useScreenSize';
@@ -22,7 +23,7 @@ export const StatisticsChart = ({ tasks }) => {
 
   const [monthPercentage, setMonthPercentage] = useState({});
   const [dayPercentage, setDayPercentage] = useState({});
-
+  const { isDesktop, isTablet, isMobile } = useScreenSize();
 
 
   useEffect(() => {
@@ -54,24 +55,24 @@ export const StatisticsChart = ({ tasks }) => {
   const data = [
     {
       "name": "To Do",
-      "uv": monthTodo || 0,
-      "pv": dayTodo || 0,
+      "uv": monthTodo ,
+      "pv": dayTodo ,
     },
     {
       "name": "In Progress",
-      "uv": monthInProgress || 0,
+      "uv": monthInProgress ,
       "pv": dayInProgress,
     },
     {
       "name": "Done",
-      "uv": monthDone || 0,
+      "uv": monthDone ,
       "pv": dayDone,
     },
   ];
 
 
   return (
-    <>
+    <StatisticsContainer>
       <BarContainer>
         <MonthIcon ></MonthIcon>
         <StyledParagraph>By Day</StyledParagraph>
@@ -79,9 +80,11 @@ export const StatisticsChart = ({ tasks }) => {
         <StyledParagraph>By Month</StyledParagraph>
       </BarContainer>
       <StyledContainer >
-        <BarChart width={279} height={266} data={data} margin={{ left: 39, bottom: 8 }} barGap={8}
-        //  barCategoryGap='160'
-        >
+        <BarChart width={isMobile ? 279 : isTablet ? 576 : 786}
+          height={isMobile ? 266 : 286}
+          data={data}
+          margin={{ left: isMobile ? 39 : isTablet ? 54 : 90, bottom: 8 }}
+          barGap={isMobile ? 8 : 14}>
           <defs>
             <linearGradient id="pinkGradient" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#FFD2DD" stopOpacity={0} />
@@ -94,52 +97,62 @@ export const StatisticsChart = ({ tasks }) => {
           </defs>
           <CartesianGrid stroke=" var(--light-blue)" vertical={false} />
           <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{
-            fontSize: 12,
-            fontFamily: 'InterTight',
+            fontSize: isMobile ? 12 : 14,
+            fontFamily: 'InterTightRegular',
             lineHeight: 1.3,
             fontWeight: 400,
             fill: '#343434',
           }}
             tickMargin={19}
           />
-          <YAxis label={{ value: 'Tasks', position: "top", offset: 24, fill: '#343434', fontSize: 14, fontWeight: 600, dx: -20, fontFamily: 'InterTight' }}
+          <YAxis
+            label={{
+              value: 'Tasks',
+              position: "top",
+              offset: 24,
+              fill: '#343434',
+              fontSize: 14,
+              fontWeight: 600,
+              dx: isMobile ? -20 : isTablet ? -37 : -68,
+              fontFamily: 'InterTight'
+            }}
             width={1} domain={[0, 100]}
             tickCount={6}
             axisLine={false}
             tickLine={false}
-            tickMargin={14}
+            tickMargin={isMobile ? 14 : isTablet ? 32 : 64}
             tick={{
               fontSize: 12,
-              fontFamily: 'InterTight',
+              fontFamily: 'InterTightRegular',
               lineHeight: 1.3,
               fontWeight: 400,
               fill: '#343434',
             }}
-             />
+          />
           <Tooltip />
-           <Legend align='left' verticalAlign="top" height={34} /> 
-          <Bar dataKey="pv" barSize={22}
+          <Legend align='left' verticalAlign="top" height={34} />
+          <Bar dataKey="pv" barSize={isMobile ? 22 : 27}
             fill="url(#pinkGradient)"
             shape={<CustomBarShape radius={8} />}
             label={{
               position: 'top',
               fill: '#343434',
               fontSize: 12,
-              fontFamily: 'Poppins',
+              fontFamily: 'PoppinsMedium',
               lineHeight: 1.3,
               fontWeight: 500,
               formatter: (value) => `${value}%`,
             }}
             legendType="none"
-            />
-          <Bar dataKey="uv" barSize={22}
+          />
+          <Bar dataKey="uv" barSize={isMobile ? 22 : 27}
             fill="url(#blueGradient)"
             shape={<CustomBarShape radius={8} />}
             label={{
               position: 'top',
               fill: '#343434',
               fontSize: 12,
-              fontFamily: 'Poppins',
+              fontFamily: 'PoppinsMedium',
               lineHeight: 1.3,
               fontWeight: 500,
               formatter: (value) => `${value}%`,
@@ -148,7 +161,7 @@ export const StatisticsChart = ({ tasks }) => {
             legendType="none" />
         </BarChart>
       </StyledContainer>
-    </>
+    </StatisticsContainer>
   );
 };
 
