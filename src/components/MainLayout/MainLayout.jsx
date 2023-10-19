@@ -4,6 +4,8 @@ import Header from '../Header/Header';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import Sidebar from '../Sidebar/Sidebar';
 import { MainLayoutWrapper, PageWrapper } from './MainLayout.styled';
+import { Container } from '../../Styles/Container.styled';
+
 
 const MainLayout = () => {
   const { isDesktop } = useScreenSize();
@@ -21,6 +23,7 @@ const MainLayout = () => {
     setShowSideBar(() => !showSideBar);
   };
   return (
+    <Container>
     <MainLayoutWrapper>
       {(isDesktop || showSideBar) && (
         <Sidebar closeSideBar={toggleSideBarShow} />
@@ -32,6 +35,7 @@ const MainLayout = () => {
         </Suspense>
       </PageWrapper>
     </MainLayoutWrapper>
+    </Container>
   );
 };
 
