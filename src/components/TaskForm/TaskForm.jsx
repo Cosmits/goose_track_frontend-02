@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import {
   ButtonContainer,
   ContainerForm,
+  ContainerRadio,
   Label,
   StyledCancel,
   StyledEdit,
   StyledInput,
   StyledInputTime,
   StyledLabel,
-  StyledRadio,
   StyledRadioHigh,
   StyledRadioLow,
   StyledRadioMedium,
@@ -92,7 +92,7 @@ const TaskForm = ({ initialData, closeModal }) => {
           </StyledLabel>
         </StyledTime>
 
-        <div>
+        <ContainerRadio>
           <Label>
             <StyledRadioLow
               type="radio"
@@ -126,7 +126,7 @@ const TaskForm = ({ initialData, closeModal }) => {
             />
             High
           </Label>
-        </div>
+        </ContainerRadio>
 
         {errorMessage && <div>{errorMessage}</div>}
 
