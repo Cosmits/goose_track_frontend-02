@@ -1,22 +1,25 @@
 import axios from 'axios';
-
+import moment from 'moment';
 const BASE_URL = 'https://goose-track-backend-02.onrender.com';
 const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzBkZjY5YzM5ZmFhMmNlYTBjMTlkMyIsImlhdCI6MTY5NzcwMTg5OSwiZXhwIjoxNjk3Nzg0Njk5fQ.6tpyg9SMzDMOrwryxfZOPfEgXl296FCQehQBIzqwAOs';
-const currentMonth = '2023-10';
+// const currentMonth = '2023-10';
 const currentDay = '2023-10-01'
 
 
-export const fetchByMonthTasks = async () => {
-    const config = {
-        headers: {
-            Authorization: `Bearer ${ACCESS_TOKEN}`
-        }
-    };
+export const fetchByMonthTasks = async (date) => {
+    const formattedDate = moment(date).format('YYYY-MM');
+    // const config = {
+    //     headers: {
+    //         Authorization: `Bearer ${ACCESS_TOKEN}`
+    //     }
+    // };
 
     try {
-        const response = await axios.get(`${BASE_URL}/tasks?date=${currentMonth}`, config);
+        const response = await axios.get(`${BASE_URL}/tasks?date=${formattedDate}`
+        );
         const tasks = response.data;
         console.log('Отримані таски:', tasks);
+        
         return tasks;
     } catch (error) {
         console.error('Помилка запиту:', error);
@@ -25,16 +28,18 @@ export const fetchByMonthTasks = async () => {
 
 
 
-export const fetchByDayTasks = async () => {
-    const config = {
-        headers: {
-            Authorization: `Bearer ${ACCESS_TOKEN}`
-        }
-    };
+export const fetchByDayTasks = async (date) => {
+    const formattedDate = moment(date).format('YYYY-MM-DD');
+    // const config = {
+    //     headers: {
+    //         Authorization: `Bearer ${ACCESS_TOKEN}`
+    //     }
+    // };
 
     try {
-        const response = await axios.get(`${BASE_URL}/tasks?date=${currentDay}`, config);
+        const response = await axios.get(`${BASE_URL}/tasks?date=${formattedDate}`);
         const tasks = response.data;
+      
         console.log('Отримані таски за День:', tasks);
         return tasks;
     } catch (error) {
