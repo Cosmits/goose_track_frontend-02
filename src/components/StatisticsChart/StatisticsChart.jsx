@@ -1,10 +1,12 @@
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
-import { StatisticsContainer, StyledContainer, StyledParagraph, BarContainer, MonthIcon, DayIcon } from './StatisticsChart.styled';
+import { format } from "date-fns";
+import { StatisticsContainer, StyledContainer, StyledParagraph, BarContainer, MonthIcon, DayIcon , CalendarContainer} from './StatisticsChart.styled';
 import { fetchByDayTasks, fetchByMonthTasks } from './services/services.js';
 import { getPercentage } from './services/services.js'
 import { useScreenSize } from '../../hooks/useScreenSize';
 
 import { useEffect, useState } from 'react';
+import CalendarToolBar from '../CalendarToolBar/CalendarToolBar';
 // import { useScreenSize } from '../../hooks/useScreenSize';
 
 
@@ -19,27 +21,30 @@ const CustomBarShape = (props) => {
 };
 
 
-export const StatisticsChart = ({ tasks }) => {
+export const StatisticsChart = ({ tasks , date}) => {
 
   const [monthPercentage, setMonthPercentage] = useState({});
   const [dayPercentage, setDayPercentage] = useState({});
   const { isDesktop, isTablet, isMobile } = useScreenSize();
+ 
 
 
   useEffect(() => {
     const fetchData = async () => {
-      const monthTasksData = await fetchByMonthTasks();
+      // const formattedDate = format(date, "yyyy-MM");
+      const monthTasksData = await fetchByMonthTasks(date);
       // console.log("DATA:", monthTasksData)
       const monthTasks = monthTasksData.data;
       setMonthPercentage(getPercentage(monthTasks));
     };
 
     fetchData();
-  }, [tasks]);
+  }, [tasks, date]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const dayTasksData = await fetchByDayTasks();
+    const fetchData = async (date) => {
+      // const formattedDate = format(date, "MMMM yyyy"); 
+      const dayTasksData = await fetchByDayTasks(date);
       // console.log('DAY DATA', dayTasksData);
 
       const dayTasks = dayTasksData.data;
@@ -47,7 +52,7 @@ export const StatisticsChart = ({ tasks }) => {
     };
     fetchData();
 
-  }, [tasks])
+  }, [tasks, date])
 
 
   const { todo: monthTodo, inProgress: monthInProgress, done: monthDone } = monthPercentage;
@@ -73,12 +78,15 @@ export const StatisticsChart = ({ tasks }) => {
 
   return (
     <StatisticsContainer>
+      <CalendarContainer>
+      <CalendarToolBar date ={date}/>
       <BarContainer>
         <MonthIcon ></MonthIcon>
         <StyledParagraph>By Day</StyledParagraph>
         <DayIcon></DayIcon>
         <StyledParagraph>By Month</StyledParagraph>
       </BarContainer>
+      </CalendarContainer>
       <StyledContainer >
         <BarChart width={isMobile ? 279 : isTablet ? 576 : 786}
           height={isMobile ? 266 : 286}

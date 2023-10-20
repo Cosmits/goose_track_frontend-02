@@ -19,7 +19,18 @@ background-color: var(--white);
     }
 
 `
+export const CalendarContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
 
+
+@media screen and (min-width: 768px){
+  flex-direction: row;
+  justify-content: space-between;
+    }
+
+`
 export const StyledContainer = styled.div`
 /* display: inline-block; */
  max-width: 307px;  
@@ -77,12 +88,12 @@ margin-bottom: 40px;
     font-size: 16px;
     line-height: calc(18/16);
     margin-bottom: 32px;
-    margin-right: 64px;
+    /* margin-right: 64px; */
     justify-content: flex-end;
 }
 
 @media screen and (min-width: 1440px){
     margin-bottom: 48px;
-    margin-right: 154px;
+    /* margin-right: 154px; */
     }
 `
