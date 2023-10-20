@@ -4,10 +4,8 @@ export const SidebarWrapper = styled.div`
   width: 289px;
   height: 100vh;
   border-right: 1px solid rgba(220, 227, 229, 0.5);
-  background: #fff;
-  background-color: ${({ theme }) => theme.mainBGColor};
-
-  color: ${({ theme }) => theme.secondaryTextColor};
+  background:${({ theme }) => theme.mainBGColor};
+  color:${({ theme }) => theme.mainTextColor};
 
   ul,
   li {
@@ -121,7 +119,7 @@ export const SidebarWrapper = styled.div`
         flex-shrink: 0;
         border-radius: 16px;
         background: #3e85f3;
-        color: #fff;
+        color: ${({ theme }) => theme.mainTextColor};
         font-family: Inter;
         font-size: 18px;
         font-style: normal;
