@@ -102,7 +102,7 @@ export const StyledRadioHigh = styled(StyledRadio)`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 28px;
+  gap: 14px;
 `;
 
 export const StyledEdit = styled.button`
@@ -110,7 +110,6 @@ export const StyledEdit = styled.button`
   display: block;
   width: 182px;
   height: 48px;
-  margin-right: 10px;
   border-radius: 8px;
   color: #ffff;
   background-color: #3E85F3;
