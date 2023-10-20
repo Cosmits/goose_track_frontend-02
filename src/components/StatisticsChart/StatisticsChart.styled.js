@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
 
 export const StyledContainer = styled.div`
-display: inline-block;
-/* max-width: 780px; */
+/* display: inline-block; */
+max-width: 307px; 
 border: 2px solid var(--light-blue);
 padding: 40px 14px; 
 border-radius: 20px;
+/* margin: 0 auto; */
 `
 export const StyledParagraph = styled.p`
  font-weight: 400;
@@ -19,19 +20,16 @@ export const ChartBarIcon = styled.div`
 display: block;
 width: 8px;
 height: 8px;
-background-color: gray;
-/* background-color: ${props => {
-  switch (props.type) {
-    case 'day':
-      return 'var(--pink-gradient)';
-    case 'month':
-      return 'var(--black)';
-    default: 
-      return 'gray';
-  }
-}}; */
+/* background-color: var(--light-pink); */
 border-radius: 50%;
 `;
+
+export const MonthIcon = styled( ChartBarIcon)`
+background-color: var(--gradient-pink);
+`
+export const DayIcon = styled( ChartBarIcon)`
+background-color: var(--gradient-blue);
+`
 
 export const BarContainer = styled.div`
 display: flex;

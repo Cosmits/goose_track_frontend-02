@@ -1,4 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getCurrentUser } from './redux/auth/operations';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,13 +17,22 @@ import AccountPage from './pages/AccountPage';
 import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import CalendarPage from './pages/CalendarPage';
-
+import AppCalendar from './components/AppCalendar/AppCalendar';
+import CalendarToolBar from './components/CalendarToolBar/CalendarToolBar';
 
 // const test = import.meta.env.VITE_API_TEST;
 
 function App() {
 
   //  console.log(test);
+
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
 
   return (
     <>
@@ -39,8 +52,8 @@ function App() {
         element={<PrivateRoute redirectTo="/login" component={<MainLayout />} />}
       >
         <Route path="account" element={<AccountPage />} />
-        <Route path="calendar" element={<CalendarPage />}>
-          {/* <Route path="month/:currentDate" element={<ChoosedMonth />} /> */}
+        <Route path="calendar" element={<AppCalendar  toolbar={CalendarToolBar} />}>
+          {/* <Route path="month/:currentDate" element={<AppCalendar  toolbar={CalendarToolBar} />} /> */}
           {/* <Route path="day/:currentDay" element={<ChoosedDay />} /> */}
         </Route>
         <Route path="statistics" element={<StatisticsPage />}>
