@@ -7,7 +7,8 @@ export const lightTheme = {
   btnNoActive:'#E3F3FF',
   btnTextColor:'#3E85F3',
   mainSideBarText:"rgba(52, 52, 52, 0.50)",
-
+  popUpBg:'#F6F6F6',
+  popUpBgBtn: '#EFEFEF',
 };
 
 export const darkTheme = {
