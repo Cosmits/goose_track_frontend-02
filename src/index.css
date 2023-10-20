@@ -1,3 +1,27 @@
 @import-normalize;
 /* bring in normalize.css styles */
 
+:root {
+  --black: #111111;
+  --letter-black: #171820;
+  --letter-gray: #343434;
+  --white: #ffffff;
+  --dark-gray: #13151a;
+  --gray: #21222c;
+  --input-gray: rgba(17, 17, 17, 0.15);
+  --orange: #FFAC33;
+  --main-blue: #3E85F3;
+  --hover-blue: #2B78EF;
+  --backdrop-blue: #DCEBF7;
+  --blue: #CAE8FF;
+  --light-blue: #E3F3FF;
+  --correct-color: #3CBC81;
+  --error-color: #DA1414;
+  --pink-gradient: linear-gradient(#FFFFFF, #FFD2DD);
+  --gradient-pink: #FFD2DD;
+  --blue--gradient: linear-gradient(#FFFFFF, #3E85F3);
+  --gradient-blue: #3E85F3;
+  --low-color: #72C2F8;
+  --medium-color: #F3B249;
+  --high: #EA3D65;
+}
