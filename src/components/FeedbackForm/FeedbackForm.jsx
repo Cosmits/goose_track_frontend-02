@@ -1,5 +1,6 @@
-// import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
+import PropTypes from 'prop-types';
 
 import {
   useCreateReviewMutation,
@@ -21,7 +22,6 @@ import {
   TextArea,
   TextAreaLabel,
 } from './FeedbackForm.styled';
-import { useEffect, useState } from 'react';
 
 const FeedbackForm = ({ onClose }) => {
   const [rating, setRating] = useState(5);
@@ -169,6 +169,10 @@ const FeedbackForm = ({ onClose }) => {
       )}
     </Form>
   );
+};
+
+FeedbackForm.propTypes = {
+  onClose: PropTypes.func.isRequired,
 };
 
 export default FeedbackForm;
