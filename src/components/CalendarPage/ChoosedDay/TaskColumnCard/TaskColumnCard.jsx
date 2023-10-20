@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import TaskToolbar from '../TaskToolbar/TaskToolbar';
 import {
   TaskCard,
@@ -10,10 +12,7 @@ import {
   TaskCardSuccessText,
 } from './TaskColumnCard.styled';
 
-export default function TaskColumnCard({
-  task = 'Brainstorm ideas for new content or new content',
-  priority = 'Medium',
-}) {
+export default function TaskColumnCard({ task, priority }) {
   const priorityColor = {
     Low: '#72C2F8',
     Medium: '#F3B249',
@@ -37,3 +36,8 @@ export default function TaskColumnCard({
     </TaskCard>
   );
 }
+
+TaskColumnCard.propTypes = {
+  task: PropTypes.string.isRequired,
+  priority: PropTypes.string.isRequired,
+};

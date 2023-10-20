@@ -5,11 +5,15 @@ export const SidebarWrapper = styled.div`
   height: 100vh;
   border-right: 1px solid rgba(220, 227, 229, 0.5);
   background: #fff;
+  background-color: ${({ theme }) => theme.mainBGColor};
+
+  color: ${({ theme }) => theme.secondaryTextColor};
 
   ul,
   li {
     text-decoration: none;
   }
+
   .sidebar {
     margin-right: 24px;
     margin-left: 24px;
@@ -48,10 +52,10 @@ export const SidebarWrapper = styled.div`
     width: 34px;
     height: 34px;
     margin-left: 43px;
+    stroke: ${({ theme }) => theme.secondaryTextColor};
   }
   .user-panel {
-    color: rgba(52, 52, 52, 0.5);
-
+    color: ${({ theme }) => theme.secondaryTextColor};
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -59,10 +63,11 @@ export const SidebarWrapper = styled.div`
     line-height: normal;
     padding-bottom: 32px;
   }
+
   .menu {
     .panel-instrument {
       display: flex;
-      color: rgba(52, 52, 52, 0.5);
+      color: ${({ theme }) => theme.secondaryTextColor};
       font-family: Inter;
       font-size: 16px;
       font-style: normal;
@@ -75,6 +80,17 @@ export const SidebarWrapper = styled.div`
       border-radius: 8px;
       margin-bottom: 16px;
       transition: all 0.3s;
+    }
+    .panel-instrument.active .svg-nav path {
+      stroke: #2b78ef;
+    }
+
+    .panel-instrument.active {
+      color: #2b78ef;
+      background-color: #e3f3ff;
+    }
+    .svg-nav path {
+      stroke: ${({ theme }) => theme.secondaryTextColor};
     }
     .panel-instrument:hover,
     .panel-instrument:focus {
@@ -151,6 +167,8 @@ export const SidebarWrapper = styled.div`
   }
   @media (max-width: 1440px) {
     //display: block;
+    position: fixed;
+    z-index: 3;
     .sidebar {
       margin-right: 32px;
       margin-left: 32px;
@@ -180,6 +198,8 @@ export const SidebarWrapper = styled.div`
   }
 
   @media (max-width: 768px) {
+    position: fixed;
+    z-index: 3;
     .menu {
       .panel-instrument {
         font-size: 14px;
