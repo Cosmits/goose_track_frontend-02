@@ -3,31 +3,39 @@ import styled from 'styled-components';
 export const SidebarWrapper = styled.div`
   width: 289px;
   height: 100vh;
-  /* position: fixed;
-  z-index: 15;
-  top: 0;
-  left: 0; */
   border-right: 1px solid rgba(220, 227, 229, 0.5);
-
-  background: #fff;
+  background:${({ theme }) => theme.mainBGColor};
+  color:${({ theme }) => theme.mainTextColor};
 
   ul,
   li {
     text-decoration: none;
   }
 
+  .sidebar {
+    margin-right: 24px;
+    margin-left: 24px;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    /* Other sidebar styles */
+
+    /* Make the sidebar scrollable if its content overflows */
+    overflow-y: auto;
+  }
+  body {
+    border-right: 1px solid rgba(220, 227, 229, 0.5);
+    background: #fff;
+  }
+  .svg-nav {
+    width: 24px;
+    height: 24px;
+  }
   .logo {
     display: flex;
     align-items: center;
     margin-bottom: 32px;
-    margin-top: 32px;
-    margin-left: 24px;
-    margin-right: 43px;
 
-    body {
-      border-right: 1px solid rgba(220, 227, 229, 0.5);
-      background: #fff;
-    }
     .logo-text {
       color: #3e85f3;
       font-family: 'Inter', sans-serif;
@@ -38,9 +46,14 @@ export const SidebarWrapper = styled.div`
       margin-left: 8px;
     }
   }
+  .close-btn {
+    width: 34px;
+    height: 34px;
+    margin-left: 43px;
+    stroke: ${({ theme }) => theme.secondaryTextColor};
+  }
   .user-panel {
-    color: rgba(52, 52, 52, 0.5);
-
+    color: ${({ theme }) => theme.secondaryTextColor};
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -48,12 +61,11 @@ export const SidebarWrapper = styled.div`
     line-height: normal;
     padding-bottom: 32px;
   }
+
   .menu {
-    margin-left: 24px;
-    margin-right: 24px;
     .panel-instrument {
       display: flex;
-      color: rgba(52, 52, 52, 0.5);
+      color: ${({ theme }) => theme.secondaryTextColor};
       font-family: Inter;
       font-size: 16px;
       font-style: normal;
@@ -66,6 +78,17 @@ export const SidebarWrapper = styled.div`
       border-radius: 8px;
       margin-bottom: 16px;
       transition: all 0.3s;
+    }
+    .panel-instrument.active .svg-nav path {
+      stroke: #2b78ef;
+    }
+
+    .panel-instrument.active {
+      color: #2b78ef;
+      background-color: #e3f3ff;
+    }
+    .svg-nav path {
+      stroke: ${({ theme }) => theme.secondaryTextColor};
     }
     .panel-instrument:hover,
     .panel-instrument:focus {
@@ -89,14 +112,14 @@ export const SidebarWrapper = styled.div`
       }
       button {
         cursor: pointer;
-        //margin-top: 423px;
-        margin-left: 16px;
+        position: absolute;
+        bottom: 0;
         margin-right: 16px;
         margin-bottom: 24px;
         flex-shrink: 0;
         border-radius: 16px;
         background: #3e85f3;
-        color: #fff;
+        color: ${({ theme }) => theme.mainTextColor};
         font-family: Inter;
         font-size: 18px;
         font-style: normal;
@@ -106,12 +129,9 @@ export const SidebarWrapper = styled.div`
         transition: all 0.3s;
       }
       .bottom-button-container {
-        display: flex;
-        justify-content: left;
-        align-items: flex-end;
         position: fixed;
         bottom: 0;
-        width: 100%;
+        margin-top: auto;
       }
       button:hover,
       button:focus {
@@ -137,16 +157,24 @@ export const SidebarWrapper = styled.div`
   }
   .logo-class {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
   .icon {
     display: none;
   }
-  @media (max-width: 1200px) {
-    display: block;
+  @media (max-width: 1440px) {
+    //display: block;
+    position: fixed;
+    z-index: 3;
+    .sidebar {
+      margin-right: 32px;
+      margin-left: 32px;
+      margin-top: 24px;
+    }
     .logo .logo-text {
       font-size: 16px;
+      margin-right: 31px;
     }
     .icon {
       display: block;
@@ -155,6 +183,7 @@ export const SidebarWrapper = styled.div`
       font-size: 34px;
       border: none;
       cursor: pointer;
+      margin-bottom: 25px;
     }
     .panel-instrument {
       a {
@@ -164,15 +193,26 @@ export const SidebarWrapper = styled.div`
     .logo-img {
       content: url(./src/images/goose_logo_tablet.png);
     }
-    .menu {
-      margin-left: 34px;
-      margin-right: 34px;
-    }
   }
 
   @media (max-width: 768px) {
-    .panel-instrument {
-      font-size: 14px;
+    position: fixed;
+    z-index: 3;
+    .menu {
+      .panel-instrument {
+        font-size: 14px;
+      }
+    }
+    .close-btn {
+      width: 24px;
+      height: 24px;
+    }
+    .svg-nav {
+      width: 20px;
+      height: 20px;
+    }
+    .icon {
+      margin-bottom: 31px;
     }
   }
 `;

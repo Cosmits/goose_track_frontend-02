@@ -1,20 +1,22 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { SidebarWrapper } from './Sidebar.styled'; // Import the styled component
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
 
-function Sidebar() {
+function Sidebar(props) {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
     dispatch(logOut());
   };
+  const { closeSideBar } = props;
+  const location = useLocation();
 
   //const isTablet = useMediaQuery({ maxWidth: 1440 });
   return (
     <SidebarWrapper>
       {/* <button id="open-burger">OPEN</button>*/}{' '}
-      <div id="sidear" className="conteiner sidebar">
+      <div id="sidebar" className="conteiner sidebar">
         <div className="logo-class">
           <Link to="/account" className="logo">
             <img
@@ -24,24 +26,21 @@ function Sidebar() {
             />
             <p className="logo-text">GooseTrack</p>
           </Link>
-          <button id="close-button" className="icon">
+          <button id="close-button" className="icon" onClick={closeSideBar}>
             <svg
+              className="close-btn"
               xmlns="http://www.w3.org/2000/svg"
-              width="34"
-              height="34"
               viewBox="0 0 34 34"
               fill="none"
             >
               <path
                 d="M25.5 8.5L8.5 25.5"
-                stroke="#343434"
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M8.5 8.5L25.5 25.5"
-                stroke="#343434"
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -53,12 +52,16 @@ function Sidebar() {
           <h5 className="user-panel">User Panel</h5>
           <ul>
             <li>
-              <Link className="panel-instrument" to="/account">
+              <Link
+                className={`panel-instrument ${
+                  location.pathname === '/account' ? 'active' : ''
+                }`}
+                to="/account"
+              >
                 {' '}
                 <svg
+                  className="svg-nav"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
                   viewBox="0 0 24 24"
                   fill="none"
                 >
@@ -88,11 +91,15 @@ function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link className="panel-instrument" to="/calendar">
+              <Link
+                className={`panel-instrument ${
+                  location.pathname === '/calendar' ? 'active' : ''
+                }`}
+                to="/calendar"
+              >
                 <svg
+                  className="svg-nav"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
                   viewBox="0 0 24 24"
                   fill="none"
                 >
@@ -141,11 +148,15 @@ function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link className="panel-instrument" to="/statistics">
+              <Link
+                className={`panel-instrument ${
+                  location.pathname === '/statistics' ? 'active' : ''
+                }`}
+                to="/statistics"
+              >
                 <svg
+                  className="svg-nav"
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
                   viewBox="0 0 24 24"
                   fill="none"
                 >
@@ -160,7 +171,7 @@ function Sidebar() {
                 Statistics
               </Link>
             </li>
-            <div className="bottom-button-container">
+            <div className="">
               <button className="logout-button" onClick={handleLogout}>
                 <p className="logout-text">Log Out</p>{' '}
                 <svg
@@ -180,7 +191,7 @@ function Sidebar() {
                   />
                 </svg>
               </button>
-              </div>
+            </div>
           </ul>
         </div>
       </div>
