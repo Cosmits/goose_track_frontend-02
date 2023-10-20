@@ -1570,7 +1570,7 @@ attempted value: ${o}
   gap: 40px;
   padding: 59px 18px 40px 18px;
   border-radius: 16px;
-  background-color: var(--white);
+  background-color: ${({theme:e})=>e.mainBGColor};
   border: 1px solid black;
 `,Zde=he.div`
   display: flex;
