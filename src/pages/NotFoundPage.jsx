@@ -1,8 +1,9 @@
+// Yulia
 
-// import LoginForm from "components/LoginForm/LoginForm";
+import NotFound from "../components/NotFound/NotFound";
 
 const NotFoundPage = () => {
-  return <p> NotFoundPage </p>
+  return <NotFound />
 };
 
 export default NotFoundPage;

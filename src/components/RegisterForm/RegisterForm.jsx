@@ -31,10 +31,16 @@ const schema = yup.object().shape({
     name: yup.string()
         .required('Name is required'),
     email: yup.string()
+        .matches(
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+            'Email must contain only digits, letters and . - _ symbols: "example@ukr.net"',
+        )
         .email('Invalid email, enter in format "example@ukr.net"')
         .required('Email is required'),
     password: yup.string()
         .min(6, 'Password must be at least 6 characters')
+        .matches(/[a-zA-Z]/, 'Password must contain at least one letter')
+        .matches(/[0-9]/, 'Password must contain at least one number')
         .required('Password is required'),
 });
 
