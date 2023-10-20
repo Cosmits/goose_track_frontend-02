@@ -3,7 +3,7 @@ import { ReactComponent as AddTaskIcon } from '../../../../icons/ChoosedDay/colu
 
 export const ColumnHeadBarWrapper = styled.div`
   margin-bottom: 24px;
-  width: 100%;
+  width: 299px;
   height: 34px;
   display: flex;
   justify-content: space-between;
@@ -11,6 +11,7 @@ export const ColumnHeadBarWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     margin-bottom: 28px;
+    width: 301px;
     height: 38px;
   }
 `;
@@ -45,8 +46,4 @@ export const ColumnHeadBarAddTaskIcon = styled(AddTaskIcon)`
     width: 24px;
     height: 24px;
   }
-`;
-
-export const ColumnHeadBarAddTaskBtn = styled.button`
-  height: 100%;
 `;

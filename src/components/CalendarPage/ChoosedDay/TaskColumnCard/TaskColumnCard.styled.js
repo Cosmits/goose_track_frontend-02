@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const TaskCard = styled.li`
+  flex-shrink: 0;
   width: 299px;
   height: 108px;
-  padding: 14px 14px 18px;
+  padding: 14px 14px 18px 15px;
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.8);
   background-color: #f7f6f9;
