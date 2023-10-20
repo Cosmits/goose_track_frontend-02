@@ -13,6 +13,7 @@ export const ContainerForm = styled.div`
 `;
 
 export const StyledLabel = styled.label`
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.2;
@@ -40,7 +41,6 @@ export const StyledInput = styled.input`
   }
 `;
 
-
 export const StyledTime = styled.div`
   display: flex;
   gap: 14px;
@@ -49,13 +49,18 @@ export const StyledTime = styled.div`
 `;
 
 export const StyledInputTime = styled.input`
-  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  font-family: 'Inter', sans-serif;
   width: 163px;
   height: 46px;
-  background-color: ${({ theme }) => theme.popUpBg};
+  padding-left: 18px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   border: none;
   border-radius: 8px;
-  /* margin-bottom: 14px; */
+  background-color: ${({ theme }) => theme.popUpBg};
 `;
 
 export const ContainerRadio = styled.div`
@@ -71,6 +76,7 @@ export const Label = styled.label`
 `;
 
 const StyledRadio = styled.input`
+  font-family: 'Inter', sans-serif;
   margin-right: 16px;
   width: 10px;
   height: 10px;
@@ -106,8 +112,8 @@ export const ButtonContainer = styled.div`
 `;
 
 export const StyledEdit = styled.button`
+  font-family: 'Inter', sans-serif;
   font-weight: 600;
-  display: block;
   width: 182px;
   height: 48px;
   border-radius: 8px;
@@ -118,8 +124,8 @@ export const StyledEdit = styled.button`
 
 
 export const StyledCancel = styled.button`
+  font-family: 'Inter', sans-serif;
   font-weight: 600;
-  display: block;
   width: 144px;
   height: 48px;
   background-color: ${({ theme }) => theme.popUpBgBtn};
