@@ -14,8 +14,8 @@ import { fetchByDayTasks, fetchByMonthTasks } from './services/services.js';
 import { getPercentage } from './services/services.js'
 import { useScreenSize } from '../../hooks/useScreenSize';
 
-import CalendarToolBar from '../CalendarToolBar/CalendarToolBar';
-import StyledDatepicker from './StyledDatepicker';
+// import CalendarToolBar from '../CalendarToolBar/CalendarToolBar';
+import StyledDatepicker from './Calendar/StyledDatepicker';
 
 
 
