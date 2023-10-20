@@ -370,6 +370,7 @@ Valid keys: `+JSON.stringify(Object.keys(W),null,"  "));var K=le(ce,we,oe,ue,pe+
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
+  z-index: 5;
 `,Qne=tt.div`
   position: fixed;
   justify-content: center;
