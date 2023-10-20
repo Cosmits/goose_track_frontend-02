@@ -8,10 +8,11 @@ export const AddFeedbackButton = styled.button`
   margin-right:18px;
 
   /* text */
-  font-family: Inter;
+  font-family: inherit;
   color: #fff;
   font-size: 14px;
   font-weight: 600;
+  line-height:1.28;
 
   @media (min-width: 768px){
     margin-right:24px;

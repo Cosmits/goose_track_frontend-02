@@ -1,26 +1,28 @@
 import PropTypes from 'prop-types';
 
 import {
-  ColumnHeadBarAddTaskBtn,
   ColumnHeadBarAddTaskIcon,
   ColumnHeadBarTitle,
   ColumnHeadBarWrapper,
 } from './ColumnHeadBar.styled';
 
-export default function ColumnHeadBar({ title = 'In progress' }) {
+export default function ColumnHeadBar({ title, category }) {
   return (
     <ColumnHeadBarWrapper>
       <ColumnHeadBarTitle>{title}</ColumnHeadBarTitle>
-      <ColumnHeadBarAddTaskBtn
+      <button
         type="button"
-        onClick={() => console.log('Column Head Bar Add Task Btn click')}
+        onClick={() =>
+          console.log(`Column Head Bar Add Task Btn click ${category}`)
+        }
       >
         <ColumnHeadBarAddTaskIcon />
-      </ColumnHeadBarAddTaskBtn>
+      </button>
     </ColumnHeadBarWrapper>
   );
 }
 
-// ColumnHeadBar.propTypes = {
-//   title: PropTypes.string,
-// };
+ColumnHeadBar.propTypes = {
+  title: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+};

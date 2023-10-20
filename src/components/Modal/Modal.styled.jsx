@@ -11,6 +11,7 @@ export const ModalBackdrop = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
+  z-index: 5;
 `;
 
 export const ModalContent = styled.div`

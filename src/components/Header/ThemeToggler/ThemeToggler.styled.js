@@ -18,6 +18,7 @@ width:24px;
  @media (min-width: 768px){
 height:32px;
 width:32px;
+margin-right:14px;
  }`
 export const ThemeButton = styled.button`
   border: none;
