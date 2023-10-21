@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   ButtonContainer,
   ContainerForm,
+  ContainerRadio,
+  Label,
   StyledCancel,
   StyledEdit,
   StyledInput,
   StyledInputTime,
   StyledLabel,
+  StyledRadioHigh,
+  StyledRadioLow,
+  StyledRadioMedium,
   StyledTime,
 } from './TaskForm.styled';
 
@@ -21,7 +26,8 @@ const TaskForm = ({ initialData, closeModal }) => {
       category: 'to-do',
     }
   );
-  const [isEditing, setIsEditing] = useState(!!initialData);
+
+  // const [isEditing, setIsEditing] = useState(!!initialData);
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
@@ -38,13 +44,6 @@ const TaskForm = ({ initialData, closeModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // логіка для обробки даних
-    if ( ) { // помилка
-      setErrorMessage('Error: The data entered is not valid.'); 
-    } else {
-      // логіка збереження даних 
-      closeModal();
-    }
   };
 
   const handleCancel = () => {
@@ -93,9 +92,9 @@ const TaskForm = ({ initialData, closeModal }) => {
           </StyledLabel>
         </StyledTime>
 
-        <div>
-          <label>
-            <input
+        <ContainerRadio>
+          <Label>
+            <StyledRadioLow
               type="radio"
               name="priority"
               value="low"
@@ -104,9 +103,9 @@ const TaskForm = ({ initialData, closeModal }) => {
               required
             />
             Low
-          </label>
-          <label>
-            <input
+          </Label>
+          <Label>
+            <StyledRadioMedium
               type="radio"
               name="priority"
               value="medium"
@@ -115,9 +114,9 @@ const TaskForm = ({ initialData, closeModal }) => {
               required
             />
             Medium
-          </label>
-          <label>
-            <input
+          </Label>
+          <Label>
+            <StyledRadioHigh
               type="radio"
               name="priority"
               value="high"
@@ -126,14 +125,29 @@ const TaskForm = ({ initialData, closeModal }) => {
               required
             />
             High
-          </label>
-        </div>
+          </Label>
+        </ContainerRadio>
 
         {errorMessage && <div>{errorMessage}</div>}
 
         <ButtonContainer>
+      {/* {isEditing ? (
+        <StyledEdit type="submit" onClick={handleEdit}>
+          Edit
+        </StyledEdit>
+      ) : (
+        <StyledAdd type="submit" onClick={handleAdd}>
+          Add
+            <SVG>
+              <use href="../../icons/popUp/plus.svg#plus"></use>
+            </SVG>
+        </StyledAdd>
+      )} */}
           <StyledEdit type="submit">
-            {isEditing ? 'Edit' : 'Create'}Edit
+            Edit
+          {/* <svg width="18px" height="18px">
+            <use href="../../icons/popUp/pencil.svg#pencil"></use>
+          </svg> */}
           </StyledEdit>
           <StyledCancel type="button" onClick={handleCancel}>
             Cancel
