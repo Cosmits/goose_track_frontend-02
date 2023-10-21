@@ -17,9 +17,9 @@ const StyledAcountWrapperDiv = styled.div`
   padding-bottom: 40px;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.secondaryBgColor};
-`;
 
-// ---------------------------
+  border: 1px solid black;
+`;
 
 const StyledForm = styled.form`
   display: flex;
@@ -27,11 +27,11 @@ const StyledForm = styled.form`
   align-items: center;
   width: 100%;
 
-  @media screen and (min-width: 768px) {
+  @media (min-width: 768px) {
     gap: 24px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media (min-width: 1440px) {
   }
 `;
 
@@ -39,7 +39,7 @@ const StyledInputWrapperDiv = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
-  @media screen and (min-width: 1440px) {
+  @media (min-width: 1440px) {
     flex-direction: row;
     gap: 50px;
   }
@@ -64,7 +64,7 @@ const StyledLabel = styled.label`
   font-weight: 400;
   line-height: 1.16;
 
-  @media screen and(min-width: 768px) {
+  @media (min-width: 768px) {
     font-size: 14px;
     line-height: 1.28;
   }
@@ -87,11 +87,11 @@ const StyledInput = styled.input`
     color: ${({ theme }) => theme.mainTextColor};
   }
 
-  @media screen and (min-width: 375px) {
+  @media (min-width: 375px) {
     width: 299px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media (min-width: 768px) {
     width: 354px;
   }
 `;

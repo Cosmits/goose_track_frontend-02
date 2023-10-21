@@ -17,7 +17,10 @@ import {
   StyledInput,
   StyledButton,
 } from './UserForm.styled';
-import { lightTheme } from '../../../Styles/theme';
+// import { lightTheme } from '../../../Styles/theme';
+import { getCurrentUser } from '../../../redux/auth/operations';
+// import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 const emailRegexp = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9_-]+).([a-zA-Z]{2,5})$/;
 const phoneRegexp = /^\d{2}\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}$/;
@@ -54,9 +57,13 @@ export const UserForm = () => {
     },
   });
 
-  const myTheme = { color: lightTheme.secondaryTextColor };
-  console.log('myTheme : ', myTheme.color);
+  const dispatch = useDispatch();
 
+  const a = () => {
+    dispatch(getCurrentUser());
+  };
+
+  console.log('a: ', a);
   return (
     <StyledAcountWrapperDiv>
       <StyledForm
