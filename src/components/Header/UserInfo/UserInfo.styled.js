@@ -5,7 +5,7 @@ export const UserName = styled.p`
   font-weight: 700;
   line-height: 1.3;
   margin-right: 14px;
-  color: #343434;
+  color: ${({ theme }) => theme.mainTextColor};
 
   @media (min-width: 765px) {
     font-size: 18px;
@@ -27,7 +27,7 @@ export const UserNameIcon = styled.p`
   font-weight: 700;
   line-height: 1.3;
 
-  color: black;
+  color: ${({ theme }) => theme.mainTextColor};
 `;
 
 export const UserAvatar = styled.div`
