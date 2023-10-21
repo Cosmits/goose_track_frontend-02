@@ -6,7 +6,7 @@ export const Title = styled.h1`
   margin-bottom: 32px;
   color: #3E85F3;
   font-size: 18px;
-  font-weight: 600;
+  font-family:InterSemiBold;
   line-height: 1.33;
   
    @media screen and (min-width: 768px) {
@@ -39,7 +39,7 @@ export const Label = styled.label`
   margin-bottom: 8px;
   color: #111111;
   font-size: 12px;
-  font-weight: 600;
+  font-family:InterSemiBold;
   line-height: 1.21;
   color: ${props => props.className === 'error' ? '#ff0000' : props.className === 'success' ? '#3cbc81' : '#000'};
 
@@ -53,7 +53,7 @@ export const Input = styled(Field)`
   border-radius: 8px;
   padding: 14px;
   font-size: 14px;
-  font-weight: 400;
+  font-family:InterTightRegular;
   line-height: 1.29;
   background-color:#ffffff !important;
   border-color: ${props => props.className === 'error' ? '#ff0000' : props.className === 'success' ? '#3cbc81' : ''};
@@ -104,7 +104,7 @@ export const Button = styled.button`
   cursor: pointer;
   color: #ffffff;
   font-size: 14px;
-  font-weight: 600;
+  font-family:InterSemiBold;
   line-height: 1.29;
   transition: all 250ms linear;
 
@@ -137,7 +137,7 @@ export const Error = styled.p`
   margin-top:8px;
   margin-left:14px;
   font-size: 12px;
-  font-weight: 400;
+  font-family:InterTightRegular;
   line-height: 1.17;
   color: #ff0000;
 
