@@ -36,34 +36,34 @@ function App() {
 
   return (
     <>
-    <Routes>
-      <Route path="/"
-        element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />}
-        index
-      />
-      <Route path="/register"
-        element={<RestrictedRoute redirectTo="/calendar" component={<RegisterPage />} />}
-      />
-      <Route path="/login"
-        element={<RestrictedRoute redirectTo="/calendar" component={<LoginPage />} />}
-      />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route        path="/"
-        element={<PrivateRoute redirectTo="/login" component={<MainLayout />} />}
-      >
-        <Route path="account" element={<AccountPage />} />
-        <Route path="calendar" element={<AppCalendar  toolbar={CalendarToolBar} />}>
-          {/* <Route path="month/:currentDate" element={<AppCalendar  toolbar={CalendarToolBar} />} /> */}
-          {/* <Route path="day/:currentDay" element={<ChoosedDay />} /> */}
+      <Routes>
+        <Route path="/"
+          element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />}
+          index
+        />
+        <Route path="/register"
+          element={<RestrictedRoute redirectTo="/calendar" component={<RegisterPage />} />}
+        />
+        <Route path="/login"
+          element={<RestrictedRoute redirectTo="/calendar" component={<LoginPage />} />}
+        />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/"
+          element={<PrivateRoute redirectTo="/login" component={<MainLayout />} />}
+        >
+          <Route path="account" element={<AccountPage />} />
+          <Route path="calendar" element={<AppCalendar toolbar={CalendarToolBar} />}>
+            {/* <Route path="month/:currentDate" element={<AppCalendar  toolbar={CalendarToolBar} />} /> */}
+            {/* <Route path="day/:currentDay" element={<ChoosedDay />} /> */}
+          </Route>
+          <Route path="statistics" element={<StatisticsPage />}>
+            <Route path=":currentDate" element={<StatisticsPage />} />
+          </Route>
         </Route>
-        <Route path="statistics" element={<StatisticsPage />}>
-          <Route path=":currentDate" element={<StatisticsPage />} />
-        </Route>
-      </Route>
-      <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
-       <ToastContainer autoClose={2000} />
-      </>
+      <ToastContainer autoClose={2000} />
+    </>
   );
 
 }
