@@ -1,6 +1,7 @@
 import { RxHamburgerMenu } from "react-icons/rx";
 
 import styled from "styled-components";
+import { GlobalStyle } from "../../Styles/GlobalStyles";
 
 export const HeaderWrapper = styled.header`
 display: flex;
@@ -22,7 +23,7 @@ width:34px;
 height:34px;`
 
 export const HeaderCurrentPage = styled.h2`
-font-family: inherit;
+font-family: ${GlobalStyle.InterTightBold};
 font-size:32px;
 font-weight: 700;
 line-height: 1;
@@ -34,7 +35,7 @@ gap: 8px;`
 
 export const NoTaskTitle = styled.p`
 color: ${({ theme }) => theme.mainTextColor};
-font-family: inherit;
+font-family: ${GlobalStyle.InterSemiBold};
 font-size: 14px;
 font-weight: 600;
 line-height: 1.28;
