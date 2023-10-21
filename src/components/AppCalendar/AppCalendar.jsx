@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
-import { AppCalendarGlobalStyles, Container } from './AppCalendar.styled';
+import { AppCalendarGlobalStyles } from './AppCalendar.styled';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import taskList from '../../mock/tasks';
 import { useNavigate } from 'react-router-dom';
 
 moment.locale('uk', {
-    week: {
-        dow: 1,
-    },
+  week: {
+    dow: 1,
+  },
 });
 
 const localizer = momentLocalizer(moment);
 
 const data = (date, start, end) => {
-  const [year, month, day] = date.split('-')
-  const [startHour, startMin] = start.split(':')
-  const [endHour, endMin] = end.split(':')
-  
+  const [year, month, day] = date.split('-');
+  const [startHour, startMin] = start.split(':');
+  const [endHour, endMin] = end.split(':');
+
   return {
     eventStart: new Date(year, month - 1, day, startHour, startMin),
-    eventEnd: new Date(year, month - 1, day, endHour, endMin)
-  }
+    eventEnd: new Date(year, month - 1, day, endHour, endMin),
+  };
 }
 
 function eventStyleGetter(task) {
@@ -50,29 +50,29 @@ const formats = {
   dateFormat: (date, culture, localizer) => localizer.format(date, 'D', culture),
 };
 
-const AppCalendar = ({toolbar}) => {
+const AppCalendar = ({ toolbar }) => {
   const [task, setTask] = useState([]);
   const navigate = useNavigate();
 
   const listModifier = (list) => {
-    const newList = list.map(item => {
-      const {date, start, end, title, priority, _id} = item;
+    const newList = list.map((item) => {
+      const { date, start, end, title, priority, _id } = item;
       const newDate = data(date, start, end);
       return {
-            id: _id.$oid,
-            title: title,
-            allDay: true,
-            start: newDate.eventStart,
-            end: newDate.eventEnd,
-            priority: priority
-          }
+        id: _id.$oid,
+        title: title,
+        allDay: true,
+        start: newDate.eventStart,
+        end: newDate.eventEnd,
+        priority: priority,
+      };
     });
 
     setTask(newList);
-  }
+  };
 
   useEffect(() => {
-    listModifier(taskList)
+    listModifier(taskList);
   }, []);
 
   const handleNavigate = (date) => {
@@ -82,21 +82,21 @@ const AppCalendar = ({toolbar}) => {
 
   return (
     <>
-      <Container>
-        <Calendar
-          formats={formats}
-          views={['month']}
-          localizer={localizer}
-          events={task}      
-          components={{toolbar: toolbar}}
-          eventPropGetter={eventStyleGetter}
-          showAllEvents={true}
-          onNavigate = {handleNavigate}
-        />
-        <AppCalendarGlobalStyles />
-      </Container>
+      <Calendar
+        formats={formats}
+        views={['month']}
+        localizer={localizer}
+        events={task}
+        components={{ toolbar: toolbar }}
+        eventPropGetter={eventStyleGetter}
+        showAllEvents={true}
+        onSelectSlot={(slotInfo) => handleNavigate(slotInfo.start)}
+        onSelectEvent={handleNavigate}
+        selectable
+      />
+      <AppCalendarGlobalStyles />
     </>
-  )
+  );
 }
 
 export default AppCalendar;

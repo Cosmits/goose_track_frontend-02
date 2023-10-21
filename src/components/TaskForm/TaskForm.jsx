@@ -2,17 +2,32 @@ import { useState, useEffect } from 'react';
 import {
   ButtonContainer,
   ContainerForm,
+  ContainerRadio,
+  Label,
   StyledCancel,
   StyledEdit,
   StyledInput,
   StyledInputTime,
   StyledLabel,
+  StyledRadioHigh,
+  StyledRadioLow,
+  StyledRadioMedium,
   StyledTime,
 } from './TaskForm.styled';
 
 const TaskForm = ({ initialData, closeModal }) => {
-  const [formData, setFormData] = useState(initialData || { title: '', start: '', end: '', priority: 'low', date: '', category: 'to-do' });
-  const [isEditing, setIsEditing] = useState(!!initialData);
+  const [formData, setFormData] = useState(
+    initialData || {
+      title: '',
+      start: '09:00',
+      end: '09:30',
+      priority: 'low',
+      date: '',
+      category: 'to-do',
+    }
+  );
+
+  // const [isEditing, setIsEditing] = useState(!!initialData);
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
@@ -24,17 +39,11 @@ const TaskForm = ({ initialData, closeModal }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setErrorMessage('');
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      //Дописати код для відправки даних на бекенд та обробки успішної відповіді
-      closeModal();
-    } catch (error) {
-      // Обробка помилки
-      setErrorMessage('An error occurred while saving the task');
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
   };
 
   const handleCancel = () => {
@@ -83,9 +92,9 @@ const TaskForm = ({ initialData, closeModal }) => {
           </StyledLabel>
         </StyledTime>
 
-        <div>
-          <label>
-            <input
+        <ContainerRadio>
+          <Label>
+            <StyledRadioLow
               type="radio"
               name="priority"
               value="low"
@@ -94,9 +103,9 @@ const TaskForm = ({ initialData, closeModal }) => {
               required
             />
             Low
-          </label>
-          <label>
-            <input
+          </Label>
+          <Label>
+            <StyledRadioMedium
               type="radio"
               name="priority"
               value="medium"
@@ -105,9 +114,9 @@ const TaskForm = ({ initialData, closeModal }) => {
               required
             />
             Medium
-          </label>
-          <label>
-            <input
+          </Label>
+          <Label>
+            <StyledRadioHigh
               type="radio"
               name="priority"
               value="high"
@@ -116,66 +125,34 @@ const TaskForm = ({ initialData, closeModal }) => {
               required
             />
             High
-          </label>
-        </div>
-
-        {/* <StyledLabel>
-          Date
-          <StyledInput
-            type="text"
-            name="date"
-            value={formData.date}
-            onChange={handleInputChange}
-            required
-            pattern="\d{4}-\d{2}-\d{2}"
-          />
-        </StyledLabel> */}
-
-        {/* <div>
-          <label>
-            <input
-              type="radio"
-              name="category"
-              value="to-do"
-              checked={formData.category === 'to-do'}
-              onChange={handleInputChange}
-              required
-            />
-            To-Do
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="category"
-              value="in-progress"
-              checked={formData.category === 'in-progress'}
-              onChange={handleInputChange}
-              required
-            />
-            In-Progress
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="category"
-              value="done"
-              checked={formData.category === 'done'}
-              onChange={handleInputChange}
-              required
-            />
-            Done
-          </label>
-        </div> */}
+          </Label>
+        </ContainerRadio>
 
         {errorMessage && <div>{errorMessage}</div>}
 
         <ButtonContainer>
-          <StyledEdit type="submit">{isEditing ? 'Edit' : 'Create'}Edit</StyledEdit>
+      {/* {isEditing ? (
+        <StyledEdit type="submit" onClick={handleEdit}>
+          Edit
+        </StyledEdit>
+      ) : (
+        <StyledAdd type="submit" onClick={handleAdd}>
+          Add
+            <SVG>
+              <use href="../../icons/popUp/plus.svg#plus"></use>
+            </SVG>
+        </StyledAdd>
+      )} */}
+          <StyledEdit type="submit">
+            Edit
+          {/* <svg width="18px" height="18px">
+            <use href="../../icons/popUp/pencil.svg#pencil"></use>
+          </svg> */}
+          </StyledEdit>
           <StyledCancel type="button" onClick={handleCancel}>
             Cancel
           </StyledCancel>
         </ButtonContainer>
-
       </form>
     </ContainerForm>
   );
