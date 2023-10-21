@@ -1,16 +1,21 @@
 // Yulia
 
-import { Formik, Form, ErrorMessage} from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-import { register } from '../../redux/auth/operations';
-import { Button, DontShowIcon, Error, Icon, Input, InputWrap, Label, List, LogInPicture, PasswordButton, ShowIcon, Title } from './AuthForm.styled';
-import SuccessIcon from '../../images/RegisterPage/success.svg';
-import ErrorIcon from '../../images/RegisterPage/error.svg';
-import LogInIcon from '../../images/RegisterPage/login.svg';
+import { logIn } from '../../../redux/auth/operations';
+import {
+    Button, DontShowIcon, Error, Icon,
+    Input, InputWrap, Label, List, LogInPicture,
+    PasswordButton, ShowIcon, Title
+} from '../../RegisterPage/RegisterForm/RegisterForm.styled'
+import SuccessIcon from '../../../images/RegisterPage/success.svg';
+import ErrorIcon from '../../../images/RegisterPage/error.svg';
+import LogInIcon from '../../../images/RegisterPage/login.svg';
+
 
 const ErrorMessages = ({ name }) => {
     return (
@@ -22,14 +27,11 @@ const ErrorMessages = ({ name }) => {
 };
 
 const initialValues = {
-    name: '',
     email: '',
     password: '',
 };
 
 const schema = yup.object().shape({
-    name: yup.string()
-        .required('Name is required'),
     email: yup.string()
         .email('Invalid email, enter in format "example@ukr.net"')
         .required('Email is required'),
@@ -38,21 +40,22 @@ const schema = yup.object().shape({
         .required('Password is required'),
 });
 
-const RegisterForm = () => {
+const LoginForm = () => {
     const [showPassword, setShowPassword] = useState(false);
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
     };
-    
+
     const dispatch = useDispatch();
 
-    const handleSubmit = (values, { resetForm }) => {
-        const { name, email, password } = values;
+    const handleLogInSubmit = (values, { resetForm }) => {
+        const { email, password } = values;
 
-        dispatch(register({ userName: name, email, password }))
+        dispatch(logIn({ email, password }))
             .unwrap()
-            .then(() => toast.success('Registration succesfully'))
-            .catch(() => toast.error('Something went wrong. Try again'));
+            .then(() => toast.success('Login succesfully'))
+            .catch(() => toast.error('An error has occurred. Try again'));
+
         resetForm();
     };
 
@@ -60,33 +63,12 @@ const RegisterForm = () => {
         <Formik
             initialValues={initialValues}
             validationSchema={schema}
-            onSubmit={handleSubmit}
+            onSubmit={handleLogInSubmit}
         >
             {({ values, errors, touched }) => (
                 <Form>
-                    <Title>Sign Up</Title>
+                    <Title>Log In</Title>
                     <List>
-                        <InputWrap>
-                            <Label
-                                htmlFor="name"
-                                className={touched.name ? errors.name ? 'error' : 'success' : ''}>Name
-                            </Label>
-                            <Input
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="Enter your name"
-                                autoComplete="off"
-                                className={ touched.name ? errors.name ? 'error' : 'success' : ''}
-                            />
-                            <ErrorMessages name="name"/>
-                            {errors.name && touched.name
-                                ? (<Icon src={ErrorIcon} />)
-                                : values.name && !errors.name
-                                    ? (<Icon src={SuccessIcon} />)
-                                    : null}
-                        </InputWrap>
-
                         <InputWrap>
                             <Label
                                 htmlFor="email"
@@ -98,7 +80,7 @@ const RegisterForm = () => {
                                 name="email"
                                 autoComplete="off"
                                 placeholder="Enter email"
-                                className={ touched.email ? errors.email ? 'error' : 'success' : ''}
+                                className={touched.email ? errors.email ? 'error' : 'success' : ''}
                             />
                             <ErrorMessages name="email" />
                             {errors.email && touched.email
@@ -120,26 +102,26 @@ const RegisterForm = () => {
                                 name="password"
                                 autoComplete="off"
                                 placeholder="Enter password"
-                                className={ touched.password ? errors.password ? 'error' : 'success' : ''}
+                                className={touched.password ? errors.password ? 'error' : 'success' : ''}
                             />
                             <ErrorMessages name="password" />
 
                             <PasswordButton
-                type="button"
-                onClick={handleTogglePassword}
-              >
-                {showPassword ? (
-                  <DontShowIcon />
-                ) : (
-                  <ShowIcon />
-                )}
+                                type="button"
+                                onClick={handleTogglePassword}
+                            >
+                                {showPassword ? (
+                                    <DontShowIcon />
+                                ) : (
+                                    <ShowIcon />
+                                )}
                             </PasswordButton>
-                            
+
                         </InputWrap>
                     </List>
 
                     <Button type="submit">
-                        Sign Up
+                        Log In
                         <LogInPicture src={LogInIcon} />
                     </Button>
                 </Form>
@@ -148,4 +130,4 @@ const RegisterForm = () => {
     );
 };
 
-export default RegisterForm;
+export default LoginForm;

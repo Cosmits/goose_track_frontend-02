@@ -6,12 +6,15 @@ import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-import { logIn } from '../../redux/auth/operations';
-import { Button, DontShowIcon, Error, Icon, Input, InputWrap, Label, List, LogInPicture, PasswordButton, ShowIcon, Title } from '../RegisterForm/AuthForm.styled';
-import SuccessIcon from '../../images/RegisterPage/success.svg';
-import ErrorIcon from '../../images/RegisterPage/error.svg';
-import LogInIcon from '../../images/RegisterPage/login.svg';
-
+import { register } from '../../../redux/auth/operations';
+import SuccessIcon from '../../../images/RegisterPage/success.svg';
+import ErrorIcon from '../../../images/RegisterPage/error.svg';
+import LogInIcon from '../../../images/RegisterPage/login.svg';
+import {
+    Button, DontShowIcon, Error, Icon,
+    Input, InputWrap, Label, List, LogInPicture,
+    PasswordButton, ShowIcon, Title
+} from './RegisterForm.styled';
 
 const ErrorMessages = ({ name }) => {
     return (
@@ -23,11 +26,14 @@ const ErrorMessages = ({ name }) => {
 };
 
 const initialValues = {
+    name: '',
     email: '',
     password: '',
 };
 
 const schema = yup.object().shape({
+    name: yup.string()
+        .required('Name is required'),
     email: yup.string()
         .email('Invalid email, enter in format "example@ukr.net"')
         .required('Email is required'),
@@ -36,7 +42,7 @@ const schema = yup.object().shape({
         .required('Password is required'),
 });
 
-const LoginForm = () => {
+const RegisterForm = () => {
     const [showPassword, setShowPassword] = useState(false);
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
@@ -44,14 +50,13 @@ const LoginForm = () => {
 
     const dispatch = useDispatch();
 
-    const handleLogInSubmit = (values, { resetForm }) => {
-        const { email, password } = values;
+    const handleSubmit = (values, { resetForm }) => {
+        const { name, email, password } = values;
 
-        dispatch(logIn({ email, password }))
+        dispatch(register({ userName: name, email, password }))
             .unwrap()
-            .then(() => toast.success('Login succesfully'))
-            .catch(() => toast.error('An error has occurred. Try again'));
-        
+            .then(() => toast.success('Registration succesfully'))
+            .catch(() => toast.error('Something went wrong. Try again'));
         resetForm();
     };
 
@@ -59,12 +64,33 @@ const LoginForm = () => {
         <Formik
             initialValues={initialValues}
             validationSchema={schema}
-            onSubmit={handleLogInSubmit}
+            onSubmit={handleSubmit}
         >
             {({ values, errors, touched }) => (
                 <Form>
-                        <Title>Log In</Title>
+                    <Title>Sign Up</Title>
                     <List>
+                        <InputWrap>
+                            <Label
+                                htmlFor="name"
+                                className={touched.name ? errors.name ? 'error' : 'success' : ''}>Name
+                            </Label>
+                            <Input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                                autoComplete="off"
+                                className={touched.name ? errors.name ? 'error' : 'success' : ''}
+                            />
+                            <ErrorMessages name="name" />
+                            {errors.name && touched.name
+                                ? (<Icon src={ErrorIcon} />)
+                                : values.name && !errors.name
+                                    ? (<Icon src={SuccessIcon} />)
+                                    : null}
+                        </InputWrap>
+
                         <InputWrap>
                             <Label
                                 htmlFor="email"
@@ -76,7 +102,7 @@ const LoginForm = () => {
                                 name="email"
                                 autoComplete="off"
                                 placeholder="Enter email"
-                                className={ touched.email ? errors.email ? 'error' : 'success' : ''}
+                                className={touched.email ? errors.email ? 'error' : 'success' : ''}
                             />
                             <ErrorMessages name="email" />
                             {errors.email && touched.email
@@ -98,26 +124,26 @@ const LoginForm = () => {
                                 name="password"
                                 autoComplete="off"
                                 placeholder="Enter password"
-                                className={ touched.password ? errors.password ? 'error' : 'success' : ''}
+                                className={touched.password ? errors.password ? 'error' : 'success' : ''}
                             />
                             <ErrorMessages name="password" />
 
                             <PasswordButton
-                type="button"
-                onClick={handleTogglePassword}
-              >
-                {showPassword ? (
-                  <DontShowIcon />
-                ) : (
-                  <ShowIcon />
-                )}
+                                type="button"
+                                onClick={handleTogglePassword}
+                            >
+                                {showPassword ? (
+                                    <DontShowIcon />
+                                ) : (
+                                    <ShowIcon />
+                                )}
                             </PasswordButton>
 
                         </InputWrap>
                     </List>
 
                     <Button type="submit">
-                        Log In
+                        Sign Up
                         <LogInPicture src={LogInIcon} />
                     </Button>
                 </Form>
@@ -126,4 +152,4 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm;
+export default RegisterForm;
