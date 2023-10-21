@@ -17,6 +17,7 @@ export const reviewsApi = createApi({
   keepUnusedDataFor: 1,
 
   endpoints: builder => ({
+    
     fetchReviews: builder.query({
       query: () => '/reviews',
     }),
