@@ -19,5 +19,7 @@ export const darkTheme = {
   btnActiveBGColor:'#3E85F3',
   btnNoActiveBGcolor:'#21222C',
   btnActiveTextColor:'#FFF',
-  mainSideBarText:"#FFF;",
+  mainSideBarText:"#FFF;",  
+  popUpBg:'#F6F6F6',
+  popUpBgBtn: '#EFEFEF',
 };
