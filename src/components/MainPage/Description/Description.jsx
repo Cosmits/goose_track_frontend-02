@@ -27,7 +27,7 @@ import {
 } from './Description.styled';
 import { useScreenSize } from '../../../hooks/useScreenSize';
 
-export const Description = () => {
+const Description = () => {
 
     const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
     const { isDesktop, isTablet, isMobile } = useScreenSize();
@@ -78,3 +78,5 @@ export const Description = () => {
         </StyledList>
     )
 }
+
+export default Description

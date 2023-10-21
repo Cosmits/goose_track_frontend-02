@@ -16,7 +16,7 @@ import {
 import gooseLogo from '../../../images/Auth_mainpage/GOOSE_logo.png';
 import { Container } from '../../../Styles/Container.styled';
 
-export const AuthSection = () => {
+const AuthSection = () => {
   return (
     <AuthSectionWrap>
       <Container>
@@ -45,3 +45,5 @@ export const AuthSection = () => {
     </AuthSectionWrap>
   );
 };
+
+export default AuthSection

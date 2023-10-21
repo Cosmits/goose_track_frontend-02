@@ -7,10 +7,10 @@ import { Container } from '../../../Styles/Container.styled';
 import { ReviewsWrapper, Title } from './ReviewsSlider.styled';
 import { useFetchReviewsQuery } from '../../../redux/reviews/reviewsApi';
 
-export const ReviewsSlider = () => {
-   const { data: reviews, isFetching } = useFetchReviewsQuery();
+const ReviewsSlider = () => {
+  const { data: reviews, isFetching } = useFetchReviewsQuery();
 
-   return (
+  return (
     <ReviewsWrapper>
       <Container>
         <Title>Reviews</Title>
@@ -32,3 +32,5 @@ export const ReviewsSlider = () => {
     </ReviewsWrapper>
   );
 }
+
+export default ReviewsSlider
