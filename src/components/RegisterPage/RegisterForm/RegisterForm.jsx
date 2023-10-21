@@ -1,16 +1,20 @@
 // Yulia
 
-import { Formik, Form, ErrorMessage} from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-import { register } from '../../redux/auth/operations';
-import { Button, DontShowIcon, Error, Icon, Input, InputWrap, Label, List, LogInPicture, PasswordButton, ShowIcon, Title } from './AuthForm.styled';
-import SuccessIcon from '../../images/RegisterPage/success.svg';
-import ErrorIcon from '../../images/RegisterPage/error.svg';
-import LogInIcon from '../../images/RegisterPage/login.svg';
+import { register } from '../../../redux/auth/operations';
+import SuccessIcon from '../../../images/RegisterPage/success.svg';
+import ErrorIcon from '../../../images/RegisterPage/error.svg';
+import LogInIcon from '../../../images/RegisterPage/login.svg';
+import {
+    Button, DontShowIcon, Error, Icon,
+    Input, InputWrap, Label, List, LogInPicture,
+    PasswordButton, ShowIcon, Title
+} from './RegisterForm.styled';
 
 const ErrorMessages = ({ name }) => {
     return (
@@ -49,7 +53,7 @@ const RegisterForm = () => {
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
     };
-    
+
     const dispatch = useDispatch();
 
     const handleSubmit = (values, { resetForm }) => {
@@ -83,9 +87,9 @@ const RegisterForm = () => {
                                 name="name"
                                 placeholder="Enter your name"
                                 autoComplete="off"
-                                className={ touched.name ? errors.name ? 'error' : 'success' : ''}
+                                className={touched.name ? errors.name ? 'error' : 'success' : ''}
                             />
-                            <ErrorMessages name="name"/>
+                            <ErrorMessages name="name" />
                             {errors.name && touched.name
                                 ? (<Icon src={ErrorIcon} />)
                                 : values.name && !errors.name
@@ -104,7 +108,7 @@ const RegisterForm = () => {
                                 name="email"
                                 autoComplete="off"
                                 placeholder="Enter email"
-                                className={ touched.email ? errors.email ? 'error' : 'success' : ''}
+                                className={touched.email ? errors.email ? 'error' : 'success' : ''}
                             />
                             <ErrorMessages name="email" />
                             {errors.email && touched.email
@@ -126,21 +130,21 @@ const RegisterForm = () => {
                                 name="password"
                                 autoComplete="off"
                                 placeholder="Enter password"
-                                className={ touched.password ? errors.password ? 'error' : 'success' : ''}
+                                className={touched.password ? errors.password ? 'error' : 'success' : ''}
                             />
                             <ErrorMessages name="password" />
 
                             <PasswordButton
-                type="button"
-                onClick={handleTogglePassword}
-              >
-                {showPassword ? (
-                  <DontShowIcon />
-                ) : (
-                  <ShowIcon />
-                )}
+                                type="button"
+                                onClick={handleTogglePassword}
+                            >
+                                {showPassword ? (
+                                    <DontShowIcon />
+                                ) : (
+                                    <ShowIcon />
+                                )}
                             </PasswordButton>
-                            
+
                         </InputWrap>
                     </List>
 

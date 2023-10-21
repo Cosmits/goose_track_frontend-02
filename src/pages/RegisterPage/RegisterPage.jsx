@@ -1,7 +1,8 @@
 // Yulia
 
-import RegisterForm from '../../components/RegisterForm/RegisterForm';
-import AuthNavigate from '../../components/AuthNavigate/AuthNavigate';
+
+import RegisterForm from '../../components/RegisterPage/RegisterForm/RegisterForm';
+import AuthNavigate from '../../components/LoginPage/AuthNavigate/AuthNavigate';
 import { AuthFormWrap, AuthPageWrap, PictureWrap } from './RegisterPage.styled';
 import gooseRegister from '../../images/RegisterPage/goose_register@1x.png';
 import gooseRegisterImg from '../../images/RegisterPage/goose_register@2x.png';
@@ -10,7 +11,7 @@ import gooseRegisterImgWebp from '../../images/RegisterPage/goose_register@2x.we
 
 const RegisterPage = () => {
   return (
-    
+
     <AuthPageWrap>
       <AuthFormWrap>
         <RegisterForm />
@@ -36,7 +37,7 @@ const RegisterPage = () => {
         </picture>
       </PictureWrap>
     </AuthPageWrap>
-    
+
   );
 };
 

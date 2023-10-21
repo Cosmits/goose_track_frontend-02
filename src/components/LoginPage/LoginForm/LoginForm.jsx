@@ -6,11 +6,15 @@ import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-import { logIn } from '../../redux/auth/operations';
-import { Button, DontShowIcon, Error, Icon, Input, InputWrap, Label, List, LogInPicture, PasswordButton, ShowIcon, Title } from '../RegisterForm/AuthForm.styled';
-import SuccessIcon from '../../images/RegisterPage/success.svg';
-import ErrorIcon from '../../images/RegisterPage/error.svg';
-import LogInIcon from '../../images/RegisterPage/login.svg';
+import { logIn } from '../../../redux/auth/operations';
+import {
+    Button, DontShowIcon, Error, Icon,
+    Input, InputWrap, Label, List, LogInPicture,
+    PasswordButton, ShowIcon, Title
+} from '../../RegisterPage/RegisterForm/RegisterForm.styled'
+import SuccessIcon from '../../../images/RegisterPage/success.svg';
+import ErrorIcon from '../../../images/RegisterPage/error.svg';
+import LogInIcon from '../../../images/RegisterPage/login.svg';
 
 const ErrorMessages = ({ name }) => {
     return (
@@ -56,7 +60,7 @@ const LoginForm = () => {
             .unwrap()
             .then(() => toast.success('Login succesfully'))
             .catch(() => toast.error('An error has occurred. Try again'));
-        
+
         resetForm();
     };
 
@@ -68,7 +72,7 @@ const LoginForm = () => {
         >
             {({ values, errors, touched }) => (
                 <Form>
-                        <Title>Log In</Title>
+                    <Title>Log In</Title>
                     <List>
                         <InputWrap>
                             <Label
@@ -81,7 +85,7 @@ const LoginForm = () => {
                                 name="email"
                                 autoComplete="off"
                                 placeholder="Enter email"
-                                className={ touched.email ? errors.email ? 'error' : 'success' : ''}
+                                className={touched.email ? errors.email ? 'error' : 'success' : ''}
                             />
                             <ErrorMessages name="email" />
                             {errors.email && touched.email
@@ -103,19 +107,19 @@ const LoginForm = () => {
                                 name="password"
                                 autoComplete="off"
                                 placeholder="Enter password"
-                                className={ touched.password ? errors.password ? 'error' : 'success' : ''}
+                                className={touched.password ? errors.password ? 'error' : 'success' : ''}
                             />
                             <ErrorMessages name="password" />
 
                             <PasswordButton
-                type="button"
-                onClick={handleTogglePassword}
-              >
-                {showPassword ? (
-                  <DontShowIcon />
-                ) : (
-                  <ShowIcon />
-                )}
+                                type="button"
+                                onClick={handleTogglePassword}
+                            >
+                                {showPassword ? (
+                                    <DontShowIcon />
+                                ) : (
+                                    <ShowIcon />
+                                )}
                             </PasswordButton>
 
                         </InputWrap>
