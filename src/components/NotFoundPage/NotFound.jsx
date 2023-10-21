@@ -6,6 +6,7 @@ import gooseNotFoundWebp from '../../images/NotFoundPage/error-goose.webp';
 import gooseNotFoundWebp2x from '../../images/NotFoundPage/error-goose@2x.webp';
 import gooseNotFoundPng from '../../images/NotFoundPage/error-goose.png';
 import gooseNotFoundPng2x from '../../images/NotFoundPage/error-goose@2x.png';
+
 import { Button, Container, ErrorText, ImgWrap, Picture, TextWithImg } from './NotFound.styled';
 
 
@@ -47,7 +48,7 @@ const NotFound = () => {
                 We’re sorry, the page you requested could not be found. Please go back to the homepage.
             </ErrorText>
             
-            <Button to="/">Back to home</Button>
+            <Button to={'/'}>Back to home</Button>
         </Container>
     )
 };

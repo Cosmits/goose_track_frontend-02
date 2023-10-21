@@ -1,6 +1,6 @@
 // Yulia
 
-import NotFound from "../components/NotFound/NotFound";
+import NotFound from "../components/NotFoundPage/NotFound";
 
 const NotFoundPage = () => {
   return <NotFound />
