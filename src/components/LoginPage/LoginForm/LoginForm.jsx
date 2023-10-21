@@ -16,7 +16,6 @@ import SuccessIcon from '../../../images/RegisterPage/success.svg';
 import ErrorIcon from '../../../images/RegisterPage/error.svg';
 import LogInIcon from '../../../images/RegisterPage/login.svg';
 
-
 const ErrorMessages = ({ name }) => {
     return (
         <ErrorMessage
@@ -34,9 +33,15 @@ const initialValues = {
 const schema = yup.object().shape({
     email: yup.string()
         .email('Invalid email, enter in format "example@ukr.net"')
+        .matches(
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+            'Email must contain only digits, letters and . - _ symbols: "example@ukr.net"',
+        )
         .required('Email is required'),
     password: yup.string()
         .min(6, 'Password must be at least 6 characters')
+        .matches(/[a-zA-Z]/, 'Password must contain at least one letter')
+        .matches(/[0-9]/, 'Password must contain at least one number')
         .required('Password is required'),
 });
 
