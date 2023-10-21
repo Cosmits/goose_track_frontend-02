@@ -10,7 +10,7 @@ import { ReviewsWrapper, Title } from './ReviewsSlider.styled';
 import { ColorRing } from 'react-loader-spinner';
 import { useFetchReviewsQuery } from '../../../redux/reviews/reviewsApi';
 
-export default function ReviewsSlider() {
+export const ReviewsSlider = () => {
   // const [reviews, setReviews] = useState(null);
   // const [loading, setLoading] = useState(false);
 
