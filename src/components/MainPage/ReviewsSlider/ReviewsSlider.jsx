@@ -1,40 +1,16 @@
 // Illia Shatokhin
 
-// import { useEffect, useState } from 'react';
-
-// import reviewsApi from '../../../services/reviews-api';
-
-import { Container } from '../../../Styles/Container.styled';
-import Slider from './Slider/Slider';
-import { ReviewsWrapper, Title } from './ReviewsSlider.styled';
 import { ColorRing } from 'react-loader-spinner';
+
+import Slider from './Slider/Slider';
+import { Container } from '../../../Styles/Container.styled';
+import { ReviewsWrapper, Title } from './ReviewsSlider.styled';
 import { useFetchReviewsQuery } from '../../../redux/reviews/reviewsApi';
 
 export const ReviewsSlider = () => {
-  // const [reviews, setReviews] = useState(null);
-  // const [loading, setLoading] = useState(false);
+   const { data: reviews, isFetching } = useFetchReviewsQuery();
 
-  const { data: reviews, isFetching } = useFetchReviewsQuery();
-
-  // useEffect(() => {
-  //   const fetch = async () => {
-  //     try {
-  //       setLoading(true);
-  //       const response = await reviewsApi.fetchAllReviews();
-  //       const { data } = response.data;
-  //       setReviews(data);
-        
-  //       setLoading(false);
-  //     } catch (error) {
-  //       setLoading(false);
-  //       console.log('error', error);
-  //     }
-  //   };
-
-  //   fetch();
-  // }, []);
-
-  return (
+   return (
     <ReviewsWrapper>
       <Container>
         <Title>Reviews</Title>
