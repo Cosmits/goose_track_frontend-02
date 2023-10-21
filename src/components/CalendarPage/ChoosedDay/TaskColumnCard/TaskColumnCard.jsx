@@ -12,25 +12,36 @@ import {
   TaskCardSuccessText,
 } from './TaskColumnCard.styled';
 
-export default function TaskColumnCard({ task, priority }) {
+export default function TaskColumnCard({ taskTitle, priority, avatar, id }) {
   const priorityColor = {
-    Low: '#72C2F8',
-    Medium: '#F3B249',
-    High: '#EA3D65',
+    low: '#72C2F8',
+    medium: '#F3B249',
+    high: '#EA3D65',
   };
+
+  function priorityNameCapitalized(priorityName) {
+    const letters = priorityName.split('');
+    const capitalizedFirstLetter = [
+      letters[0].toUpperCase(),
+      ...letters.slice(1),
+    ];
+    return capitalizedFirstLetter.join('');
+  }
 
   return (
     <TaskCard>
       <TaskCardWrapper>
-        <TaskCardTitle>{task}</TaskCardTitle>
+        <TaskCardTitle>{taskTitle}</TaskCardTitle>
         <TaskCardInfoWrapper>
           <TaskCardUserWrapper>
-            <TaskCardAvatar src="https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg" />
+            <TaskCardAvatar src={avatar} />
             <TaskCardSuccess color={priorityColor[priority]}>
-              <TaskCardSuccessText>{priority}</TaskCardSuccessText>
+              <TaskCardSuccessText>
+                {priorityNameCapitalized(priority)}
+              </TaskCardSuccessText>
             </TaskCardSuccess>
           </TaskCardUserWrapper>
-          <TaskToolbar />
+          <TaskToolbar id={id} />
         </TaskCardInfoWrapper>
       </TaskCardWrapper>
     </TaskCard>
@@ -38,6 +49,8 @@ export default function TaskColumnCard({ task, priority }) {
 }
 
 TaskColumnCard.propTypes = {
-  task: PropTypes.string.isRequired,
+  taskTitle: PropTypes.string.isRequired,
   priority: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
