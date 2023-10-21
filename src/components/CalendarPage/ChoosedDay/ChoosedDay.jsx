@@ -1,7 +1,11 @@
+import { useGetMonthlyTasksQuery } from '../../../redux/tasks/tasksApi';
 import { ChoosedDaySection } from './ChoosedDay.styled';
 import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
 
 export default function ChoosedDay() {
+  const data = useGetMonthlyTasksQuery('2023-11');
+  console.log(data);
+
   const filteredTasks = {
     'To do': [
       {
