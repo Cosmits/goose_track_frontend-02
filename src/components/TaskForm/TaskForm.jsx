@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ButtonContainer,
   ContainerForm,
@@ -11,7 +11,16 @@ import {
 } from './TaskForm.styled';
 
 const TaskForm = ({ initialData, closeModal }) => {
-  const [formData, setFormData] = useState(initialData || { title: '', start: '', end: '', priority: 'low', date: '', category: 'to-do' });
+  const [formData, setFormData] = useState(
+    initialData || {
+      title: '',
+      start: '09:00',
+      end: '09:30',
+      priority: 'low',
+      date: '',
+      category: 'to-do',
+    }
+  );
   const [isEditing, setIsEditing] = useState(!!initialData);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -24,16 +33,17 @@ const TaskForm = ({ initialData, closeModal }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setErrorMessage('');
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      //Дописати код для відправки даних на бекенд та обробки успішної відповіді
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // логіка для обробки даних
+    if ( ) { // помилка
+      setErrorMessage('Error: The data entered is not valid.'); 
+    } else {
+      // логіка збереження даних 
       closeModal();
-    } catch (error) {
-      // Обробка помилки
-      setErrorMessage('An error occurred while saving the task');
     }
   };
 
@@ -119,63 +129,16 @@ const TaskForm = ({ initialData, closeModal }) => {
           </label>
         </div>
 
-        {/* <StyledLabel>
-          Date
-          <StyledInput
-            type="text"
-            name="date"
-            value={formData.date}
-            onChange={handleInputChange}
-            required
-            pattern="\d{4}-\d{2}-\d{2}"
-          />
-        </StyledLabel> */}
-
-        {/* <div>
-          <label>
-            <input
-              type="radio"
-              name="category"
-              value="to-do"
-              checked={formData.category === 'to-do'}
-              onChange={handleInputChange}
-              required
-            />
-            To-Do
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="category"
-              value="in-progress"
-              checked={formData.category === 'in-progress'}
-              onChange={handleInputChange}
-              required
-            />
-            In-Progress
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="category"
-              value="done"
-              checked={formData.category === 'done'}
-              onChange={handleInputChange}
-              required
-            />
-            Done
-          </label>
-        </div> */}
-
         {errorMessage && <div>{errorMessage}</div>}
 
         <ButtonContainer>
-          <StyledEdit type="submit">{isEditing ? 'Edit' : 'Create'}Edit</StyledEdit>
+          <StyledEdit type="submit">
+            {isEditing ? 'Edit' : 'Create'}Edit
+          </StyledEdit>
           <StyledCancel type="button" onClick={handleCancel}>
             Cancel
           </StyledCancel>
         </ButtonContainer>
-
       </form>
     </ContainerForm>
   );

@@ -26,8 +26,7 @@ const Header = ({ openSideBar }) => {
   const [showModal, setShowModal] = useState(false);
   const [currentPage, setCurrentPage] = useState('');
 
-  const location = useLocation();
-  console.log(location);
+  const location = useLocation()
   const openModal = () => {
     setShowModal(true);
   };

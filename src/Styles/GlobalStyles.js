@@ -79,7 +79,7 @@ export const GlobalStyle = createGlobalStyle`
 
 
   html, body {
-    font-family: 'Inter Tight', sans-serif;
+    font-family: 'InterTightRegular', sans-serif;
     padding: 0;
     margin: 0;
     -webkit-font-smoothing: antialiased;
