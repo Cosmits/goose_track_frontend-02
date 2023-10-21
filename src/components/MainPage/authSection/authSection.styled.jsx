@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { FiLogIn } from 'react-icons/fi';
-import { GlobalStyle } from '../../../Styles/GlobalStyles';
+// import { GlobalStyle } from '../../../Styles/GlobalStyles';
 
-export const AuthSection = styled.section`
+export const AuthSectionWrap = styled.section`
   height: 100vh;
 
   display: flex;
@@ -26,7 +26,7 @@ export const AuthLogo = styled.img`
 export const AuthHeader = styled.h1`
   color: var(--white, #fff);
 
-  font-family: ${GlobalStyle.InterTightBold};
+font-family: 'InterTightBold';
   font-size: 44px;
   font-weight: 700;
   line-height: 1.09;
@@ -114,7 +114,7 @@ export const Wrap = styled.div`
 
 export const LoginSpan = styled.span`
   display: block;
-  font-family: ${GlobalStyle.InterTightMedium};
+  font-family: 'InterSemiBold';
   font-size: 14px;
   font-weight: 600;
   line-height: 1.28;
@@ -130,11 +130,10 @@ export const StyledFiLogIn = styled(FiLogIn)`
   stroke: var(--main-blue, #3e85f3);
 `;
 
-//------------------------------------------------------//
 export const SignupLink = styled(NavLink)`
   display: block;
 
-  font-family: ${GlobalStyle.InterTightMedium};
+  font-family: 'InterSemiBold';
   font-size: 12px;
   font-weight: 600;
   line-height: 1.16;

@@ -1,5 +1,4 @@
 import {
-  AuthSection,
   AuthHeader,
   AuthLogo,
   AuthNav,
@@ -12,13 +11,14 @@ import {
   NavItem,
   AuthHeaderSpan,
   AuthContainer,
-} from './authSection.styled';
+  AuthSectionWrap,
+} from './AuthSection.styled';
 import gooseLogo from '../../../images/Auth_mainpage/GOOSE_logo.png';
 import { Container } from '../../../Styles/Container.styled';
 
-export const Auth = () => {
+export const AuthSection = () => {
   return (
-    <AuthSection>
+    <AuthSectionWrap>
       <Container>
         <AuthContainer>
           <AuthLogo src={gooseLogo} alt="Goose Track Logo" />
@@ -42,6 +42,6 @@ export const Auth = () => {
           </AuthNav>
         </AuthContainer>
       </Container>
-    </AuthSection>
+    </AuthSectionWrap>
   );
 };
