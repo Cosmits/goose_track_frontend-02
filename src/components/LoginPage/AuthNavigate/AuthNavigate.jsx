@@ -3,11 +3,7 @@
 import { AuthNavLink } from "./AuthNavigate.styled";
 
 const AuthNavigate = ({route, textContent}) => {
-       return (
-        <div>
-                <AuthNavLink to={route}>{textContent}</AuthNavLink>
-        </div>
-    )
+       return <AuthNavLink to={route}>{textContent}</AuthNavLink>
 };
 
 export default AuthNavigate;
