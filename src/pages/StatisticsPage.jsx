@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { StatisticsChart } from "../../components/StatisticsChart/StatisticsChart";
+
+import { StatisticsChart } from "../components/StatisticsPage/StatisticsChart/StatisticsChart";
 
 
 const StatisticsPage = (tasks, date) => {

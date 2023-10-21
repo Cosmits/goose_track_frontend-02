@@ -6,9 +6,9 @@ export const lightTheme = {
   btnActive: '#CAE8FF',
   btnNoActive: '#E3F3FF',
   btnTextColor: '#3E85F3',
-  mainSideBarText: "rgba(52, 52, 52, 0.50)",
-
-
+  mainSideBarText: 'rgba(52, 52, 52, 0.50)',
+  statisticBG: '#FFFFFF',
+  calendarBtnColor: '#DCE3E5',
 };
 
 export const darkTheme = {
@@ -19,7 +19,7 @@ export const darkTheme = {
   btnActiveBGColor: '#3E85F3',
   btnNoActiveBGcolor: '#21222C',
   btnActiveTextColor: '#FFF',
-  mainSideBarText: "#FFF;",
-
-  
+  mainSideBarText: "#FFF",
+  statisticBG: '#171820',
+  calendarBtnColor: 'rgba(255, 255, 255, 0.15);'
 };

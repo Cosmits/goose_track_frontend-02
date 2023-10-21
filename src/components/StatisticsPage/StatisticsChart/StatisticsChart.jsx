@@ -1,5 +1,9 @@
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 import { useEffect, useState } from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
+
+// import { selectTheme} from '../../../redux/theme/themeSlice';
+// import { theme} from '../../../Styles/theme';
 
 import { 
   StatisticsContainer,
@@ -10,12 +14,13 @@ import {
       DayIcon, 
       CalendarContainer
      } from './StatisticsChart.styled';
-import { fetchByDayTasks, fetchByMonthTasks } from './services/services.js';
-import { getPercentage } from './services/services.js'
-import { useScreenSize } from '../../hooks/useScreenSize';
+import { fetchByDayTasks, fetchByMonthTasks } from '../services/services.js';
+import { getPercentage } from '../services/services.js'
+import { useScreenSize } from '../../../hooks/useScreenSize';
 
 // import CalendarToolBar from '../CalendarToolBar/CalendarToolBar';
-import StyledDatepicker from './Calendar/StyledDatepicker';
+// import StyledDatepicker from '../StyledDatepicker/StyledDatepicker';
+import { PeriodPaginator } from '../PeriodPaginator/PeriodPaginator';
 
 
 
@@ -40,6 +45,19 @@ export const StatisticsChart = ({ tasks, date }) => {
   const [selectedMonth, setSelectedMonth] = useState(date);
 
   const { isTablet, isMobile } = useScreenSize();
+  // const activeTheme = useSelector(selectTheme);
+
+
+  // const lightThemeColors = {
+  //   textColor: '#343434',
+  // };
+  
+  // const darkThemeColors = {
+  //   textColor: '#FFFFFF',
+  // };
+  
+  // const themeColors = activeTheme === 'light' ? lightThemeColors : darkThemeColors;
+
 
   const handleDateChange = (newDate) => {
     setSelectedDay(newDate);
@@ -88,7 +106,8 @@ export const StatisticsChart = ({ tasks, date }) => {
   return (
     <StatisticsContainer>
       <CalendarContainer>
-        <StyledDatepicker onDayChange={handleDateChange} />
+        {/* <StyledDatepicker onDayChange={handleDateChange} /> */}
+        <PeriodPaginator onDayChange={handleDateChange}/>
         {/* <CalendarToolBar date ={date} /> */}
         <BarContainer>
           <MonthIcon ></MonthIcon>
@@ -119,7 +138,8 @@ export const StatisticsChart = ({ tasks, date }) => {
             fontFamily: 'InterTightRegular',
             lineHeight: 1.3,
             fontWeight: 400,
-            fill: '#343434',
+            // fill: '#343434',
+            // fill: themeColors.textColor,
           }}
             tickMargin={19}
           />
@@ -127,11 +147,11 @@ export const StatisticsChart = ({ tasks, date }) => {
             label={{
               value: 'Tasks',
               position: "top",
-              offset: 24,
-              fill: '#343434',
+              offset:  isMobile ? 20 :24,
+              // fill: themeColors.textColor,
               fontSize: 14,
               fontWeight: 600,
-              dx: isMobile ? -20 : isTablet ? -37 : -68,
+              dx: isMobile ? -20 : isTablet ? -37 : -72,
               fontFamily: 'InterTight'
             }}
             width={1} domain={[0, 100]}
@@ -144,7 +164,7 @@ export const StatisticsChart = ({ tasks, date }) => {
               fontFamily: 'InterTightRegular',
               lineHeight: 1.3,
               fontWeight: 400,
-              fill: '#343434',
+              // fill: themeColors.textColor,
             }}
           />
           <Tooltip />
@@ -154,12 +174,11 @@ export const StatisticsChart = ({ tasks, date }) => {
             shape={<CustomBarShape radius={8} />}
             label={{
               position: 'top',
-              fill: '#343434',
+              // fill: themeColors.textColor,
               fontSize: 12,
               fontFamily: 'PoppinsMedium',
               lineHeight: 1.3,
               fontWeight: 500,
-              // formatter: (value) => `${value}%`,
               formatter: (value) => (value !== 0 ? `${value}%` : ''),
             }}
             legendType="none"
@@ -174,7 +193,6 @@ export const StatisticsChart = ({ tasks, date }) => {
               fontFamily: 'PoppinsMedium',
               lineHeight: 1.3,
               fontWeight: 500,
-              // formatter: (value) => `${value}%`,
               formatter: (value) => (value !== 0 ? `${value}%` : ''),
             }}
 

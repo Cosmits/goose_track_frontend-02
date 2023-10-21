@@ -14,7 +14,7 @@ import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import AccountPage from './pages/AccountPage';
-import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
+import StatisticsPage from './pages/StatisticsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import CalendarPage from './pages/CalendarPage';
 import AppCalendar from './components/AppCalendar/AppCalendar';

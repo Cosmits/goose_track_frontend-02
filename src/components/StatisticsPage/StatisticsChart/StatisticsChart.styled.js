@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+// import { createGlobalStyle } from 'styled-components';
+
 
 export const StatisticsContainer =styled.div`
 /* max-width: 335px; */
@@ -7,7 +9,7 @@ export const StatisticsContainer =styled.div`
  padding: 28px 14px 135px;
  /* border: 1px solid red; */
  border-radius: 16px;
-background-color: var(--white);
+ background-color: ${({ theme }) => theme.statisticBG};
 
 @media screen and (min-width: 768px){ 
     padding: 132px 64px;
@@ -20,21 +22,35 @@ background-color: var(--white);
 
 `
 export const CalendarContainer = styled.div`
-display: flex;
+/* display: flex;
 flex-direction: column;
-align-items: center;
+gap: 20px;
+align-items: center; */
 
 
 @media screen and (min-width: 768px){
+    display: flex;
+    max-width: 579px;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 48px;
+    }
+
+    @media screen and (min-width: 1440px){
+        max-width: 780px;
+        align-items: center;
+      
+       
+
     }
 
 `
 export const StyledContainer = styled.div`
 /* display: inline-block; */
  max-width: 307px;  
-border: 2px solid var(--light-blue);
+border: 0.8px solid var(--light-blue);
 padding: 40px 14px; 
 border-radius: 20px;
  margin: 0 auto; 
@@ -52,7 +68,8 @@ export const StyledParagraph = styled.p`
  font-weight: 400;
  font-size: 14px;
  line-height: calc(18/14);
- color: var(--letter-gray);
+  /* color: var(--letter-gray);  */
+  color :${({ theme }) => theme.mainTextColor};
  margin-right: 14px;
 `
 
@@ -80,20 +97,20 @@ line-height: calc(18/14);
 display: flex;
 gap: 5px;
 align-items: center;
-margin-bottom: 40px;
+ margin-bottom: 40px; 
 
 @media screen and (min-width: 768px){
     /* position: absolute; */
     font-size: 14px;
     font-size: 16px;
     line-height: calc(18/16);
-    margin-bottom: 32px;
-    /* margin-right: 64px; */
+    margin-bottom: 0px; 
+   
     justify-content: flex-end;
 }
 
 @media screen and (min-width: 1440px){
-    margin-bottom: 48px;
-    /* margin-right: 154px; */
+    /* margin-bottom: 48px; */
+   
     }
 `
