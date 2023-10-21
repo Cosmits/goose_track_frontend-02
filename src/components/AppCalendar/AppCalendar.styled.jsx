@@ -74,9 +74,6 @@ export const AppCalendarGlobalStyles = createGlobalStyle`
   .rbc-today {
     background: transparent;
   }
-  .rbc-off-range .rbc-button-link {
-    display: none;
-  }
   .rbc-month-row {
     min-height: 125px;
   }
