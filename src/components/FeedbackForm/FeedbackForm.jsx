@@ -25,7 +25,7 @@ import {
 
 const FeedbackForm = ({ onClose }) => {
   const [rating, setRating] = useState(5);
-  const [review, setReview] = useState('');
+  const [comment, setComment] = useState('');
   const [isEditReview, setIsEditReview] = useState(false);
   const [isDeleteReview, setIsDeleteReview] = useState(false);
 
@@ -37,10 +37,10 @@ const FeedbackForm = ({ onClose }) => {
   useEffect(() => {
     if (userReviewData) {
       setRating(userReviewData.data.rating);
-      setReview(userReviewData.data.review);
+      setComment(userReviewData.data.comment);
     } else {
       setRating(5);
-      setReview('');
+      setComment('');
     }
   }, [userReviewData]);
 
@@ -57,10 +57,10 @@ const FeedbackForm = ({ onClose }) => {
   const handleChangeReview = (event) => {
     const text = event.target.value;
     if (text.length <= 300) {
-      setReview(text);
+      setComment(text);
     } else {
       console.log('Error');
-      //  toast.error(message, toastOptions);
+      //  toast.error(message);
     }
   };
 
@@ -68,22 +68,22 @@ const FeedbackForm = ({ onClose }) => {
     event.preventDefault();
     if (isEditReview) {
       try {
-        await editReview({ review, rating }).unwrap();
-        //   toast.success(message, toastOptions);
+        await editReview({ comment, rating }).unwrap();
+        //   toast.success(message);
         setIsEditReview(false);
         onClose();
       } catch (error) {
         console.log('error: ', error);
-        //    toast.error(message, toastOptions);
+        //    toast.error(message);
       }
     } else {
       try {
-        await createReview({ review, rating }).unwrap();
-        //  toast.success(message, toastOptions);
+        await createReview({ comment, rating }).unwrap();
+        //  toast.success(message);
         onClose();
       } catch (error) {
         console.log('error: ', error);
-        // toast.error(message, toastOptions);
+        // toast.error(message);
       }
     }
   };
@@ -92,12 +92,12 @@ const FeedbackForm = ({ onClose }) => {
     try {
       await deleteReview();
 
-      //  toast.success(message, toastOptions);
+      //  toast.success(message);
       setIsDeleteReview(false);
       onClose();
     } catch (error) {
       console.log('error: ', error);
-      //  toast.error(message, toastOptions);
+      //  toast.error(message);
     }
   };
 
@@ -130,9 +130,9 @@ const FeedbackForm = ({ onClose }) => {
         )}
       </TextAreaLabel>
       <TextArea
-        name="review"
-        id="review"
-        value={review}
+        name="comment"
+        id="comment"
+        value={comment}
         placeholder="Enter text"
         onChange={handleChangeReview}
         disabled={!isEditReview && userReviewData}
