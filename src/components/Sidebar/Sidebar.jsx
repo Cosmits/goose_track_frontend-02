@@ -1,29 +1,25 @@
 import { Link, useLocation } from 'react-router-dom';
-import { SidebarWrapper } from './Sidebar.styled'; // Import the styled component
+import { SidebarWrapper } from './Sidebar.styled';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
+import sidebarLogo from '/src/images/goose_logo_desktop@1x.png';
+
 
 function Sidebar(props) {
   const dispatch = useDispatch();
-
   const handleLogout = () => {
     dispatch(logOut());
   };
   const { closeSideBar } = props;
   const location = useLocation();
 
-  //const isTablet = useMediaQuery({ maxWidth: 1440 });
   return (
     <SidebarWrapper>
       {/* <button id="open-burger">OPEN</button>*/}{' '}
-      <div id="sidebar" className="conteiner sidebar">
+      <div id="sidebar" className="sidebar">
         <div className="logo-class">
           <Link to="/account" className="logo">
-            <img
-              className="logo-img"
-              src="./src/images/goose_logo_desktop.png"
-              alt="GooseTrack Logo"
-            />
+            <img src={sidebarLogo} className='logo-img' alt="Sidebar Logo" />
             <p className="logo-text">GooseTrack</p>
           </Link>
           <button id="close-button" className="icon" onClick={closeSideBar}>
