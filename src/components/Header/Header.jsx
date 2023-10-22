@@ -13,7 +13,6 @@ import {
   LogoHeader,
   NoTaskTitle,
   NoTaskWrapper,
-  
 } from './Header.styled';
 import logoHeader from '../../images/header/logoHeader.png';
 import AddFeedbackBtn from './FeedbackBtn/AddFeedbackBtn';
@@ -26,7 +25,7 @@ const Header = ({ openSideBar }) => {
   const [showModal, setShowModal] = useState(false);
   const [currentPage, setCurrentPage] = useState('');
 
-  const location = useLocation()
+  const location = useLocation();
   const openModal = () => {
     setShowModal(true);
   };
@@ -35,12 +34,16 @@ const Header = ({ openSideBar }) => {
   };
 
   useEffect(() => {
-    const path = location.pathname;
+    const path = location.pathname.split("/")[1];
+       
     switch (path) {
-      case '/calendar':
+      case 'account':
+        setCurrentPage('User Profile');
+        break;
+      case 'calendar':
         setCurrentPage('Calendar');
         break;
-      case '/statistics':
+      case 'statistics':
         setCurrentPage('Statistics');
         break;
       default:
@@ -50,16 +53,21 @@ const Header = ({ openSideBar }) => {
 
   return (
     <HeaderWrapper>
-      {isDesktop  && 
-      <NoTaskWrapper>
-      <LogoHeader src={logoHeader} alt="LogoHeader"/>
-      <div>
-        <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
-        <NoTaskTitle><HeaderTask>Let go</HeaderTask> of the past and focus on the present!</NoTaskTitle>
-        </div></NoTaskWrapper>}
-       {/* {isDesktop && <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>} */}
+      {isDesktop && (
+        <NoTaskWrapper>
+          <LogoHeader src={logoHeader} alt="LogoHeader" />
+          <div>
+            <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
+            <NoTaskTitle>
+              <HeaderTask>Let go</HeaderTask> of the past and focus on the
+              present!
+            </NoTaskTitle>
+          </div>
+        </NoTaskWrapper>
+      )}
+      {/* {isDesktop && <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>} */}
       {/* {(isDesktop & currentPage==="calendar/day") && <LogoHeader/>} */}
-      
+
       {!isDesktop && <BurgerMenu onClick={openSideBar} />}
       <HeaderUser>
         <AddFeedbackBtn openModal={openModal} />

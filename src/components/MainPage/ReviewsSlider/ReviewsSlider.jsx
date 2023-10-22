@@ -1,54 +1,23 @@
 // Illia Shatokhin
 
-import { useEffect, useState } from 'react';
-
-import reviewsApi from '../../../services/reviews-api';
-
-import { Container } from '../../../Styles/Container.styled';
 import Slider from './Slider/Slider';
+import { Container } from '../../../Styles/Container.styled';
 import { ReviewsWrapper, Title } from './ReviewsSlider.styled';
-import { ColorRing } from 'react-loader-spinner';
+import { useFetchReviewsQuery } from '../../../redux/reviews/reviewsApi';
+import Loader from '../../MainLayout/Loader/Loader';
 
-export default function ReviewsSlider() {
-  const [reviews, setReviews] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const fetch = async () => {
-      try {
-        setLoading(true);
-        const response = await reviewsApi.fetchAllReviews();
-        const { data } = response;
-        setReviews(data);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        console.log('error', error);
-      }
-    };
-
-    fetch();
-  }, []);
+const ReviewsSlider = () => {
+  const { data: reviews, isFetching } = useFetchReviewsQuery();
 
   return (
     <ReviewsWrapper>
       <Container>
         <Title>Reviews</Title>
-        {loading && (
-          <ColorRing
-            visible={true}
-            height="180"
-            width="180"
-            ariaLabel="blocks-loading"
-            wrapperStyle={{
-              width: '100%',
-              margin: '0 auto',
-            }}
-            colors={['#13151A', '#3E85F3', '#DCEBF7', '#E74A3B', '#FFD2DD ']}
-          />
-        )}
-        {reviews && <Slider reviews={reviews} />}
+        {isFetching && (< Loader />)}
+        {reviews && <Slider reviews={reviews.data} />}
       </Container>
     </ReviewsWrapper>
   );
 }
+
+export default ReviewsSlider

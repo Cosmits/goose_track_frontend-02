@@ -8,25 +8,25 @@ export const tasksApi = createApi({
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
 
-      if (token)  headers.set('authorization', `Bearer ${token}`);
-      
+      if (token) headers.set('authorization', `Bearer ${token}`);
+
       return headers;
     },
   }),
 
   tagTypes: ['Tasks'],
 
-  endpoints: builder => ({
+  endpoints: (builder) => ({
     getMonthlyTasks: builder.query({
-      query: date => ({
-        url: `tasks?month=${date}`,
+      query: (date) => ({
+        url: `/tasks?date=${date}`,
         method: 'GET',
       }),
       providesTags: ['Tasks'],
     }),
 
     createTasks: builder.mutation({
-      query: data => ({
+      query: (data) => ({
         url: '/tasks',
         method: 'POST',
         body: data,
@@ -44,7 +44,7 @@ export const tasksApi = createApi({
     }),
 
     deleteTasks: builder.mutation({
-      query: id => ({
+      query: (id) => ({
         url: `/tasks/${id}`,
         method: 'DELETE',
       }),
