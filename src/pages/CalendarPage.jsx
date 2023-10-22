@@ -8,7 +8,6 @@ import Loader from "../components/MainLayout/Loader/Loader";
 const CalendarPage = () => {
   return (
     <Suspense fallback={<Loader />}>
-      <p> CalendarPage </p>
       <Outlet />
     </Suspense>
   );

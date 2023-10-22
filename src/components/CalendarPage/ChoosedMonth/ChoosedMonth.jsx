@@ -6,7 +6,6 @@ export default function ChoosedMonth() {
 
   return (
     <>
-      <p>ChoosedMonth</p>
       <AppCalendar toolbar={CalendarToolBar} />
     </>
   );
