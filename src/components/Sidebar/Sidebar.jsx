@@ -16,10 +16,10 @@ function Sidebar(props) {
   return (
     <SidebarWrapper>
       {/* <button id="open-burger">OPEN</button>*/}{' '}
-      <div id="sidebar" className="conteiner sidebar">
+      <div id="sidebar" className="sidebar">
         <div className="logo-class">
           <Link to="/account" className="logo">
-            <img src={sidebarLogo} alt="Sidebar Logo" />
+            <img src={sidebarLogo} className='logo-img' alt="Sidebar Logo" />
             <p className="logo-text">GooseTrack</p>
           </Link>
           <button id="close-button" className="icon" onClick={closeSideBar}>

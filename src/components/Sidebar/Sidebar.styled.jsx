@@ -28,6 +28,9 @@ export const SidebarWrapper = styled.div`
     border-right: 1px solid rgba(220, 227, 229, 0.5);
     background: #fff;
   }
+  .logo-img{
+    width: 71px;
+  }
   .svg-nav {
     width: 24px;
     height: 24px;
@@ -50,7 +53,6 @@ export const SidebarWrapper = styled.div`
   .close-btn {
     width: 34px;
     height: 34px;
-    margin-left: 43px;
     stroke: ${({ theme }) => theme.mainSideBarText};
   }
   .user-panel {
@@ -168,6 +170,9 @@ export const SidebarWrapper = styled.div`
     //display: block;
     position: fixed;
     z-index: 3;
+    .logo-img{
+      width: 60px;
+    }
     .sidebar {
       margin-right: 32px;
       margin-left: 32px;
@@ -175,7 +180,6 @@ export const SidebarWrapper = styled.div`
     }
     .logo .logo-text {
       font-size: 16px;
-      margin-right: 31px;
     }
     .icon {
       display: block;
@@ -203,6 +207,9 @@ export const SidebarWrapper = styled.div`
       .panel-instrument {
         font-size: 14px;
       }
+    }
+    .logo-img{
+      width: 36px;
     }
     .close-btn {
       width: 24px;
