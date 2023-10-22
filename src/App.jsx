@@ -1,6 +1,7 @@
+import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import { getCurrentUser } from './redux/auth/operations';
 
 import { ToastContainer } from 'react-toastify';
@@ -10,15 +11,25 @@ import RestrictedRoute from './components/RestrictedRoute';
 import PrivateRoute from './components/PrivateRoute';
 import MainLayout from './components/MainLayout/MainLayout';
 
-import MainPage from './pages/MainPage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
-import AccountPage from './pages/AccountPage';
-import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
-import NotFoundPage from './pages/NotFoundPage';
-import CalendarPage from './pages/CalendarPage';
-import AppCalendar from './components/AppCalendar/AppCalendar';
-import CalendarToolBar from './components/CalendarToolBar/CalendarToolBar';
+const MainPage = lazy(() => import('./pages/MainPage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
+const AccountPage = lazy(() => import('./pages/AccountPage'));
+const StatisticsPage = lazy(() => import('./pages/StatisticsPage/StatisticsPage'));
+const CalendarPage = lazy(() => import('./pages/CalendarPage'));
+const ChoosedDay = lazy(() => import('./components/CalendarPage/ChoosedDay/ChoosedDay'));
+const ChoosedMonth = lazy(() => import('./components/CalendarPage/ChoosedMonth/ChoosedMonth'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+
+// import MainPage from './pages/MainPage';
+// import LoginPage from './pages/LoginPage/LoginPage';
+// import RegisterPage from './pages/RegisterPage/RegisterPage';
+// import AccountPage from './pages/AccountPage';
+// import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
+// import CalendarPage from './pages/CalendarPage';
+// import ChoosedDay from './components/CalendarPage/ChoosedDay/ChoosedDay';
+// import ChoosedMonth from './components/CalendarPage/ChoosedMonth/ChoosedMonth';
+// import NotFoundPage from './pages/NotFoundPage';
 
 // const test = import.meta.env.VITE_API_TEST;
 
@@ -28,33 +39,22 @@ function App() {
 
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
 
-
   return (
-    <>
+    <Suspense >
       <Routes>
-        <Route path="/"
-          element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />}
-          index
-        />
-        <Route path="/register"
-          element={<RestrictedRoute redirectTo="/calendar" component={<RegisterPage />} />}
-        />
-        <Route path="/login"
-          element={<RestrictedRoute redirectTo="/calendar" component={<LoginPage />} />}
-        />
+        <Route index path="/" element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />} />
+        <Route path="/register" element={<RestrictedRoute redirectTo="/calendar" component={<RegisterPage />} />} />
+        <Route path="/login" element={<RestrictedRoute redirectTo="/calendar" component={<LoginPage />} />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/"
-          element={<PrivateRoute redirectTo="/login" component={<MainLayout />} />}
-        >
+        <Route path="/" element={<PrivateRoute redirectTo="/login" component={<MainLayout />} />} >
           <Route path="account" element={<AccountPage />} />
-          <Route path="calendar" element={<AppCalendar toolbar={CalendarToolBar} />}>
-            {/* <Route path="month/:currentDate" element={<AppCalendar  toolbar={CalendarToolBar} />} /> */}
-            {/* <Route path="day/:currentDay" element={<ChoosedDay />} /> */}
+          <Route path="calendar" element={<CalendarPage />}>
+            <Route path="month/:currentDate" element={<ChoosedMonth />} />
+            <Route path="day/:currentDay" element={<ChoosedDay />} />
           </Route>
           <Route path="statistics" element={<StatisticsPage />}>
             <Route path=":currentDate" element={<StatisticsPage />} />
@@ -63,7 +63,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <ToastContainer autoClose={2000} />
-    </>
+    </Suspense>
   );
 
 }

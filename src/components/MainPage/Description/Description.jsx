@@ -27,7 +27,7 @@ import {
 } from './Description.styled';
 import { useScreenSize } from '../../../hooks/useScreenSize';
 
-export const Description = () => {
+const Description = () => {
 
     const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
     const { isDesktop, isTablet, isMobile } = useScreenSize();
@@ -38,7 +38,7 @@ export const Description = () => {
                     <StyledNumberPar>1.</StyledNumberPar>
                     <StyledPreTitle>Calendar</StyledPreTitle>
                     <StyledDescriptionTitle>View</StyledDescriptionTitle>
-                    <StyledDescription>GooseTrack's Calendar view provides a comprehensive overview of your schedule,
+                    <StyledDescription>GooseTrack’s Calendar view provides a comprehensive overview of your schedule,
                         displaying all your tasks, events, and appointments in a visually appealing and intuitive layout.
                     </StyledDescription>
                 </div>
@@ -53,7 +53,7 @@ export const Description = () => {
                     <StyledNumberPar>2.</StyledNumberPar>
                     <StyledDescriptionTitle>Sidebar</StyledDescriptionTitle>
                     <StyledDescription>GooseTrack offers easy access to your account settings, calendar, and filters.
-                        The "My Account" section allows you to manage your profile information and preferences,
+                        The ’My Account’ section allows you to manage your profile information and preferences,
                         while the calendar provides a quick and convenient way to view your upcoming events and tasks.
                     </StyledDescription>
                 </StyledContainer>
@@ -78,3 +78,5 @@ export const Description = () => {
         </StyledList>
     )
 }
+
+export default Description
