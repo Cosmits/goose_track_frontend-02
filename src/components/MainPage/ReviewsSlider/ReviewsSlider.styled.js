@@ -3,6 +3,7 @@ import styled from 'styled-components';
 //Illia Shatokhin
 // media 375,768,1440
 export const ReviewsWrapper = styled.section`
+  background-color: var(--white);
   padding: 64px 0;
 
   @media screen and (min-width: 768px) {

@@ -20,7 +20,5 @@ export const darkTheme = {
   btnActiveBGColor: '#3E85F3',
   btnNoActiveBGcolor: '#21222C',
   btnActiveTextColor: '#FFF',
-
-  labelTextColor: 'rgba(250, 250, 250, 0.30)',
-  borderInputColor: 'rgba(255, 255, 255, 0.15)',
+  mainSideBarText: '#FFF;',
 };

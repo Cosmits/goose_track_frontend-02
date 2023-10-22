@@ -6,12 +6,15 @@ import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-import { logIn } from '../../redux/auth/operations';
-import { Button, DontShowIcon, Error, Icon, Input, InputWrap, Label, List, LogInPicture, PasswordButton, ShowIcon, Title } from '../RegisterForm/AuthForm.styled';
-import SuccessIcon from '../../images/RegisterPage/success.svg';
-import ErrorIcon from '../../images/RegisterPage/error.svg';
-import LogInIcon from '../../images/RegisterPage/login.svg';
-
+import { logIn } from '../../../redux/auth/operations';
+import {
+    Button, DontShowIcon, Error, Icon,
+    Input, InputWrap, Label, List, LogInPicture,
+    PasswordButton, ShowIcon, Title
+} from '../../RegisterPage/RegisterForm/RegisterForm.styled'
+import SuccessIcon from '../../../images/RegisterPage/success.svg';
+import ErrorIcon from '../../../images/RegisterPage/error.svg';
+import LogInIcon from '../../../images/RegisterPage/login.svg';
 
 const ErrorMessages = ({ name }) => {
     return (
@@ -30,9 +33,15 @@ const initialValues = {
 const schema = yup.object().shape({
     email: yup.string()
         .email('Invalid email, enter in format "example@ukr.net"')
+        .matches(
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+            'Email must contain only digits, letters and . - _ symbols: "example@ukr.net"',
+        )
         .required('Email is required'),
     password: yup.string()
         .min(6, 'Password must be at least 6 characters')
+        .matches(/[a-zA-Z]/, 'Password must contain at least one letter')
+        .matches(/[0-9]/, 'Password must contain at least one number')
         .required('Password is required'),
 });
 
@@ -51,7 +60,7 @@ const LoginForm = () => {
             .unwrap()
             .then(() => toast.success('Login succesfully'))
             .catch(() => toast.error('An error has occurred. Try again'));
-        
+
         resetForm();
     };
 
@@ -63,7 +72,7 @@ const LoginForm = () => {
         >
             {({ values, errors, touched }) => (
                 <Form>
-                        <Title>Log In</Title>
+                    <Title>Log In</Title>
                     <List>
                         <InputWrap>
                             <Label
@@ -76,7 +85,7 @@ const LoginForm = () => {
                                 name="email"
                                 autoComplete="off"
                                 placeholder="Enter email"
-                                className={ touched.email ? errors.email ? 'error' : 'success' : ''}
+                                className={touched.email ? errors.email ? 'error' : 'success' : ''}
                             />
                             <ErrorMessages name="email" />
                             {errors.email && touched.email
@@ -98,19 +107,19 @@ const LoginForm = () => {
                                 name="password"
                                 autoComplete="off"
                                 placeholder="Enter password"
-                                className={ touched.password ? errors.password ? 'error' : 'success' : ''}
+                                className={touched.password ? errors.password ? 'error' : 'success' : ''}
                             />
                             <ErrorMessages name="password" />
 
                             <PasswordButton
-                type="button"
-                onClick={handleTogglePassword}
-              >
-                {showPassword ? (
-                  <DontShowIcon />
-                ) : (
-                  <ShowIcon />
-                )}
+                                type="button"
+                                onClick={handleTogglePassword}
+                            >
+                                {showPassword ? (
+                                    <DontShowIcon />
+                                ) : (
+                                    <ShowIcon />
+                                )}
                             </PasswordButton>
 
                         </InputWrap>
