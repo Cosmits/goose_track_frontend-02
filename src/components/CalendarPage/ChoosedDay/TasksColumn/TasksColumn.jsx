@@ -9,7 +9,7 @@ export default function TasksColumn({ title, tasks }) {
   return (
     <TaskColumn>
       <ColumnHeadBar title={title} category={title} />
-      <ColumnsTasksList tasks={tasks} />
+      {tasks && <ColumnsTasksList tasks={tasks} />}
       <AddTaskBtn category={title} />
     </TaskColumn>
   );
