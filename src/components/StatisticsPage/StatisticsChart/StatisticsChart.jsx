@@ -1,10 +1,12 @@
-import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
+import PropTypes from 'prop-types';
+import { BarChart, CartesianGrid, XAxis, YAxis, Legend, Bar } from 'recharts';
+
 import { useEffect, useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useScreenSize } from '../../../hooks/useScreenSize';
 
-// import { selectTheme} from '../../../redux/theme/themeSlice';
-// import { theme} from '../../../Styles/theme';
-
+import { selectTheme } from '../../../redux/theme/themeSlice'
+import {lightTheme, darkTheme} from '../../../Styles/theme.js'
 import { 
   StatisticsContainer,
    StyledContainer,
@@ -14,27 +16,13 @@ import {
       DayIcon, 
       CalendarContainer
      } from './StatisticsChart.styled';
-import { fetchByDayTasks, fetchByMonthTasks } from '../services/services.js';
-import { getPercentage } from '../services/services.js'
-import { useScreenSize } from '../../../hooks/useScreenSize';
-
-// import CalendarToolBar from '../CalendarToolBar/CalendarToolBar';
-// import StyledDatepicker from '../StyledDatepicker/StyledDatepicker';
+import { fetchByDayTasks, fetchByMonthTasks } from '../../../services/statistic-api.js';
+import { getPercentage } from '../../../services/statistic-api.js'
 import { PeriodPaginator } from '../PeriodPaginator/PeriodPaginator';
 
 
 
-const CustomBarShape = (props) => {
-  const { x, y, width, height, fill, radius } = props;
 
-  if (props.value === 0) {
-    return null;
-  }
-
-  return (
-    <path d={`M${x},${y + radius} L${x},${y + height - radius} Q${x},${y + height} ${x + radius},${y + height} L${x + width - radius},${y + height} Q${x + width},${y + height} ${x + width},${y + height - radius} L${x + width},${y + radius} Q${x + width},${y} ${x + width - radius},${y} L${x + radius},${y} Q${x},${y} ${x},${y + radius}`} fill={fill} />
-  );
-};
 
 
 export const StatisticsChart = ({ tasks, date }) => {
@@ -45,18 +33,8 @@ export const StatisticsChart = ({ tasks, date }) => {
   const [selectedMonth, setSelectedMonth] = useState(date);
 
   const { isTablet, isMobile } = useScreenSize();
-  // const activeTheme = useSelector(selectTheme);
-
-
-  // const lightThemeColors = {
-  //   textColor: '#343434',
-  // };
-  
-  // const darkThemeColors = {
-  //   textColor: '#FFFFFF',
-  // };
-  
-  // const themeColors = activeTheme === 'light' ? lightThemeColors : darkThemeColors;
+  const activeTheme = useSelector(selectTheme);
+  const themeColors = activeTheme === 'light' ? lightTheme : darkTheme;
 
 
   const handleDateChange = (newDate) => {
@@ -106,9 +84,7 @@ export const StatisticsChart = ({ tasks, date }) => {
   return (
     <StatisticsContainer>
       <CalendarContainer>
-        {/* <StyledDatepicker onDayChange={handleDateChange} /> */}
         <PeriodPaginator onDayChange={handleDateChange}/>
-        {/* <CalendarToolBar date ={date} /> */}
         <BarContainer>
           <MonthIcon ></MonthIcon>
           <StyledParagraph>By Day</StyledParagraph>
@@ -132,23 +108,22 @@ export const StatisticsChart = ({ tasks, date }) => {
               <stop offset="90%" stopColor="#3E85F3" stopOpacity={1} />
             </linearGradient>
           </defs>
-          <CartesianGrid stroke=" var(--light-blue)" vertical={false} />
+          <CartesianGrid stroke={themeColors.statisticStrokeColor} vertical={false} />
           <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{
             fontSize: isMobile ? 12 : 14,
             fontFamily: 'InterTightRegular',
             lineHeight: 1.3,
             fontWeight: 400,
-            // fill: '#343434',
-            // fill: themeColors.textColor,
+             fill: themeColors.secondaryTextColor,
           }}
-            tickMargin={19}
+            tickMargin={18}
           />
           <YAxis
             label={{
               value: 'Tasks',
               position: "top",
               offset:  isMobile ? 20 :24,
-              // fill: themeColors.textColor,
+              fill: themeColors.secondaryTextColor,
               fontSize: 14,
               fontWeight: 600,
               dx: isMobile ? -20 : isTablet ? -37 : -72,
@@ -164,17 +139,17 @@ export const StatisticsChart = ({ tasks, date }) => {
               fontFamily: 'InterTightRegular',
               lineHeight: 1.3,
               fontWeight: 400,
-              // fill: themeColors.textColor,
+              fill: themeColors.secondaryTextColor,
             }}
           />
-          <Tooltip />
+          {/* <Tooltip /> */}
           <Legend align='left' verticalAlign="top" height={34} />
           <Bar dataKey="pv" barSize={isMobile ? 22 : 27}
             fill="url(#pinkGradient)"
             shape={<CustomBarShape radius={8} />}
             label={{
               position: 'top',
-              // fill: themeColors.textColor,
+              fill: themeColors.secondaryTextColor,
               fontSize: 12,
               fontFamily: 'PoppinsMedium',
               lineHeight: 1.3,
@@ -188,7 +163,7 @@ export const StatisticsChart = ({ tasks, date }) => {
             shape={<CustomBarShape radius={8} />}
             label={{
               position: 'top',
-              fill: '#343434',
+              fill: themeColors.secondaryTextColor,
               fontSize: 12,
               fontFamily: 'PoppinsMedium',
               lineHeight: 1.3,
@@ -204,3 +179,20 @@ export const StatisticsChart = ({ tasks, date }) => {
 };
 
 
+const CustomBarShape = (props) => {
+  const { x, y, width, height, fill, radius } = props;
+
+  if (props.value === 0) {
+    return null;
+  }
+
+  return (
+    <path d={`M${x},${y + radius} L${x},${y + height - radius} Q${x},${y + height} ${x + radius},${y + height} L${x + width - radius},${y + height} Q${x + width},${y + height} ${x + width},${y + height - radius} L${x + width},${y + radius} Q${x + width},${y} ${x + width - radius},${y} L${x + radius},${y} Q${x},${y} ${x},${y + radius}`} fill={fill} />
+  );
+};
+
+
+StatisticsChart.propTypes = {
+  tasks: PropTypes.object.isRequired,
+  date: PropTypes.object.isRequired,
+};

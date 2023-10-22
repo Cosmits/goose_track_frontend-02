@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { forwardRef, useState } from "react";
 import { addMonths, format, subMonths } from "date-fns";
 import DatePicker from "react-datepicker";
@@ -52,4 +53,15 @@ const StyledDatepicker = ({ onDayChange }) => {
   );
 };
 
+
+
+StyledDatepicker.propTypes = {
+  onDayChange: PropTypes.func.isRequired,
+};
+
+
+
+
 export default StyledDatepicker;
+
+

@@ -1,5 +1,5 @@
-
-import StyledDatepicker from './StyledDatepicker'
+import PropTypes from 'prop-types';
+import StyledDatepicker from './StyledDatepicker/StyledDatepicker'
 
 
  export const PeriodPaginator = ({onDayChange}) =>{
@@ -11,3 +11,7 @@ import StyledDatepicker from './StyledDatepicker'
         </>
     )
  }
+
+ PeriodPaginator.propTypes = {
+    onDayChange: PropTypes.func.isRequired,
+  };
