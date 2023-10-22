@@ -12,6 +12,8 @@ export const lightTheme = {
   sideBarLogoText: '#3E85F3',
   sideBarBG: '#fff',
   sidebarActiveBtnBG: '#E3F3FF',
+
+  
 };
 
 export const darkTheme = {
@@ -28,4 +30,5 @@ export const darkTheme = {
   sideBarLogoText: '#fff',
   sideBarBG: '#13151A',
   sidebarActiveBtnBG: '#3E85F3',
+  
 };
