@@ -83,12 +83,12 @@ export const SidebarWrapper = styled.div`
       transition: all 0.3s;
     }
     .panel-instrument.active .svg-nav path {
-      stroke: ${({ theme }) => theme.btnActiveTextColor};
+      stroke: ${({ theme }) => theme.mainSideBarText};
     }
 
     .panel-instrument.active {
       color: ${({ theme }) => theme.btnActiveTextColor};
-      background: ${({ theme }) => theme.btnActiveBGColor};
+      background: ${({ theme }) => theme.sidebarActiveBtnBG};
     }
     .svg-nav path {
       stroke: ${({ theme }) => theme.mainSideBarText};
@@ -97,7 +97,7 @@ export const SidebarWrapper = styled.div`
     .panel-instrument:focus {
       color: ${({ theme }) => theme.btnActiveTextColor};
       border-radius: 8px;
-      background: ${({ theme }) => theme.btnActiveBGColor};
+      background: ${({ theme }) => theme.sidebarActiveBtnBG};
     }
     ul {
       li {

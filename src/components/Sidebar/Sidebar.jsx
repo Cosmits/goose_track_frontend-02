@@ -19,7 +19,7 @@ function Sidebar(props) {
       <div id="sidebar" className="sidebar">
         <div className="logo-class">
           <Link to="/account" className="logo">
-            <img src={sidebarLogo} className='logo-img' alt="Sidebar Logo" />
+            <img src={sidebarLogo} className="logo-img" alt="Sidebar Logo" />
             <p className="logo-text">GooseTrack</p>
           </Link>
           <button id="close-button" className="icon" onClick={closeSideBar}>
@@ -50,7 +50,7 @@ function Sidebar(props) {
             <li>
               <Link
                 className={`panel-instrument ${
-                  location.pathname === '/account' ? 'active' : ''
+                  location.pathname.startsWith('/account') ? 'active' : ''
                 }`}
                 to="/account"
               >
@@ -89,7 +89,7 @@ function Sidebar(props) {
             <li>
               <Link
                 className={`panel-instrument ${
-                  location.pathname === '/calendar' ? 'active' : ''
+                  location.pathname.startsWith('/calendar') ? 'active' : ''
                 }`}
                 to="/calendar"
               >
@@ -146,7 +146,7 @@ function Sidebar(props) {
             <li>
               <Link
                 className={`panel-instrument ${
-                  location.pathname === '/statistics' ? 'active' : ''
+                  location.pathname.startsWith('/statistics') ? 'active' : ''
                 }`}
                 to="/statistics"
               >
