@@ -1,10 +1,7 @@
 // Serhii
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
-// import { toast } from 'react-toastify';
-// import { useDispatch } from 'react-redux';
-// import { useState } from 'react';
+import { useState } from 'react';
 
 import { UserAvatar } from './UserAvatar/UserAvatar';
 import {
@@ -17,20 +14,10 @@ import {
   StyledInput,
   StyledButton,
 } from './UserForm.styled';
-// import { lightTheme } from '../../../Styles/theme';
-import { getCurrentUser } from '../../../redux/auth/operations';
-// import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 
 const emailRegexp = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9_-]+).([a-zA-Z]{2,5})$/;
 const phoneRegexp = /^\d{2}\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}$/;
 const birthdayRegexp = /^\d{2}\/\d{2}\/\d{4}$/;
-
-// const ErrorMessages = ({ name }) => {
-//   return (
-//     <ErrorMessage name={name} render={(message) => <Error>{message}</Error>} />
-//   );
-// };
 
 export const UserForm = () => {
   const formik = useFormik({
@@ -56,14 +43,29 @@ export const UserForm = () => {
       alert(JSON.stringify(values, null, 2));
     },
   });
+  // ----------------------------------------------------
+  const [user, setUser] = useState();
 
-  const dispatch = useDispatch();
+  setUser(5);
 
-  const a = () => {
-    dispatch(getCurrentUser());
-  };
+  console.log('user: ', user);
 
-  console.log('a: ', a);
+  // const dispatch = useDispatch();
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const form = event.target;
+
+  //   dispatch(addTask);
+  // };
+  // const a = () => {
+  //   dispatch(getCurrentUser());
+  // };
+
+  // console.log('handleSubmit : ', handleSubmit);
+  // console.log('a: ', a);
+  //------------------------------------------------------
+
   return (
     <StyledAcountWrapperDiv>
       <StyledForm
