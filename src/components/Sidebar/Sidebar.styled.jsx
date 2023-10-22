@@ -4,7 +4,7 @@ export const SidebarWrapper = styled.div`
   width: 289px;
   height: 100vh;
   border-right: 1px solid rgba(220, 227, 229, 0.5);
-  background: ${({ theme }) => theme.mainBGColor};
+  background: ${({ theme }) => theme.sideBarBG};
   color: ${({ theme }) => theme.mainSideBarText};
   transition: all 0.3s;
 
@@ -38,7 +38,7 @@ export const SidebarWrapper = styled.div`
     margin-bottom: 32px;
 
     .logo-text {
-      color: ${({ theme }) => theme.btnTextColor};
+      color: ${({ theme }) => theme.sideBarLogoText};
       font-family: 'Inter', sans-serif;
       font-size: 24px;
       font-style: italic;
