@@ -1,6 +1,3 @@
-// import { useEffect, useState } from 'react';
-// import { useSearchParams } from 'react-router-dom';
-
 import { Link, useLocation } from 'react-router-dom';
 import UserInfo from './UserInfo/UserInfo';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
@@ -13,20 +10,21 @@ import {
   LogoHeader,
   NoTaskTitle,
   NoTaskWrapper,
-  
 } from './Header.styled';
 import logoHeader from '../../images/header/logoHeader.png';
 import AddFeedbackBtn from './FeedbackBtn/AddFeedbackBtn';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import AddFeedbackModal from '../AddFeedbackModal/AddFeedbackModal';
 import { useEffect, useState } from 'react';
+import { useGetMonthlyTasksQuery } from '../../redux/tasks/tasksApi';
+
 
 const Header = ({ openSideBar }) => {
   const { isDesktop } = useScreenSize();
   const [showModal, setShowModal] = useState(false);
   const [currentPage, setCurrentPage] = useState('');
 
-  const location = useLocation()
+  const location = useLocation();
   const openModal = () => {
     setShowModal(true);
   };
@@ -34,10 +32,21 @@ const Header = ({ openSideBar }) => {
     setShowModal(false);
   };
 
+  const path = location.pathname;
+  const [, , , date] = path.split('/');
+  const { data } = useGetMonthlyTasksQuery(date, {
+    skip: date === undefined,
+  });
+  console.log(data)
+const task = data.data
+console.log(task)
+
+  const isDayPage = path.includes('/calendar/day');
+
   useEffect(() => {
-    const path = location.pathname.split("/")[1];
-       
-    switch (path) {
+    const currentPage = path.split('/')[1];
+
+    switch (currentPage) {
       case 'account':
         setCurrentPage('User Profile');
         break;
@@ -50,20 +59,24 @@ const Header = ({ openSideBar }) => {
       default:
         setCurrentPage('User Profile');
     }
-  }, [location.pathname]);
+  }, [path]);
 
   return (
     <HeaderWrapper>
-      {isDesktop  && 
-      <NoTaskWrapper>
-      <LogoHeader src={logoHeader} alt="LogoHeader"/>
-      <div>
-        <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
-        <NoTaskTitle><HeaderTask>Let go</HeaderTask> of the past and focus on the present!</NoTaskTitle>
-        </div></NoTaskWrapper>}
-       {/* {isDesktop && <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>} */}
-      {/* {(isDesktop & currentPage==="calendar/day") && <LogoHeader/>} */}
-      
+      {(isDesktop && !isDayPage ) && <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>}
+      {(isDesktop && isDayPage) && 
+        <NoTaskWrapper>
+          <LogoHeader src={logoHeader} alt="LogoHeader" />
+          <div>
+            <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
+            <NoTaskTitle>
+              <HeaderTask>Let go</HeaderTask> of the past and focus on the
+              present!
+            </NoTaskTitle>
+          </div>
+        </NoTaskWrapper>}
+
+
       {!isDesktop && <BurgerMenu onClick={openSideBar} />}
       <HeaderUser>
         <AddFeedbackBtn openModal={openModal} />
