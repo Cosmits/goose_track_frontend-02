@@ -9,6 +9,8 @@ export const lightTheme = {
 
   labelTextColor: '#111111',
   borderInputColor: 'rgba(17, 17, 17, 0.15)',
+  sideBarLogoText: '#3E85F3',
+  sideBarBG: '#fff',
 };
 
 export const darkTheme = {
@@ -22,4 +24,6 @@ export const darkTheme = {
 
   labelTextColor: 'rgba(250, 250, 250, 0.30)',
   borderInputColor: 'rgba(255, 255, 255, 0.15)',
+  sideBarLogoText: '#fff',
+  sideBarBG: '#13151A',
 };

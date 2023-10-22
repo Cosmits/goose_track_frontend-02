@@ -4,8 +4,9 @@ export const SidebarWrapper = styled.div`
   width: 289px;
   height: 100vh;
   border-right: 1px solid rgba(220, 227, 229, 0.5);
-  background:${({ theme }) => theme.mainBGColor};
-  color:${({ theme }) => theme.mainTextColor};
+  background: ${({ theme }) => theme.sideBarBG};
+  color: ${({ theme }) => theme.mainSideBarText};
+  transition: all 0.3s;
 
   ul,
   li {
@@ -27,6 +28,9 @@ export const SidebarWrapper = styled.div`
     border-right: 1px solid rgba(220, 227, 229, 0.5);
     background: #fff;
   }
+  .logo-img{
+    width: 71px;
+  }
   .svg-nav {
     width: 24px;
     height: 24px;
@@ -37,7 +41,7 @@ export const SidebarWrapper = styled.div`
     margin-bottom: 32px;
 
     .logo-text {
-      color: #3e85f3;
+      color: ${({ theme }) => theme.sideBarLogoText};
       font-family: 'Inter', sans-serif;
       font-size: 24px;
       font-style: italic;
@@ -49,11 +53,10 @@ export const SidebarWrapper = styled.div`
   .close-btn {
     width: 34px;
     height: 34px;
-    margin-left: 43px;
-    stroke: ${({ theme }) => theme.secondaryTextColor};
+    stroke: ${({ theme }) => theme.mainSideBarText};
   }
   .user-panel {
-    color: ${({ theme }) => theme.secondaryTextColor};
+    color: ${({ theme }) => theme.mainSideBarText};
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -65,7 +68,7 @@ export const SidebarWrapper = styled.div`
   .menu {
     .panel-instrument {
       display: flex;
-      color: ${({ theme }) => theme.secondaryTextColor};
+      color: ${({ theme }) => theme.mainSideBarText};
       font-family: Inter;
       font-size: 16px;
       font-style: normal;
@@ -80,21 +83,21 @@ export const SidebarWrapper = styled.div`
       transition: all 0.3s;
     }
     .panel-instrument.active .svg-nav path {
-      stroke: #2b78ef;
+      stroke: ${({ theme }) => theme.btnActiveTextColor};
     }
 
     .panel-instrument.active {
-      color: #2b78ef;
-      background-color: #e3f3ff;
+      color: ${({ theme }) => theme.btnActiveTextColor};
+      background: ${({ theme }) => theme.btnActiveBGColor};
     }
     .svg-nav path {
-      stroke: ${({ theme }) => theme.secondaryTextColor};
+      stroke: ${({ theme }) => theme.mainSideBarText};
     }
     .panel-instrument:hover,
     .panel-instrument:focus {
-      color: #3e85f3;
+      color: ${({ theme }) => theme.btnActiveTextColor};
       border-radius: 8px;
-      background: #e3f3ff;
+      background: ${({ theme }) => theme.btnActiveBGColor};
     }
     ul {
       li {
@@ -103,7 +106,7 @@ export const SidebarWrapper = styled.div`
         }
         &:hover {
           svg path {
-            stroke: #3e85f3;
+            stroke: ${({ theme }) => theme.btnNoActiveTextColor};
           }
         }
       }
@@ -119,7 +122,7 @@ export const SidebarWrapper = styled.div`
         flex-shrink: 0;
         border-radius: 16px;
         background: #3e85f3;
-        color: ${({ theme }) => theme.mainTextColor};
+        color: #fff;
         font-family: Inter;
         font-size: 18px;
         font-style: normal;
@@ -167,6 +170,9 @@ export const SidebarWrapper = styled.div`
     //display: block;
     position: fixed;
     z-index: 3;
+    .logo-img{
+      width: 60px;
+    }
     .sidebar {
       margin-right: 32px;
       margin-left: 32px;
@@ -174,7 +180,6 @@ export const SidebarWrapper = styled.div`
     }
     .logo .logo-text {
       font-size: 16px;
-      margin-right: 31px;
     }
     .icon {
       display: block;
@@ -190,9 +195,9 @@ export const SidebarWrapper = styled.div`
         padding-right: 70px;
       }
     }
-    .logo-img {
+    /* .logo-img {
       content: url(./src/images/goose_logo_tablet.png);
-    }
+    } */
   }
 
   @media (max-width: 768px) {
@@ -202,6 +207,9 @@ export const SidebarWrapper = styled.div`
       .panel-instrument {
         font-size: 14px;
       }
+    }
+    .logo-img{
+      width: 36px;
     }
     .close-btn {
       width: 24px;
