@@ -1,5 +1,3 @@
-// Yulia
-
 import NotFound from "../components/NotFoundPage/NotFound";
 
 const NotFoundPage = () => {

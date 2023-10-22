@@ -1,4 +1,3 @@
-// Serhii
 import { UserForm } from '../components/AccountPage/UserForm/UserForm';
 
 const AccountPage = () => {
