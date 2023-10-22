@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const AuthPageWrap = styled.div`
-  background-color: #DCEBF7;
+  background-color: var(--backdrop-blue);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -19,7 +20,7 @@ export const AuthFormWrap = styled.div`
   box-sizing:border-box;
   padding: 40px 24px;
   border-radius: 8px;
-  background: #ffffff;
+  background: var(--white);
 
    @media screen and (min-width: 768px) {
     width:480px;
@@ -36,3 +37,35 @@ export const PictureWrap = styled.div`
     display:none;
   } 
 `
+
+export const Picture = styled.picture`
+  position:absolute;
+  bottom:0;
+  left:49px;
+
+   @media screen and (max-width: 1439px) {
+    display:none;
+  } 
+`
+
+export const AuthLink = styled(Link)`
+  display:block;
+  margin-top:-15px;
+  font-family: InterSemiBold;
+  font-size: 12px;
+  line-height: 1.17;
+  color: var(--main-blue);
+  text-decoration:underline;
+  text-align:center;
+  transition: color 250ms linear;
+
+   &:hover,
+   &:focus {
+    color: var(--hover-blue);
+  }
+
+  @media screen and (min-width: 768px) {
+  font-size: 18px;
+  line-height: 1.33;
+  }
+`;

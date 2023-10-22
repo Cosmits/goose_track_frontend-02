@@ -1,41 +1,39 @@
 // Yulia
 
 import AuthNavigate from '../../components/LoginPage/AuthNavigate/AuthNavigate';
-import { AuthFormWrap, AuthPageWrap, PictureWrap } from '../LoginPage/LoginPage.styled';
-import gooseLogin from '../../images/LoginPage/goose_login@1x.png';
-import gooseLoginImg from '../../images/LoginPage/goose_login@2x.png';
-import gooseLoginWebp from '../../images/LoginPage/goose_login@1x.webp';
-import gooseLoginImgWebp from '../../images/LoginPage/goose_login@2x.webp';
-import LoginForm from '../../components/LoginPage/LoginForm/LoginForm';
+import { AuthFormWrap, AuthPageWrap, Picture } from '../LoginPage/LoginPage.styled';
+import gooseVerifyEmailPng from '../../images/VerifyEmailPage/goose-verify-email.png';
+import gooseVerifyEmail2xPng from '../../images/VerifyEmailPage/goose-verify-email@2x.png';
+import gooseVerifyEmailWebp from '../../images/VerifyEmailPage/goose-verify-email.webp';
+import gooseVerifyEmail2xWebp from '../../images/VerifyEmailPage/goose-verify-email@2x.webp';
+import SendVerifyEmailForm from '../../components/SendVerifyEmailForm/SendVerifyEmailForm';
 
 const SendVerifyEmail = () => {
   return (
 
     <AuthPageWrap>
       <AuthFormWrap>
-        <LoginForm />
+        <SendVerifyEmailForm />
       </AuthFormWrap>
 
       <AuthNavigate route="/register" textContent="Sign Up" />
 
-      <PictureWrap >
-        <picture>
+        <Picture>
           <source
             type="image/webp"
-            srcSet={`${gooseLoginWebp} 1x, ${gooseLoginImgWebp} 2x`}
+            srcSet={`${gooseVerifyEmailWebp} 1x, ${gooseVerifyEmail2xWebp} 2x`}
           />
           <source
             type="image/png"
-            srcSet={`${gooseLogin} 1x, ${gooseLoginImg} 2x`}
+            srcSet={`${gooseVerifyEmailPng} 1x, ${gooseVerifyEmail2xPng} 2x`}
           />
           <img
-            src={`${gooseLogin}`}
-            alt="Goose flies in a rocket"
+            src={`${gooseVerifyEmailPng}`}
+            alt="Goose registers in the app"
             width={368}
             height={521}
           />
-        </picture>
-      </PictureWrap>
+        </Picture>
     </AuthPageWrap>
   );
 };
