@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 
 import {
   useCreateReviewMutation,
@@ -59,8 +60,7 @@ const FeedbackForm = ({ onClose }) => {
     if (text.length <= 300) {
       setComment(text);
     } else {
-      console.log('Error');
-      //  toast.error(message);
+      toast.error('Feedback length cannot exceed 300 characters');
     }
   };
 
@@ -69,21 +69,19 @@ const FeedbackForm = ({ onClose }) => {
     if (isEditReview) {
       try {
         await editReview({ comment, rating }).unwrap();
-        //   toast.success(message);
+        toast.success('Review successfully edited');
         setIsEditReview(false);
         onClose();
       } catch (error) {
-        console.log('error: ', error);
-        //    toast.error(message);
+        toast.error('All fields are required');
       }
     } else {
       try {
         await createReview({ comment, rating }).unwrap();
-        //  toast.success(message);
+        toast.success('Thanks for your review');
         onClose();
       } catch (error) {
-        console.log('error: ', error);
-        // toast.error(message);
+        toast.error('All fields are required');
       }
     }
   };
@@ -91,13 +89,11 @@ const FeedbackForm = ({ onClose }) => {
   const handleDelete = async () => {
     try {
       await deleteReview();
-
-      //  toast.success(message);
+      toast.success('Review successfully deleted');
       setIsDeleteReview(false);
       onClose();
     } catch (error) {
-      console.log('error: ', error);
-      //  toast.error(message);
+      toast.error('Sorry, your review has not deleted');
     }
   };
 
