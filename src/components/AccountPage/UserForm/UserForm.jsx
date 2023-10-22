@@ -1,9 +1,11 @@
 // Serhii
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
+import { selectUser } from '../../../redux/auth/selectors';
 import { UserAvatar } from './UserAvatar/UserAvatar';
+
 import {
   StyledAcountWrapperDiv,
   StyledForm,
@@ -20,6 +22,12 @@ const phoneRegexp = /^\d{2}\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}$/;
 const birthdayRegexp = /^\d{2}\/\d{2}\/\d{4}$/;
 
 export const UserForm = () => {
+  // ________________________
+  const { userName, avatarURL } = useSelector(selectUser);
+  // const a = useSelector(selectUser);
+  // console.log('a: ', a);
+  // ________________________
+
   const formik = useFormik({
     initialValues: {
       userName: '',
@@ -43,37 +51,15 @@ export const UserForm = () => {
       alert(JSON.stringify(values, null, 2));
     },
   });
-  // ----------------------------------------------------
-  const [user, setUser] = useState();
-
-  setUser(5);
-
-  console.log('user: ', user);
-
-  // const dispatch = useDispatch();
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const form = event.target;
-
-  //   dispatch(addTask);
-  // };
-  // const a = () => {
-  //   dispatch(getCurrentUser());
-  // };
-
-  // console.log('handleSubmit : ', handleSubmit);
-  // console.log('a: ', a);
-  //------------------------------------------------------
 
   return (
     <StyledAcountWrapperDiv>
+      <UserAvatar userName={userName} avatarURL={avatarURL} />
       <StyledForm
         name="user_form"
         autoComplete="off"
         onSubmit={formik.handleSubmit}
       >
-        <UserAvatar />
         <StyledInputWrapperDiv>
           <StyledInputSecondWrapperDiv>
             <StyledInputThumbDiv>
