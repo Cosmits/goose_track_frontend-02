@@ -13,10 +13,17 @@ import { selectUser } from '../../../redux/auth/selectors';
 const UserInfo = () => {
    const {userName, avatarURL} = useSelector(selectUser);
 
+   const getFirstName = (userName) => {
+    if (userName) {
+      return userName.split(' ')[0];
+    } else {
+      return userName;
+    }
+  };
   
     return (
     <UserInfoWrapper>
-      <UserName>{userName}</UserName>
+      <UserName>{getFirstName(userName)}</UserName>
       <UserAvatar><img src={avatarURL} alt="Avatar"/></UserAvatar>
     </UserInfoWrapper>
   );
