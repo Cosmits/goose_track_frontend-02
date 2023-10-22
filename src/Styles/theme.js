@@ -11,6 +11,9 @@ export const lightTheme = {
   borderInputColor: 'rgba(17, 17, 17, 0.15)',
   sideBarLogoText: '#3E85F3',
   sideBarBG: '#fff',
+  sidebarActiveBtnBG: '#E3F3FF',
+
+  
 };
 
 export const darkTheme = {
@@ -26,4 +29,6 @@ export const darkTheme = {
   borderInputColor: 'rgba(255, 255, 255, 0.15)',
   sideBarLogoText: '#fff',
   sideBarBG: '#13151A',
+  sidebarActiveBtnBG: '#3E85F3',
+  
 };
