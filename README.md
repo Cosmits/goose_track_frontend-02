@@ -1,108 +1,125 @@
-# React + Vite template
+<p align="center">
+  <img src="./src/images/goose_logo_desktop@2x.png" alt="GooseTrack logo">
+</p>
+<h1 align="center">GooseTrack</h1>
 
-Цей проєкт було створено за допомогою [Create Vite](https://vitejs.dev/). Для
-знайомства і налаштування додаткових можливостей
-[звернися до документації](https://vitejs.dev/guide/).
+<p align="center">
+  <img src="./src/images/Description/mobile-calendar@2x.jpg" alt="Calendar View">
+</p>
+<h2 align="center">Calendar View</h2>
 
-## Створення репозиторію за шаблоном
+<p align="center">
+  GooseTrack's Calendar view provides a comprehensive overview of your schedule, displaying all your tasks, events, and appointments in a visually appealing and intuitive layout.
+</p>
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проєкту. Для цього натисни на кнопку `"Use this template"` і
-обери опцію `"Create a new repository"`, як показано на зображенні.
+<p align="center">
+  <img src="./src/images/Description/mobile-sideBar@2x.jpg" alt="Sidebar">
+</p>
+<h2 align="center">Sidebar</h2>
 
-![Creating repo from a template step 1](./src/assets/template-step-1.png)
+<p align="center">
+GooseTrack offers easy access to your account settings, calendar, and filters. The "My Account" section allows you to manage your profile information and preferences, while the calendar provides a quick and convenient way to view your upcoming events and tasks.
+</p>
 
-На наступному кроці відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся що репозиторій публічний, після чого натисни кнопку
-`"Create repository from template"`.
+<p align="center">
+  <img src="./src/images/Description/mobile-tasks@2x.jpg" alt="All-In-One">
+</p>
+<h2 align="center">All-In-One</h2>
 
-![Creating repo from a template step 2](./src/assets/template-step-2.png)
+<p align="center">
+  GooseTrack is an all-in-one productivity tool that helps you stay on top of your tasks, events, and deadlines. Say goodbye to scattered to-do lists and hello to streamlined productivity with GooseTrack.
+</p>
 
-Після того як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
+<p align="center">
+  <img src="./src/images/reviews.png" alt="Reviews">
+</p>
+<h2 align="center">Reviews</h2>
 
-![Settings GitHub Actions permissions step 1](./src/assets/gh-actions-perm-1.png)
+<p align="center">
+  We value your feedback! Please take a moment to share your thoughts and experiences with GooseTrack. Your reviews help us improve and provide a better service to our users.
+</p>
 
-Проскроливши сторінку до самого кінця, у секції `"Workflow permissions"` вибери
-опцію `"Read and write permissions"` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проєкту.
+<p align="center">
+  Thank you for choosing <strong>GooseTrack</strong>, and we hope it enhances your productivity and simplifies your schedule.
+</p>
 
-![Settings GitHub Actions permissions step 2](./src/assets/gh-actions-perm-2.png)
+## Technologies Used
 
-Тепер у тебе є особистий репозиторій проєкту, зі структурою файлів і папок
-репозиторія-шаблону. Далі працюй з ним як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби комміти і відправляй
-їх на GitHub.
+#### React (v18.2.0):
 
-## Підготовка до роботи
+React is a JavaScript library for building user interfaces, enabling you to
+create dynamic and highly performant web applications. Your application is built
+on React, making it easy to create components and manage application state.
 
-1. Переконайся, що на комп'ютері встановлена LTS-версія Node.js.
-   [Скачай і встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встановіть базові залежності проекту командою `npm install`.
-3. Запустіть режим розробки, виконавши команду `npm run dev`.
-4. Перейди в браузері за адресою, що зазначено в терміналі.
+#### Redux Toolkit (v1.9.7):
 
-## Деплой
+Redux Toolkit is a library for managing the state of your application in React
+projects. It helps organize and simplify state management, centralizing it and
+providing debugging tools.
 
-Продакшн версія проєкту буде автоматично збиратися і деплоїтися на GitHub Pages,
-у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад, після
-прямого пушу або прийнятого пул-реквесту. Для цього необхідно у файлі
-`vite.config.js` відредагувати поле `base`, замінивши `react_vite` на свою назву
-репозиторію `"/your_repo_name"`, і відправити зміни на GitHub.
+#### Axios (v1.5.1):
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) і
-виставити роздачу продакшн версії файлів із папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+Axios is a library for making HTTP requests in your React applications, allowing
+you to interact with the server, fetch, and send data.
 
-![GitHub Pages settings](./src/assets/repo-settings.png)
+#### Material-UI (v5.14.6):
 
-### Статус деплоя
+Material-UI is a design library for React, offering a set of ready-made
+components and styles in the Material Design style. You used Material-UI to
+create a stylish and modern user interface.
 
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
+#### React Router DOM (v6.15.0):
 
-- **Жовтий колір** - виконується збірка і деплой проєкту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час збирання або деплою сталася помилка.
+React Router DOM is a library for navigation and routing in React applications,
+enabling the creation of routers and page navigation.
 
-Детальнішу інформацію про статус можна подивитися, клікнувши на іконку, і в
-випадаючому вікні перейти за посиланням `Details`.
+#### Yup (v1.3.2):
 
-![Deployment status](./src/assets/deploy-status.png)
+Yup is a library for data validation in React applications, allowing you to set
+validation rules for forms and data, ensuring their correctness.
 
-### Жива сторінка
+#### Recharts (v2.8.0):
 
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною в налаштуваннях GitHub-репозиторію (`Settings` > `Pages`).
+Recharts is a library for creating charts and diagrams in React. You used it to
+display data in the form of interactive charts.
 
-![GitHub-pages URL](./src/assets/gh-pages-url.png)
+#### React-Redux (v8.1.3):
 
-Якщо відкривається порожня сторінка, переконайся що у вкладці `Console` немає
-помилок пов'язаних із неправильними шляхами до CSS і JS файлів проекту
-(**404**). Швидше за все найімовірніше, у тебе неправильне значення поля `base`
-у файлі `vite.config.js`.
+React-Redux is a library for integrating Redux into your React applications,
+simplifying the connection between Redux state and React components.
 
-### Маршрутизація
+#### Formik (v2.4.5):
 
-Якщо додаток використовує бібліотеку `react-router-dom` для маршрутизації,
-необхідно додатково налаштувати компонент `<BrowserRouter>`, передавши в пропе
-`basename` точну назву твого репозиторію. Слеш на початку рядка обов'язковий.
+Formik is a library for managing forms in React applications, making form
+creation and management more convenient and efficient.
 
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-```
-### Додавання змінних в  .env
-Для зберігання конфігураційних даних, таких як API ключі, адреси серверів, порти та інші змінні використовуйте файл `.env`. Для цього необхідно з назви файлу `.env.template` видалити зайві ".template",після чого файл відповідатиме умовам файлу `.ignore` і буде зберігатися лише локально, не публікуючись на віддаленому репозиторії з метою безпеки. Задля використання змінних на GitHub-pages усі змінні, передбачені файлом .env, слід додати до файлу `.github/workflows/deploy.yml`, а також до налаштувань репозиторію. Для цього слід перейти (`Settings` > `Secrets and variables` > `Actions`)
+#### React-datepicker (v4.20.0):
 
-![Add enviroments from .env](./src/assets/secrets.png)
+react-datepicker is a library for adding date picker functionality to your React
+forms. It simplifies date selection for users and enhances the user experience
+when working with dates.
 
-## Як це працює
+# Meet Our Team
 
-1. Після кожного пушу в гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) з файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проєкт ініціалізується і
-   проходить збірку перед деплоєм. 3 Якщо всі кроки пройшли успішно, зібрана
-   продакшн-версія файлів проєкту відправляється в гілку `gh-pages`. В іншому
-   випадку, в логах виконання скрипта буде вказано в чому проблема.
+Here are the talented individuals who contributed to the development of
+GooseTracks:
+
+### Team Lead
+
+1. [Hennadii Samofal](https://github.com/Cosmits)
+
+### Scram Master
+
+1. [Daryna Merkulova](https://github.com/DarinaMerkulova)
+
+### Development Team
+
+1. [Bohdan Kireev](https://github.com/Acidhouzee)
+2. [Gabriella Marusyak](https://github.com/GabriellaMar)
+3. [Illia Shatokhin](https://github.com/Illia-Shatokhin)
+4. [Kateryna Kharkova](https://github.com/KaterinaKha)
+5. [Maryna Khmarska](https://github.com/myhappyday)
+6. [Ruslana Onyshchuk](https://github.com/Ruslaana)
+7. [Serhii Podhornyi](https://github.com/SerJ1327)
+8. [Volodymyr Kozlovskyi](https://github.com/VolodymyrKoz)
+9. [Yuliia Balabukha](https://github.com/julie08ua)
