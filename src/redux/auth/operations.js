@@ -76,7 +76,7 @@ export const getCurrentUser = createAsyncThunk('/users/current',
     try {
       setAuthHeader(persistedToken);
       const response = await axios.get('/users/current');
-      return response.data.user;
+      return response.data;
     } catch (error) {
       if (error.response) {
         const { status } = error.response;
@@ -94,7 +94,7 @@ export const updateUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.patch('/users/edit', credentials);
-      return response.data.user;
+      return response.data;
     } catch (error) {
       toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
@@ -123,7 +123,7 @@ export const getVerifyEmailUser = createAsyncThunk(
   async (verifyToken, thunkAPI) => {
     try {
       const response = await axios.get(`/users/verify/${verifyToken}`);
-      return response.data.verify;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

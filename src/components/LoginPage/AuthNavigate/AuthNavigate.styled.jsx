@@ -3,14 +3,13 @@ import styled from 'styled-components';
 
 export const AuthNavLink = styled(NavLink)`
   display:block;
-  font-family: Inter,sans-serif;
+  font-family: InterSemiBold;
   font-size: 12px;
-  font-weight: 600;
   line-height: 1.17;
   color: #3E85F3;
   text-decoration:underline;
   text-align:center;
-  transition: all 250ms linear;
+  transition: color 250ms linear;
 
    &:hover,
    &:focus {
