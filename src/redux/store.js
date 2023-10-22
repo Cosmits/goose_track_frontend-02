@@ -23,12 +23,17 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const themePersistConfig = {
+  key: 'theme',
+  storage,
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     [reviewsApi.reducerPath]: reviewsApi.reducer,
     [tasksApi.reducerPath]: tasksApi.reducer,
-    theme: themeReducer,
+    theme: persistReducer(themePersistConfig, themeReducer),   
   },
 
   middleware: getDefaultMiddleware => [

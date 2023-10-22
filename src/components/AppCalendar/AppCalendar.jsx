@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import { AppCalendarGlobalStyles } from './AppCalendar.styled';
@@ -55,8 +55,8 @@ const AppCalendar = ({ toolbar }) => {
   const [task, setTask] = useState([]);
   const currentData = format(startOfToday(), 'yyyy-MM');
   const navigate = useNavigate();
-  
-  const { data: tasksData } = useGetMonthlyTasksQuery(currentData, { skip: currentData === undefined});
+
+  const { data: tasksData } = useGetMonthlyTasksQuery(currentData, { skip: currentData === undefined });
 
   const listModifier = (list) => {
     const newList = list.map((item) => {
@@ -76,7 +76,7 @@ const AppCalendar = ({ toolbar }) => {
   };
 
   useEffect(() => {
-    if(tasksData?.data !== undefined) {
+    if (tasksData?.data !== undefined) {
       listModifier(tasksData.data);
     }
   }, [tasksData?.data]);
