@@ -34,13 +34,16 @@ const Header = ({ openSideBar }) => {
   };
 
   useEffect(() => {
-    const path = location.pathname;
-    console.log('path: ', path);
+    const path = location.pathname.split("/")[1];
+       
     switch (path) {
-      case '/calendar':
+      case 'account':
+        setCurrentPage('User Profile');
+        break;
+      case 'calendar':
         setCurrentPage('Calendar');
         break;
-      case '/statistics':
+      case 'statistics':
         setCurrentPage('Statistics');
         break;
       default:
