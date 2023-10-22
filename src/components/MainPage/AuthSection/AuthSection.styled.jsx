@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { FiLogIn } from 'react-icons/fi';
-// import { GlobalStyle } from '../../../Styles/GlobalStyles';
 
 export const AuthSectionWrap = styled.section`
   height: 100vh;
@@ -9,7 +8,7 @@ export const AuthSectionWrap = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--main-blue, #3e85f3);
+  background-color: var(--main-blue);
 `;
 
 export const AuthContainer = styled.div`
@@ -19,14 +18,20 @@ export const AuthContainer = styled.div`
 
 export const AuthLogo = styled.img`
   display: block;
-  width: 150px;
+  width: 142px;
+  height: 142px;
   margin: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 150px;
+    height: 149px;
+  }
 `;
 
 export const AuthHeader = styled.h1`
-  color: var(--white, #fff);
+  color: var(--white);
 
-font-family: 'InterTightBold';
+  font-family: 'InterTightBold';
   font-size: 44px;
   font-weight: 700;
   line-height: 1.09;
@@ -44,7 +49,20 @@ font-family: 'InterTightBold';
 `;
 
 export const AuthHeaderSpan = styled.span`
+  font-family: 'InterTightBoldItalic';
+  font-size: 44px;
+  font-weight: 700;
   font-style: italic;
+
+  @media screen and (min-width: 768px) {
+    font-size: 100px;
+    line-height: 1.3;
+  }
+
+  @media screen and (min-width: 1440px) {
+    font-size: 120px;
+    line-height: 1.25;
+  }
 `;
 
 export const AuthNav = styled.nav`
@@ -84,10 +102,10 @@ export const LoginBtn = styled.button`
   height: 48px;
 
   flex-shrink: 0;
-  border: 0.5px solid var(--white, #fff);
+  border: 0.5px solid var(--white);
   border-radius: 16px;
   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
-  background-color: var(--white, #fff);
+  background-color: var(--white);
 
   @media screen and (min-width: 768px) {
     padding: 14px 22px;
@@ -120,14 +138,14 @@ export const LoginSpan = styled.span`
   line-height: 1.28;
   letter-spacing: -0.28px;
 
-  color: var(--main-blue, #3e85f3);
+  color: var(--main-blue);
 `;
 
 export const StyledFiLogIn = styled(FiLogIn)`
   width: 18px;
   height: 18px;
   flex-shrink: 0;
-  stroke: var(--main-blue, #3e85f3);
+  stroke: var(--main-blue);
 `;
 
 export const SignupLink = styled(NavLink)`
@@ -138,7 +156,7 @@ export const SignupLink = styled(NavLink)`
   font-weight: 600;
   line-height: 1.16;
 
-  color: var(--white, #fff);
+  color: var(--white);
   text-shadow:
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
