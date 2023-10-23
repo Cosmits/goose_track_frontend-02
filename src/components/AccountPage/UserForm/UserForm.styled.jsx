@@ -138,7 +138,7 @@ const StyledInputThumbDiv = styled.div`
 
 const StyledLabel = styled.label`
   color: ${({ theme }) => theme.labelTextColor};
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterTightRegular', sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.16;
@@ -153,7 +153,7 @@ const StyledInput = styled.input`
   width: 100%;
   height: 42px;
   padding: 0 14px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.28;
@@ -185,7 +185,7 @@ const StyledButton = styled.button`
   background-color: #3e85f3;
   border: none;
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;

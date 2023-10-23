@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { SidebarWrapper } from './Sidebar.styled';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../../redux/auth/operations';
@@ -11,8 +11,12 @@ import LogOutIcon from '../../../icons/Sidebar/LogOutIcon';
 
 function Sidebar(props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     dispatch(logOut());
+    navigate('/');
+
   };
   const { closeSideBar } = props;
   const location = useLocation();

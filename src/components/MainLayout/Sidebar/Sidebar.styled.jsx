@@ -1,13 +1,8 @@
 import styled from 'styled-components';
 
 export const SidebarWrapper = styled.div`
-  @font-face {
-    font-family: 'Inter-SemiBold';
-    src: url('fonts/Inter-SemiBold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-  }
-
+ 
+  font-family: 'InterSemiBold', sans-serif;
   width: 289px;
   height: 100vh;
   border-right: 1px solid rgba(220, 227, 229, 0.5);
@@ -49,9 +44,8 @@ export const SidebarWrapper = styled.div`
 
     .logo-text {
       color: ${({ theme }) => theme.sideBarLogoText};
-      font-family: 'Inter';
+      font-family: 'InterTightBold';
       font-size: 24px;
-      font-style: italic;
       font-weight: 700;
       line-height: 24px;
       margin-left: 8px;
@@ -64,7 +58,7 @@ export const SidebarWrapper = styled.div`
   }
   .user-panel {
     color: ${({ theme }) => theme.mainSideBarText};
-    font-family: 'Inter-SemiBold', sans-serif;
+    font-family: 'InterSemiBold', sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
@@ -76,7 +70,7 @@ export const SidebarWrapper = styled.div`
     .panel-instrument {
       display: flex;
       color: ${({ theme }) => theme.mainSideBarText};
-      font-family: 'Inter-SemiBold', sans-serif;
+      font-family: 'InterSemiBold', sans-serif;
       font-size: 16px;
       font-style: normal;
       font-weight: 600;
@@ -130,7 +124,7 @@ export const SidebarWrapper = styled.div`
         border-radius: 16px;
         background: #3e85f3;
         color: #fff;
-        font-family: 'Inter-SemiBold', sans-serif;
+        font-family: 'InterSemiBold', sans-serif;
         font-size: 18px;
         font-weight: 700;
         font-style: normal;
