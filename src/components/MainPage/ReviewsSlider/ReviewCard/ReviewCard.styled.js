@@ -56,6 +56,7 @@ export const AvatarPicture = styled.div`
 
 export const Name = styled.p`
   color: #343434;
+  font-family: 'InterTightBold', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -69,6 +70,7 @@ export const Comment = styled.p`
   overflow-y: auto;
   color: rgba(17, 17, 17, 0.7);
   text-align: left;
+  font-family: 'InterTightMedium', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

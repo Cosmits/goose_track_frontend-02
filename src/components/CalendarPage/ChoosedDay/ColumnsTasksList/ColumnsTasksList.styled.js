@@ -23,7 +23,7 @@ export const TasksList = styled.ul`
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: #3e85f3;
+    background-color: ${({ theme }) => theme.btnTextColor};
   }
 
   @media screen and (min-width: 768px) {
