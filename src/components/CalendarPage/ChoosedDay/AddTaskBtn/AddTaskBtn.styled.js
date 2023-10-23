@@ -11,13 +11,13 @@ export const AddTaskButton = styled.button`
   align-items: center;
   border-radius: 8px;
   border: 1px dashed #3e85f3;
-  background-color: #e3f3ff;
+  background-color: ${({ theme }) => theme.btnNoActive};
   cursor: pointer;
   transition: background-color 300ms linear;
 
   &:hover,
   &:focus {
-    background-color: #cae8ff;
+    background-color: ${({ theme }) => theme.btnActive};
   }
 
   @media screen and (min-width: 768px) {
@@ -28,7 +28,7 @@ export const AddTaskButton = styled.button`
 export const AddTaskButtonIcon = styled(AddTaskBtnIcon)`
   width: 24px;
   height: 24px;
-  stroke: #111111;
+  stroke: ${({ theme }) => theme.mainTextColor};
   /* transition: stroke 300ms linear; */
   cursor: pointer;
 
@@ -39,10 +39,10 @@ export const AddTaskButtonIcon = styled(AddTaskBtnIcon)`
 `;
 
 export const AddTaskBtnTitle = styled.p`
-  color: #111;
+  color: ${({ theme }) => theme.mainTextColor};
 
   text-align: center;
-  /* font-family: Inter; */
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;

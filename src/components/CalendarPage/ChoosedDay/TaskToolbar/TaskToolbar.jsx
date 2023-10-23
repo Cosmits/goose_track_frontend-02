@@ -11,6 +11,7 @@ import {
 import { useDeleteTasksMutation } from '../../../../redux/tasks/tasksApi';
 
 export default function TaskToolbar({ id }) {
+  const [deleteToDo] = useDeleteTasksMutation(id);
   const toolbarList = {
     swipe: [
       <SwipeIcon />,
@@ -27,8 +28,7 @@ export default function TaskToolbar({ id }) {
     remove: [
       <RemoveIcon />,
       () => {
-        // useDeleteTasksMutation(id);
-        console.log(`delete task ${id} success`);
+        deleteToDo(id);
       },
     ],
   };
