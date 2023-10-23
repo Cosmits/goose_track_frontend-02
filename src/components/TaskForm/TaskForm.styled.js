@@ -19,7 +19,7 @@ export const AddTask = styled(AddTaskBtnIcon)`
 
 export const ContainerForm = styled.div`
   width: 396px;
-  height: 360;
+  height: 360px;
   margin: 0 auto;
   padding: 40px 28px 40px 28px;
   border-radius: 8px;

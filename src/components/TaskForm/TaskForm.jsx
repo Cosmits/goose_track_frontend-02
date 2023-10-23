@@ -39,11 +39,12 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
         setIsEdit(false);
         break;
 
-      default:
+      default: { 
         const task = currentData.data.filter(({ _id }) => _id === category);
         setIsEdit(true);
         setFormData(...task);
         break;
+      }
     }
   };
 
@@ -66,7 +67,7 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [todos, setTodos] = useState([]);
 
-  const [createTask, adc] = useCreateTasksMutation();
+  const [createTask, __] = useCreateTasksMutation();
   const { currentData } = useGetMonthlyTasksQuery(currentDay);
   // useEffect(() => {
   //   if (id) {
@@ -95,13 +96,8 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
     closeModal();
   };
 
-  const handleAdd = (newTodo) => {
+  const handleAdd = () => {
     createTask(formData);
-    // setTodos((prevTodos) => {
-    //   const updatedTodos = [...prevTodos, newTodo];
-    //   return updatedTodos;
-    // });
-    console.log(formData);
     closeModal();
   };
 
