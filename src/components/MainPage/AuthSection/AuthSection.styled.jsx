@@ -50,6 +50,7 @@ export const AuthHeader = styled.h1`
 
 export const AuthHeaderSpan = styled.span`
   font-family: 'InterTightBoldItalic';
+  margin-right: 3px;
   font-size: 44px;
   font-weight: 700;
   font-style: italic;
