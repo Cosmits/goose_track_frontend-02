@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Rating } from 'react-simple-star-rating';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
@@ -35,8 +34,6 @@ const FeedbackForm = ({ onClose }) => {
   const [createReview] = useCreateReviewMutation();
   const [editReview] = useEditReviewMutation();
   const [deleteReview] = useDeleteReviewMutation();
-  const theme = useSelector((state) => state.theme);
-  console.log('theme: ', theme);
 
   useEffect(() => {
     if (userReviewData) {
@@ -138,40 +135,30 @@ const FeedbackForm = ({ onClose }) => {
       />
       {isDeleteReview && (
         <BtnWrapper>
-          <Btn
-            type="button"
-            onClick={handleDelete}
-            isActive={true}
-            theme={theme}
-          >
+          <Btn type="button" onClick={handleDelete} className="active">
             Delete
           </Btn>
-          <Btn type="button" onClick={onClose} isActive={false} theme={theme}>
+          <Btn type="button" onClick={onClose} className="inactive">
             Cancel
           </Btn>
         </BtnWrapper>
       )}
       {isEditReview && (
         <BtnWrapper>
-          <Btn
-            type="submit"
-            onClick={handleSubmit}
-            isActive={true}
-            theme={theme}
-          >
+          <Btn type="submit" onClick={handleSubmit} className="active">
             Edit
           </Btn>
-          <Btn type="button" onClick={onClose} isActive={false} theme={theme}>
+          <Btn type="button" onClick={onClose} className="inactive">
             Cancel
           </Btn>
         </BtnWrapper>
       )}
       {!userReviewData && (
         <BtnWrapper>
-          <Btn type="submit" isActive={true} theme={theme}>
+          <Btn type="submit" className="active">
             Save
           </Btn>
-          <Btn type="button" onClick={onClose} isActive={false} theme={theme}>
+          <Btn type="button" onClick={onClose} className="inactive">
             Cancel
           </Btn>
         </BtnWrapper>

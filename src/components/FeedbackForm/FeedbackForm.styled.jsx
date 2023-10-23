@@ -63,19 +63,10 @@ export const BtnWrapper = styled.div`
 export const Btn = styled.button`
   width: 144px;
   height: 42px;
+  padding: 12px 46px;
   text-align: center;
   border-radius: 8px;
   border: none;
-
-  color: ${(props) =>
-    props.isActive
-      ? 'props.theme.activeBtnTextColor'
-      : ' props.theme.inactiveBtnTextColor'};
-
-  background-color: ${(props) =>
-    props.isActive
-      ? 'props.theme.activeBtnBgColor'
-      : 'props.theme.inactiveBtnBgColor'};
 
   font-family: InterSemiBold;
   font-size: 14px;
@@ -83,7 +74,18 @@ export const Btn = styled.button`
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 
-  &:hover {
+  &.active {
+    color: ${({ theme }) => theme.activeBtnTextColor};
+    background: ${({ theme }) => theme.activeBtnBgColor};
+  }
+
+  &.inactive {
+    color: ${({ theme }) => theme.inactiveBtnTextColor};
+    background: ${({ theme }) => theme.inactiveBtnBgColor};
+  }
+
+  &:hover,
+  &:focus {
     color: var(--white);
     background: var(--hover-blue);
   }
@@ -98,11 +100,13 @@ export const Btn = styled.button`
     width: 90%;
     max-width: 198px;
     height: 48px;
+    padding: 15px 75px;
   }
 
   @media screen and (min-width: 768px) {
     width: 198px;
     height: 48px;
+    padding: 15px 75px;
   }
 `;
 
@@ -119,13 +123,18 @@ export const EditIcon = styled(VscEdit)`
   padding: 7px;
   justify-content: center;
   align-items: center;
-  fill: var(--white);
+  fill: var(--main-blue);
   border-radius: 50px;
-  background: var(--main-blue);
+  background: ${({ theme }) => theme.inactiveEditIconBgColor};
   cursor: pointer;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  :hover {
+
+  &:hover,
+  &:focus,
+  &:active {
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+    background: var(--main-blue);
+    fill: var(--white);
   }
 `;
 
@@ -142,8 +151,12 @@ export const DeleteIcon = styled(RiDeleteBin6Line)`
   border-radius: 50px;
   cursor: pointer;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  :hover {
+  &:hover,
+  &:focus,
+  &:active {
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+    background: var(--high);
+    fill: var(--white);
   }
 `;
 
