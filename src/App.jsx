@@ -14,6 +14,8 @@ import MainLayout from './components/MainLayout/MainLayout';
 const MainPage = lazy(() => import('./pages/MainPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
+const SendVerifyEmail = lazy(() => import('./pages/SendVerifyEmail/SendVerifyEmail'));
+
 const AccountPage = lazy(() => import('./pages/AccountPage'));
 const StatisticsPage = lazy(() => import('./pages/StatisticsPage'));
 const CalendarPage = lazy(() => import('./pages/CalendarPage'));
@@ -39,7 +41,8 @@ function App() {
         <Route index path="/" element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />} />
         <Route path="/register" element={<RestrictedRoute redirectTo="/calendar" component={<RegisterPage />} />} />
         <Route path="/login" element={<RestrictedRoute redirectTo="/calendar" component={<LoginPage />} />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/send-verify-email" element={<RestrictedRoute redirectTo="/calendar" component={<SendVerifyEmail />} />} />
+        <Route path="/send-verify-email/:verificationToken" element={<RestrictedRoute redirectTo="/calendar" component={<SendVerifyEmail />} />} />
         <Route path="/" element={<PrivateRoute redirectTo="/login" component={<MainLayout />} />} >
           <Route path="account" element={<AccountPage />} />
           <Route path="calendar" element={<CalendarPage />}>
