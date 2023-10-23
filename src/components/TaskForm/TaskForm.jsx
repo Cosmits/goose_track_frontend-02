@@ -101,7 +101,6 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
     //   const updatedTodos = [...prevTodos, newTodo];
     //   return updatedTodos;
     // });
-    console.log(formData);
     closeModal();
   };
 

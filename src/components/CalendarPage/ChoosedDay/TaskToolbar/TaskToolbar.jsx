@@ -9,14 +9,19 @@ import {
   SwipeIcon,
 } from './TaskToolbar.styled';
 import { useDeleteTasksMutation } from '../../../../redux/tasks/tasksApi';
+import TaskToolbarModal from './TaskToolbarModal';
+import { useState } from 'react';
 
-export default function TaskToolbar({ id, showModal }) {
+export default function TaskToolbar({ id, showModal, category, tasksData }) {
+  const [isShowSwipeModal, setIsShowSwipeModal] = useState(false);
+
   const [deleteToDo] = useDeleteTasksMutation(id);
   const toolbarList = {
     swipe: [
       <SwipeIcon />,
       () => {
-        console.log(`swipe button click ${id}`);
+        // console.log(`swipe button click ${id} and ${category}`);
+        setIsShowSwipeModal(!isShowSwipeModal);
       },
     ],
     edit: [
@@ -47,6 +52,9 @@ export default function TaskToolbar({ id, showModal }) {
             </TaskToolbarItem>
           );
         })}
+        {isShowSwipeModal && (
+          <TaskToolbarModal category={category} id={id} tasksData={tasksData} />
+        )}
       </TaskToolbarList>
     </>
   );

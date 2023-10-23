@@ -13,6 +13,8 @@ import {
 } from './TaskColumnCard.styled';
 
 export default function TaskColumnCard({
+  tasksData,
+  category,
   taskTitle,
   priority,
   avatar,
@@ -47,7 +49,12 @@ export default function TaskColumnCard({
               </TaskCardSuccessText>
             </TaskCardSuccess>
           </TaskCardUserWrapper>
-          <TaskToolbar id={id} showModal={showModal} />
+          <TaskToolbar
+            id={id}
+            showModal={showModal}
+            category={category}
+            tasksData={tasksData}
+          />
         </TaskCardInfoWrapper>
       </TaskCardWrapper>
     </TaskCard>
