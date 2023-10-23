@@ -18,6 +18,7 @@ export const ReviewsWrapper = styled.section`
 export const Title = styled.h2`
   margin-bottom: 40px;
   color: var(--main-blue, #3e85f3);
+  font-family: 'InterTightBold', sans-serif;
   font-size: 28px;
   font-style: normal;
   font-weight: 700;

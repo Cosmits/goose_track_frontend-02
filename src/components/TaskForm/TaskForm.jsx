@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import {
+  AddTask,
   ButtonContainer,
   ContainerForm,
   ContainerRadio,
   Label,
+  PencilIcon,
+  StyledAdd,
   StyledCancel,
   StyledEdit,
   StyledInput,
@@ -14,27 +17,93 @@ import {
   StyledRadioMedium,
   StyledTime,
 } from './TaskForm.styled';
+import {
+  useCreateTasksMutation,
+  useGetMonthlyTasksQuery,
+} from '../../redux/tasks/tasksApi';
+import { useParams } from 'react-router';
 
-const TaskForm = ({ initialData, closeModal }) => {
+const TaskForm = ({ initialData, closeModal, category = '' }) => {
+  const categoryToDefault = (category) => {
+    switch (category) {
+      case 'To do':
+        setFormData({ ...formData, category: 'to-do' });
+        setIsEdit(false);
+        break;
+      case 'In Progress':
+        setFormData({ ...formData, category: 'in-progress' });
+        setIsEdit(false);
+        break;
+      case 'Done':
+        setFormData({ ...formData, category: 'done' });
+        setIsEdit(false);
+        break;
+
+      default:
+        const task = currentData.data.filter(({ _id }) => _id === category);
+        setIsEdit(true);
+        setFormData(...task);
+        break;
+    }
+  };
+
+  const { currentDay } = useParams();
+
   const [formData, setFormData] = useState(
     initialData || {
       title: '',
       start: '09:00',
       end: '09:30',
       priority: 'low',
-      date: '',
-      category: 'to-do',
-    }
+      date: currentDay,
+      category: '',
+    },
   );
 
-  // const [isEditing, setIsEditing] = useState(!!initialData);
+  const [isEdit, setIsEdit] = useState(false);
+
+  const [isEditing, setIsEditing] = useState(!!initialData);
   const [errorMessage, setErrorMessage] = useState('');
+  const [todos, setTodos] = useState([]);
+
+  const [createTask, adc] = useCreateTasksMutation();
+  const { currentData } = useGetMonthlyTasksQuery(currentDay);
+  // useEffect(() => {
+  //   if (id) {
+  //     const task = currentData.data.filter(({ _id }) => _id === id);
+  //     console.log(task);
+  //   }
+  // }, []);
 
   useEffect(() => {
+    categoryToDefault(category);
     if (initialData) {
       setFormData(initialData);
+      setIsEditing(true);
+    } else {
+      setIsEditing(false);
     }
   }, [initialData]);
+
+  const handleEdit = (editedTodo) => {
+    setTodos((prevTodos) => {
+      const updatedTodos = prevTodos.map((todo) =>
+        todo.id === editedTodo.id ? editedTodo : todo,
+      );
+      return updatedTodos;
+    });
+    closeModal();
+  };
+
+  const handleAdd = (newTodo) => {
+    createTask(formData);
+    // setTodos((prevTodos) => {
+    //   const updatedTodos = [...prevTodos, newTodo];
+    //   return updatedTodos;
+    // });
+    console.log(formData);
+    closeModal();
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -44,10 +113,27 @@ const TaskForm = ({ initialData, closeModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    // Перевірка відповідності категорії в списку допустимих
+    const validCategories = ['to-do', 'in-progress', 'done'];
+    if (!validCategories.includes(formData.category)) {
+      setErrorMessage(
+        'Invalid category. Choose from: to-do, in-progress, done.',
+      );
+      return;
+    }
+
+    if (isEditing) {
+      handleEdit(formData);
+    } else {
+      handleAdd(formData);
+    }
+    setFormData(initialData);
+    setIsEditing(false);
   };
 
   const handleCancel = () => {
     closeModal();
+    setIsEditing(false);
   };
 
   return (
@@ -75,7 +161,7 @@ const TaskForm = ({ initialData, closeModal }) => {
               value={formData.start}
               onChange={handleInputChange}
               required
-              pattern="[0-9]{2}:[0-9]{2}"
+              pattern="[0-1][0-9]:[0-5][0-9]"
             />
           </StyledLabel>
           <StyledLabel>
@@ -86,7 +172,7 @@ const TaskForm = ({ initialData, closeModal }) => {
               value={formData.end}
               onChange={handleInputChange}
               required
-              pattern="[0-9]{2}:[0-9]{2}"
+              pattern="[0-1][0-9]:[0-5][0-9]"
               min={formData.start}
             />
           </StyledLabel>
@@ -131,24 +217,17 @@ const TaskForm = ({ initialData, closeModal }) => {
         {errorMessage && <div>{errorMessage}</div>}
 
         <ButtonContainer>
-      {/* {isEditing ? (
-        <StyledEdit type="submit" onClick={handleEdit}>
-          Edit
-        </StyledEdit>
-      ) : (
-        <StyledAdd type="submit" onClick={handleAdd}>
-          Add
-            <SVG>
-              <use href="../../icons/popUp/plus.svg#plus"></use>
-            </SVG>
-        </StyledAdd>
-      )} */}
-          <StyledEdit type="submit">
-            Edit
-          {/* <svg width="18px" height="18px">
-            <use href="../../icons/popUp/pencil.svg#pencil"></use>
-          </svg> */}
-          </StyledEdit>
+          {isEdit ? (
+            <StyledEdit onClick={handleEdit} type="submit">
+              <PencilIcon />
+              Edit
+            </StyledEdit>
+          ) : (
+            <StyledAdd onClick={handleAdd} type="submit">
+              <AddTask />
+              Add
+            </StyledAdd>
+          )}
           <StyledCancel type="button" onClick={handleCancel}>
             Cancel
           </StyledCancel>
