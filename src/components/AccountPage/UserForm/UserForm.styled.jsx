@@ -1,9 +1,37 @@
 // Serhii
 import styled from 'styled-components';
 // import DatePicker from 'react-datepicker';
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { HiPlus } from 'react-icons/hi';
 import userSvg from '../../../../src/icons/popUp/user.svg';
+
+// const breakpoints = {
+//   mobile: 375,
+//   tablet: 768,
+//   laptop: 1440,
+// };
+
+// const between = (firstBreakpoint, secondBreakpoint, styles) => css`
+//   @media (min-width: ${breakpoints[
+//       firstBreakpoint
+//     ]}px) and (max-width: ${breakpoints[secondBreakpoint] - 1}px) {
+//     ${styles}
+//   }
+// `;
+
+// const greaterThan = (breakpoint, styles) => css`
+//   @media (min-width: ${breakpoints[breakpoint]}px) {
+//     ${styles}
+//   }
+// `;
+
+// const lesserThan = (breakpoint, styles) => css`
+//   @media (max-width: ${breakpoints[breakpoint] - 1}px) {
+//     ${styles}
+//   }
+// `;
+
 // @media screen and(min - width: 375px) { }
 // @media screen and(min - width: 768px) { }
 // @media screen and(min - width: 1440px) { }
@@ -15,7 +43,6 @@ const StyledForm = styled.form`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  gap: 40px;
   width: 100%;
   padding-top: 59px;
   padding-bottom: 40px;
@@ -30,14 +57,17 @@ const StyledForm = styled.form`
   }
 `;
 
-const StyledInputWrapperDiv = styled.div`
+const StyledAvatarImg = styled.img`
+  position: absolute;
+  align-items: center;
   display: flex;
-  flex-direction: column;
-  gap: 18px;
-  @media (min-width: 1440px) {
-    flex-direction: row;
-    gap: 50px;
-  }
+  top: -31px;
+  width: 124px;
+  height: 124px;
+  object-fit: cover;
+  border: 2px solid var(--gradient-blue);
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.secondaryBgColor};
 `;
 
 const StyledAvatarPlug = styled.div`
@@ -61,30 +91,26 @@ const StyledAvatarPlug = styled.div`
   z-index: 1;
 `;
 
-const StyledAvatarImgThumb = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-`;
-
-const StyledAvatarImg = styled.img`
+const StyledPhotoLabel = styled.label`
   position: absolute;
-  align-items: center;
-  display: flex;
-  top: -31px;
-  width: 124px;
-  height: 124px;
-  object-fit: cover;
-  border: 2px solid var(--gradient-blue);
-  border-radius: 50%;
-  background-color: ${({ theme }) => theme.secondaryBgColor};
+  left: calc(50% + 16px);
+  top: 34px;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+
+  cursor: pointer;
+  border: none;
+  border-radius: red;
+  background: green;
+
+  &:hover,
+  &:focus {
+    box-shadow: black;
+  }
 `;
 
-const StyledAddAvatarBtn = styled(HiPlus)`
+const StyledAddPhotoIcon = styled(HiPlus)`
   position: absolute;
   left: 50%;
   top: 50%;
@@ -94,19 +120,18 @@ const StyledAddAvatarBtn = styled(HiPlus)`
   color: var(--white);
 `;
 
-const StyledUserInfoThumb = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
+const StyledPhotoInput = styled.input`
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 `;
 
 const StyledUserNameP = styled.p`
   margin-top: 59px;
-  /* !--------------------- */
-  font-family: InterTight;
-  /* !--------------------- */
+  font-family: 'InterTightRegular', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -115,12 +140,22 @@ const StyledUserNameP = styled.p`
 `;
 
 const StyledUserStatusP = styled.p`
-  font-family: InterTight;
+  font-family: 'InterTightRegular', sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: 14px;
   color: ${({ theme }) => theme.secondaryTextColor};
+`;
+
+const StyledInputWrapperDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    gap: 50px;
+  }
 `;
 
 const StyledInputSecondWrapperDiv = styled.div`
@@ -160,10 +195,10 @@ const StyledInput = styled.input`
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.borderInputColor};
   color: ${({ theme }) => theme.mainTextColor};
-  background-color: ${({ theme }) => theme.secondaryBgColor};
+  background-color: inherit;
 
   &::placeholder {
-    color: ${({ theme }) => theme.mainTextColor};
+    color: var(--input-gray);
   }
 
   @media (min-width: 375px) {
@@ -172,6 +207,164 @@ const StyledInput = styled.input`
 
   @media (min-width: 768px) {
     width: 354px;
+  }
+`;
+
+const StyledCalendarDiv = styled.div`
+  .react-datepicker {
+    max-width: 327px;
+    height: 100%;
+
+    border-radius: 16px;
+    border-color: var(--main-blue);
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--white);
+    background-color: var(--main-blue);
+  }
+
+  .react-datepicker__triangle {
+    &::before,
+    &::after {
+      content: none;
+      display: none;
+    }
+  }
+
+  .react-datepicker__header {
+    position: relative;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: var(--main-blue);
+  }
+
+  .react-datepicker__navigation {
+    top: 20px;
+  }
+
+  .react-datepicker__navigation-icon {
+    &::before {
+      border-color: var(--white);
+    }
+  }
+
+  .react-datepicker__current-month {
+    margin-bottom: 0;
+    text-align: center;
+
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.2;
+    color: var(--white);
+  }
+
+  .react-datepicker__day-names {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+
+  .react-datepicker__day-name {
+    color: var(--white);
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 36px;
+  }
+
+  .react-datepicker__header__dropdown {
+    margin-top: 10px;
+  }
+
+  .react-datepicker__month-dropdown,
+  .react-datepicker__year-dropdown {
+    margin-top: 12px;
+    background-color: var(--main-blue);
+    color: var(--white);
+  }
+  .react-datepicker__month-option,
+  .react-datepicker__year-option {
+    &:hover {
+      background-color: var(--hover-blue);
+      color: var(--white);
+    }
+  }
+
+  .react-datepicker__month-read-view--down-arrow,
+  .react-datepicker__year-read-view--down-arrow {
+    border-color: var(--white);
+  }
+
+  .react-datepicker__month-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+
+  .react-datepicker__day {
+    width: 2.3rem;
+    height: 2.3rem;
+    line-height: 2.3rem;
+    text-align: center;
+    margin: 2px;
+    border-radius: 50%;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--white);
+
+    &:hover {
+      border-radius: 50%;
+      background-color: var(--white);
+      color: var(--main-blue);
+    }
+  }
+
+  .react-datepicker__day--selected,
+  .react-datepicker__day--keyboard-selected,
+  .react-datepicker__day--weekend.react-datepicker__day--selected,
+  .react-datepicker__day--weekend.react-datepicker__day--keyboard-selected {
+    background-color: var(--white);
+    color: var(--main-blue);
+  }
+
+  .react-datepicker__day--weekend {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .react-datepicker__day--outside-month {
+    visibility: hidden;
+  }
+
+  .react-datepicker__day--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+`;
+
+const StyledDatePicker = styled(DatePicker)`
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 2px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--black);
+  background-color: inherit;
+  border: 1px solid var(--input-gray);
+  border-radius: 8px;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid var(--black);
   }
 `;
 
@@ -201,18 +394,20 @@ const StyledButton = styled.button`
 `;
 
 export {
-  StyledAvatarImgThumb,
+  StyledForm,
   StyledAvatarImg,
   StyledAvatarPlug,
-  StyledAddAvatarBtn,
-  StyledUserInfoThumb,
+  StyledPhotoLabel,
+  StyledAddPhotoIcon,
+  StyledPhotoInput,
   StyledUserNameP,
   StyledUserStatusP,
-  StyledForm,
   StyledInputWrapperDiv,
   StyledInputSecondWrapperDiv,
   StyledInputThumbDiv,
   StyledLabel,
   StyledInput,
+  StyledCalendarDiv,
+  StyledDatePicker,
   StyledButton,
 };

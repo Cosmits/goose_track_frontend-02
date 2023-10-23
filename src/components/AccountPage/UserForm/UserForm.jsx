@@ -11,11 +11,11 @@ import { toast } from 'react-toastify';
 
 import {
   StyledForm,
-  StyledAvatarPlug,
-  StyledAvatarImgThumb,
   StyledAvatarImg,
-  // StyledAddAvatarBtn,
-  StyledUserInfoThumb,
+  StyledAvatarPlug,
+  StyledPhotoLabel,
+  StyledAddPhotoIcon,
+  StyledPhotoInput,
   StyledUserNameP,
   StyledUserStatusP,
   StyledInputWrapperDiv,
@@ -23,7 +23,11 @@ import {
   StyledInputThumbDiv,
   StyledLabel,
   StyledInput,
+  StyledCalendarDiv,
+  StyledDatePicker,
   StyledButton,
+  // StyledUserInfoThumb,
+  // StyledAvatarImgThumb,
 } from './UserForm.styled';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -116,8 +120,8 @@ export const UserForm = () => {
     values,
     errors,
     touched,
-    dirty,
-    isSubmitting,
+    // dirty,
+    // isSubmitting,
     setFieldValue,
     handleBlur,
     handleChange,
@@ -153,9 +157,9 @@ export const UserForm = () => {
         <StyledAvatarPlug />
       )}
 
-      <StyledAvatarImgThumb>
-        {/* <StyledAddAvatarBtn /> */}
-        <input
+      <StyledPhotoLabel>
+        <StyledAddPhotoIcon />
+        <StyledPhotoInput
           type="file"
           name="avatarFile"
           onBlur={handleBlur}
@@ -163,13 +167,13 @@ export const UserForm = () => {
             handleImageUpload(event);
             setSubmitting(false);
           }}
-        ></input>
-      </StyledAvatarImgThumb>
+        ></StyledPhotoInput>
+      </StyledPhotoLabel>
 
-      <StyledUserInfoThumb>
-        <StyledUserNameP>{values.name ? values.name : 'Name'}</StyledUserNameP>
-        <StyledUserStatusP>User</StyledUserStatusP>
-      </StyledUserInfoThumb>
+      <StyledUserNameP>
+        {values.userName.length > 1 ? values.userName : 'Name'}
+      </StyledUserNameP>
+      <StyledUserStatusP>User</StyledUserStatusP>
 
       <StyledInputWrapperDiv>
         <StyledInputSecondWrapperDiv>
@@ -181,32 +185,35 @@ export const UserForm = () => {
               placeholder="Enter your name"
               value={values.userName}
               onBlur={handleBlur}
-              id="userName"
               onChange={(event) => {
                 handleChange(event);
                 setSubmitting(false);
               }}
             />
-            {errors.name && <div>{errors.name}</div>}
+            {touched.userName && errors.userName ? (
+              <div>{errors.userName}</div>
+            ) : null}
           </StyledInputThumbDiv>
           <StyledInputThumbDiv>
             <StyledLabel htmlFor="birthday">Birthday</StyledLabel>
-            <StyledInput
-              name="birthday"
-              type="date"
-              placeholderText={format(new Date(), 'dd/MM/yyyy')}
-              selected={values.birthday}
-              value={values.birthday}
-              onBlur={handleBlur}
-              onChange={(date) => {
-                setFieldValue('birthday', date);
-                setSubmitting(false);
-              }}
-              id="birthday"
-              dateFormat="dd/MM/yyyy"
-              maxDate={addDays(new Date(), 0)}
-              highlightDates={(date) => isWeekend(date)}
-            />
+            <StyledCalendarDiv>
+              <StyledDatePicker
+                name="birthday"
+                type="date"
+                placeholderText={format(new Date(), 'dd/MM/yyyy')}
+                selected={values.birthday}
+                value={values.birthday}
+                onBlur={handleBlur}
+                onChange={(date) => {
+                  setFieldValue('birthday', date);
+                  setSubmitting(false);
+                }}
+                dateFormat="dd/MM/yyyy"
+                calendarStartDay={1}
+                maxDate={addDays(new Date(), 0)}
+                highlightDates={(date) => isWeekend(date)}
+              />
+            </StyledCalendarDiv>
             {touched.birthday && errors.birthday ? (
               <div>{errors.birthday}</div>
             ) : null}
@@ -235,7 +242,6 @@ export const UserForm = () => {
             <StyledInput
               type="text"
               name="phone"
-              id="phone"
               placeholder="Add a phone number"
               value={values.phone}
               onBlur={handleBlur}
@@ -245,6 +251,8 @@ export const UserForm = () => {
               }}
             />
             {touched.phone && errors.phone ? <div>{errors.phone}</div> : null}
+            {console.log('touched: ', touched)}{' '}
+            {console.log('errors: ', errors)}
           </StyledInputThumbDiv>
           <StyledInputThumbDiv>
             <StyledLabel htmlFor="skype">Skype</StyledLabel>
@@ -265,7 +273,7 @@ export const UserForm = () => {
         </StyledInputSecondWrapperDiv>
       </StyledInputWrapperDiv>
 
-      <StyledButton type="submit" disabled={!dirty || isSubmitting}>
+      <StyledButton type="submit" disabled={false}>
         Save changes
       </StyledButton>
     </StyledForm>
