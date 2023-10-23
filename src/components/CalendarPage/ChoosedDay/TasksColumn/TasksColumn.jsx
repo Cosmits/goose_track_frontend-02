@@ -5,12 +5,12 @@ import ColumnHeadBar from '../ColumnHeadBar/ColumnHeadBar';
 import AddTaskBtn from '../AddTaskBtn/AddTaskBtn';
 import ColumnsTasksList from '../ColumnsTasksList/ColumnsTasksList';
 
-export default function TasksColumn({ title, tasks }) {
+export default function TasksColumn({ title, tasks, showModal }) {
   return (
     <TaskColumn>
-      <ColumnHeadBar title={title} category={title} />
-      {tasks && <ColumnsTasksList tasks={tasks} />}
-      <AddTaskBtn category={title} />
+      <ColumnHeadBar title={title} category={title} showModal={showModal} />
+      {tasks && <ColumnsTasksList tasks={tasks} showModal={showModal} />}
+      <AddTaskBtn showModal={showModal} category={title} />
     </TaskColumn>
   );
 }

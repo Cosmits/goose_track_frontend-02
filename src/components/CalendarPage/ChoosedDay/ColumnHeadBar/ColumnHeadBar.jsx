@@ -6,14 +6,15 @@ import {
   ColumnHeadBarWrapper,
 } from './ColumnHeadBar.styled';
 
-export default function ColumnHeadBar({ title, category }) {
+export default function ColumnHeadBar({ title, category, showModal }) {
   return (
     <ColumnHeadBarWrapper>
       <ColumnHeadBarTitle>{title}</ColumnHeadBarTitle>
       <button
         type="button"
         onClick={() =>
-          console.log(`Column Head Bar Add Task Btn click ${category}`)
+          // console.log(`Column Head Bar Add Task Btn click ${category}`)
+          showModal(category)
         }
       >
         <ColumnHeadBarAddTaskIcon />
