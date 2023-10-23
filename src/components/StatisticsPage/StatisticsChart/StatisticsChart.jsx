@@ -6,21 +6,19 @@ import { useSelector } from 'react-redux';
 import { useScreenSize } from '../../../hooks/useScreenSize';
 
 import { selectTheme } from '../../../redux/theme/themeSlice'
-import {lightTheme, darkTheme} from '../../../Styles/theme.js'
-import { 
+import { lightTheme, darkTheme } from '../../../Styles/theme.js'
+import {
   StatisticsContainer,
-   StyledContainer,
-    StyledParagraph,
-     BarContainer,
-      MonthIcon, 
-      DayIcon, 
-      CalendarContainer
-     } from './StatisticsChart.styled';
+  CalendarContainer,
+  StyledContainer,
+  StyledParagraph,
+  BarContainer,
+  MonthIcon,
+  DayIcon,
+} from './StatisticsChart.styled';
 import { fetchByDayTasks, fetchByMonthTasks } from '../../../services/statistic-api.js';
 import { getPercentage } from '../../../services/statistic-api.js'
 import { PeriodPaginator } from '../PeriodPaginator/PeriodPaginator';
-
-
 
 
 
@@ -42,17 +40,19 @@ export const StatisticsChart = ({ tasks, date }) => {
     setSelectedMonth(newDate);
   };
 
+
   useEffect(() => {
+
     const fetchData = async () => {
-      const monthTasksData = await fetchByMonthTasks(selectedDay);
-      const monthTasks = monthTasksData.data;
+    const monthTasksData = await fetchByMonthTasks(selectedDay);
+    const monthTasks = monthTasksData.data;
 
-      setMonthPercentage(getPercentage(monthTasks));
+    setMonthPercentage(getPercentage(monthTasks));
 
-      const dayTasksData = await fetchByDayTasks(selectedMonth);
-      const dayTasks = dayTasksData.data;
+    const dayTasksData = await fetchByDayTasks(selectedMonth);
+    const dayTasks = dayTasksData.data;
 
-      setDayPercentage(getPercentage(dayTasks))
+    setDayPercentage(getPercentage(dayTasks))
     };
 
     fetchData();
@@ -84,7 +84,7 @@ export const StatisticsChart = ({ tasks, date }) => {
   return (
     <StatisticsContainer>
       <CalendarContainer>
-        <PeriodPaginator onDayChange={handleDateChange}/>
+        <PeriodPaginator onDayChange={handleDateChange} />
         <BarContainer>
           <MonthIcon ></MonthIcon>
           <StyledParagraph>By Day</StyledParagraph>
@@ -114,7 +114,7 @@ export const StatisticsChart = ({ tasks, date }) => {
             fontFamily: 'InterTightRegular',
             lineHeight: 1.3,
             fontWeight: 400,
-             fill: themeColors.secondaryTextColor,
+            fill: themeColors.secondaryTextColor,
           }}
             tickMargin={18}
           />
@@ -122,7 +122,7 @@ export const StatisticsChart = ({ tasks, date }) => {
             label={{
               value: 'Tasks',
               position: "top",
-              offset:  isMobile ? 20 :24,
+              offset: isMobile ? 20 : 24,
               fill: themeColors.secondaryTextColor,
               fontSize: 14,
               fontWeight: 600,
@@ -142,7 +142,6 @@ export const StatisticsChart = ({ tasks, date }) => {
               fill: themeColors.secondaryTextColor,
             }}
           />
-          {/* <Tooltip /> */}
           <Legend align='left' verticalAlign="top" height={34} />
           <Bar dataKey="pv" barSize={isMobile ? 22 : 27}
             fill="url(#pinkGradient)"
@@ -170,7 +169,6 @@ export const StatisticsChart = ({ tasks, date }) => {
               fontWeight: 500,
               formatter: (value) => (value !== 0 ? `${value}%` : ''),
             }}
-
             legendType="none" />
         </BarChart>
       </StyledContainer>
@@ -190,6 +188,7 @@ const CustomBarShape = (props) => {
     <path d={`M${x},${y + radius} L${x},${y + height - radius} Q${x},${y + height} ${x + radius},${y + height} L${x + width - radius},${y + height} Q${x + width},${y + height} ${x + width},${y + height - radius} L${x + width},${y + radius} Q${x + width},${y} ${x + width - radius},${y} L${x + radius},${y} Q${x},${y} ${x},${y + radius}`} fill={fill} />
   );
 };
+
 
 
 StatisticsChart.propTypes = {

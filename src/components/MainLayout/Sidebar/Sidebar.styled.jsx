@@ -44,7 +44,7 @@ export const SidebarWrapper = styled.div`
 
     .logo-text {
       color: ${({ theme }) => theme.sideBarLogoText};
-      font-family: 'InterTightBold';
+      font-family: 'InterTightBold', sans-serif;
       font-size: 24px;
       font-weight: 700;
       line-height: 24px;

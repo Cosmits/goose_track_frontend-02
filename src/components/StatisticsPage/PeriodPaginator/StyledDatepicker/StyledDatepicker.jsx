@@ -14,7 +14,7 @@ const StyledDatepicker = ({ onDayChange }) => {
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (
       <TitleWrapper onClick={onClick} ref={ref}>
-        {format(selectedDate, "MMMM yyyy")}
+        {format(selectedDate, " dd MMMM yyyy")}
       </TitleWrapper>
     );
   });
@@ -29,7 +29,7 @@ const StyledDatepicker = ({ onDayChange }) => {
   };
  
   return (
-    <DatePickerContainer>
+    <DatePickerContainer className="datepicker-container">
       <DatePicker
         selected={selectedDate}
         onChange={(date) => {

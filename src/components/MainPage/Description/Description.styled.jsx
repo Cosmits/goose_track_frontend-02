@@ -6,7 +6,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 background-color: var(--white);
-font-family: 'InterTightBold';
+font-family: 'InterTightBold', sans-serif;
 font-weight: 700; 
 `
 
