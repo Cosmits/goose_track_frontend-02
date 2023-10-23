@@ -4,7 +4,7 @@ import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 
 export const Title = styled.h1`
   margin-bottom: 32px;
-  color: #3E85F3;
+  color: var(--main-blue);
   font-size: 18px;
   font-family:InterSemiBold;
   line-height: 1.33;
@@ -37,11 +37,11 @@ export const InputWrap = styled.li`
 
 export const Label = styled.label`
   margin-bottom: 8px;
-  color: #111111;
+  color: var(--black);
   font-size: 12px;
   font-family:InterSemiBold;
   line-height: 1.21;
-  color: ${props => props.className === 'error' ? '#ff0000' : props.className === 'success' ? '#3cbc81' : '#000'};
+  color: ${props => props.className === 'error' ? 'var(--error-color)' : props.className === 'success' ? 'var(--correct-color)' : 'var(--black)'};
 
  @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -49,24 +49,24 @@ export const Label = styled.label`
 `;
 
 export const Input = styled(Field)`
-  border: 1px solid #DCE3E599;
+  border: 1px solid var(--input-gray);
   border-radius: 8px;
   padding: 14px;
   font-size: 14px;
   font-family:InterTightRegular;
   line-height: 1.29;
-  background-color:#ffffff !important;
-  border-color: ${props => props.className === 'error' ? '#ff0000' : props.className === 'success' ? '#3cbc81' : ''};
+  background-color:var(--white) !important;
+  border-color: ${props => props.className === 'error' ? 'var(--error-color)' : props.className === 'success' ? 'var(--correct-color)' : ''};
   
   &::placeholder {
-    color: #DCE3E5;
-    background-color:#ffffff !important;
+    color: var(--input-gray);
+    background-color:var(--white) !important;
   } 
 
    &:hover,
    &:focus,
    :active {
-    border-color: #111111;
+    border-color: var(--black);
   }
 
   @media screen and (min-width: 768px) {
@@ -99,10 +99,10 @@ export const Button = styled.button`
   padding-top: 14px;
   padding-bottom: 14px;
   border-radius: 16px;
-  background-color: #3E85F3;
+  background-color: var(--main-blue);
   border: none;
   cursor: pointer;
-  color: #ffffff;
+  color: var(--white);
   font-size: 14px;
   font-family:InterSemiBold;
   line-height: 1.29;
@@ -117,7 +117,7 @@ export const Button = styled.button`
 
  &:focus,
   &:hover  {
-    background-color: #2B78EF;
+    background-color: var(--hover-blue);
     box-shadow: 4px 2px 16px 0px #88A5BF7A;
 
   }
@@ -139,7 +139,7 @@ export const Error = styled.p`
   font-size: 12px;
   font-family:InterTightRegular;
   line-height: 1.17;
-  color: #ff0000;
+  color: var(--error-color);
 
    @media screen and (min-width: 768px) {
     margin-left:18px;
@@ -161,7 +161,7 @@ export const PasswordButton = styled.button`
 `;
 
 export const DontShowIcon = styled(AiFillEye)`
-  fill: #3E85F3;
+  fill: var(--main-blue);
   width: 18px;
   height: 18px;
 
@@ -171,7 +171,7 @@ export const DontShowIcon = styled(AiFillEye)`
   }
 `;
 export const ShowIcon = styled(AiFillEyeInvisible)`
-  fill: #3E85F3;
+  fill: var(--main-blue);
   width: 18px;
   height: 18px;
 
@@ -180,3 +180,17 @@ export const ShowIcon = styled(AiFillEyeInvisible)`
     height: 20px;
   }
 `;
+
+export const VerifyEmailInput = styled.li`
+  display:flex;
+  flex-direction:column;
+  margin-bottom: 32px;
+  margin-top:32px;
+  position:relative;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 48px;
+    margin-top:40px;
+  }
+`;
+

@@ -12,6 +12,18 @@ import PoppinsRegular from '../fonts/Poppins-Regular.ttf';
 import PoppinsMedium from '../fonts/Poppins-Medium.ttf';
 
 
+export const globalRegex = {
+  priorityList: ["low", "medium", "high"],
+  categoryList: ["to-do", "in-progress", "done"],
+  timeRegex: /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/,
+  dateRegex: /^20[0-2][0-9]-((0[1-9])|(1[0-2]))-(0[1-9]|[1-2][0-9]|3[0-1])$/,
+
+  emailRegexp: /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9_-]+).([a-zA-Z]{2,5})$/,
+  phoneRegexp: /^\d{2}\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}$/,
+  birthdayRegexp: /^\d{2}\/\d{2}\/\d{4}$/,
+  passwordRegexp: /^(?=.*\d)[A-Za-z\d]{6,}$/,
+}
+
 export const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'InterTightRegular';
@@ -30,22 +42,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     @font-face {
-        font-family: 'InterTightBold';
-        src: local('InterTightBold'),
-        url(${InterTightBold}) format('truetype');
-        font-weight: 700;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'InterTightBoldItalic';
-        src: local('InterTightBoldItalic'),
-        url(${InterTightBoldItalic}) format('truetype');
-        font-weight: 700;
-        font-style: normal;
-    }
-
-    @font-face {
         font-family: 'InterSemiBold';
         src: local('InterSemiBold'),
         url(${InterSemiBold}) format('truetype');
@@ -59,6 +55,22 @@ export const GlobalStyle = createGlobalStyle`
         url(${InterSemiBoldItalic}) format('truetype');
         font-weight: 600;
         font-style: italic;
+    }
+
+    @font-face {
+        font-family: 'InterTightBold';
+        src: local('InterTightBold'),
+        url(${InterTightBold}) format('truetype');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'InterTightBoldItalic';
+        src: local('InterTightBoldItalic'),
+        url(${InterTightBoldItalic}) format('truetype');
+        font-weight: 700;
+        font-style: normal;
     }
 
     @font-face {

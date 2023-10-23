@@ -7,7 +7,7 @@ export const TaskCard = styled.li`
   padding: 14px 14px 18px 15px;
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.8);
-  background-color: #f7f6f9;
+  background-color: ${({ theme }) => theme.mainBGColor};
 
   @media screen and (min-width: 768px) {
     width: 300px;
@@ -17,10 +17,10 @@ export const TaskCard = styled.li`
 
 export const TaskCardTitle = styled.p`
   overflow: hidden;
-  color: #111;
+  color: ${({ theme }) => theme.mainTextColor};
   text-overflow: ellipsis;
   white-space: nowrap;
-  /* font-family: Inter; */
+  font-family: 'InterTightMedium', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -65,8 +65,8 @@ export const TaskCardSuccess = styled.div`
 `;
 
 export const TaskCardSuccessText = styled.p`
-  color: #f7f6f9;
-  /* font-family: Inter; */
+  color: ${({ theme }) => theme.mainBGColor};
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 600;

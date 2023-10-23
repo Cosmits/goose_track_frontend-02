@@ -1,6 +1,6 @@
 //HSamofal 
 import './index.css';
-import React from 'react';
+// import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { Provider, useSelector } from 'react-redux';
@@ -30,7 +30,7 @@ function ThemeWrapper() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={<Loader />} persistor={persistor}>
         <BrowserRouter basename="/goose_track_frontend-02">
@@ -38,5 +38,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 );

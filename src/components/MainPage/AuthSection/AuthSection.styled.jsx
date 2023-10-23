@@ -31,7 +31,7 @@ export const AuthLogo = styled.img`
 export const AuthHeader = styled.h1`
   color: var(--white);
 
-  font-family: 'InterTightBold';
+  font-family: 'InterTightBold', sans-serif;
   font-size: 44px;
   font-weight: 700;
   line-height: 1.09;
@@ -49,8 +49,7 @@ export const AuthHeader = styled.h1`
 `;
 
 export const AuthHeaderSpan = styled.span`
-  font-family: 'InterTightBoldItalic';
-  margin-right: 3px;
+  font-family: 'InterTightBoldItalic', sans-serif;
   font-size: 44px;
   font-weight: 700;
   font-style: italic;
@@ -133,7 +132,7 @@ export const Wrap = styled.div`
 
 export const LoginSpan = styled.span`
   display: block;
-  font-family: 'InterSemiBold';
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.28;
@@ -152,7 +151,7 @@ export const StyledFiLogIn = styled(FiLogIn)`
 export const SignupLink = styled(NavLink)`
   display: block;
 
-  font-family: 'InterSemiBold';
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 12px;
   font-weight: 600;
   line-height: 1.16;

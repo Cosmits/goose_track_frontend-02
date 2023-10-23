@@ -29,12 +29,12 @@ export const SwipeIcon = styled(Swipe)`
   cursor: pointer;
   width: 100%;
   height: 100%;
-  stroke: #111111;
+  stroke: ${({ theme }) => theme.mainTextColor};
   transition: stroke 300ms linear;
 
   &:hover,
   &:focus {
-    stroke: #3e85f3;
+    stroke: ${({ theme }) => theme.btnTextColor};
   }
 `;
 
@@ -42,12 +42,12 @@ export const EditIcon = styled(Edit)`
   cursor: pointer;
   width: 100%;
   height: 100%;
-  stroke: #111111;
+  stroke: ${({ theme }) => theme.mainTextColor};
   transition: stroke 300ms linear;
 
   &:hover,
   &:focus {
-    stroke: #3e85f3;
+    stroke: ${({ theme }) => theme.btnTextColor};
   }
 `;
 
@@ -55,11 +55,11 @@ export const RemoveIcon = styled(Remove)`
   cursor: pointer;
   width: 100%;
   height: 100%;
-  stroke: #111111;
+  stroke: ${({ theme }) => theme.mainTextColor};
   transition: stroke 300ms linear;
 
   &:hover,
   &:focus {
-    stroke: #3e85f3;
+    stroke: ${({ theme }) => theme.btnTextColor};
   }
 `;
