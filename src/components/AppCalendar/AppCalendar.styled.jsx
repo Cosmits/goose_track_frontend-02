@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import styled from '@emotion/styled';
+import styled, { createGlobalStyle } from "styled-components";
+
 
 export const Container = styled.div`
   margin-left: auto;
