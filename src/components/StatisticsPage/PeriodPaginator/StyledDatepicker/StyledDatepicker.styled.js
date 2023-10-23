@@ -23,8 +23,6 @@ export const CalendarGlobalStyles = createGlobalStyle`
 
   .react-datepicker__wrapper {
     position: relative;
-    
-
   }
   .datepicker-container .react-datepicker {
     position: absolute;
@@ -67,7 +65,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     outline: none;
     border: none;
 }
-.datepicker-container  .react-datepicker__current-month {
+  .datepicker-container  .react-datepicker__current-month {
     font-family: 'InterSemiBold';
     font-size: 16px;
     font-style: normal;
@@ -81,7 +79,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 6px 8px; 
   
-   font-family: 'InterTightMedium';
+    font-family: 'InterTightMedium';
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -112,9 +110,9 @@ export const CalendarGlobalStyles = createGlobalStyle`
   } 
   .datepicker-container .react-datepicker__navigation:hover *::before {
     border-color: white;
-}
+  }
   
-.datepicker-container .react-datepicker__week {
+  .datepicker-container .react-datepicker__week {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -207,7 +205,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
 `;
 
 export const TitleWrapper = styled.button`
-   width: 185px; 
+  width: 185px; 
   color: #ffffff;
   background: #3e85f3;
   border-radius: 8px;
@@ -237,6 +235,5 @@ margin-bottom: 20px;
 
 @media screen and (min-width: 768px){
   margin-bottom: 0px;
-    }
-
+}
 `
