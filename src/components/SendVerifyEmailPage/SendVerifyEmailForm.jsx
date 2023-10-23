@@ -30,10 +30,8 @@ const initialValues = {
 const schema = yup.object().shape({
     email: yup.string()
         .email('Invalid email, enter in format "example@ukr.net"')
-        .matches(
-            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-            'Email must contain only digits, letters and . - _ symbols: "example@ukr.net"',
-        )
+        .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+            'Email must contain only digits, letters and . - _ symbols: "example@ukr.net"',)
         .required('Email is required'),
 });
 
@@ -42,11 +40,12 @@ const SendVerifyEmailForm = () => {
 
     const handleVerifySubmit = (values, { resetForm }) => {
         const { email } = values;
+        console.log("🚀 ~ file: SendVerifyEmailForm.jsx:43 ~ handleVerifySubmit ~ email:", email)
 
         dispatch(sendVerifyEmailUser({ email }))
             .unwrap()
-            .then(() => toast.success('Verify email successfully'))
-            .catch(() => toast.error('An error has occurred. Try again'));
+            // .then(() => toast.success('Verify email successfully'))
+            // .catch(() => toast.error('An error has occurred. Try again'));
 
         resetForm();
     };
@@ -60,26 +59,26 @@ const SendVerifyEmailForm = () => {
             {({ values, errors, touched }) => (
                 <Form>
                     <Title>Verify Email</Title>
-                        <VerifyEmailInput>
-                            <Label
-                                htmlFor="email"
-                                className={touched.email ? errors.email ? 'error' : 'success' : ''}>Email
-                            </Label>
-                            <Input
-                                type="email"
-                                id="email"
-                                name="email"
-                                autoComplete="off"
-                                placeholder="Enter email"
-                                className={touched.email ? errors.email ? 'error' : 'success' : ''}
-                            />
-                            <ErrorMessages name="email" />
-                            {errors.email && touched.email
-                                ? (<Icon src={ErrorIcon} />)
-                                : values.email && !errors.email
-                                    ? (<Icon src={SuccessIcon} />)
-                                    : null}
-                        </VerifyEmailInput>
+                    <VerifyEmailInput>
+                        <Label
+                            htmlFor="email"
+                            className={touched.email ? errors.email ? 'error' : 'success' : ''}>Email
+                        </Label>
+                        <Input
+                            type="email"
+                            id="email"
+                            name="email"
+                            autoComplete="off"
+                            placeholder="Enter email"
+                            className={touched.email ? errors.email ? 'error' : 'success' : ''}
+                        />
+                        <ErrorMessages name="email" />
+                        {errors.email && touched.email
+                            ? (<Icon src={ErrorIcon} />)
+                            : values.email && !errors.email
+                                ? (<Icon src={SuccessIcon} />)
+                                : null}
+                    </VerifyEmailInput>
 
                     <Button type="submit">
                         Verify Email

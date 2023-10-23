@@ -6,7 +6,7 @@ import gooseVerifyEmailPng from '../../images/VerifyEmailPage/goose-verify-email
 import gooseVerifyEmail2xPng from '../../images/VerifyEmailPage/goose-verify-email@2x.png';
 import gooseVerifyEmailWebp from '../../images/VerifyEmailPage/goose-verify-email.webp';
 import gooseVerifyEmail2xWebp from '../../images/VerifyEmailPage/goose-verify-email@2x.webp';
-import SendVerifyEmailForm from '../../components/SendVerifyEmailForm/SendVerifyEmailForm';
+import SendVerifyEmailForm from '../../components/SendVerifyEmailPage/SendVerifyEmailForm';
 
 const SendVerifyEmail = () => {
   return (
@@ -16,7 +16,7 @@ const SendVerifyEmail = () => {
         <SendVerifyEmailForm />
       </AuthFormWrap>
 
-      <AuthNavigate route="/register" textContent="Sign Up" />
+      <AuthNavigate route="/login" textContent="Log In" />
 
         <Picture>
           <source

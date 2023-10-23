@@ -48,6 +48,12 @@ export const Picture = styled.picture`
   } 
 `
 
+export const LinkWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 30px
+`;
+
 export const AuthLink = styled(Link)`
   display:block;
   margin-top:-15px;
