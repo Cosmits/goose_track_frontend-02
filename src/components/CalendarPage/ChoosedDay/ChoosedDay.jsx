@@ -1,11 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useGetMonthlyTasksQuery } from '../../../redux/tasks/tasksApi';
 import { ChoosedDaySection } from './ChoosedDay.styled';
 import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
 import { useParams } from 'react-router-dom';
 import { da } from 'date-fns/locale';
+import TaskModal from '../../TaskModal/TaskModal';
 
 export default function ChoosedDay() {
+  const [modal, setModal] = useState(false);
+  const [category, setCategory] = useState(null);
+
+  const showModal = (category) => {
+    setModal(true);
+    setCategory(category);
+    // setTaskId(id);
+  };
+
+  const closeModal = () => {
+    setModal(false);
+  };
+
   const { currentDay } = useParams();
 
   const filteredTasks = { 'To do': [], 'In progress': [], Done: [] };
@@ -37,7 +51,8 @@ export default function ChoosedDay() {
   return (
     <ChoosedDaySection>
       {/* <DayCalendarHead /> */}
-      <TasksColumnsList filteredTasks={filteredTasks} />
+      <TasksColumnsList filteredTasks={filteredTasks} showModal={showModal} />
+      {modal && <TaskModal category={category} closeModal={closeModal} />}
     </ChoosedDaySection>
   );
 }

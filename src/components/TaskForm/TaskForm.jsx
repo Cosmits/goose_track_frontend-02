@@ -17,25 +17,66 @@ import {
   StyledRadioMedium,
   StyledTime,
 } from './TaskForm.styled';
+import {
+  useCreateTasksMutation,
+  useGetMonthlyTasksQuery,
+} from '../../redux/tasks/tasksApi';
+import { useParams } from 'react-router';
 
-const TaskForm = ({ initialData, closeModal }) => {
+const TaskForm = ({ initialData, closeModal, category = '' }) => {
+  const categoryToDefault = (category) => {
+    switch (category) {
+      case 'To do':
+        setFormData({ ...formData, category: 'to-do' });
+        setIsEdit(false);
+        break;
+      case 'In Progress':
+        setFormData({ ...formData, category: 'in-progress' });
+        setIsEdit(false);
+        break;
+      case 'Done':
+        setFormData({ ...formData, category: 'done' });
+        setIsEdit(false);
+        break;
+
+      default:
+        const task = currentData.data.filter(({ _id }) => _id === category);
+        setIsEdit(true);
+        setFormData(...task);
+        break;
+    }
+  };
+
+  const { currentDay } = useParams();
+
   const [formData, setFormData] = useState(
     initialData || {
       title: '',
       start: '09:00',
       end: '09:30',
       priority: 'low',
-      date: '',
-      category: 'to-do',
-    }
+      date: currentDay,
+      category: '',
+    },
   );
+
+  const [isEdit, setIsEdit] = useState(false);
 
   const [isEditing, setIsEditing] = useState(!!initialData);
   const [errorMessage, setErrorMessage] = useState('');
-  const [todos, setTodos] = useState([]); 
+  const [todos, setTodos] = useState([]);
 
+  const [createTask, adc] = useCreateTasksMutation();
+  const { currentData } = useGetMonthlyTasksQuery(currentDay);
+  // useEffect(() => {
+  //   if (id) {
+  //     const task = currentData.data.filter(({ _id }) => _id === id);
+  //     console.log(task);
+  //   }
+  // }, []);
 
   useEffect(() => {
+    categoryToDefault(category);
     if (initialData) {
       setFormData(initialData);
       setIsEditing(true);
@@ -47,7 +88,7 @@ const TaskForm = ({ initialData, closeModal }) => {
   const handleEdit = (editedTodo) => {
     setTodos((prevTodos) => {
       const updatedTodos = prevTodos.map((todo) =>
-        todo.id === editedTodo.id ? editedTodo : todo
+        todo.id === editedTodo.id ? editedTodo : todo,
       );
       return updatedTodos;
     });
@@ -55,10 +96,12 @@ const TaskForm = ({ initialData, closeModal }) => {
   };
 
   const handleAdd = (newTodo) => {
-    setTodos((prevTodos) => {
-      const updatedTodos = [...prevTodos, newTodo];
-      return updatedTodos;
-    });
+    createTask(formData);
+    // setTodos((prevTodos) => {
+    //   const updatedTodos = [...prevTodos, newTodo];
+    //   return updatedTodos;
+    // });
+    console.log(formData);
     closeModal();
   };
 
@@ -73,7 +116,9 @@ const TaskForm = ({ initialData, closeModal }) => {
     // Перевірка відповідності категорії в списку допустимих
     const validCategories = ['to-do', 'in-progress', 'done'];
     if (!validCategories.includes(formData.category)) {
-      setErrorMessage('Invalid category. Choose from: to-do, in-progress, done.');
+      setErrorMessage(
+        'Invalid category. Choose from: to-do, in-progress, done.',
+      );
       return;
     }
 
@@ -172,10 +217,16 @@ const TaskForm = ({ initialData, closeModal }) => {
         {errorMessage && <div>{errorMessage}</div>}
 
         <ButtonContainer>
-          {isEditing ? (
-            <StyledEdit onClick={handleEdit} type="submit"><PencilIcon/>Edit</StyledEdit>
+          {isEdit ? (
+            <StyledEdit onClick={handleEdit} type="submit">
+              <PencilIcon />
+              Edit
+            </StyledEdit>
           ) : (
-            <StyledAdd onClick={handleAdd} type="submit"><AddTask/>Add</StyledAdd>
+            <StyledAdd onClick={handleAdd} type="submit">
+              <AddTask />
+              Add
+            </StyledAdd>
           )}
           <StyledCancel type="button" onClick={handleCancel}>
             Cancel

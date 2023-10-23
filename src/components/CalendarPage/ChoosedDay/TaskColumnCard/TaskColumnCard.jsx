@@ -12,7 +12,13 @@ import {
   TaskCardSuccessText,
 } from './TaskColumnCard.styled';
 
-export default function TaskColumnCard({ taskTitle, priority, avatar, id }) {
+export default function TaskColumnCard({
+  taskTitle,
+  priority,
+  avatar,
+  id,
+  showModal,
+}) {
   const priorityColor = {
     low: '#72C2F8',
     medium: '#F3B249',
@@ -41,7 +47,7 @@ export default function TaskColumnCard({ taskTitle, priority, avatar, id }) {
               </TaskCardSuccessText>
             </TaskCardSuccess>
           </TaskCardUserWrapper>
-          <TaskToolbar id={id} />
+          <TaskToolbar id={id} showModal={showModal} />
         </TaskCardInfoWrapper>
       </TaskCardWrapper>
     </TaskCard>
