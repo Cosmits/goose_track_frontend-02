@@ -18,12 +18,12 @@ import AddFeedbackModal from '../AddFeedbackModal/AddFeedbackModal';
 import { useEffect, useState } from 'react';
 import { useGetMonthlyTasksQuery } from '../../redux/tasks/tasksApi';
 
-
 const Header = ({ openSideBar }) => {
   const { isDesktop } = useScreenSize();
   const [showModal, setShowModal] = useState(false);
   const [currentPage, setCurrentPage] = useState('');
-  
+  const [tasks, setTasks] = useState(null)
+
   const location = useLocation();
   const openModal = () => {
     setShowModal(true);
@@ -34,11 +34,15 @@ const Header = ({ openSideBar }) => {
 
   const path = location.pathname;
   const [, , , date] = path.split('/');
-  const { data, isFetching} = useGetMonthlyTasksQuery(date, {
+  const { data } = useGetMonthlyTasksQuery(date, {
     skip: date === undefined,
   });
-     const tasks = data.data;
-     console.log(tasks)
+  useEffect(()=>{
+    if (data) {
+      setTasks(data.data)
+        }
+  },[data])
+  
 
   const isDayPage = path.includes('/calendar/day');
 
@@ -62,8 +66,10 @@ const Header = ({ openSideBar }) => {
 
   return (
     <HeaderWrapper>
-      {(isDesktop && !isDayPage && isFetching) && <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>}
-      {(isDesktop && isDayPage && isFetching && tasks.length ) && 
+      {isDesktop && !isDayPage && (
+        <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
+      )}
+      {(isDesktop && isDayPage && tasks) && (
         <NoTaskWrapper>
           <LogoHeader src={logoHeader} alt="LogoHeader" />
           <div>
@@ -73,8 +79,8 @@ const Header = ({ openSideBar }) => {
               present!
             </NoTaskTitle>
           </div>
-        </NoTaskWrapper>}
-
+        </NoTaskWrapper>
+      )}
 
       {!isDesktop && <BurgerMenu onClick={openSideBar} />}
       <HeaderUser>

@@ -1,4 +1,5 @@
 
+import { useSelector } from 'react-redux';
 import {
   BackgroundName,
   UserAvatar,
@@ -6,10 +7,10 @@ import {
   UserName,
   UserNameIcon,
 } from './UserInfo.styled';
+import { selectUser } from '../../../redux/auth/selectors';
 
 const UserInfo = () => {
   const {userName, avatarURL} = useSelector(selectUser);
-
   const getInitials = (userName) => {
     if (userName) {
       const initials = userName
