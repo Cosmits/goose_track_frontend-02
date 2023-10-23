@@ -11,6 +11,7 @@ export const lightTheme = {
   statisticStrokeColor: '#E3F3FF',
   calendarBtnColor: '#DCE3E5',
   mainSideBarText: 'rgba(52, 52, 52, 0.50)',
+  sidebarHoverText: '#3E85F3',
   popUpBg: '#F6F6F6',
   popUpBgBtn: '#EFEFEF',
 
@@ -18,6 +19,14 @@ export const lightTheme = {
   borderInputColor: 'rgba(17, 17, 17, 0.15)',
   sideBarLogoText: '#3E85F3',
   sideBarBG: '#fff',
+  textColor: 'rgba(17, 17, 17, 0.7)',
+
+  navBtnBgColor: '#E3F3FF',
+  navBtnColorActive: '#3E85F3',
+  navBtnBgColorActive: '#CAE8FF',
+  calendarBdColor: '#DCE3E5',
+  toolbarArrowColor: '#DCE3E5',
+  toolbarArrowHoverColor: '#343434',
   sidebarActiveBtnBG: '#E3F3FF',
 
   
@@ -29,6 +38,7 @@ export const darkTheme = {
   mainTextColor: '#FFFFFF',
   secondaryTextColor: '#FFFFFF',
   btnActiveBGColor: '#3E85F3',
+  sidebarHoverText: '#fff',
   btnNoActiveBGcolor: '#21222C',
   btnActiveTextColor: '#FFF',
   
@@ -43,6 +53,14 @@ export const darkTheme = {
   borderInputColor: 'rgba(255, 255, 255, 0.15)',
   sideBarLogoText: '#fff',
   sideBarBG: '#13151A',
+  textColor: 'rgba(255, 255, 255, 0.7)',
+
+  navBtnBgColor: '#21222C',
+  navBtnColorActive: '#FFFFFF',
+  navBtnBgColorActive: '#3E85F3',
+  calendarBdColor: 'rgba(255, 255, 255, 0.15)',
+  toolbarArrowColor: 'rgba(255, 255, 255, 0.15)',
+  toolbarArrowHoverColor: '#FFFFFF',
   sidebarActiveBtnBG: '#3E85F3',
   
 };

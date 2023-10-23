@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const AuthPageWrap = styled.div`
-  background-color: #DCEBF7;
-  min-height: 100vh;
+  background-color: var(--backdrop-blue);
+   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content:center;
@@ -19,7 +19,7 @@ export const AuthFormWrap = styled.div`
   box-sizing:border-box;
   padding: 40px 24px;
   border-radius: 8px;
-  background: #ffffff;
+  background: var(--white);
 
    @media screen and (min-width: 768px) {
     width:480px;

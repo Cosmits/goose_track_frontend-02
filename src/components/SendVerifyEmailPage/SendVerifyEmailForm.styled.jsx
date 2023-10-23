@@ -193,4 +193,3 @@ export const VerifyEmailInput = styled.li`
     margin-top:40px;
   }
 `;
-

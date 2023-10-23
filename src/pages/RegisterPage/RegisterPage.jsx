@@ -1,6 +1,5 @@
 // Yulia
 
-
 import RegisterForm from '../../components/RegisterPage/RegisterForm/RegisterForm';
 import AuthNavigate from '../../components/LoginPage/AuthNavigate/AuthNavigate';
 import { AuthFormWrap, AuthPageWrap, PictureWrap } from './RegisterPage.styled';
