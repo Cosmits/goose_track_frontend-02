@@ -15,6 +15,7 @@ import {
     Input, InputWrap, Label, List, LogInPicture,
     PasswordButton, ShowIcon, Title
 } from './RegisterForm.styled';
+import { globalRegex } from '../../../Styles/GlobalStyles';
 
 const ErrorMessages = ({ name }) => {
     return (
@@ -35,16 +36,13 @@ const schema = yup.object().shape({
     name: yup.string()
         .required('Name is required'),
     email: yup.string()
-        .matches(
-            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-            'Email must contain only digits, letters and . - _ symbols: "example@ukr.net"',
-        )
+        .matches(globalRegex.emailRegexp,
+            'Email must contain only digits, letters and . - _ symbols: "example@ukr.net"',)
         .email('Invalid email, enter in format "example@ukr.net"')
         .required('Email is required'),
     password: yup.string()
         .min(6, 'Password must be at least 6 characters')
-        .matches(/[a-zA-Z]/, 'Password must contain at least one letter')
-        .matches(/[0-9]/, 'Password must contain at least one number')
+        .matches(globalRegex.passwordRegexp, 'Password must contain lowercase and uppercase letters and digits')
         .required('Password is required'),
 });
 
@@ -61,9 +59,12 @@ const RegisterForm = () => {
 
         dispatch(register({ userName: name, email, password }))
             .unwrap()
-            .then(() => toast.success('Registration succesfully'))
+            .then(() => {
+                toast.success('Registration successfully')
+                resetForm();
+            })
             .catch(() => toast.error('Something went wrong. Try again'));
-        resetForm();
+       
     };
 
     return (

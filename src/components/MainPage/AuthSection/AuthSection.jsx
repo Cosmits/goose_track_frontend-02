@@ -14,7 +14,7 @@ import {
   AuthSectionWrap,
 } from './AuthSection.styled';
 
-import logoRetina from '../../../images/Auth_mainpage/GOOSE_logo_2x.png';
+import logoRetina from '../../../images/Auth_mainpage/GOOSE_logo_2x.webp';
 import logo from '../../../images/Auth_mainpage/GOOSE_logo_1x.png';
 
 import { Container } from '../../../Styles/Container.styled';

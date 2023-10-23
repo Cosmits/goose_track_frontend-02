@@ -10,7 +10,8 @@ import {
 } from './TaskToolbar.styled';
 import { useDeleteTasksMutation } from '../../../../redux/tasks/tasksApi';
 
-export default function TaskToolbar({ id }) {
+export default function TaskToolbar({ id, showModal }) {
+  const [deleteToDo] = useDeleteTasksMutation(id);
   const toolbarList = {
     swipe: [
       <SwipeIcon />,
@@ -21,14 +22,14 @@ export default function TaskToolbar({ id }) {
     edit: [
       <EditIcon />,
       () => {
-        console.log(`edit button click ${id}`);
+        // console.log(`edit button click ${id}`);
+        showModal(id);
       },
     ],
     remove: [
       <RemoveIcon />,
       () => {
-        // useDeleteTasksMutation(id);
-        console.log(`delete task ${id} success`);
+        deleteToDo(id);
       },
     ],
   };

@@ -3,14 +3,19 @@ import PropTypes from 'prop-types';
 import TasksColumn from '../TasksColumn/TasksColumn';
 import { TasksColumnsListStyled } from './TasksColumnsList.styled';
 
-export default function TasksColumnsList({ filteredTasks }) {
+export default function TasksColumnsList({ filteredTasks, showModal }) {
   const titles = Object.keys(filteredTasks);
 
   return (
     <TasksColumnsListStyled>
       {titles.map((title) => {
         return (
-          <TasksColumn key={title} title={title} tasks={filteredTasks[title]} />
+          <TasksColumn
+            showModal={showModal}
+            key={title}
+            title={title}
+            tasks={filteredTasks[title]}
+          />
         );
       })}
     </TasksColumnsListStyled>

@@ -17,8 +17,9 @@ export const ColumnHeadBarWrapper = styled.div`
 `;
 
 export const ColumnHeadBarTitle = styled.h4`
-  color: #111;
+  color: ${({ theme }) => theme.mainTextColor};
   text-align: center;
+  font-family: 'InterTightBold', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -34,12 +35,13 @@ export const ColumnHeadBarAddTaskIcon = styled(AddTaskIcon)`
   width: 22px;
   height: 22px;
   stroke: #111111;
+  stroke: ${({ theme }) => theme.mainTextColor};
   transition: stroke 300ms linear;
   cursor: pointer;
 
   &:hover,
   &:focus {
-    stroke: #3e85f3;
+    stroke: ${({ theme }) => theme.btnTextColor};
   }
 
   @media screen and (min-width: 768px) {
