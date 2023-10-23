@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 import Modal from '../Modal/Modal';
-import FeedbackForm from '../FeedbackForm/FeedbackForm';
+import FeedbackForm from './FeedbackForm/FeedbackForm';
 
 const AddFeedbackModal = ({ onClose }) => {
   return (

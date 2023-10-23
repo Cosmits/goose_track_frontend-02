@@ -151,6 +151,7 @@ export const DeleteIcon = styled(RiDeleteBin6Line)`
   border-radius: 50px;
   cursor: pointer;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover,
   &:focus,
   &:active {
@@ -167,12 +168,13 @@ export const CloseBtn = styled(CgClose)`
   width: 24px;
   height: 24px;
 
-  color: var(--modal-close-icon);
+  color: ${({ theme }) => theme.mainTextColor};
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 
-  :hover {
-    color: var(--accent);
+  &:hover,
+  &:focus {
+    color: var(--hover-blue);
   }
 
   @media screen and (min-width: 767px) {

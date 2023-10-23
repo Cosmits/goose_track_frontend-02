@@ -8,7 +8,7 @@ import {
   useDeleteReviewMutation,
   useEditReviewMutation,
   useGetUserReviewQuery,
-} from '../../redux/reviews/reviewsApi';
+} from '../../../redux/reviews/reviewsApi';
 
 import {
   RatingLabel,
