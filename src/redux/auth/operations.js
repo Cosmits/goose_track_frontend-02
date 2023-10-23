@@ -17,7 +17,7 @@ export const register = createAsyncThunk('/users/register',
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post('/users/register', credentials);
-      // setAuthHeader(response.data.token);
+      setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
       if (error.response) {
@@ -105,9 +105,9 @@ export const updateUser = createAsyncThunk(
 //================================================================
 export const sendVerifyEmailUser = createAsyncThunk(
   '/users/verify',
-  async (credentials, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      await axios.post('/users/verify', credentials);
+      await axios.post('/users/verify');
       toast.success('Letter for email verification has been sent to your mail');
       return;
     } catch (error) {
