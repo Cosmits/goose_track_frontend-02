@@ -23,7 +23,7 @@ const Header = ({ openSideBar }) => {
   const { isDesktop } = useScreenSize();
   const [showModal, setShowModal] = useState(false);
   const [currentPage, setCurrentPage] = useState('');
-
+  
   const location = useLocation();
   const openModal = () => {
     setShowModal(true);
@@ -34,12 +34,11 @@ const Header = ({ openSideBar }) => {
 
   const path = location.pathname;
   const [, , , date] = path.split('/');
-  const { data } = useGetMonthlyTasksQuery(date, {
+  const { data, isFetching} = useGetMonthlyTasksQuery(date, {
     skip: date === undefined,
   });
-  console.log(data)
-const task = data.data
-console.log(task)
+     const tasks = data.data;
+     console.log(tasks)
 
   const isDayPage = path.includes('/calendar/day');
 
@@ -63,8 +62,8 @@ console.log(task)
 
   return (
     <HeaderWrapper>
-      {(isDesktop && !isDayPage ) && <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>}
-      {(isDesktop && isDayPage) && 
+      {(isDesktop && !isDayPage && isFetching) && <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>}
+      {(isDesktop && isDayPage && isFetching && tasks.length ) && 
         <NoTaskWrapper>
           <LogoHeader src={logoHeader} alt="LogoHeader" />
           <div>
