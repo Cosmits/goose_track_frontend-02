@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
 export const SidebarWrapper = styled.div`
+  @font-face {
+    font-family: 'Inter-SemiBold';
+    src: url('fonts/Inter-SemiBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
   width: 289px;
   height: 100vh;
   border-right: 1px solid rgba(220, 227, 229, 0.5);
@@ -28,7 +35,7 @@ export const SidebarWrapper = styled.div`
     border-right: 1px solid rgba(220, 227, 229, 0.5);
     background: #fff;
   }
-  .logo-img{
+  .logo-img {
     width: 71px;
   }
   .svg-nav {
@@ -42,7 +49,7 @@ export const SidebarWrapper = styled.div`
 
     .logo-text {
       color: ${({ theme }) => theme.sideBarLogoText};
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter';
       font-size: 24px;
       font-style: italic;
       font-weight: 700;
@@ -57,7 +64,7 @@ export const SidebarWrapper = styled.div`
   }
   .user-panel {
     color: ${({ theme }) => theme.mainSideBarText};
-    font-family: Inter;
+    font-family: 'Inter-SemiBold', sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
@@ -69,7 +76,7 @@ export const SidebarWrapper = styled.div`
     .panel-instrument {
       display: flex;
       color: ${({ theme }) => theme.mainSideBarText};
-      font-family: Inter;
+      font-family: 'Inter-SemiBold', sans-serif;
       font-size: 16px;
       font-style: normal;
       font-weight: 600;
@@ -83,11 +90,11 @@ export const SidebarWrapper = styled.div`
       transition: all 0.3s;
     }
     .panel-instrument.active .svg-nav path {
-      stroke: ${({ theme }) => theme.mainSideBarText};
+      stroke: ${({ theme }) => theme.sidebarHoverText};
     }
 
     .panel-instrument.active {
-      color: ${({ theme }) => theme.btnActiveTextColor};
+      color: ${({ theme }) => theme.sidebarHoverText};
       background: ${({ theme }) => theme.sidebarActiveBtnBG};
     }
     .svg-nav path {
@@ -95,7 +102,7 @@ export const SidebarWrapper = styled.div`
     }
     .panel-instrument:hover,
     .panel-instrument:focus {
-      color: ${({ theme }) => theme.btnActiveTextColor};
+      color: ${({ theme }) => theme.sidebarHoverText};
       border-radius: 8px;
       background: ${({ theme }) => theme.sidebarActiveBtnBG};
     }
@@ -106,7 +113,7 @@ export const SidebarWrapper = styled.div`
         }
         &:hover {
           svg path {
-            stroke: ${({ theme }) => theme.btnNoActiveTextColor};
+            stroke: ${({ theme }) => theme.sidebarHoverText};
           }
         }
       }
@@ -123,8 +130,9 @@ export const SidebarWrapper = styled.div`
         border-radius: 16px;
         background: #3e85f3;
         color: #fff;
-        font-family: Inter;
+        font-family: 'Inter-SemiBold', sans-serif;
         font-size: 18px;
+        font-weight: 700;
         font-style: normal;
         letter-spacing: -0.36px;
         border: 0;
@@ -170,7 +178,7 @@ export const SidebarWrapper = styled.div`
     //display: block;
     position: fixed;
     z-index: 3;
-    .logo-img{
+    .logo-img {
       width: 60px;
     }
     .sidebar {
@@ -208,7 +216,7 @@ export const SidebarWrapper = styled.div`
         font-size: 14px;
       }
     }
-    .logo-img{
+    .logo-img {
       width: 36px;
     }
     .close-btn {
