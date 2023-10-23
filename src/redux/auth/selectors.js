@@ -1,8 +1,10 @@
-export const selectIsLoggedIn = state => state.auth.isLoggedIn;
+export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 
-export const selectUser = state => state.auth.user;
+export const selectUser = (state) => state.auth.user;
 
-export const selectToken = state => state.auth.token;
+export const selectToken = (state) => state.auth.token;
 
-export const selectIsFetchingCurrentUser = state =>
+export const selectIsFetchingCurrentUser = (state) =>
   state.auth.isFetchingCurrentUser;
+
+export const selectUserAvatar = (state) => state.auth.user.avatarURL;
