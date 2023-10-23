@@ -17,22 +17,11 @@ const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const SendVerifyEmail = lazy(() => import('./pages/SendVerifyEmail/SendVerifyEmail'));
 
 const AccountPage = lazy(() => import('./pages/AccountPage'));
+const StatisticsPage = lazy(() => import('./pages/StatisticsPage'));
 const CalendarPage = lazy(() => import('./pages/CalendarPage'));
 const ChoosedDay = lazy(() => import('./components/CalendarPage/ChoosedDay/ChoosedDay'));
 const ChoosedMonth = lazy(() => import('./components/CalendarPage/ChoosedMonth/ChoosedMonth'));
-const StatisticsPage = lazy(() => import('./pages/StatisticsPage/StatisticsPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
-
-// import SendVerifyEmail from './pages/SendVerifyEmail/SendVerifyEmail';
-// import MainPage from './pages/MainPage';
-// import LoginPage from './pages/LoginPage/LoginPage';
-// import RegisterPage from './pages/RegisterPage/RegisterPage';
-// import AccountPage from './pages/AccountPage';
-// import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
-// import CalendarPage from './pages/CalendarPage';
-// import ChoosedDay from './components/CalendarPage/ChoosedDay/ChoosedDay';
-// import ChoosedMonth from './components/CalendarPage/ChoosedMonth/ChoosedMonth';
-// import NotFoundPage from './pages/NotFoundPage';
 
 // const test = import.meta.env.VITE_API_TEST;
 

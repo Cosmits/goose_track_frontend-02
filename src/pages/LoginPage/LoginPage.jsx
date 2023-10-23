@@ -1,5 +1,3 @@
-// Yulia
-
 import LoginForm from '../../components/LoginPage/LoginForm/LoginForm';
 import AuthNavigate from '../../components/LoginPage/AuthNavigate/AuthNavigate';
 import { AuthFormWrap, AuthLink, AuthPageWrap, PictureWrap } from './LoginPage.styled';
