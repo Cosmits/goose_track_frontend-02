@@ -19,6 +19,7 @@ export const lightTheme = {
   borderInputColor: 'rgba(17, 17, 17, 0.15)',
   sideBarLogoText: '#3E85F3',
   sideBarBG: '#fff',
+  textColor: 'rgba(17, 17, 17, 0.7)',
 
   navBtnBgColor: '#E3F3FF',
   navBtnColorActive: '#3E85F3',
@@ -52,6 +53,7 @@ export const darkTheme = {
   borderInputColor: 'rgba(255, 255, 255, 0.15)',
   sideBarLogoText: '#fff',
   sideBarBG: '#13151A',
+  textColor: 'rgba(255, 255, 255, 0.7)',
 
   navBtnBgColor: '#21222C',
   navBtnColorActive: '#FFFFFF',
