@@ -15,6 +15,7 @@ import {
 import SuccessIcon from '../../../images/RegisterPage/success.svg';
 import ErrorIcon from '../../../images/RegisterPage/error.svg';
 import LogInIcon from '../../../images/RegisterPage/login.svg';
+import { globalRegex } from '../../../Styles/GlobalStyles';
 
 const ErrorMessages = ({ name }) => {
     return (
@@ -32,16 +33,13 @@ const initialValues = {
 
 const schema = yup.object().shape({
     email: yup.string()
+        .matches(globalRegex.emailRegexp,
+            'Email must contain only digits, letters and . - _ symbols: "example@ukr.net"',)
         .email('Invalid email, enter in format "example@ukr.net"')
-        .matches(
-            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-            'Email must contain only digits, letters and . - _ symbols: "example@ukr.net"',
-        )
         .required('Email is required'),
     password: yup.string()
         .min(6, 'Password must be at least 6 characters')
-        .matches(/[a-zA-Z]/, 'Password must contain at least one letter')
-        .matches(/[0-9]/, 'Password must contain at least one number')
+        .matches(globalRegex.passwordRegexp, 'Password must contain lowercase and uppercase letters and digits')
         .required('Password is required'),
 });
 
@@ -58,7 +56,7 @@ const LoginForm = () => {
 
         dispatch(logIn({ email, password }))
             .unwrap()
-            .then(() => toast.success('Login succesfully'))
+            .then(() => toast.success('Login successfully'))
             .catch(() => toast.error('An error has occurred. Try again'));
 
         resetForm();

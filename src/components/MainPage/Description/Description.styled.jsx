@@ -1,60 +1,54 @@
-import styled from '@emotion/styled';
-
+import styled from "styled-components"
 
 export const DescriptionList = styled.ul`
-display: flex;
-flex-direction: column;
-align-items: center;
-background-color: var(--white);
-font-family: 'InterTightBold', sans-serif;
-font-weight: 700; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--white);
+  font-family: 'InterTightBold', sans-serif;
+  font-weight: 700; 
 `
 
 
 export const StyledContainer = styled.div`
 
-@media screen and (min-width: 768px){
-        margin-left: auto;
-    }
-`
+  @media screen and (min-width: 768px){
+    margin-left: auto;
+  }`
 
 
 export const DescriptionItem = styled.li`
-display: flex;
-flex-direction: column;
-gap: 40px;
-margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 64px;
 
+  @media screen and (min-width: 768px){
+    gap: 48px; 
+  }
 
-@media screen and (min-width: 768px){
- gap: 48px; 
-    }
-
-@media screen and (min-width: 1440px){
-display: flex;
-flex-direction: row;
-gap: 228px ;
-    }
-`
+  @media screen and (min-width: 1440px){
+    display: flex;
+    flex-direction: row;
+    gap: 228px ;
+  }`
 
 export const MiddleItem = styled(DescriptionItem)`
 
- @media screen and (min-width: 1440px){
-flex-direction: row-reverse;
- }
-`
+  @media screen and (min-width: 1440px){
+    flex-direction: row-reverse;
+  }`
 
 
 export const StyledNumber = styled.p`
-font-size: 80px;
-/* font-weight: 700; */
-color: var(--main-blue); 
-margin-bottom: 14px;
+  font-size: 80px;
+  /* font-weight: 700; */
+  color: var(--main-blue); 
+  margin-bottom: 14px;
 
- @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px){
    font-size: 104px;
-    }
-`
+  }`
 
 export const DescriptionPreTitle = styled.p`
 display: inline-block;
