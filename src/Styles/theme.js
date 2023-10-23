@@ -11,6 +11,7 @@ export const lightTheme = {
   statisticStrokeColor: '#E3F3FF',
   calendarBtnColor: '#DCE3E5',
   mainSideBarText: 'rgba(52, 52, 52, 0.50)',
+  sidebarHoverText: '#3E85F3',
   popUpBg: '#F6F6F6',
   popUpBgBtn: '#EFEFEF',
 
@@ -37,6 +38,7 @@ export const darkTheme = {
   mainTextColor: '#FFFFFF',
   secondaryTextColor: '#FFFFFF',
   btnActiveBGColor: '#3E85F3',
+  sidebarHoverText: '#fff',
   btnNoActiveBGcolor: '#21222C',
   btnActiveTextColor: '#FFF',
   
