@@ -1,4 +1,4 @@
-import{G as jt,s as f,N as ft,r as gt,j as d,C as vt,n as E,u as Rt,a as k,c as N,g as Mt,P,b as Pt,L as Et}from"./index-f883eae1.js";import{A as Lt}from"./index.esm-e638fd51.js";function At(o){return jt({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"path",attr:{d:"M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"}},{tag:"polyline",attr:{points:"10 17 15 12 10 7"}},{tag:"line",attr:{x1:"15",y1:"12",x2:"3",y2:"12"}}]})(o)}const Ot=f.section`
+import{G as jt,s as f,N as ft,r as gt,j as d,C as vt,n as E,u as Rt,a as k,c as N,g as Mt,P,b as Pt,L as Et}from"./index-2bc062d7.js";import{A as Lt}from"./index.esm-2d222d66.js";function At(o){return jt({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"path",attr:{d:"M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"}},{tag:"polyline",attr:{points:"10 17 15 12 10 7"}},{tag:"line",attr:{x1:"15",y1:"12",x2:"3",y2:"12"}}]})(o)}const Ot=f.section`
   height: 100vh;
 
   display: flex;
@@ -21,7 +21,7 @@ import{G as jt,s as f,N as ft,r as gt,j as d,C as vt,n as E,u as Rt,a as k,c as 
 `,Vt=f.h1`
   color: var(--white);
 
-  font-family: 'InterTightBold';
+  font-family: 'InterTightBold', sans-serif;
   font-size: 44px;
   font-weight: 700;
   line-height: 1.09;
@@ -37,7 +37,7 @@ import{G as jt,s as f,N as ft,r as gt,j as d,C as vt,n as E,u as Rt,a as k,c as 
     line-height: 1.25;
   }
 `,Bt=f.span`
-  font-family: 'InterTightBoldItalic';
+  font-family: 'InterTightBoldItalic', sans-serif;
   font-size: 44px;
   font-weight: 700;
   font-style: italic;
@@ -108,7 +108,7 @@ import{G as jt,s as f,N as ft,r as gt,j as d,C as vt,n as E,u as Rt,a as k,c as 
   }
 `,$t=f.span`
   display: block;
-  font-family: 'InterSemiBold';
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.28;
@@ -123,7 +123,7 @@ import{G as jt,s as f,N as ft,r as gt,j as d,C as vt,n as E,u as Rt,a as k,c as 
 `,Xt=f(ft)`
   display: block;
 
-  font-family: 'InterSemiBold';
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 12px;
   font-weight: 600;
   line-height: 1.16;
@@ -142,7 +142,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 background-color: var(--white);
-font-family: 'InterTightBold';
+font-family: 'InterTightBold', sans-serif;
 font-weight: 700; 
 `,fe=E.div`
 
