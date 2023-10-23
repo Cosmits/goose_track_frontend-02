@@ -30,22 +30,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     @font-face {
-        font-family: 'InterTightBold';
-        src: local('InterTightBold'),
-        url(${InterTightBold}) format('truetype');
-        font-weight: 700;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'InterTightBoldItalic';
-        src: local('InterTightBoldItalic'),
-        url(${InterTightBoldItalic}) format('truetype');
-        font-weight: 700;
-        font-style: normal;
-    }
-
-    @font-face {
         font-family: 'InterSemiBold';
         src: local('InterSemiBold'),
         url(${InterSemiBold}) format('truetype');
@@ -59,6 +43,22 @@ export const GlobalStyle = createGlobalStyle`
         url(${InterSemiBoldItalic}) format('truetype');
         font-weight: 600;
         font-style: italic;
+    }
+
+    @font-face {
+        font-family: 'InterTightBold';
+        src: local('InterTightBold'),
+        url(${InterTightBold}) format('truetype');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'InterTightBoldItalic';
+        src: local('InterTightBoldItalic'),
+        url(${InterTightBoldItalic}) format('truetype');
+        font-weight: 700;
+        font-style: normal;
     }
 
     @font-face {

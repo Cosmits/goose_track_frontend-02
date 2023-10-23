@@ -13,7 +13,7 @@ export const ContainerForm = styled.div`
 `;
 
 export const StyledLabel = styled.label`
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterTightMedium', sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.2;
@@ -49,10 +49,10 @@ export const StyledTime = styled.div`
 `;
 
 export const StyledInputTime = styled.input`
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.3;
-  font-family: 'Inter', sans-serif;
   width: 163px;
   height: 46px;
   padding-left: 18px;
@@ -76,7 +76,7 @@ export const Label = styled.label`
 `;
 
 const StyledRadio = styled.input`
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterSemiBold', sans-serif;
   margin-right: 16px;
   width: 10px;
   height: 10px;
@@ -112,7 +112,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const StyledEdit = styled.button`
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterSemiBold', sans-serif;
   font-weight: 600;
   width: 182px;
   height: 48px;
@@ -124,7 +124,7 @@ export const StyledEdit = styled.button`
 
 
 export const StyledCancel = styled.button`
-  font-family: 'Inter', sans-serif;
+  font-family: 'InterSemiBold', sans-serif;
   font-weight: 600;
   width: 144px;
   height: 48px;
