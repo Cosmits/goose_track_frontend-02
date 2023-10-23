@@ -17,7 +17,7 @@ export const AddTaskButton = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${({ theme }) => theme.btnActive};
+    background-color: ${({ theme }) => theme.btnTextColor};
   }
 
   @media screen and (min-width: 768px) {
