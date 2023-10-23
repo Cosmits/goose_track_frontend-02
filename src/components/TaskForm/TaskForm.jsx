@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import {
+  AddTask,
   ButtonContainer,
   ContainerForm,
   ContainerRadio,
   Label,
+  PencilIcon,
+  StyledAdd,
   StyledCancel,
   StyledEdit,
   StyledInput,
@@ -27,14 +30,37 @@ const TaskForm = ({ initialData, closeModal }) => {
     }
   );
 
-  // const [isEditing, setIsEditing] = useState(!!initialData);
+  const [isEditing, setIsEditing] = useState(!!initialData);
   const [errorMessage, setErrorMessage] = useState('');
+  const [todos, setTodos] = useState([]); 
+
 
   useEffect(() => {
     if (initialData) {
       setFormData(initialData);
+      setIsEditing(true);
+    } else {
+      setIsEditing(false);
     }
   }, [initialData]);
+
+  const handleEdit = (editedTodo) => {
+    setTodos((prevTodos) => {
+      const updatedTodos = prevTodos.map((todo) =>
+        todo.id === editedTodo.id ? editedTodo : todo
+      );
+      return updatedTodos;
+    });
+    closeModal();
+  };
+
+  const handleAdd = (newTodo) => {
+    setTodos((prevTodos) => {
+      const updatedTodos = [...prevTodos, newTodo];
+      return updatedTodos;
+    });
+    closeModal();
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -44,10 +70,25 @@ const TaskForm = ({ initialData, closeModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    // Перевірка відповідності категорії в списку допустимих
+    const validCategories = ['to-do', 'in-progress', 'done'];
+    if (!validCategories.includes(formData.category)) {
+      setErrorMessage('Invalid category. Choose from: to-do, in-progress, done.');
+      return;
+    }
+
+    if (isEditing) {
+      handleEdit(formData);
+    } else {
+      handleAdd(formData);
+    }
+    setFormData(initialData);
+    setIsEditing(false);
   };
 
   const handleCancel = () => {
     closeModal();
+    setIsEditing(false);
   };
 
   return (
@@ -75,7 +116,7 @@ const TaskForm = ({ initialData, closeModal }) => {
               value={formData.start}
               onChange={handleInputChange}
               required
-              pattern="[0-9]{2}:[0-9]{2}"
+              pattern="[0-1][0-9]:[0-5][0-9]"
             />
           </StyledLabel>
           <StyledLabel>
@@ -86,7 +127,7 @@ const TaskForm = ({ initialData, closeModal }) => {
               value={formData.end}
               onChange={handleInputChange}
               required
-              pattern="[0-9]{2}:[0-9]{2}"
+              pattern="[0-1][0-9]:[0-5][0-9]"
               min={formData.start}
             />
           </StyledLabel>
@@ -131,24 +172,11 @@ const TaskForm = ({ initialData, closeModal }) => {
         {errorMessage && <div>{errorMessage}</div>}
 
         <ButtonContainer>
-      {/* {isEditing ? (
-        <StyledEdit type="submit" onClick={handleEdit}>
-          Edit
-        </StyledEdit>
-      ) : (
-        <StyledAdd type="submit" onClick={handleAdd}>
-          Add
-            <SVG>
-              <use href="../../icons/popUp/plus.svg#plus"></use>
-            </SVG>
-        </StyledAdd>
-      )} */}
-          <StyledEdit type="submit">
-            Edit
-          {/* <svg width="18px" height="18px">
-            <use href="../../icons/popUp/pencil.svg#pencil"></use>
-          </svg> */}
-          </StyledEdit>
+          {isEditing ? (
+            <StyledEdit onClick={handleEdit} type="submit"><PencilIcon/>Edit</StyledEdit>
+          ) : (
+            <StyledAdd onClick={handleAdd} type="submit"><AddTask/>Add</StyledAdd>
+          )}
           <StyledCancel type="button" onClick={handleCancel}>
             Cancel
           </StyledCancel>

@@ -36,7 +36,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Suspense >
+    < >
       <Routes>
         <Route index path="/" element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />} />
         <Route path="/register" element={<RestrictedRoute redirectTo="/calendar" component={<RegisterPage />} />} />
@@ -56,7 +56,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <ToastContainer autoClose={2000} />
-    </Suspense>
+    </>
   );
 
 }
