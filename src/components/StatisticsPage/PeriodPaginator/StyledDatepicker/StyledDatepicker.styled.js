@@ -4,7 +4,7 @@ export const DataBtn = styled.div`
   color: #ffffff;
   background: #3e85f3;
   border-radius: 8px;
-  font-family: 'InterTightBold';
+  font-family: 'InterTightBold', sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 1.2;
@@ -26,7 +26,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
   }
   .datepicker-container .react-datepicker {
     position: absolute;
-    font-family: 'InterSemiBold';
+    font-family: 'InterSemiBold', sans-serif;
     font-weight: 600;
     left: 50%;
     top: 50%;
@@ -66,7 +66,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     border: none;
 }
   .datepicker-container  .react-datepicker__current-month {
-    font-family: 'InterSemiBold';
+    font-family: 'InterSemiBold', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
@@ -79,7 +79,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 6px 8px; 
   
-    font-family: 'InterTightMedium';
+    font-family: 'InterTightMedium', sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -130,7 +130,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     height: 30px;
     border-radius: 50%;
     color: white;
-    font-family: 'InterTightRegular';
+    font-family: 'InterTightRegular', sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -209,7 +209,7 @@ export const TitleWrapper = styled.button`
   color: #ffffff;
   background: #3e85f3;
   border-radius: 8px;
-  font-family: 'InterTightBold';
+  font-family: 'InterTightBold', sans-serif;
   font-weight: 700;
   line-height: 18px;
   text-align: center;
