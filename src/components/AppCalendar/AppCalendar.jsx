@@ -81,8 +81,8 @@ const AppCalendar = ({ toolbar }) => {
     }
   }, [tasksData?.data]);
 
-  const handleNavigate = (date) => {
-    const formattedDate = moment(date).format('YYYY-MM-DD');
+  const handleNavigate = (slotInfo) => {
+    const formattedDate = moment(slotInfo.start).format('YYYY-MM-DD');
     navigate(`/calendar/day/${formattedDate}`);
   };
 
@@ -96,9 +96,10 @@ const AppCalendar = ({ toolbar }) => {
         components={{ toolbar: toolbar }}
         eventPropGetter={eventStyleGetter}
         showAllEvents={true}
-        onSelectSlot={(slotInfo) => handleNavigate(slotInfo.start)}
+        onSelectSlot={handleNavigate}
         onSelectEvent={handleNavigate}
         selectable
+        longPressThreshold={1}
       />
       <AppCalendarGlobalStyles />
     </>
