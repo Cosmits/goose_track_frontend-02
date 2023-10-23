@@ -20,7 +20,7 @@ export const TasksColumnsListStyled = styled.ul`
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: ${({ theme }) => theme.btnTextColor};
+    background: #3e85f3;
   }
 
   @media screen and (min-width: 768px) {
