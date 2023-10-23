@@ -2,7 +2,6 @@
 
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 
 import { sendVerifyEmailUser } from '../../redux/auth/operations';
@@ -13,6 +12,7 @@ import {
 import SuccessIcon from '../../images/RegisterPage/success.svg';
 import ErrorIcon from '../../images/RegisterPage/error.svg';
 import LogInIcon from '../../images/RegisterPage/login.svg';
+import { globalRegex } from '../../Styles/GlobalStyles';
 
 const ErrorMessages = ({ name }) => {
     return (
@@ -29,9 +29,9 @@ const initialValues = {
 
 const schema = yup.object().shape({
     email: yup.string()
-        .email('Invalid email, enter in format "example@ukr.net"')
-        .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+        .matches(globalRegex.emailRegexp,
             'Email must contain only digits, letters and . - _ symbols: "example@ukr.net"',)
+        .email('Invalid email, enter in format "example@ukr.net"')
         .required('Email is required'),
 });
 
@@ -40,8 +40,6 @@ const SendVerifyEmailForm = () => {
 
     const handleVerifySubmit = (values, { resetForm }) => {
         const { email } = values;
-        console.log("🚀 ~ file: SendVerifyEmailForm.jsx:43 ~ handleVerifySubmit ~ email:", email)
-
         dispatch(sendVerifyEmailUser({ email }))
             .unwrap()
             // .then(() => toast.success('Verify email successfully'))
