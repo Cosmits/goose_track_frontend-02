@@ -22,7 +22,7 @@ const Header = ({ openSideBar }) => {
   const { isDesktop } = useScreenSize();
   const [showModal, setShowModal] = useState(false);
   const [currentPage, setCurrentPage] = useState('');
-  const [tasks, setTasks] = useState(null)
+  const [tasks, setTasks] = useState([])
 
   const location = useLocation();
   const openModal = () => {
@@ -39,6 +39,7 @@ const Header = ({ openSideBar }) => {
   });
   useEffect(()=>{
     if (data) {
+      console.log(data.data)
       setTasks(data.data)
         }
   },[data])
@@ -66,10 +67,10 @@ const Header = ({ openSideBar }) => {
 
   return (
     <HeaderWrapper>
-      {isDesktop && !isDayPage && (
+      {(isDesktop && tasks.length>0) &&(
         <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
       )}
-      {(isDesktop && isDayPage && tasks) && (
+      {(isDesktop && isDayPage && tasks.length===0) && (
         <NoTaskWrapper>
           <LogoHeader src={logoHeader} alt="LogoHeader" />
           <div>

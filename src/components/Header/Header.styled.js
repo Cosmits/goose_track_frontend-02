@@ -9,8 +9,10 @@ align-items:center;
 justify-content: space-between;
 margin-bottom:64px;
 
+
 @media screen and (min-width: 1440px){
 margin-bottom:32px;
+height:60px;
 }
 
 `
