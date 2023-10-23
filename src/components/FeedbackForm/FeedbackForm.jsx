@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Rating } from 'react-simple-star-rating';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
@@ -34,6 +35,8 @@ const FeedbackForm = ({ onClose }) => {
   const [createReview] = useCreateReviewMutation();
   const [editReview] = useEditReviewMutation();
   const [deleteReview] = useDeleteReviewMutation();
+  const theme = useSelector((state) => state.theme);
+  console.log('theme: ', theme);
 
   useEffect(() => {
     if (userReviewData) {
@@ -135,30 +138,40 @@ const FeedbackForm = ({ onClose }) => {
       />
       {isDeleteReview && (
         <BtnWrapper>
-          <Btn type="button" onClick={handleDelete} isActive={true}>
+          <Btn
+            type="button"
+            onClick={handleDelete}
+            isActive={true}
+            theme={theme}
+          >
             Delete
           </Btn>
-          <Btn type="button" onClick={onClose}>
+          <Btn type="button" onClick={onClose} isActive={false} theme={theme}>
             Cancel
           </Btn>
         </BtnWrapper>
       )}
       {isEditReview && (
         <BtnWrapper>
-          <Btn type="submit" onClick={handleSubmit} isActive={true}>
+          <Btn
+            type="submit"
+            onClick={handleSubmit}
+            isActive={true}
+            theme={theme}
+          >
             Edit
           </Btn>
-          <Btn type="button" onClick={onClose}>
+          <Btn type="button" onClick={onClose} isActive={false} theme={theme}>
             Cancel
           </Btn>
         </BtnWrapper>
       )}
       {!userReviewData && (
         <BtnWrapper>
-          <Btn type="submit" isActive={true}>
+          <Btn type="submit" isActive={true} theme={theme}>
             Save
           </Btn>
-          <Btn type="button" onClick={onClose}>
+          <Btn type="button" onClick={onClose} isActive={false} theme={theme}>
             Cancel
           </Btn>
         </BtnWrapper>
