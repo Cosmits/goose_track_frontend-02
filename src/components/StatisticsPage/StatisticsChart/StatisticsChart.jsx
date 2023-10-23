@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { BarChart, CartesianGrid, XAxis, YAxis, Legend, Bar } from 'recharts';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useScreenSize } from '../../../hooks/useScreenSize';
 
@@ -23,8 +23,6 @@ import { PeriodPaginator } from '../PeriodPaginator/PeriodPaginator';
 
 
 
-
-
 export const StatisticsChart = ({ tasks, date }) => {
 
   const [monthPercentage, setMonthPercentage] = useState({});
@@ -42,7 +40,10 @@ export const StatisticsChart = ({ tasks, date }) => {
     setSelectedMonth(newDate);
   };
 
+ 
+
   useEffect(() => {
+   
     const fetchData = async () => {
       const monthTasksData = await fetchByMonthTasks(selectedDay);
       const monthTasks = monthTasksData.data;
@@ -54,7 +55,7 @@ export const StatisticsChart = ({ tasks, date }) => {
 
       setDayPercentage(getPercentage(dayTasks))
     };
-
+   
     fetchData();
   }, [tasks, selectedMonth, selectedDay]);
 
