@@ -30,7 +30,6 @@ export const lightTheme = {
   toolbarArrowHoverColor: '#343434',
   sidebarActiveBtnBG: '#E3F3FF',
 
-<<<<<<< HEAD
   modalBgColor: '#FFF',
   formLabelColor: 'rgba(52, 52, 52, 0.8)',
   textAreaBgColor: '#F6F6F6',
@@ -39,11 +38,9 @@ export const lightTheme = {
   inactiveBtnTextColor: '#343434',
   inactiveBtnBgColor: '#E5EDFA',
   inactiveEditIconBgColor: '#E3F3FF',
-=======
   scrollbarTrack: '#f2f2f2',
   scrollbarThumb: '#e7e5e5',
   taskCardSuccessText: '#F7F6F9',
->>>>>>> main
 };
 
 export const darkTheme = {
@@ -78,7 +75,6 @@ export const darkTheme = {
   toolbarArrowHoverColor: '#FFFFFF',
   sidebarActiveBtnBG: '#3E85F3',
 
-<<<<<<< HEAD
   modalBgColor: '#171820',
   formLabelColor: 'rgba(250, 250, 250, 0.3)',
   textAreaBgColor: '#171820',
@@ -87,11 +83,9 @@ export const darkTheme = {
   inactiveBtnTextColor: '#FFFFFF',
   inactiveBtnBgColor: '#21222C',
   inactiveEditIconBgColor: '#353647',
-=======
   scrollbarTrack: '#2D3037',
   scrollbarThumb: '#171820',
   btnTextColor: '#3E85F3',
   taskCardSuccessText: 'FFFFFF',
   btnActive: '#CAE8FF',
->>>>>>> main
 };
