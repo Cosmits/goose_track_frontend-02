@@ -1,7 +1,7 @@
+import styled from 'styled-components';
 import { VscEdit } from 'react-icons/vsc';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { CgClose } from 'react-icons/cg';
-import styled from 'styled-components';
 
 export const Form = styled.form`
   display: flex;
@@ -9,54 +9,54 @@ export const Form = styled.form`
   flex: 1;
 `;
 
+export const RatingLabel = styled.p`
+  margin-bottom: 8px;
+  color: ${({ theme }) => theme.formLabelColor};
+  font-family: 'InterTightMedium', sans-serif;
+  font-size: 12px;
+  line-height: 1.17;
+`;
+
 export const RatingWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 24px;
   gap: 8px;
-`;
-
-export const RatingLabel = styled.p`
-  /* color: var(--black); */
-  color-scheme: ${({ theme }) => theme.colorScheme};;
 `;
 
 export const TextAreaLabel = styled.label`
   display: flex;
   flex-direction: row;
-  margin-top: 24px;
+  margin-bottom: 8px;
   align-items: center;
   justify-content: space-between;
-  /* color: var(--black); */
-   color-scheme: ${({ theme }) => theme.colorScheme};;
-   
+  color: ${({ theme }) => theme.formLabelColor};
+  font-family: "InterTightMedium";
+  font-size: 12px;
+  line-height: 1.17;
 `;
 
 export const TextArea = styled.textarea`
-  margin-top: 8px;
-  padding: 12px 14px;
+  padding: 14px 18px;
+  margin-bottom: 18px;
   min-height: 130px;
-  max-height: 330px;
   height: auto;
   resize: none;
-
-  font-family: inherit;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 128%;
-
   border-radius: 8px;
-  border-width: 0;
-  /* color: #343434; */
-  /* background: #f6f6f6; */
-  background-color: ${({ theme }) => theme.popUpBg};
-  color-scheme: ${({ theme }) => theme.colorScheme};;
+  color: ${({ theme }) => theme.secondaryTextColor};
+  background: ${({ theme }) => theme.textAreaBgColor};
   border: 1px solid rgba(255, 255, 255, 0.15);
   outline: none;
+  font-family: 'InterSemiBold', sans-serif;
+  font-size: 14px;
+  line-height: 1.28;
+
+  &::placeholder {
+    color: ${({ theme }) => theme.secondaryTextColor};
+  }
 `;
 
 export const BtnWrapper = styled.div`
-  margin-top: 18px;
   display: flex;
   gap: 8px;
 `;
@@ -64,34 +64,50 @@ export const BtnWrapper = styled.div`
 export const Btn = styled.button`
   width: 144px;
   height: 42px;
-  color: ${(props) => (props.isActive ? 'var(--white)' : '#343434')};
+  /* padding: 12px 46px; */
   text-align: center;
-
-  font-family: inherit;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 128%;
-
-  border: none;
   border-radius: 8px;
-  background-color: ${(props) =>
-    props.isActive ? 'var(--main-blue)' : '#e5edfa'};
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
 
+  font-family: 'InterSemiBold', sans-serif;
+  font-size: 14px;
+  line-height: 1.28;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  &:hover {
+
+  &.active {
+    color: ${({ theme }) => theme.activeBtnTextColor};
+    background: ${({ theme }) => theme.activeBtnBgColor};
+  }
+
+  &.inactive {
+    color: ${({ theme }) => theme.inactiveBtnTextColor};
+    background: ${({ theme }) => theme.inactiveBtnBgColor};
+  }
+
+  &:hover,
+  &:focus {
     color: var(--white);
     background: var(--hover-blue);
   }
 
   @media screen and (max-width: 374px) {
-    width: 120px;
+    width: 90%;
+    max-width: 144px;
+    height: 42px;
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 767px) {
+    width: 90%;
+    max-width: 198px;
+    height: 48px;
+    /* padding: 15px 75px; */
   }
 
   @media screen and (min-width: 768px) {
     width: 198px;
     height: 48px;
+    /* padding: 15px 75px; */
   }
 `;
 
@@ -108,13 +124,18 @@ export const EditIcon = styled(VscEdit)`
   padding: 7px;
   justify-content: center;
   align-items: center;
-  fill: var(--white);
+  fill: var(--main-blue);
   border-radius: 50px;
-  background: var(--main-blue);
+  background: ${({ theme }) => theme.inactiveEditIconBgColor};
   cursor: pointer;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  :hover {
+
+  &:hover,
+  &:focus,
+  &:active {
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+    background: var(--main-blue);
+    fill: var(--white);
   }
 `;
 
@@ -131,8 +152,13 @@ export const DeleteIcon = styled(RiDeleteBin6Line)`
   border-radius: 50px;
   cursor: pointer;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  :hover {
+
+  &:hover,
+  &:focus,
+  &:active {
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+    background: var(--high);
+    fill: var(--white);
   }
 `;
 
@@ -143,12 +169,13 @@ export const CloseBtn = styled(CgClose)`
   width: 24px;
   height: 24px;
 
-  color: var(--modal-close-icon);
+  color: ${({ theme }) => theme.mainTextColor};
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 
-  :hover {
-    color: var(--accent);
+  &:hover,
+  &:focus {
+    color: var(--hover-blue);
   }
 
   @media screen and (min-width: 767px) {
