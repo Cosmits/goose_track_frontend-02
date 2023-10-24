@@ -17,7 +17,9 @@ import userSvg from '../../../../src/icons/popUp/user.svg';
 
 const StyledForm = styled.form`
   position: relative;
+  /* Замінити margi-buttom для mobile із 64 px на 95px у header */
   margin-top: 95px;
+  /*--------------------------- */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -25,49 +27,59 @@ const StyledForm = styled.form`
   width: 100%;
   padding-top: 59px;
   padding-bottom: 40px;
+  padding-left: 18px;
+  padding-right: 18px;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.secondaryBgColor};
 
   @media (min-width: 768px) {
+    padding-top: 40px;
     gap: 24px;
   }
 
   @media (min-width: 1440px) {
+    padding-top: 60px;
   }
 `;
 
 const StyledAvatarImg = styled.img`
   position: absolute;
-  align-items: center;
   display: flex;
+  align-items: center;
   top: -31px;
-  width: 124px;
-  height: 124px;
+  width: 72px;
+  height: 72px;
   object-fit: cover;
   border: 2px solid var(--gradient-blue);
   border-radius: 50%;
   background-color: ${({ theme }) => theme.secondaryBgColor};
+
+  @media (min-width: 768px) {
+    position: relative;
+    top: 0;
+    width: 124px;
+    height: 124px;
+  }
 `;
 
 const StyledAvatarPlug = styled.div`
   position: absolute;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   top: -31px;
-  width: 124px;
-  height: 124px;
+  width: 72px;
+  height: 72px;
   padding: 2px;
-  background-color: #3e85f3;
-  fill: red;
-  stroke: black;
+  stroke: red;
+  background-color: inherit;
   background-image: url(${userSvg});
+  fill: red;
   background-repeat: no-repeat;
   background-size: 50% 50%;
   background-position: center;
   border: 2px solid var(--gradient-blue);
   border-radius: 50%;
-  z-index: 1;
 `;
 
 const StyledPhotoLabel = styled.label`
@@ -80,12 +92,13 @@ const StyledPhotoLabel = styled.label`
 
   cursor: pointer;
   border: none;
-  border-radius: red;
-  background: green;
+  border-radius: 50%;
+  background: var(--gradient-blue);
 
   &:hover,
   &:focus {
     box-shadow: black;
+    background: var(--hover-blue);
   }
 `;
 
@@ -109,28 +122,27 @@ const StyledPhotoInput = styled.input`
 `;
 
 const StyledUserNameP = styled.p`
-  margin-top: 59px;
-  font-family: 'InterTightRegular', sans-serif;
+  font-family: 'InterTightBold', sans-serif;
   font-size: 14px;
-  font-style: normal;
   font-weight: 700;
-  line-height: 18px;
+  line-height: 1.28;
+  margin-bottom: 4px;
   color: ${({ theme }) => theme.secondaryTextColor};
 `;
 
 const StyledUserStatusP = styled.p`
-  font-family: 'InterTightRegular', sans-serif;
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 12px;
-  font-style: normal;
   font-weight: 600;
-  line-height: 14px;
-  color: ${({ theme }) => theme.secondaryTextColor};
+  line-height: 1.13;
+  color: ${({ theme }) => theme.userStatusColor};
 `;
 
 const StyledInputWrapperDiv = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
+
   @media (min-width: 1440px) {
     flex-direction: row;
     gap: 50px;
@@ -146,7 +158,6 @@ const StyledInputSecondWrapperDiv = styled.div`
 const StyledInputThumbDiv = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
   gap: 8px;
 `;
 
@@ -178,6 +189,10 @@ const StyledInput = styled.input`
 
   &::placeholder {
     color: var(--input-gray);
+  }
+  &:focus,
+  &:hover {
+    border-color: var(--black);
   }
 
   @media (min-width: 375px) {
@@ -328,14 +343,17 @@ const StyledDatePicker = styled(DatePicker)`
   width: 100%;
   padding: 12px 14px;
   margin-bottom: 2px;
-
   font-weight: 700;
   font-size: 14px;
-  line-height: 1.3;
+  line-height: 1.28;
   color: var(--black);
   background-color: inherit;
   border: 1px solid var(--input-gray);
   border-radius: 8px;
+
+  @media (min-width: 375px) {
+    width: 299px;
+  }
 
   &:focus-visible {
     outline: none;
@@ -348,6 +366,7 @@ const StyledDatePicker = styled(DatePicker)`
 `;
 
 const StyledButton = styled.button`
+  margin-top: 88px;
   display: flex;
   width: 195px;
   height: 46px;
@@ -362,10 +381,11 @@ const StyledButton = styled.button`
   font-style: normal;
   font-weight: 600;
   line-height: 18px;
+  box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
 
   &:hover,
   &:focus {
-    background-color: #2b78ef;
+    background-color: var(--hover-blue);
   }
   &:disabled {
     background-color: red;
