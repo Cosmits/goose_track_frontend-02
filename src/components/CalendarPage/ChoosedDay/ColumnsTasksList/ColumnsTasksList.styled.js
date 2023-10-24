@@ -14,16 +14,15 @@ export const TasksList = styled.ul`
 
   &::-webkit-scrollbar-track {
     border-radius: 12px;
-    background-color: #f2f2f2;
+    background-color: ${({ theme }) => theme.scrollbarTrack};
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 12px;
-    background-color: #e7e5e5;
+    background-color: ${({ theme }) => theme.scrollbarThumb};
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    /* background-color: #3e85f3; */
     background-color: ${({ theme }) => theme.btnTextColor};
   }
 

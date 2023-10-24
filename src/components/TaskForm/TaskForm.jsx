@@ -95,7 +95,6 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
   const handleAdd = () => {
     createTask(formData);
     closeModal();
-
   };
 
   const handleInputChange = (e) => {

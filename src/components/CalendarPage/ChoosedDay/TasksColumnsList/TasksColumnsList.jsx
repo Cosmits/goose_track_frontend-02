@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import TasksColumn from '../TasksColumn/TasksColumn';
 import { TasksColumnsListStyled } from './TasksColumnsList.styled';
 
-export default function TasksColumnsList({ filteredTasks, showModal }) {
+export default function TasksColumnsList({
+  filteredTasks,
+  showModal,
+  tasksData,
+}) {
   const titles = Object.keys(filteredTasks);
 
   return (
@@ -15,6 +19,7 @@ export default function TasksColumnsList({ filteredTasks, showModal }) {
             key={title}
             title={title}
             tasks={filteredTasks[title]}
+            tasksData={tasksData}
           />
         );
       })}
