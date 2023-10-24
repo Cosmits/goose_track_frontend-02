@@ -9,9 +9,8 @@ const CalendarToolBar = ({onNavigate}) => {
   const location = useLocation();
   const navigate = useNavigate();
   const currentDate = new Date();
-  const currentYear = getYear(currentDate);
-  const currentDay = format(currentDate, 'dd');
-  const currentMonth = getMonth(currentDate) + 1;
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth() + 1;
   const currentMonthFormatted = `${currentYear}-${currentMonth.toString().padStart(2, '0')}`;
   
   const handleMonthClick = () => {

@@ -1,20 +1,11 @@
 import { useState, useEffect } from 'react';
 import {
-  AddTask,
-  ButtonContainer,
-  ContainerForm,
-  ContainerRadio,
-  Label,
-  PencilIcon,
-  StyledAdd,
-  StyledCancel,
-  StyledEdit,
-  StyledInput,
-  StyledInputTime,
-  StyledLabel,
-  StyledRadioHigh,
-  StyledRadioLow,
-  StyledRadioMedium,
+  AddTask, ButtonContainer, CloseIcon, ContainerForm,
+  ContainerRadio, Label, PencilIcon,
+  StyledAdd, StyledCancel, StyledEdit,
+  StyledInput, StyledInputTime,
+  StyledLabel, StyledRadioHigh,
+  StyledRadioLow, StyledRadioMedium,
   StyledTime,
 } from './TaskForm.styled';
 
@@ -141,6 +132,7 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
 
   return (
     <ContainerForm>
+      <CloseIcon onClick={() => {closeModal()}} />
       <form onSubmit={handleSubmit}>
         <StyledLabel>
           Title
