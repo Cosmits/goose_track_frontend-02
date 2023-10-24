@@ -5,24 +5,17 @@ import ColumnHeadBar from '../ColumnHeadBar/ColumnHeadBar';
 import AddTaskBtn from '../AddTaskBtn/AddTaskBtn';
 import ColumnsTasksList from '../ColumnsTasksList/ColumnsTasksList';
 
-export default function TasksColumn({ title, tasks, showModal, tasksData }) {
+export default function TasksColumn({ title, tasks }) {
   return (
     <TaskColumn>
-      <ColumnHeadBar title={title} category={title} showModal={showModal} />
-      {tasks && (
-        <ColumnsTasksList
-          tasks={tasks}
-          showModal={showModal}
-          category={title}
-          tasksData={tasksData}
-        />
-      )}
-      <AddTaskBtn showModal={showModal} category={title} />
+      <ColumnHeadBar title={title} idOfCompletion={title} />
+      {tasks && <ColumnsTasksList tasks={tasks} />}
+      <AddTaskBtn idOfCompletion={title} />
     </TaskColumn>
   );
 }
 
 TasksColumn.propTypes = {
   title: PropTypes.string.isRequired,
-  tasks: PropTypes.array.isRequired,
+  tasks: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

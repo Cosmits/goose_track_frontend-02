@@ -1,21 +1,32 @@
 import { useState, useEffect } from 'react';
 import {
-  AddTask, ButtonContainer, ContainerForm,
-  ContainerRadio, Label, PencilIcon,
-  StyledAdd, StyledCancel, StyledEdit,
-  StyledInput, StyledInputTime,
-  StyledLabel, StyledRadioHigh,
-  StyledRadioLow, StyledRadioMedium,
+  AddTask,
+  ButtonContainer,
+  ContainerForm,
+  ContainerRadio,
+  Label,
+  PencilIcon,
+  StyledAdd,
+  StyledCancel,
+  StyledEdit,
+  StyledInput,
+  StyledInputTime,
+  StyledLabel,
+  StyledRadioHigh,
+  StyledRadioLow,
+  StyledRadioMedium,
   StyledTime,
 } from './TaskForm.styled';
 
 import { useParams } from 'react-router';
 import { toast } from 'react-toastify';
-import { useCreateTasksMutation, useEditTasksMutation, useGetMonthlyTasksQuery } from '../../redux/tasks/tasksApi';
-
+import {
+  useCreateTasksMutation,
+  useEditTasksMutation,
+  useGetMonthlyTasksQuery,
+} from '../../redux/tasks/tasksApi';
 
 const TaskForm = ({ initialData, closeModal, category = '' }) => {
-
   const { currentDay } = useParams();
 
   const [isEdit, setIsEdit] = useState(false);
@@ -23,8 +34,10 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
   const [isEditing, setIsEditing] = useState(!!initialData);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const [createTask, { isError: createTaskIsError, error: createTaskError }] = useCreateTasksMutation();
-  const [editTask, { isError: editTaskIsError, error: editTaskError }] = useEditTasksMutation();
+  const [createTask, { isError: createTaskIsError, error: createTaskError }] =
+    useCreateTasksMutation();
+  const [editTask, { isError: editTaskIsError, error: editTaskError }] =
+    useEditTasksMutation();
   const { currentData } = useGetMonthlyTasksQuery(currentDay);
 
   const [formData, setFormData] = useState(
@@ -37,7 +50,6 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
       category: '',
     },
   );
-
 
   const categoryToDefault = (category) => {
     switch (category) {
@@ -63,7 +75,6 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
     }
   };
 
-
   useEffect(() => {
     categoryToDefault(category);
     if (initialData) {
@@ -77,15 +88,15 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
   //========= Error handling =================================
   useEffect(() => {
     if (createTaskIsError) {
-      console.log(createTaskError)
-      toast.error("Error creating task")
+      console.log(createTaskError);
+      toast.error('Error creating task');
     }
 
     if (editTaskIsError) {
-      console.log(editTaskError)
-      toast.error("Error creating task")
+      console.log(editTaskError);
+      toast.error('Error creating task');
     }
-  }, [createTaskError, createTaskIsError, editTaskError, editTaskIsError])
+  }, [createTaskError, createTaskIsError, editTaskError, editTaskIsError]);
 
   const handleEdit = () => {
     editTask(formData._id, formData);
@@ -108,7 +119,9 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
     // Перевірка відповідності категорії в списку допустимих
     const validCategories = ['to-do', 'in-progress', 'done'];
     if (!validCategories.includes(formData.category)) {
-      setErrorMessage('Invalid category. Choose from: to-do, in-progress, done.');
+      setErrorMessage(
+        'Invalid category. Choose from: to-do, in-progress, done.',
+      );
       return;
     }
 
@@ -131,38 +144,75 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
       <form onSubmit={handleSubmit}>
         <StyledLabel>
           Title
-          <StyledInput type="text" name="title" value={formData.title} onChange={handleInputChange}
-            placeholder="Enter text" required maxLength="250" />
+          <StyledInput
+            type="text"
+            name="title"
+            value={formData?.title || ''}
+            onChange={handleInputChange}
+            placeholder="Enter text"
+            required
+            maxLength="250"
+          />
         </StyledLabel>
 
         <StyledTime>
           <StyledLabel>
             Start
-            <StyledInputTime type="time" name="start" value={formData.start} onChange={handleInputChange}
-              required pattern="[0-1][0-9]:[0-5][0-9]" />
+            <StyledInputTime
+              type="time"
+              name="start"
+              value={formData?.start || ''}
+              onChange={handleInputChange}
+              required
+              pattern="[0-1][0-9]:[0-5][0-9]"
+            />
           </StyledLabel>
           <StyledLabel>
             End
-            <StyledInputTime type="time" name="end" value={formData.end} onChange={handleInputChange}
-              required pattern="[0-1][0-9]:[0-5][0-9]"
-              min={formData.start} />
+            <StyledInputTime
+              type="time"
+              name="end"
+              value={formData?.end || ''}
+              onChange={handleInputChange}
+              required
+              pattern="[0-1][0-9]:[0-5][0-9]"
+              min={formData?.start}
+            />
           </StyledLabel>
         </StyledTime>
 
         <ContainerRadio>
           <Label>
-            <StyledRadioLow type="radio" name="priority" value="low" checked={formData.priority === 'low'}
-              onChange={handleInputChange} required />
+            <StyledRadioLow
+              type="radio"
+              name="priority"
+              value="low"
+              checked={formData?.priority === 'low'}
+              onChange={handleInputChange}
+              required
+            />
             Low
           </Label>
           <Label>
-            <StyledRadioMedium type="radio" name="priority" value="medium" checked={formData.priority === 'medium'}
-              onChange={handleInputChange} required />
+            <StyledRadioMedium
+              type="radio"
+              name="priority"
+              value="medium"
+              checked={formData?.priority === 'medium'}
+              onChange={handleInputChange}
+              required
+            />
             Medium
           </Label>
           <Label>
-            <StyledRadioHigh type="radio" name="priority" value="high" checked={formData.priority === 'high'}
-              onChange={handleInputChange} required />
+            <StyledRadioHigh
+              type="radio"
+              name="priority"
+              value="high"
+              checked={formData?.priority === 'high'}
+              onChange={handleInputChange}
+              required
+            />
             High
           </Label>
         </ContainerRadio>
