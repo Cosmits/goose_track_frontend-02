@@ -53,7 +53,7 @@ const formats = {
 
 const AppCalendar = ({ toolbar }) => {
   const [task, setTask] = useState([]);
-  const currentData = format(startOfToday(), 'yyyy-MM');
+  const [currentData, setCurrentData] = useState(format(startOfToday(), 'yyyy-MM'));
   const navigate = useNavigate();
 
   const { data: tasksData } = useGetMonthlyTasksQuery(currentData, { skip: currentData === undefined });
@@ -79,11 +79,20 @@ const AppCalendar = ({ toolbar }) => {
     if (tasksData?.data !== undefined) {
       listModifier(tasksData.data);
     }
+    if(currentData !== undefined) {
+      
+    }
   }, [tasksData?.data]);
 
   const handleNavigate = (slotInfo) => {
     const formattedDate = moment(slotInfo.start).format('YYYY-MM-DD');
     navigate(`/calendar/day/${formattedDate}`);
+  };
+
+  const handleNavigateMonth = (date) => {
+    if(date !== undefined) {
+      setCurrentData(format(date, 'yyyy-MM'));
+    }
   };
 
   return (
@@ -98,8 +107,10 @@ const AppCalendar = ({ toolbar }) => {
         showAllEvents={true}
         onSelectSlot={handleNavigate}
         onSelectEvent={handleNavigate}
+        onNavigate={handleNavigateMonth}
         selectable
         longPressThreshold={1}
+        
       />
       <AppCalendarGlobalStyles />
     </>
