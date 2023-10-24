@@ -10,6 +10,8 @@ export const SidebarWrapper = styled.div`
   color: ${({ theme }) => theme.mainSideBarText};
   transition: all 0.3s;
 
+  
+
   ul,
   li {
     text-decoration: none;
@@ -168,10 +170,14 @@ export const SidebarWrapper = styled.div`
   .icon {
     display: none;
   }
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     //display: block;
-    position: fixed;
+    position: absolute;
+    transform: translateY(-100%);
     z-index: 3;
+    &.is-open {
+      transform: translateY(0%);
+    }
     .logo-img {
       width: 60px;
     }

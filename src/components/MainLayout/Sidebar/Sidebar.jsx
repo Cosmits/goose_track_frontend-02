@@ -18,11 +18,11 @@ function Sidebar(props) {
     navigate('/');
 
   };
-  const { closeSideBar } = props;
+  const { closeSideBar, open } = props;
   const location = useLocation();
-
+ 
   return (
-    <SidebarWrapper>
+    <SidebarWrapper className={open ? 'is-open' : ''}>
       {/* <button id="open-burger">OPEN</button>*/}{' '}
       <div id="sidebar" className="sidebar">
         <div className="logo-class">

@@ -34,12 +34,11 @@ const MainLayout = () => {
   const toggleSideBarShow = () => {
     setShowSideBar(() => !showSideBar);
   };
+
   return (
     <Container>
-      <MainLayoutWrapper>
-        {(isDesktop || showSideBar) && (
-          <Sidebar closeSideBar={toggleSideBarShow} />
-        )}
+      <MainLayoutWrapper> 
+        <Sidebar closeSideBar={toggleSideBarShow} open={showSideBar}/>
         <PageWrapper>
           <Header openSideBar={toggleSideBarShow} />
           <Suspense fallback={<Loader />}>

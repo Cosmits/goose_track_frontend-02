@@ -7,7 +7,8 @@ export const MainLayoutWrapper = styled.div`
 `
 export const PageWrapper = styled.div`
   background-color: ${({ theme }) => theme.mainBGColor};
-  width:1151px;
+  max-width: 1151px;
+  width: 100%;
   padding: 24px 20px;
 
   @media screen and (min-width: 768px) {
