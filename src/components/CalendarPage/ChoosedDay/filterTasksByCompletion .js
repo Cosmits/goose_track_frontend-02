@@ -1,5 +1,6 @@
 export default function filterTasksByCompletion(tasks, currentDay) {
   const filteredTasks = { 'To do': [], 'In progress': [], Done: [] };
+
   tasks.map((task) => {
     const { category, date } = task;
     if (date === currentDay) {
@@ -7,6 +8,7 @@ export default function filterTasksByCompletion(tasks, currentDay) {
         case 'to-do':
           filteredTasks['To do'].unshift(task);
           break;
+
         case 'in-progress':
           filteredTasks['In progress'].unshift(task);
           break;
@@ -16,7 +18,9 @@ export default function filterTasksByCompletion(tasks, currentDay) {
           break;
       }
     }
+
     return;
   });
+
   return filteredTasks;
 }

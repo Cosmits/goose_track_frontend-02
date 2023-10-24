@@ -9,7 +9,6 @@ import {
   useEditTasksMutation,
   useGetMonthlyTasksQuery,
 } from '../../../../redux/tasks/tasksApi';
-import { useEffect } from 'react';
 
 const categoryStandardization = (categotyName) =>
   categotyName

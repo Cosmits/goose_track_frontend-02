@@ -10,7 +10,7 @@ import {
 } from './TaskToolbar.styled';
 import { useDeleteTasksMutation } from '../../../../redux/tasks/tasksApi';
 import TaskToolbarModal from './TaskToolbarModal';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useModal } from '../modalContext';
 
 export default function TaskToolbar({ id }) {
@@ -24,13 +24,7 @@ export default function TaskToolbar({ id }) {
     swipe: [
       <SwipeIcon />,
       () => {
-        const toogleModal = () => {
-          console.log('click');
-          setIsShowSwipeModal(!isShowSwipeModal);
-        };
         setIsShowSwipeModal(!isShowSwipeModal);
-        // setIsShowSwipeModal(!isShowSwipeModal);
-        window.addEventListener('click', toogleModal);
       },
     ],
     edit: [
