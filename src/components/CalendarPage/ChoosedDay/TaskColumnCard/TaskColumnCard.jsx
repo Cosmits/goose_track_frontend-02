@@ -11,8 +11,12 @@ import {
   TaskCardSuccess,
   TaskCardSuccessText,
 } from './TaskColumnCard.styled';
+import { useSelector } from 'react-redux';
+import { selectUserAvatar } from '../../../../redux/auth/selectors';
 
-export default function TaskColumnCard({ taskTitle, priority, avatar, id }) {
+export default function TaskColumnCard({ taskTitle, priority, id }) {
+  const avatar = useSelector(selectUserAvatar);
+
   const priorityColor = {
     low: '#72C2F8',
     medium: '#F3B249',
@@ -51,6 +55,5 @@ export default function TaskColumnCard({ taskTitle, priority, avatar, id }) {
 TaskColumnCard.propTypes = {
   taskTitle: PropTypes.string.isRequired,
   priority: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };

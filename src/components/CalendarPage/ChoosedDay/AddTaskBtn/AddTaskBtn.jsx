@@ -5,18 +5,24 @@ import {
   AddTaskButton,
   AddTaskButtonIcon,
 } from './AddTaskBtn.styled';
+import { useModal } from '../modalContext';
 
-export default function AddTaskBtn({ category }) {
+export default function AddTaskBtn({ idOfCompletion }) {
+  const { toogleModal } = useModal();
+
   return (
     <AddTaskButton
       type="button"
-      onClick={() => console.log(`Add Task Button click ${category}`)}
+      onClick={() => {
+        toogleModal(idOfCompletion);
+      }}
     >
       <AddTaskButtonIcon />
       <AddTaskBtnTitle>Add task</AddTaskBtnTitle>
     </AddTaskButton>
   );
 }
+
 AddTaskBtn.propTypes = {
-  category: PropTypes.string.isRequired,
+  idOfCompletion: PropTypes.string.isRequired,
 };

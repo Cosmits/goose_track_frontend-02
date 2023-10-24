@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { GlobalStyle } from '../../../Styles/GlobalStyles';
+import { GlobalStyle } from '../../../../Styles/GlobalStyles'
 
 
 export const AddFeedbackButton = styled.button`

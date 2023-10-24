@@ -1,43 +1,51 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useGetMonthlyTasksQuery } from '../../../redux/tasks/tasksApi';
 import { ChoosedDaySection } from './ChoosedDay.styled';
 import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
 import { useParams } from 'react-router-dom';
-import { da } from 'date-fns/locale';
+import TaskModal from '../../TaskModal/TaskModal';
+import filterTasksByCompletion from './filterTasksByCompletion ';
+import { ModalContext } from './modalContext';
+
+const initialFilteredTasks = {
+  'To do': [],
+  'In progress': [],
+  Done: [],
+};
 
 export default function ChoosedDay() {
   const { currentDay } = useParams();
+  const { currentData: tasksByDay } = useGetMonthlyTasksQuery(currentDay);
 
-  const filteredTasks = { 'To do': [], 'In progress': [], Done: [] };
+  const [modal, setModal] = useState(false);
+  const [taskInfo, setTaskInfo] = useState(null);
+  const [filteredTasks, setFilteredTasks] = useState(initialFilteredTasks);
 
-  const { currentData: data } = useGetMonthlyTasksQuery(currentDay);
+  useEffect(() => {
+    if (tasksByDay) {
+      const tasks = tasksByDay.data;
 
-  if (data) {
-    const tasks = data.data;
+      setFilteredTasks(filterTasksByCompletion(tasks, currentDay));
+    }
 
-    tasks.map((task) => {
-      const { category, date } = task;
-      if (date === currentDay) {
-        switch (category) {
-          case 'to-do':
-            filteredTasks['To do'].push(task);
-            break;
-          case 'in-progress':
-            filteredTasks['In progress'].push(task);
-            break;
+    return () => {
+      setFilteredTasks(initialFilteredTasks);
+      setTaskInfo(null);
+    };
+  }, [tasksByDay]);
 
-          default:
-            filteredTasks['Done'].push(task);
-            break;
-        }
-      }
-      return;
-    });
-  }
+  const toogleModal = (idOfCompletion) => {
+    setTaskInfo(idOfCompletion);
+    setModal(!modal);
+  };
+
   return (
     <ChoosedDaySection>
-      {/* <DayCalendarHead /> */}
-      <TasksColumnsList filteredTasks={filteredTasks} />
+      <ModalContext.Provider value={{ toogleModal }}>
+        {/* <DayCalendarHead /> */}
+        <TasksColumnsList filteredTasks={filteredTasks} />
+        {modal && <TaskModal category={taskInfo} closeModal={toogleModal} />}
+      </ModalContext.Provider>
     </ChoosedDaySection>
   );
 }

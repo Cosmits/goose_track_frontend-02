@@ -1,64 +1,101 @@
 import { useState, useEffect } from 'react';
 import {
-  AddTask,
-  ButtonContainer,
-  ContainerForm,
-  ContainerRadio,
-  Label,
-  PencilIcon,
-  StyledAdd,
-  StyledCancel,
-  StyledEdit,
-  StyledInput,
-  StyledInputTime,
-  StyledLabel,
-  StyledRadioHigh,
-  StyledRadioLow,
-  StyledRadioMedium,
+  AddTask, ButtonContainer, CloseIcon, ContainerForm,
+  ContainerRadio, Label, PencilIcon,
+  StyledAdd, StyledCancel, StyledEdit,
+  StyledInput, StyledInputTime,
+  StyledLabel, StyledRadioHigh,
+  StyledRadioLow, StyledRadioMedium,
   StyledTime,
 } from './TaskForm.styled';
 
-const TaskForm = ({ initialData, closeModal }) => {
+import { useParams } from 'react-router';
+import { toast } from 'react-toastify';
+import {
+  useCreateTasksMutation,
+  useEditTasksMutation,
+  useGetMonthlyTasksQuery,
+} from '../../redux/tasks/tasksApi';
+
+const TaskForm = ({ initialData, closeModal, category = '' }) => {
+  const { currentDay } = useParams();
+
+  const [isEdit, setIsEdit] = useState(false);
+
+  const [isEditing, setIsEditing] = useState(!!initialData);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const [createTask, { isError: createTaskIsError, error: createTaskError }] =
+    useCreateTasksMutation();
+  const [editTask, { isError: editTaskIsError, error: editTaskError }] =
+    useEditTasksMutation();
+  const { currentData } = useGetMonthlyTasksQuery(currentDay);
+
   const [formData, setFormData] = useState(
     initialData || {
       title: '',
       start: '09:00',
       end: '09:30',
       priority: 'low',
-      date: '',
-      category: 'to-do',
-    }
+      date: currentDay,
+      category: '',
+    },
   );
 
-  const [isEditing, setIsEditing] = useState(!!initialData);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [todos, setTodos] = useState([]); 
+  const categoryToDefault = (category) => {
+    switch (category) {
+      case 'To do':
+        setFormData({ ...formData, category: 'to-do' });
+        setIsEdit(false);
+        break;
+      case 'In progress':
+        setFormData({ ...formData, category: 'in-progress' });
+        setIsEdit(false);
+        break;
+      case 'Done':
+        setFormData({ ...formData, category: 'done' });
+        setIsEdit(false);
+        break;
 
+      default: {
+        const task = currentData.data.filter(({ _id }) => _id === category);
+        setIsEdit(true);
+        setFormData(...task);
+        break;
+      }
+    }
+  };
 
   useEffect(() => {
+    categoryToDefault(category);
     if (initialData) {
       setFormData(initialData);
       setIsEditing(true);
     } else {
       setIsEditing(false);
     }
-  }, [initialData]);
+  }, [category, initialData]);
 
-  const handleEdit = (editedTodo) => {
-    setTodos((prevTodos) => {
-      const updatedTodos = prevTodos.map((todo) =>
-        todo.id === editedTodo.id ? editedTodo : todo
-      );
-      return updatedTodos;
-    });
+  //========= Error handling =================================
+  useEffect(() => {
+    if (createTaskIsError) {
+      console.log(createTaskError);
+      toast.error('Error creating task');
+    }
+
+    if (editTaskIsError) {
+      console.log(editTaskError);
+      toast.error('Error creating task');
+    }
+  }, [createTaskError, createTaskIsError, editTaskError, editTaskIsError]);
+
+  const handleEdit = () => {
+    editTask(formData._id, formData);
     closeModal();
   };
 
-  const handleAdd = (newTodo) => {
-    setTodos((prevTodos) => {
-      const updatedTodos = [...prevTodos, newTodo];
-      return updatedTodos;
-    });
+  const handleAdd = () => {
+    createTask(formData);
     closeModal();
   };
 
@@ -73,7 +110,9 @@ const TaskForm = ({ initialData, closeModal }) => {
     // Перевірка відповідності категорії в списку допустимих
     const validCategories = ['to-do', 'in-progress', 'done'];
     if (!validCategories.includes(formData.category)) {
-      setErrorMessage('Invalid category. Choose from: to-do, in-progress, done.');
+      setErrorMessage(
+        'Invalid category. Choose from: to-do, in-progress, done.',
+      );
       return;
     }
 
@@ -93,13 +132,14 @@ const TaskForm = ({ initialData, closeModal }) => {
 
   return (
     <ContainerForm>
+      <CloseIcon onClick={() => {closeModal()}} />
       <form onSubmit={handleSubmit}>
         <StyledLabel>
           Title
           <StyledInput
             type="text"
             name="title"
-            value={formData.title}
+            value={formData?.title || ''}
             onChange={handleInputChange}
             placeholder="Enter text"
             required
@@ -113,7 +153,7 @@ const TaskForm = ({ initialData, closeModal }) => {
             <StyledInputTime
               type="time"
               name="start"
-              value={formData.start}
+              value={formData?.start || ''}
               onChange={handleInputChange}
               required
               pattern="[0-1][0-9]:[0-5][0-9]"
@@ -124,11 +164,11 @@ const TaskForm = ({ initialData, closeModal }) => {
             <StyledInputTime
               type="time"
               name="end"
-              value={formData.end}
+              value={formData?.end || ''}
               onChange={handleInputChange}
               required
               pattern="[0-1][0-9]:[0-5][0-9]"
-              min={formData.start}
+              min={formData?.start}
             />
           </StyledLabel>
         </StyledTime>
@@ -139,7 +179,7 @@ const TaskForm = ({ initialData, closeModal }) => {
               type="radio"
               name="priority"
               value="low"
-              checked={formData.priority === 'low'}
+              checked={formData?.priority === 'low'}
               onChange={handleInputChange}
               required
             />
@@ -150,7 +190,7 @@ const TaskForm = ({ initialData, closeModal }) => {
               type="radio"
               name="priority"
               value="medium"
-              checked={formData.priority === 'medium'}
+              checked={formData?.priority === 'medium'}
               onChange={handleInputChange}
               required
             />
@@ -161,7 +201,7 @@ const TaskForm = ({ initialData, closeModal }) => {
               type="radio"
               name="priority"
               value="high"
-              checked={formData.priority === 'high'}
+              checked={formData?.priority === 'high'}
               onChange={handleInputChange}
               required
             />
@@ -172,10 +212,16 @@ const TaskForm = ({ initialData, closeModal }) => {
         {errorMessage && <div>{errorMessage}</div>}
 
         <ButtonContainer>
-          {isEditing ? (
-            <StyledEdit onClick={handleEdit} type="submit"><PencilIcon/>Edit</StyledEdit>
+          {isEdit ? (
+            <StyledEdit onClick={handleEdit} type="submit">
+              <PencilIcon />
+              Edit
+            </StyledEdit>
           ) : (
-            <StyledAdd onClick={handleAdd} type="submit"><AddTask/>Add</StyledAdd>
+            <StyledAdd onClick={handleAdd} type="submit">
+              <AddTask />
+              Add
+            </StyledAdd>
           )}
           <StyledCancel type="button" onClick={handleCancel}>
             Cancel

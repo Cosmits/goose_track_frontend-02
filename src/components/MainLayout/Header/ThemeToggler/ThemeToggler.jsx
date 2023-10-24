@@ -1,7 +1,7 @@
 import { MoonSVG, SunSVG, ThemeButton } from './ThemeToggler.styled';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { selectTheme, toggleTheme } from '../../../redux/theme/themeSlice';
+import { selectTheme, toggleTheme } from '../../../../redux/theme/themeSlice';
 
 const ThemeToggler = () => {
   const isThemeMode = useSelector(selectTheme);

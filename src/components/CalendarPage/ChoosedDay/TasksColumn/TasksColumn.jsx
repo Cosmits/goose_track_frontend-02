@@ -8,14 +8,14 @@ import ColumnsTasksList from '../ColumnsTasksList/ColumnsTasksList';
 export default function TasksColumn({ title, tasks }) {
   return (
     <TaskColumn>
-      <ColumnHeadBar title={title} category={title} />
+      <ColumnHeadBar title={title} idOfCompletion={title} />
       {tasks && <ColumnsTasksList tasks={tasks} />}
-      <AddTaskBtn category={title} />
+      <AddTaskBtn idOfCompletion={title} />
     </TaskColumn>
   );
 }
 
 TasksColumn.propTypes = {
   title: PropTypes.string.isRequired,
-  tasks: PropTypes.array.isRequired,
+  tasks: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

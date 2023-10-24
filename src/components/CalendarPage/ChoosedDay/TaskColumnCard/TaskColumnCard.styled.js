@@ -65,7 +65,7 @@ export const TaskCardSuccess = styled.div`
 `;
 
 export const TaskCardSuccessText = styled.p`
-  color: ${({ theme }) => theme.mainBGColor};
+  color: ${({ theme }) => theme.taskCardSuccessText};
   font-family: 'InterSemiBold', sans-serif;
   font-size: 10px;
   font-style: normal;

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import { GlobalStyle } from '../../../Styles/GlobalStyles';
 
 export const UserName = styled.p`
-  font-family: ${GlobalStyle.InterTightBold};
   font-size: 14px;
   font-weight: 700;
   line-height: 1.3;
@@ -15,6 +13,22 @@ export const UserName = styled.p`
   }
 `;
 
+export const BackgroundName = styled.div`
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, #3E85F3 0%, rgba(62, 133, 243, 0.00) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const UserNameIcon = styled.p`
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  color: ${({ theme }) => theme.mainTextColor};
+`;
 
 export const UserAvatar = styled.div`
   width: 32px;
