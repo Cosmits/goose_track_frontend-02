@@ -1,39 +1,28 @@
-// Serhii
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateUser } from '../../../redux/auth/operations';
-import { selectIsLoggedIn, selectUser } from '../../../redux/auth/selectors';
-
-import { parseISO, addDays, format, isWeekend } from 'date-fns';
+import { addDays, format, isWeekend, parse } from 'date-fns';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
+import { updateUser } from '../../../redux/auth/operations';
+import { selectIsLoggedIn, selectUser } from '../../../redux/auth/selectors';
+
 import {
-  StyledForm,
-  StyledAvatarImg,
-  StyledAvatarPlug,
-  StyledPhotoLabel,
-  StyledAddPhotoIcon,
-  StyledPhotoInput,
-  StyledUserNameP,
-  StyledUserStatusP,
-  StyledInputWrapperDiv,
-  StyledInputSecondWrapperDiv,
-  StyledInputThumbDiv,
-  StyledLabel,
-  StyledInput,
-  StyledCalendarDiv,
-  StyledDatePicker,
-  StyledButton,
+  StyledForm, StyledAvatarImg,
+  StyledAvatarPlug, StyledPhotoLabel,
+  StyledAddPhotoIcon, StyledPhotoInput,
+  StyledUserNameP, StyledUserStatusP,
+  StyledInputWrapperDiv, StyledInputSecondWrapperDiv,
+  StyledInputThumbDiv, StyledLabel,
+  StyledInput, StyledCalendarDiv,
+  StyledDatePicker, StyledButton,
 } from './UserForm.styled';
 import 'react-datepicker/dist/react-datepicker.css';
-
-// const emailRegexp = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9_-]+).([a-zA-Z]{2,5})$/;
-// const phoneRegexp = /^\d{2}\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}$/;
-// const birthdayRegexp = /^\d{2}\/\d{2}\/\d{4}$/;
+import { globalRegex } from '../../../Styles/GlobalStyles';
 
 export const UserForm = () => {
+
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
@@ -42,7 +31,7 @@ export const UserForm = () => {
 
   const initialValues = {
     userName: user.userName ? user.userName : '',
-    birthday: user.birthday ? parseISO(user.birthday) : '',
+    birthday: user.birthday ? parse(user.birthday, 'dd/MM/yyyy', new Date()) : '',
     email: user.email ? user.email : '',
     phone: user.phone ? user.phone : '',
     telegram: user.telegram ? user.telegram : '',
@@ -64,7 +53,7 @@ export const UserForm = () => {
       .required('The name is required.'),
     email: Yup.string()
       .matches(
-        /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9_-]+).([a-zA-Z]{2,5})$/,
+        globalRegex.emailRegexp,
         'Invalid email address.',
       )
       .required('The email is required'),
@@ -73,12 +62,12 @@ export const UserForm = () => {
       .transform((v) => (v === '' ? null : v)),
     phone: Yup.string()
       .matches(
-        /^\d{2}\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}$/,
+        globalRegex.phoneRegexp,
         'Invalid number. Format number must be 11 (111) 111 11 11',
       )
       .nullable()
       .transform((v) => (v === '' ? null : v)),
-    telegram: Yup.string()
+    skype: Yup.string()
       .min(3, 'The name must be at least 3 characters.')
       .max(16, 'The telegram must be 16 characters or less.')
       .nullable()
@@ -121,22 +110,9 @@ export const UserForm = () => {
       });
   };
 
-  const {
-    values,
-    errors,
-    touched,
-    dirty,
-    isSubmitting,
-    setFieldValue,
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    setSubmitting,
-  } = useFormik({
-    initialValues,
-    validationSchema: schema,
-    onSubmit,
-  });
+  const { values, errors, touched, dirty, isSubmitting,
+    setFieldValue, handleBlur, handleChange, handleSubmit, setSubmitting, }
+    = useFormik({ initialValues, validationSchema: schema, onSubmit, });
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -144,7 +120,7 @@ export const UserForm = () => {
       setAvatar(avatarURL);
       setFieldValue('userName', userName);
       setFieldValue('email', email);
-      setFieldValue('birthday', birthday ? parseISO(birthday) : '');
+      setFieldValue('birthday', birthday ? parse(birthday, 'dd/MM/yyyy', new Date()) : '');
       setFieldValue('phone', phone);
       setFieldValue('skype', skype);
     }
