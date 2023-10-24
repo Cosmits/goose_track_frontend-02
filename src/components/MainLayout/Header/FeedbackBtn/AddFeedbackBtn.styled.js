@@ -15,9 +15,10 @@ export const AddFeedbackButton = styled.button`
   font-weight:600;
   font-size: 14px;
   line-height: 1.28;
-  .focus {
-    background: #2b78ef;
-    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+  transition: background-color 300ms linear;
+  &:hover,
+  &:focus {
+    background: #2B78EF;
   }
   @media (min-width: 768px) {
     margin-right: 24px;
