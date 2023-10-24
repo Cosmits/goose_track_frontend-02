@@ -1,11 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
-
-
-export const Container = styled.div`
-  margin-left: auto;
-  max-width: 1151px;
-  padding: 0 32px;
-`;
+import { createGlobalStyle } from "styled-components";
 
 export const AppCalendarGlobalStyles = createGlobalStyle`
   .rbc-calendar .rbc-month-view {
