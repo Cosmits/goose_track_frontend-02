@@ -1,4 +1,4 @@
-import{s as r,a as o,j as t,P as u,H as M,I as K,p as X,J as Y,k as R,K as ee,M as q,Q as B,S as te}from"./index-2af9f095.js";const re=r.section`
+import{s as r,a as o,j as t,P as u,M,S as K,z as X,T as Y,k as R,U as ee,V as q,Q as B,W as te}from"./index-2564f5b1.js";const re=r.section`
   width: 100%;
   height: 100%;
   margin: 0 auto;
@@ -192,10 +192,10 @@ import{s as r,a as o,j as t,P as u,H as M,I as K,p as X,J as Y,k as R,K as ee,M 
   &:focus {
     stroke: ${({theme:e})=>e.btnTextColor};
   }
-`,ye=r.button`
+`,Te=r.button`
   display: flex;
   gap: 8px;
-`;function Te({category:e,id:n,tasksData:s}){const d=["To do","In progress","Done"],[l]=M(),h=a=>{const[i]=s.filter(g=>g._id===n),c=a.split(" ").map(g=>g.toLowerCase()).join("-"),p={...i,category:c};delete p._id,delete p.date,l({id:n,...p})};return t.jsx(ke,{children:d.map(a=>{if(a!==e)return t.jsxs(ye,{onClick:()=>{h(a)},children:[t.jsx(be,{children:a}),t.jsx(we,{})]},a)})})}function F({id:e,showModal:n,category:s,tasksData:d}){const[l,h]=o.useState(!1),[a]=K(e),i={swipe:[t.jsx(ge,{}),()=>{h(!l)}],edit:[t.jsx(me,{}),()=>{n(e)}],remove:[t.jsx(fe,{}),()=>{a(e)}]},c=Object.keys(i);return t.jsx(t.Fragment,{children:t.jsxs(xe,{children:[c.map(p=>t.jsx(he,{children:t.jsx(ue,{type:"button",onClick:i[p][1],children:i[p][0]})},p)),l&&t.jsx(Te,{category:s,id:e,tasksData:d})]})})}F.propTypes={id:u.string.isRequired};const Ce=r.li`
+`;function ye({category:e,id:n,tasksData:s}){const d=["To do","In progress","Done"],[l]=M(),h=a=>{const[i]=s.filter(g=>g._id===n),c=a.split(" ").map(g=>g.toLowerCase()).join("-"),p={...i,category:c};delete p._id,delete p.date,l({id:n,...p})};return t.jsx(ke,{children:d.map(a=>{if(a!==e)return t.jsxs(Te,{onClick:()=>{h(a)},children:[t.jsx(be,{children:a}),t.jsx(we,{})]},a)})})}function F({id:e,showModal:n,category:s,tasksData:d}){const[l,h]=o.useState(!1),[a]=K(e),i={swipe:[t.jsx(ge,{}),()=>{h(!l)}],edit:[t.jsx(me,{}),()=>{n(e)}],remove:[t.jsx(fe,{}),()=>{a(e)}]},c=Object.keys(i);return t.jsx(t.Fragment,{children:t.jsxs(xe,{children:[c.map(p=>t.jsx(he,{children:t.jsx(ue,{type:"button",onClick:i[p][1],children:i[p][0]})},p)),l&&t.jsx(ye,{category:s,id:e,tasksData:d})]})})}F.propTypes={id:u.string.isRequired};const Ce=r.li`
   flex-shrink: 0;
   width: 299px;
   height: 108px;
@@ -290,7 +290,7 @@ import{s as r,a as o,j as t,P as u,H as M,I as K,p as X,J as Y,k as R,K as ee,M 
   @media screen and (min-width: 1440px) {
     height: 50vh;
   }
-`;function P({tasks:e,showModal:n,category:s,tasksData:d}){const l=X(Y);return t.jsx(Ie,{children:e.map(h=>{const{_id:a,title:i,priority:c}=h;return t.jsx(_,{category:s,showModal:n,id:a,taskTitle:i,priority:c,avatar:l,tasksData:d},a)})})}P.propTypes={tasks:u.arrayOf(u.object).isRequired};function O({title:e,tasks:n,showModal:s,tasksData:d}){return t.jsxs(oe,{children:[t.jsx(A,{title:e,category:e,showModal:s}),n&&t.jsx(P,{tasks:n,showModal:s,category:e,tasksData:d}),t.jsx(W,{showModal:s,category:e})]})}O.propTypes={title:u.string.isRequired,tasks:u.array.isRequired};const Me=r.ul`
+`;function P({tasks:e,showModal:n,category:s,tasksData:d}){const l=X(Y);return t.jsx(Ie,{children:e.map(h=>{const{_id:a,title:i,priority:c}=h;return t.jsx(_,{category:s,showModal:n,id:a,taskTitle:i,priority:c,avatar:l,tasksData:d},a)})})}P.propTypes={tasks:u.arrayOf(u.object).isRequired};function U({title:e,tasks:n,showModal:s,tasksData:d}){return t.jsxs(oe,{children:[t.jsx(A,{title:e,category:e,showModal:s}),n&&t.jsx(P,{tasks:n,showModal:s,category:e,tasksData:d}),t.jsx(W,{showModal:s,category:e})]})}U.propTypes={title:u.string.isRequired,tasks:u.array.isRequired};const Me=r.ul`
   display: flex;
   gap: 16px;
   overflow-x: auto;
@@ -322,7 +322,7 @@ import{s as r,a as o,j as t,P as u,H as M,I as K,p as X,J as Y,k as R,K as ee,M 
   @media screen and (min-width: 1440px) {
     gap: 27px;
   }
-`;function U({filteredTasks:e,showModal:n,tasksData:s}){const d=Object.keys(e);return t.jsx(Me,{children:d.map(l=>t.jsx(O,{showModal:n,title:l,tasks:e[l],tasksData:s},l))})}U.propTypes={filteredTasks:u.objectOf(u.array).isRequired};const Re=r(D)`
+`;function O({filteredTasks:e,showModal:n,tasksData:s}){const d=Object.keys(e);return t.jsx(Me,{children:d.map(l=>t.jsx(U,{showModal:n,title:l,tasks:e[l],tasksData:s},l))})}O.propTypes={filteredTasks:u.objectOf(u.array).isRequired};const Re=r(D)`
   width: 18px;
   height: 18px;
   stroke: #fff;
@@ -434,7 +434,7 @@ import{s as r,a as o,j as t,P as u,H as M,I as K,p as X,J as Y,k as R,K as ee,M 
   display: flex;
   justify-content: center;
   gap: 14px;
-`,G=r.button`
+`,V=r.button`
   font-family: 'InterSemiBold', sans-serif;
   font-weight: 600;
   width: 182px;
@@ -446,11 +446,11 @@ import{s as r,a as o,j as t,P as u,H as M,I as K,p as X,J as Y,k as R,K as ee,M 
   display: flex;
   justify-content: center;
   align-items: center;
-`,Oe=r(G)`
+`,Ue=r(V)`
   /* display: flex;
   justify-content: center;
   align-items: center; */
-`,Ue=r.button`
+`,Oe=r.button`
   font-family: 'InterSemiBold', sans-serif;
   font-weight: 600;
   width: 144px;
@@ -458,4 +458,4 @@ import{s as r,a as o,j as t,P as u,H as M,I as K,p as X,J as Y,k as R,K as ee,M 
   background-color: ${({theme:e})=>e.popUpBgBtn};
   border-radius: 8px;
   border: none;
-`,Ge=({initialData:e,closeModal:n,category:s=""})=>{const{currentDay:d}=R(),[l,h]=o.useState(!1),[a,i]=o.useState(!!e),[c,p]=o.useState(""),[g,{isError:b,error:w}]=ee(),[V,{isError:S,error:E}]=M(),{currentData:Z}=q(d),[x,m]=o.useState(e||{title:"",start:"09:00",end:"09:30",priority:"low",date:d,category:""}),N=k=>{switch(k){case"To do":m({...x,category:"to-do"}),h(!1);break;case"In progress":m({...x,category:"in-progress"}),h(!1);break;case"Done":m({...x,category:"done"}),h(!1);break;default:{const y=Z.data.filter(({_id:T})=>T===k);h(!0),m(...y);break}}};o.useEffect(()=>{N(s),e?(m(e),i(!0)):i(!1)},[s,e]),o.useEffect(()=>{b&&(console.log(w),B.error("Error creating task")),S&&(console.log(E),B.error("Error creating task"))},[w,b,E,S]);const L=()=>{V(x._id,x),n()},$=()=>{g(x),n()},f=k=>{const{name:y,value:T}=k.target;m({...x,[y]:T}),p("")},Q=k=>{if(k.preventDefault(),!["to-do","in-progress","done"].includes(x.category)){p("Invalid category. Choose from: to-do, in-progress, done.");return}a?L():$(),m(e),i(!1)},J=()=>{n(),i(!1)};return t.jsx(Ae,{children:t.jsxs("form",{onSubmit:Q,children:[t.jsxs(C,{children:["Title",t.jsx(ze,{type:"text",name:"title",value:x.title,onChange:f,placeholder:"Enter text",required:!0,maxLength:"250"})]}),t.jsxs(We,{children:[t.jsxs(C,{children:["Start",t.jsx(I,{type:"time",name:"start",value:x.start,onChange:f,required:!0,pattern:"[0-1][0-9]:[0-5][0-9]"})]}),t.jsxs(C,{children:["End",t.jsx(I,{type:"time",name:"end",value:x.end,onChange:f,required:!0,pattern:"[0-1][0-9]:[0-5][0-9]",min:x.start})]})]}),t.jsxs(De,{children:[t.jsxs(j,{children:[t.jsx(He,{type:"radio",name:"priority",value:"low",checked:x.priority==="low",onChange:f,required:!0}),"Low"]}),t.jsxs(j,{children:[t.jsx(Fe,{type:"radio",name:"priority",value:"medium",checked:x.priority==="medium",onChange:f,required:!0}),"Medium"]}),t.jsxs(j,{children:[t.jsx(_e,{type:"radio",name:"priority",value:"high",checked:x.priority==="high",onChange:f,required:!0}),"High"]})]}),c&&t.jsx("div",{children:c}),t.jsxs(Pe,{children:[l?t.jsxs(G,{onClick:L,type:"submit",children:[t.jsx(Re,{}),"Edit"]}):t.jsxs(Oe,{onClick:$,type:"submit",children:[t.jsx(qe,{}),"Add"]}),t.jsx(Ue,{type:"button",onClick:J,children:"Cancel"})]})]})})},Ve=({initialData:e,closeModal:n,category:s})=>t.jsx(te,{onClose:n,children:t.jsx(Ge,{initialData:e,closeModal:n,category:s})}),Ze=Ve;function Qe(){const[e,n]=o.useState(!1),[s,d]=o.useState(null),l=p=>{n(!0),d(p)},h=()=>{n(!1)},{currentDay:a}=R(),i={"To do":[],"In progress":[],Done:[]},{currentData:c}=q(a);return c&&c.data.map(g=>{const{category:b,date:w}=g;if(w===a)switch(b){case"to-do":i["To do"].push(g);break;case"in-progress":i["In progress"].push(g);break;default:i.Done.push(g);break}}),t.jsxs(re,{children:[t.jsx(U,{filteredTasks:i,showModal:l,tasksData:c==null?void 0:c.data}),e&&t.jsx(Ze,{category:s,closeModal:h})]})}export{Qe as default};
+`,Ve=({initialData:e,closeModal:n,category:s=""})=>{const{currentDay:d}=R(),[l,h]=o.useState(!1),[a,i]=o.useState(!!e),[c,p]=o.useState(""),[g,{isError:b,error:w}]=ee(),[G,{isError:S,error:E}]=M(),{currentData:Z}=q(d),[x,m]=o.useState(e||{title:"",start:"09:00",end:"09:30",priority:"low",date:d,category:""}),N=k=>{switch(k){case"To do":m({...x,category:"to-do"}),h(!1);break;case"In progress":m({...x,category:"in-progress"}),h(!1);break;case"Done":m({...x,category:"done"}),h(!1);break;default:{const T=Z.data.filter(({_id:y})=>y===k);h(!0),m(...T);break}}};o.useEffect(()=>{N(s),e?(m(e),i(!0)):i(!1)},[s,e]),o.useEffect(()=>{b&&(console.log(w),B.error("Error creating task")),S&&(console.log(E),B.error("Error creating task"))},[w,b,E,S]);const L=()=>{G(x._id,x),n()},$=()=>{g(x),n()},f=k=>{const{name:T,value:y}=k.target;m({...x,[T]:y}),p("")},Q=k=>{if(k.preventDefault(),!["to-do","in-progress","done"].includes(x.category)){p("Invalid category. Choose from: to-do, in-progress, done.");return}a?L():$(),m(e),i(!1)},J=()=>{n(),i(!1)};return t.jsx(Ae,{children:t.jsxs("form",{onSubmit:Q,children:[t.jsxs(C,{children:["Title",t.jsx(ze,{type:"text",name:"title",value:x.title,onChange:f,placeholder:"Enter text",required:!0,maxLength:"250"})]}),t.jsxs(We,{children:[t.jsxs(C,{children:["Start",t.jsx(I,{type:"time",name:"start",value:x.start,onChange:f,required:!0,pattern:"[0-1][0-9]:[0-5][0-9]"})]}),t.jsxs(C,{children:["End",t.jsx(I,{type:"time",name:"end",value:x.end,onChange:f,required:!0,pattern:"[0-1][0-9]:[0-5][0-9]",min:x.start})]})]}),t.jsxs(De,{children:[t.jsxs(j,{children:[t.jsx(He,{type:"radio",name:"priority",value:"low",checked:x.priority==="low",onChange:f,required:!0}),"Low"]}),t.jsxs(j,{children:[t.jsx(Fe,{type:"radio",name:"priority",value:"medium",checked:x.priority==="medium",onChange:f,required:!0}),"Medium"]}),t.jsxs(j,{children:[t.jsx(_e,{type:"radio",name:"priority",value:"high",checked:x.priority==="high",onChange:f,required:!0}),"High"]})]}),c&&t.jsx("div",{children:c}),t.jsxs(Pe,{children:[l?t.jsxs(V,{onClick:L,type:"submit",children:[t.jsx(Re,{}),"Edit"]}):t.jsxs(Ue,{onClick:$,type:"submit",children:[t.jsx(qe,{}),"Add"]}),t.jsx(Oe,{type:"button",onClick:J,children:"Cancel"})]})]})})},Ge=({initialData:e,closeModal:n,category:s})=>t.jsx(te,{onClose:n,children:t.jsx(Ve,{initialData:e,closeModal:n,category:s})}),Ze=Ge;function Qe(){const[e,n]=o.useState(!1),[s,d]=o.useState(null),l=p=>{n(!0),d(p)},h=()=>{n(!1)},{currentDay:a}=R(),i={"To do":[],"In progress":[],Done:[]},{currentData:c}=q(a);return c&&c.data.map(g=>{const{category:b,date:w}=g;if(w===a)switch(b){case"to-do":i["To do"].push(g);break;case"in-progress":i["In progress"].push(g);break;default:i.Done.push(g);break}}),t.jsxs(re,{children:[t.jsx(O,{filteredTasks:i,showModal:l,tasksData:c==null?void 0:c.data}),e&&t.jsx(Ze,{category:s,closeModal:h})]})}export{Qe as default};
