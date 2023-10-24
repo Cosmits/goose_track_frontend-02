@@ -1,4 +1,4 @@
-import{s as i,n as e}from"./index-0829e380.js";const t=i.div`
+import{s as i,n as e}from"./index-258e6d78.js";const t=i.div`
   background-color: var(--backdrop-blue);
   min-height: 100vh;
   display: flex;
@@ -8,7 +8,7 @@ import{s as i,n as e}from"./index-0829e380.js";const t=i.div`
   gap: 18px;
  
   @media screen and (min-width: 768px) {
-  gap: 24px;
+    gap: 24px;
   }
 `,a=i.div`
   width:335px;
