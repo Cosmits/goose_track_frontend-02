@@ -1,6 +1,5 @@
 // Serhii
 import styled from 'styled-components';
-// import DatePicker from 'react-datepicker';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { HiPlus } from 'react-icons/hi';
@@ -11,26 +10,6 @@ import userSvg from '../../../../src/icons/popUp/user.svg';
 //   tablet: 768,
 //   laptop: 1440,
 // };
-
-// const between = (firstBreakpoint, secondBreakpoint, styles) => css`
-//   @media (min-width: ${breakpoints[
-//       firstBreakpoint
-//     ]}px) and (max-width: ${breakpoints[secondBreakpoint] - 1}px) {
-//     ${styles}
-//   }
-// `;
-
-// const greaterThan = (breakpoint, styles) => css`
-//   @media (min-width: ${breakpoints[breakpoint]}px) {
-//     ${styles}
-//   }
-// `;
-
-// const lesserThan = (breakpoint, styles) => css`
-//   @media (max-width: ${breakpoints[breakpoint] - 1}px) {
-//     ${styles}
-//   }
-// `;
 
 // @media screen and(min - width: 375px) { }
 // @media screen and(min - width: 768px) { }

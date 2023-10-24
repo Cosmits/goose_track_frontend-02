@@ -26,13 +26,11 @@ import {
   StyledCalendarDiv,
   StyledDatePicker,
   StyledButton,
-  // StyledUserInfoThumb,
-  // StyledAvatarImgThumb,
 } from './UserForm.styled';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const emailRegexp = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9_-]+).([a-zA-Z]{2,5})$/;
-const phoneRegexp = /^\d{2}\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}$/;
+// const emailRegexp = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9_-]+).([a-zA-Z]{2,5})$/;
+// const phoneRegexp = /^\d{2}\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}$/;
 // const birthdayRegexp = /^\d{2}\/\d{2}\/\d{4}$/;
 
 export const UserForm = () => {
@@ -65,13 +63,19 @@ export const UserForm = () => {
       .max(16, 'The name must be 16 characters or less.')
       .required('The name is required.'),
     email: Yup.string()
-      .matches(emailRegexp, 'Invalid email address.')
+      .matches(
+        /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9_-]+).([a-zA-Z]{2,5})$/,
+        'Invalid email address.',
+      )
       .required('The email is required'),
     birthday: Yup.string()
       .nullable()
       .transform((v) => (v === '' ? null : v)),
     phone: Yup.string()
-      .matches(phoneRegexp, 'Invalid number.')
+      .matches(
+        /^\d{2}\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}$/,
+        'Invalid number. Format number must be 11 (111) 111 11 11',
+      )
       .nullable()
       .transform((v) => (v === '' ? null : v)),
     telegram: Yup.string()
@@ -94,6 +98,7 @@ export const UserForm = () => {
   };
 
   const onSubmit = async (_, actions) => {
+    // event.preventDefault();
     const { userName, birthday, email, phone, skype, avatarFile } = values;
 
     const formData = new FormData();
@@ -120,8 +125,8 @@ export const UserForm = () => {
     values,
     errors,
     touched,
-    // dirty,
-    // isSubmitting,
+    dirty,
+    isSubmitting,
     setFieldValue,
     handleBlur,
     handleChange,
@@ -146,136 +151,154 @@ export const UserForm = () => {
   }, [isLoggedIn, setFieldValue, user]);
 
   return (
-    <StyledForm
-      encType="multipart/form-data"
-      autoComplete="off"
-      onSubmit={handleSubmit}
-    >
-      {avatar ? (
-        <StyledAvatarImg src={avatar} alt="User's avatar"></StyledAvatarImg>
-      ) : (
-        <StyledAvatarPlug />
-      )}
+    user.email && (
+      <StyledForm
+        autoComplete="off"
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+      >
+        {avatar ? (
+          <StyledAvatarImg src={avatar} alt="User's avatar"></StyledAvatarImg>
+        ) : (
+          <StyledAvatarPlug />
+        )}
 
-      <StyledPhotoLabel>
-        <StyledAddPhotoIcon />
-        <StyledPhotoInput
-          type="file"
-          name="avatarFile"
-          onBlur={handleBlur}
-          onChange={(event) => {
-            handleImageUpload(event);
-            setSubmitting(false);
-          }}
-        ></StyledPhotoInput>
-      </StyledPhotoLabel>
+        <StyledPhotoLabel>
+          <StyledAddPhotoIcon />
+          <StyledPhotoInput
+            type="file"
+            name="avatarFile"
+            onBlur={handleBlur}
+            onChange={(event) => {
+              handleImageUpload(event);
+              setSubmitting(false);
+            }}
+          ></StyledPhotoInput>
+        </StyledPhotoLabel>
+        <div>{errors.avatarFile}</div>
+        <StyledUserNameP>
+          {values.userName.length > 1 ? values.userName : 'Name'}
+        </StyledUserNameP>
+        <StyledUserStatusP>User</StyledUserStatusP>
 
-      <StyledUserNameP>
-        {values.userName.length > 1 ? values.userName : 'Name'}
-      </StyledUserNameP>
-      <StyledUserStatusP>User</StyledUserStatusP>
-
-      <StyledInputWrapperDiv>
-        <StyledInputSecondWrapperDiv>
-          <StyledInputThumbDiv>
-            <StyledLabel htmlFor="userName">User Name</StyledLabel>
-            <StyledInput
-              type="text"
-              name="userName"
-              placeholder="Enter your name"
-              value={values.userName}
-              onBlur={handleBlur}
-              onChange={(event) => {
-                handleChange(event);
-                setSubmitting(false);
-              }}
-            />
-            {touched.userName && errors.userName ? (
-              <div>{errors.userName}</div>
-            ) : null}
-          </StyledInputThumbDiv>
-          <StyledInputThumbDiv>
-            <StyledLabel htmlFor="birthday">Birthday</StyledLabel>
-            <StyledCalendarDiv>
-              <StyledDatePicker
-                name="birthday"
-                type="date"
-                placeholderText={format(new Date(), 'dd/MM/yyyy')}
-                selected={values.birthday}
-                value={values.birthday}
+        <StyledInputWrapperDiv>
+          <StyledInputSecondWrapperDiv>
+            <StyledInputThumbDiv>
+              <StyledLabel htmlFor="userName">User Name</StyledLabel>
+              <StyledInput
+                type="text"
+                name="userName"
+                placeholder="Enter your name"
+                value={values.userName}
                 onBlur={handleBlur}
-                onChange={(date) => {
-                  setFieldValue('birthday', date);
+                onChange={(event) => {
+                  handleChange(event);
                   setSubmitting(false);
                 }}
-                dateFormat="dd/MM/yyyy"
-                calendarStartDay={1}
-                maxDate={addDays(new Date(), 0)}
-                highlightDates={(date) => isWeekend(date)}
               />
-            </StyledCalendarDiv>
-            {touched.birthday && errors.birthday ? (
-              <div>{errors.birthday}</div>
-            ) : null}
-          </StyledInputThumbDiv>
-          <StyledInputThumbDiv>
-            <StyledLabel htmlFor="email">Email</StyledLabel>
-            <StyledInput
-              type="email"
-              name="email"
-              id="email"
-              value={values.email}
-              onBlur={handleBlur}
-              placeholder="Add a email"
-              onChange={(event) => {
-                handleChange(event);
-                setSubmitting(false);
-              }}
-              required
-            />
-            {touched.email && errors.email ? <div>{errors.email}</div> : null}
-          </StyledInputThumbDiv>
-        </StyledInputSecondWrapperDiv>
-        <StyledInputSecondWrapperDiv>
-          <StyledInputThumbDiv>
-            <StyledLabel htmlFor="phone">Phone</StyledLabel>
-            <StyledInput
-              type="text"
-              name="phone"
-              placeholder="Add a phone number"
-              value={values.phone}
-              onBlur={handleBlur}
-              onChange={(event) => {
-                handleChange(event);
-                setSubmitting(false);
-              }}
-            />
-            {touched.phone && errors.phone ? <div>{errors.phone}</div> : null}
-            {console.log('touched: ', touched)}{' '}
-            {console.log('errors: ', errors)}
-          </StyledInputThumbDiv>
-          <StyledInputThumbDiv>
-            <StyledLabel htmlFor="skype">Skype</StyledLabel>
-            <StyledInput
-              type="text"
-              name="skype"
-              id="skype"
-              placeholder="Add a skype number"
-              value={values.skype}
-              onBlur={handleBlur}
-              onChange={(event) => {
-                handleChange(event);
-                setSubmitting(false);
-              }}
-            />
-            {touched.skype && errors.skype ? <div>{errors.skype}</div> : null}
-          </StyledInputThumbDiv>
-        </StyledInputSecondWrapperDiv>
-      </StyledInputWrapperDiv>
+              {errors.userName && touched.userName ? (
+                <div>{errors.userName}</div>
+              ) : (
+                <div></div>
+              )}
+            </StyledInputThumbDiv>
+            <StyledInputThumbDiv>
+              <StyledLabel htmlFor="birthday">Birthday</StyledLabel>
+              <StyledCalendarDiv>
+                <StyledDatePicker
+                  name="birthday"
+                  placeholderText={format(new Date(), 'dd/MM/yyyy')}
+                  selected={values.birthday}
+                  value={values.birthday}
+                  onBlur={handleBlur}
+                  onChange={(date) => {
+                    setFieldValue('birthday', date);
+                    setSubmitting(false);
+                  }}
+                  dateFormat="dd/MM/yyyy"
+                  calendarStartDay={1}
+                  maxDate={addDays(new Date(), 0)}
+                  highlightDates={(date) => isWeekend(date)}
+                />
+              </StyledCalendarDiv>
+              {errors.birthday && touched.birthday ? (
+                <div>{errors.birthday}</div>
+              ) : (
+                <div></div>
+              )}
+            </StyledInputThumbDiv>
+            <StyledInputThumbDiv>
+              <StyledLabel htmlFor="email">Email</StyledLabel>
+              <StyledInput
+                type="email"
+                name="email"
+                value={values.email}
+                onBlur={handleBlur}
+                placeholder="Add a email"
+                onChange={(event) => {
+                  handleChange(event);
+                  setSubmitting(false);
+                }}
+                required
+              />
+              {errors.email && touched.email ? (
+                <div>{errors.email}</div>
+              ) : (
+                <div></div>
+              )}
+            </StyledInputThumbDiv>
+          </StyledInputSecondWrapperDiv>
+          <StyledInputSecondWrapperDiv>
+            <StyledInputThumbDiv>
+              <StyledLabel htmlFor="phone">Phone</StyledLabel>
+              <StyledInput
+                type="text"
+                name="phone"
+                placeholder="Add a phone number"
+                value={values.phone}
+                onBlur={handleBlur}
+                onChange={(event) => {
+                  handleChange(event);
+                  setSubmitting(false);
+                }}
+              />
+              {errors.phone && touched.phone ? (
+                <div>{errors.phone}</div>
+              ) : (
+                <div></div>
+              )}
+            </StyledInputThumbDiv>
+            <StyledInputThumbDiv>
+              <StyledLabel htmlFor="skype">Skype</StyledLabel>
+              <StyledInput
+                type="text"
+                name="skype"
+                placeholder="Add a skype number"
+                value={values.skype}
+                onBlur={handleBlur}
+                onChange={(event) => {
+                  handleChange(event);
+                  setSubmitting(false);
+                }}
+              />
 
-      <StyledButton type="submit" disabled={false}>
-        Save changes
-      </StyledButton>
-    </StyledForm>
+              {errors.skype && touched.skype ? (
+                <div>{errors.skype}</div>
+              ) : (
+                <div></div>
+              )}
+            </StyledInputThumbDiv>
+          </StyledInputSecondWrapperDiv>
+        </StyledInputWrapperDiv>
+
+        <StyledButton
+          onClick={console.log('click')}
+          type="submit"
+          disabled={!dirty || isSubmitting}
+        >
+          Save changes
+        </StyledButton>
+      </StyledForm>
+    )
   );
 };
