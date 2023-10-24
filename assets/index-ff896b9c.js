@@ -1,4 +1,4 @@
-import{P as w,R as tr}from"./index-f915dcbe.js";//! moment.js
+import{P as w,R as tr}from"./index-340f24ba.js";//! moment.js
 //! version : 2.29.4
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 //! license : MIT
