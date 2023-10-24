@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {
-  AddTask, ButtonContainer, ContainerForm,
+  AddTask, ButtonContainer, CloseIcon, ContainerForm,
   ContainerRadio, Label, PencilIcon,
   StyledAdd, StyledCancel, StyledEdit,
   StyledInput, StyledInputTime,
@@ -128,6 +128,7 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
 
   return (
     <ContainerForm>
+      <CloseIcon onClick={() => {closeModal()}} />
       <form onSubmit={handleSubmit}>
         <StyledLabel>
           Title

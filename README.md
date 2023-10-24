@@ -4,7 +4,7 @@
 <h1 align="center">GooseTrack</h1>
 
 <p align="center">
-  <img src="./src/images/Description/mobile-calendar@2x.jpg" alt="Calendar View">
+  <img src="./src/images/DescriptionList/mobile-calendar@2x.jpg" alt="Calendar View">
 </p>
 <h2 align="center">Calendar View</h2>
 
@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <img src="./src/images/Description/mobile-sideBar@2x.jpg" alt="Sidebar">
+  <img src="./src/images/DescriptionList/mobile-sideBar@2x.jpg" alt="Sidebar">
 </p>
 <h2 align="center">Sidebar</h2>
 
@@ -22,7 +22,7 @@ GooseTrack offers easy access to your account settings, calendar, and filters. T
 </p>
 
 <p align="center">
-  <img src="./src/images/Description/mobile-tasks@2x.jpg" alt="All-In-One">
+  <img src="./src/images/DescriptionList/mobile-tasks@2x.jpg" alt="All-In-One">
 </p>
 <h2 align="center">All-In-One</h2>
 

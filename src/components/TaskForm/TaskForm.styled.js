@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { ReactComponent as AddTaskBtnIcon } from '../../icons/ChoosedDay/add-task-btn-plus.svg.svg';
 import { ReactComponent as Edit } from '../../icons/ChoosedDay/task-card-edit.svg';
+import { ReactComponent as XClose } from '../../icons/popUp/x-close.svg';
 
 export const PencilIcon = styled(Edit)`
   width: 18px;
@@ -17,14 +18,24 @@ export const AddTask = styled(AddTaskBtnIcon)`
   cursor: pointer;
 `;
 
+export const CloseIcon = styled(XClose)`
+  width: 24px;
+  height: 24px;
+  stroke: #111;
+  cursor: pointer;
+  margin-right: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
 export const ContainerForm = styled.div`
-  /* width: 396px; */
-  /* height: 360px; */
+  width: 100%;
+  /* height:360px; */
+  position: relative;
   margin: 0 auto;
-  /* padding: 40px 28px 40px 28px; */
   border-radius: 8px;
   border: rgba(220, 227, 229, 0.8);
-  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
   background-color: ${({ theme }) => theme.secondaryBgColor};
 `;
 
@@ -84,8 +95,8 @@ export const StyledInputTime = styled.input`
     margin-right: 20px;
   }
 
-   @media screen and (max-width: 374px) {
-     width: 126px;
+  @media screen and (max-width: 374px) {
+    width: 126px;
   }
 `;
 
