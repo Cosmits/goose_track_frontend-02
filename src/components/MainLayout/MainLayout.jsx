@@ -1,12 +1,12 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import Header from '../Header/Header';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import Sidebar from './Sidebar/Sidebar';
 import { MainLayoutWrapper, PageWrapper } from './MainLayout.styled';
 import { Container } from '../../Styles/Container.styled';
 import { format, startOfToday } from 'date-fns';
 import Loader from './Loader/Loader';
+import Header from './Header/Header';
 
 const MainLayout = () => {
   const { isDesktop } = useScreenSize();
