@@ -13,7 +13,6 @@ export default function ChoosedDay() {
   const showModal = (category) => {
     setModal(true);
     setCategory(category);
-    // setTaskId(id);
   };
 
   const closeModal = () => {
@@ -25,7 +24,6 @@ export default function ChoosedDay() {
   const filteredTasks = { 'To do': [], 'In progress': [], Done: [] };
 
   const { currentData: data } = useGetMonthlyTasksQuery(currentDay);
-
   if (data) {
     const tasks = data.data;
 
@@ -51,7 +49,11 @@ export default function ChoosedDay() {
   return (
     <ChoosedDaySection>
       {/* <DayCalendarHead /> */}
-      <TasksColumnsList filteredTasks={filteredTasks} showModal={showModal} />
+      <TasksColumnsList
+        filteredTasks={filteredTasks}
+        showModal={showModal}
+        tasksData={data?.data}
+      />
       {modal && <TaskModal category={category} closeModal={closeModal} />}
     </ChoosedDaySection>
   );

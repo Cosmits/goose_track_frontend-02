@@ -12,7 +12,7 @@ export const Form = styled.form`
 export const RatingLabel = styled.p`
   margin-bottom: 8px;
   color: ${({ theme }) => theme.formLabelColor};
-  font-family: InterTightMedium;
+  font-family: 'InterTightMedium', sans-serif;
   font-size: 12px;
   line-height: 1.17;
 `;
@@ -21,6 +21,7 @@ export const RatingWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
+  gap: 8px;
 `;
 
 export const TextAreaLabel = styled.label`
@@ -30,7 +31,7 @@ export const TextAreaLabel = styled.label`
   align-items: center;
   justify-content: space-between;
   color: ${({ theme }) => theme.formLabelColor};
-  font-family: InterTightMedium;
+  font-family: "InterTightMedium";
   font-size: 12px;
   line-height: 1.17;
 `;
@@ -46,7 +47,7 @@ export const TextArea = styled.textarea`
   background: ${({ theme }) => theme.textAreaBgColor};
   border: 1px solid rgba(255, 255, 255, 0.15);
   outline: none;
-  font-family: InterSemiBold;
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 14px;
   line-height: 1.28;
 
@@ -63,12 +64,12 @@ export const BtnWrapper = styled.div`
 export const Btn = styled.button`
   width: 144px;
   height: 42px;
-  padding: 12px 46px;
+  /* padding: 12px 46px; */
   text-align: center;
   border-radius: 8px;
   border: none;
 
-  font-family: InterSemiBold;
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 14px;
   line-height: 1.28;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -100,13 +101,13 @@ export const Btn = styled.button`
     width: 90%;
     max-width: 198px;
     height: 48px;
-    padding: 15px 75px;
+    /* padding: 15px 75px; */
   }
 
   @media screen and (min-width: 768px) {
     width: 198px;
     height: 48px;
-    padding: 15px 75px;
+    /* padding: 15px 75px; */
   }
 `;
 

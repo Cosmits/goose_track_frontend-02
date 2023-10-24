@@ -5,7 +5,12 @@ import { TasksList } from './ColumnsTasksList.styled';
 import { useSelector } from 'react-redux';
 import { selectUserAvatar } from '../../../../redux/auth/selectors';
 
-export default function ColumnsTasksList({ tasks, showModal }) {
+export default function ColumnsTasksList({
+  tasks,
+  showModal,
+  category,
+  tasksData,
+}) {
   const avatar = useSelector(selectUserAvatar);
   return (
     <TasksList>
@@ -13,12 +18,14 @@ export default function ColumnsTasksList({ tasks, showModal }) {
         const { _id: id, title, priority } = taskObj;
         return (
           <TaskColumnCard
+            category={category}
             showModal={showModal}
             key={id}
             id={id}
             taskTitle={title}
             priority={priority}
             avatar={avatar}
+            tasksData={tasksData}
           />
         );
       })}
