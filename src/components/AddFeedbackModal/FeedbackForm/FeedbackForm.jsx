@@ -1,12 +1,14 @@
-// import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
+import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 
 import {
   useCreateReviewMutation,
   useDeleteReviewMutation,
   useEditReviewMutation,
   useGetUserReviewQuery,
-} from '../../redux/reviews/reviewsApi';
+} from '../../../redux/reviews/reviewsApi';
 
 import {
   RatingLabel,
@@ -21,11 +23,10 @@ import {
   TextArea,
   TextAreaLabel,
 } from './FeedbackForm.styled';
-import { useEffect, useState } from 'react';
 
 const FeedbackForm = ({ onClose }) => {
   const [rating, setRating] = useState(5);
-  const [review, setReview] = useState('');
+  const [comment, setComment] = useState('');
   const [isEditReview, setIsEditReview] = useState(false);
   const [isDeleteReview, setIsDeleteReview] = useState(false);
 
@@ -37,10 +38,10 @@ const FeedbackForm = ({ onClose }) => {
   useEffect(() => {
     if (userReviewData) {
       setRating(userReviewData.data.rating);
-      setReview(userReviewData.data.review);
+      setComment(userReviewData.data.comment);
     } else {
       setRating(5);
-      setReview('');
+      setComment('');
     }
   }, [userReviewData]);
 
@@ -57,10 +58,9 @@ const FeedbackForm = ({ onClose }) => {
   const handleChangeReview = (event) => {
     const text = event.target.value;
     if (text.length <= 300) {
-      setReview(text);
+      setComment(text);
     } else {
-      console.log('Error');
-      //  toast.error(message, toastOptions);
+      toast.error('Feedback length cannot exceed 300 characters');
     }
   };
 
@@ -68,22 +68,20 @@ const FeedbackForm = ({ onClose }) => {
     event.preventDefault();
     if (isEditReview) {
       try {
-        await editReview({ review, rating }).unwrap();
-        //   toast.success(message, toastOptions);
+        await editReview({ comment, rating }).unwrap();
+        toast.success('Review successfully edited');
         setIsEditReview(false);
         onClose();
       } catch (error) {
-        console.log('error: ', error);
-        //    toast.error(message, toastOptions);
+        toast.error('All fields are required');
       }
     } else {
       try {
-        await createReview({ review, rating }).unwrap();
-        //  toast.success(message, toastOptions);
+        await createReview({ comment, rating }).unwrap();
+        toast.success('Thanks for your review');
         onClose();
       } catch (error) {
-        console.log('error: ', error);
-        // toast.error(message, toastOptions);
+        toast.error('All fields are required');
       }
     }
   };
@@ -91,13 +89,11 @@ const FeedbackForm = ({ onClose }) => {
   const handleDelete = async () => {
     try {
       await deleteReview();
-
-      //  toast.success(message, toastOptions);
+      toast.success('Review successfully deleted');
       setIsDeleteReview(false);
       onClose();
     } catch (error) {
-      console.log('error: ', error);
-      //  toast.error(message, toastOptions);
+      toast.error('Sorry, your review has not deleted');
     }
   };
 
@@ -130,45 +126,49 @@ const FeedbackForm = ({ onClose }) => {
         )}
       </TextAreaLabel>
       <TextArea
-        name="review"
-        id="review"
-        value={review}
+        name="comment"
+        id="comment"
+        value={comment}
         placeholder="Enter text"
         onChange={handleChangeReview}
         disabled={!isEditReview && userReviewData}
       />
       {isDeleteReview && (
         <BtnWrapper>
-          <Btn type="button" onClick={handleDelete} isActive={true}>
+          <Btn type="button" onClick={handleDelete} className="active">
             Delete
           </Btn>
-          <Btn type="button" onClick={onClose}>
+          <Btn type="button" onClick={onClose} className="inactive">
             Cancel
           </Btn>
         </BtnWrapper>
       )}
       {isEditReview && (
         <BtnWrapper>
-          <Btn type="submit" onClick={handleSubmit} isActive={true}>
+          <Btn type="submit" onClick={handleSubmit} className="active">
             Edit
           </Btn>
-          <Btn type="button" onClick={onClose}>
+          <Btn type="button" onClick={onClose} className="inactive">
             Cancel
           </Btn>
         </BtnWrapper>
       )}
       {!userReviewData && (
         <BtnWrapper>
-          <Btn type="submit" isActive={true}>
+          <Btn type="submit" className="active">
             Save
           </Btn>
-          <Btn type="button" onClick={onClose}>
+          <Btn type="button" onClick={onClose} className="inactive">
             Cancel
           </Btn>
         </BtnWrapper>
       )}
     </Form>
   );
+};
+
+FeedbackForm.propTypes = {
+  onClose: PropTypes.func.isRequired,
 };
 
 export default FeedbackForm;

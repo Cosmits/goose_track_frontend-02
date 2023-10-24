@@ -5,6 +5,7 @@ import { ReactComponent as Remove } from '../../../../icons/ChoosedDay/task-card
 import { ReactComponent as Swipe } from '../../../../icons/ChoosedDay/task-card-swipe.svg';
 
 export const TaskToolbarList = styled.ul`
+  position: relative;
   align-items: flex-end;
   display: flex;
   gap: 10px;

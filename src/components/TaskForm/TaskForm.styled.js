@@ -11,20 +11,20 @@ export const PencilIcon = styled(Edit)`
 `;
 
 export const AddTask = styled(AddTaskBtnIcon)`
-  width: 20px;
+  width: 30px;
   height: 20px;
   stroke: #fff;
   cursor: pointer;
 `;
 
 export const ContainerForm = styled.div`
-  width: 396px;
-  height: 360;
+  /* width: 396px; */
+  /* height: 360px; */
   margin: 0 auto;
-  padding: 40px 28px 40px 28px;
+  /* padding: 40px 28px 40px 28px; */
   border-radius: 8px;
   border: rgba(220, 227, 229, 0.8);
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
   background-color: ${({ theme }) => theme.secondaryBgColor};
 `;
 
@@ -37,23 +37,24 @@ export const StyledLabel = styled.label`
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  color: ${({ theme }) => theme.secondaryTextColor};
+  color: ${({ theme }) => theme.labelTextColor};
 `;
 
 export const StyledInput = styled.input`
   width: 340px;
   height: 46px;
-  background-color: ${({ theme }) => theme.popUpBg};
+  background-color: ${({ theme }) => theme.mainBGColor};
   border: none;
   border-radius: 8px;
   margin-bottom: 18px;
+  padding-left: 18px;
+  border-color: ${({ theme }) => theme.calendarBtnColor}; ;
 
   &::placeholder {
     font-weight: 600;
     font-size: 14px;
     line-height: 1.3;
-    padding-left: 18px;
-    color: rgba(52, 52, 52, 1);
+    color: ${({ theme }) => theme.mainSideBarText};
   }
 `;
 
@@ -77,6 +78,15 @@ export const StyledInputTime = styled.input`
   border: none;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.popUpBg};
+  color-scheme: ${({ theme }) => theme.colorScheme};;
+  
+  &::-webkit-calendar-picker-indicator {
+    margin-right: 20px;
+  }
+
+   @media screen and (max-width: 374px) {
+     width: 126px;
+  }
 `;
 
 export const ContainerRadio = styled.div`
@@ -107,6 +117,7 @@ export const StyledRadioLow = styled(StyledRadio)`
   background-color: #72c2f8;
   &:checked {
     border: 2px solid rgba(114, 194, 248, 0.5);
+    outline: 3px solid rgba(114, 194, 248, 0.5);
   }
 `;
 
@@ -114,6 +125,7 @@ export const StyledRadioMedium = styled(StyledRadio)`
   background-color: #f3b249;
   &:checked {
     border: 1px solid rgba(243, 178, 73, 0.5);
+    outline: 3px solid rgba(243, 178, 73, 0.5);
   }
 `;
 
@@ -121,6 +133,7 @@ export const StyledRadioHigh = styled(StyledRadio)`
   background-color: #ea3d65;
   &:checked {
     border: 1px solid rgba(234, 61, 101, 0.5);
+    outline: 3px solid rgba(234, 61, 101, 0.5);
   }
 `;
 
