@@ -11,7 +11,7 @@ export const AuthPageWrap = styled.div`
   gap: 18px;
  
   @media screen and (min-width: 768px) {
-  gap: 24px;
+    gap: 24px;
   }
 `;
 

@@ -14,6 +14,7 @@ export const lightTheme = {
   sidebarHoverText: '#3E85F3',
   popUpBg: '#F6F6F6',
   popUpBgBtn: '#EFEFEF',
+  colorScheme: 'light',
 
   labelTextColor: '#111111',
   borderInputColor: 'rgba(17, 17, 17, 0.15)',
@@ -28,8 +29,6 @@ export const lightTheme = {
   toolbarArrowColor: '#DCE3E5',
   toolbarArrowHoverColor: '#343434',
   sidebarActiveBtnBG: '#E3F3FF',
-
-  userStatusColor: '#343434',
 };
 
 export const darkTheme = {
@@ -46,8 +45,9 @@ export const darkTheme = {
   statisticStrokeColor: 'rgba(227, 243, 255, 0.15)',
   calendarBtnColor: 'rgba(255, 255, 255, 0.15)',
   mainSideBarText: '#FFFFFF',
-  popUpBg: '#F6F6F6',
+  popUpBg: '#171820',
   popUpBgBtn: '#EFEFEF',
+  colorScheme: 'dark',
 
   labelTextColor: 'rgba(250, 250, 250, 0.30)',
   borderInputColor: 'rgba(255, 255, 255, 0.15)',
@@ -62,6 +62,4 @@ export const darkTheme = {
   toolbarArrowColor: 'rgba(255, 255, 255, 0.15)',
   toolbarArrowHoverColor: '#FFFFFF',
   sidebarActiveBtnBG: '#3E85F3',
-
-  userStatusColor: 'rgba(250, 250, 250, 0.30)',
 };

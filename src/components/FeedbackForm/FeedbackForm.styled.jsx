@@ -16,7 +16,8 @@ export const RatingWrapper = styled.div`
 `;
 
 export const RatingLabel = styled.p`
-  color: var(--black);
+  /* color: var(--black); */
+  color-scheme: ${({ theme }) => theme.colorScheme};;
 `;
 
 export const TextAreaLabel = styled.label`
@@ -25,7 +26,9 @@ export const TextAreaLabel = styled.label`
   margin-top: 24px;
   align-items: center;
   justify-content: space-between;
-  color: var(--black);
+  /* color: var(--black); */
+   color-scheme: ${({ theme }) => theme.colorScheme};;
+   
 `;
 
 export const TextArea = styled.textarea`
@@ -44,8 +47,10 @@ export const TextArea = styled.textarea`
 
   border-radius: 8px;
   border-width: 0;
-  color: #343434;
-  background: #f6f6f6;
+  /* color: #343434; */
+  /* background: #f6f6f6; */
+  background-color: ${({ theme }) => theme.popUpBg};
+  color-scheme: ${({ theme }) => theme.colorScheme};;
   border: 1px solid rgba(255, 255, 255, 0.15);
   outline: none;
 `;
