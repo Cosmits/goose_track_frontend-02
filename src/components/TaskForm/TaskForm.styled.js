@@ -18,13 +18,9 @@ export const AddTask = styled(AddTaskBtnIcon)`
 `;
 
 export const ContainerForm = styled.div`
-  /* width: 396px; */
-  /* height: 360px; */
   margin: 0 auto;
-  /* padding: 40px 28px 40px 28px; */
   border-radius: 8px;
   border: rgba(220, 227, 229, 0.8);
-  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
   background-color: ${({ theme }) => theme.secondaryBgColor};
 `;
 
@@ -84,8 +80,8 @@ export const StyledInputTime = styled.input`
     margin-right: 20px;
   }
 
-   @media screen and (max-width: 374px) {
-     width: 126px;
+  @media screen and (max-width: 374px) {
+    width: 126px;
   }
 `;
 
