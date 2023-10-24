@@ -7,7 +7,8 @@ import {
   UserName,
   UserNameIcon,
 } from './UserInfo.styled';
-import { selectUser } from '../../../redux/auth/selectors';
+import { selectUser } from '../../../../redux/auth/selectors';
+
 
 const UserInfo = () => {
   const {userName, avatarURL} = useSelector(selectUser);
