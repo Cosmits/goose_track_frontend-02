@@ -30,7 +30,7 @@ registerLocale('uk', uk);
 
 export const UserForm = () => {
 
-  const { userName, email, phone, skype, birthday, avatarURL, verify } =
+  const { userName, email, phone, skype, birthday, avatarURL } =
     useSelector(selectUser);
 
   const [startDate, setStartDate] = useState(
@@ -40,7 +40,7 @@ export const UserForm = () => {
   const [newEmail, setNewEmail] = useState(email ?? '');
   const [newPhone, setNewPhone] = useState(phone ?? '');
   const [newSkype, setNewSkype] = useState(skype ?? '');
-  const [newAvatar, setAvatar] = useState(avatarURL ?? '');
+  const [newAvatar, setNewAvatar] = useState(avatarURL ?? '');
   const [avatarPreviewUrl, setAvatarPreviewUrl] = useState('');
 
 
@@ -61,7 +61,7 @@ export const UserForm = () => {
         URL.revokeObjectURL(avatarPreviewUrl);
       }
     };
-  }, [avatarPreviewUrl, verify]);
+  }, [avatarPreviewUrl]);
 
   const firstName = userName?.split(' ')[0];
   const firstLetter = firstName[0]?.toUpperCase();
@@ -74,7 +74,7 @@ export const UserForm = () => {
 
   const handleIconOnClick = e => {
     const file = e.target.files[0];
-    setAvatar(file);
+    setNewAvatar(file);
 
     if (file) {
       const previewUrl = URL.createObjectURL(file);
@@ -104,7 +104,7 @@ export const UserForm = () => {
       formData.append('birthday', format(startDate, 'dd/MM/yyyy'));
     }
     if (avatarPreviewUrl !== '') {
-      formData.append('avatar', newAvatar);
+      formData.append('avatarURL', newAvatar);
     }
     dispatch(updateUser(formData));
   };
