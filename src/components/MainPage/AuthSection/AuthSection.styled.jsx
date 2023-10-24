@@ -101,11 +101,22 @@ export const LoginBtn = styled.button`
   width: 130px;
   height: 48px;
 
+  align-items: center;
   flex-shrink: 0;
   border: 0.5px solid var(--white);
   border-radius: 16px;
   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   background-color: var(--white);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    transition: 250ms linear;
+  }
+
+  &:not(:hover):not(:focus) {
+    transition: 250ms linear;
+  }
 
   @media screen and (min-width: 768px) {
     padding: 14px 22px;
@@ -161,6 +172,16 @@ export const SignupLink = styled(NavLink)`
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
   text-decoration-line: underline;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.3);
+    text-decoration-line: none;
+    transition: 250ms linear;
+  }
+  &:not(:hover):not(:focus) {
+    transition: 250ms linear;
+  }
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
