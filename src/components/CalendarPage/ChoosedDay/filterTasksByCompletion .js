@@ -5,14 +5,14 @@ export default function filterTasksByCompletion(tasks, currentDay) {
     if (date === currentDay) {
       switch (category) {
         case 'to-do':
-          filteredTasks['To do'].push(task);
+          filteredTasks['To do'].unshift(task);
           break;
         case 'in-progress':
-          filteredTasks['In progress'].push(task);
+          filteredTasks['In progress'].unshift(task);
           break;
 
         default:
-          filteredTasks['Done'].push(task);
+          filteredTasks['Done'].unshift(task);
           break;
       }
     }

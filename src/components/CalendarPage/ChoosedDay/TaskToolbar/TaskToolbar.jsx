@@ -16,14 +16,21 @@ import { useModal } from '../modalContext';
 export default function TaskToolbar({ id }) {
   const { toogleModal } = useModal();
 
+  const [isShowSwipeModal, setIsShowSwipeModal] = useState(false);
+
   const [deleteToDo] = useDeleteTasksMutation();
 
   const toolbarList = {
     swipe: [
       <SwipeIcon />,
       () => {
-        console.log(`swipe button click`);
+        const toogleModal = () => {
+          console.log('click');
+          setIsShowSwipeModal(!isShowSwipeModal);
+        };
+        setIsShowSwipeModal(!isShowSwipeModal);
         // setIsShowSwipeModal(!isShowSwipeModal);
+        window.addEventListener('click', toogleModal);
       },
     ],
     edit: [
@@ -55,9 +62,7 @@ export default function TaskToolbar({ id }) {
             </TaskToolbarItem>
           );
         })}
-        {/* {isShowSwipeModal && (
-          <TaskToolbarModal category={category} id={id} tasksData={tasksData} />
-        )} */}
+        {isShowSwipeModal && <TaskToolbarModal id={id} />}
       </TaskToolbarList>
     </>
   );
