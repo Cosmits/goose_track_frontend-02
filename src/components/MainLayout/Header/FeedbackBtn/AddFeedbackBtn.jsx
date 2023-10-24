@@ -1,7 +1,4 @@
-
-import { AddFeedbackButton } from './AddFeedbackBtn.styled';
-
-
+import { AddFeedbackButton } from "./AddFeedbackBtn.styled";
 const AddFeedbackBtn = ({openModal}) => {
   
   return <AddFeedbackButton onClick={openModal}> Feedback</AddFeedbackButton>;
