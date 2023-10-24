@@ -25,7 +25,7 @@ import { useEffect, useState } from 'react';
 
 const FeedbackForm = ({ onClose }) => {
   const [rating, setRating] = useState(5);
-  const [review, setReview] = useState('');
+  const [comment, setComment] = useState('');
   const [isEditReview, setIsEditReview] = useState(false);
   const [isDeleteReview, setIsDeleteReview] = useState(false);
 
@@ -37,10 +37,10 @@ const FeedbackForm = ({ onClose }) => {
   useEffect(() => {
     if (userReviewData) {
       setRating(userReviewData.data.rating);
-      setReview(userReviewData.data.review);
+      setComment(userReviewData.data.comment);
     } else {
       setRating(5);
-      setReview('');
+      setComment('');
     }
   }, [userReviewData]);
 
@@ -57,7 +57,7 @@ const FeedbackForm = ({ onClose }) => {
   const handleChangeReview = (event) => {
     const text = event.target.value;
     if (text.length <= 300) {
-      setReview(text);
+      setComment(text);
     } else {
       console.log('Error');
       //  toast.error(message, toastOptions);
@@ -68,7 +68,7 @@ const FeedbackForm = ({ onClose }) => {
     event.preventDefault();
     if (isEditReview) {
       try {
-        await editReview({ review, rating }).unwrap();
+        await editReview({ comment, rating }).unwrap();
         //   toast.success(message, toastOptions);
         setIsEditReview(false);
         onClose();
@@ -78,7 +78,7 @@ const FeedbackForm = ({ onClose }) => {
       }
     } else {
       try {
-        await createReview({ review, rating }).unwrap();
+        await createReview({ comment, rating }).unwrap();
         //  toast.success(message, toastOptions);
         onClose();
       } catch (error) {
@@ -132,7 +132,7 @@ const FeedbackForm = ({ onClose }) => {
       <TextArea
         name="review"
         id="review"
-        value={review}
+        value={comment}
         placeholder="Enter text"
         onChange={handleChangeReview}
         disabled={!isEditReview && userReviewData}
