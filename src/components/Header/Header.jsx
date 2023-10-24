@@ -27,9 +27,12 @@ const Header = ({ openSideBar }) => {
   const location = useLocation();
   const openModal = () => {
     setShowModal(true);
+    document.body.style.overflow = 'hidden';
+
   };
   const closeModal = () => {
     setShowModal(false);
+    document.body.style.overflow = 'auto';
   };
 
   const path = location.pathname;
@@ -67,10 +70,7 @@ const Header = ({ openSideBar }) => {
 
   return (
     <HeaderWrapper>
-      {(isDesktop && tasks.length>0) &&(
-        <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
-      )}
-      {(isDesktop && isDayPage && tasks.length===0) && (
+       {(isDesktop && isDayPage && tasks.length>0)?(
         <NoTaskWrapper>
           <LogoHeader src={logoHeader} alt="LogoHeader" />
           <div>
@@ -81,7 +81,7 @@ const Header = ({ openSideBar }) => {
             </NoTaskTitle>
           </div>
         </NoTaskWrapper>
-      )}
+      ):(<HeaderCurrentPage>{currentPage}</HeaderCurrentPage>)}
 
       {!isDesktop && <BurgerMenu onClick={openSideBar} />}
       <HeaderUser>
