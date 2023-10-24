@@ -1,6 +1,6 @@
 //HSamofal 
 import './index.css';
-import React from 'react';
+// import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { Provider, useSelector } from 'react-redux';
@@ -15,6 +15,7 @@ import { darkTheme, lightTheme } from './Styles/theme';
 import { GlobalStyle } from './Styles/GlobalStyles';
 
 import App from './App.jsx';
+import Loader from './components/MainLayout/Loader/Loader';
 
 
 function ThemeWrapper() {
@@ -29,13 +30,13 @@ function ThemeWrapper() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={<Loader />} persistor={persistor}>
         <BrowserRouter basename="/goose_track_frontend-02">
           <ThemeWrapper />
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 );

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { VscEdit } from 'react-icons/vsc';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { CgClose } from 'react-icons/cg';
+import styled from 'styled-components';
 
 export const Form = styled.form`
   display: flex;

@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import { AppCalendarGlobalStyles } from './AppCalendar.styled';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import taskList from '../../mock/tasks';
 import { useNavigate } from 'react-router-dom';
+import { useGetMonthlyTasksQuery } from '../../redux/tasks/tasksApi';
+import { format, startOfToday } from 'date-fns';
 
 moment.locale('uk', {
   week: {
@@ -14,7 +15,7 @@ moment.locale('uk', {
 
 const localizer = momentLocalizer(moment);
 
-const data = (date, start, end) => {
+const dateHandle = (date, start, end) => {
   const [year, month, day] = date.split('-');
   const [startHour, startMin] = start.split(':');
   const [endHour, endMin] = end.split(':');
@@ -52,12 +53,15 @@ const formats = {
 
 const AppCalendar = ({ toolbar }) => {
   const [task, setTask] = useState([]);
+  const currentData = format(startOfToday(), 'yyyy-MM');
   const navigate = useNavigate();
+
+  const { data: tasksData } = useGetMonthlyTasksQuery(currentData, { skip: currentData === undefined });
 
   const listModifier = (list) => {
     const newList = list.map((item) => {
       const { date, start, end, title, priority, _id } = item;
-      const newDate = data(date, start, end);
+      const newDate = dateHandle(date, start, end);
       return {
         id: _id.$oid,
         title: title,
@@ -72,11 +76,13 @@ const AppCalendar = ({ toolbar }) => {
   };
 
   useEffect(() => {
-    listModifier(taskList);
-  }, []);
+    if (tasksData?.data !== undefined) {
+      listModifier(tasksData.data);
+    }
+  }, [tasksData?.data]);
 
-  const handleNavigate = (date) => {
-    const formattedDate = moment(date).format('YYYY-MM-DD');
+  const handleNavigate = (slotInfo) => {
+    const formattedDate = moment(slotInfo.start).format('YYYY-MM-DD');
     navigate(`/calendar/day/${formattedDate}`);
   };
 
@@ -90,9 +96,10 @@ const AppCalendar = ({ toolbar }) => {
         components={{ toolbar: toolbar }}
         eventPropGetter={eventStyleGetter}
         showAllEvents={true}
-        onSelectSlot={(slotInfo) => handleNavigate(slotInfo.start)}
+        onSelectSlot={handleNavigate}
         onSelectEvent={handleNavigate}
         selectable
+        longPressThreshold={1}
       />
       <AppCalendarGlobalStyles />
     </>

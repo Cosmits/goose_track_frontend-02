@@ -1,8 +1,6 @@
-// Yulia
-
 import LoginForm from '../../components/LoginPage/LoginForm/LoginForm';
 import AuthNavigate from '../../components/LoginPage/AuthNavigate/AuthNavigate';
-import { AuthFormWrap, AuthPageWrap, PictureWrap } from './LoginPage.styled';
+import { AuthFormWrap, AuthPageWrap, LinkWrap, PictureWrap } from './LoginPage.styled';
 import gooseLogin from '../../images/LoginPage/goose_login@1x.png';
 import gooseLoginImg from '../../images/LoginPage/goose_login@2x.png';
 import gooseLoginWebp from '../../images/LoginPage/goose_login@1x.webp';
@@ -16,7 +14,10 @@ const LoginPage = () => {
         <LoginForm />
       </AuthFormWrap>
 
-      <AuthNavigate route="/register" textContent="Sign Up" />
+      <LinkWrap>
+        <AuthNavigate route="/register" textContent="Sign Up" />
+        <AuthNavigate route="/send-verify-email" textContent="Verify Email" />
+      </LinkWrap>
 
       <PictureWrap >
         <picture>

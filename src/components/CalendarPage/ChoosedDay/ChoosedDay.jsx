@@ -1,79 +1,58 @@
+import { useEffect, useState } from 'react';
+import { useGetMonthlyTasksQuery } from '../../../redux/tasks/tasksApi';
 import { ChoosedDaySection } from './ChoosedDay.styled';
 import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
+import { useParams } from 'react-router-dom';
+import { da } from 'date-fns/locale';
+import TaskModal from '../../TaskModal/TaskModal';
 
 export default function ChoosedDay() {
-  const filteredTasks = {
-    'To do': [
-      {
-        task: 'Brainstorm ideas for new content or new content',
-        priority: 'Medium',
-        id: '1',
-      },
-      {
-        task: 'Brainstorm ideas for new content or new content',
-        priority: 'Medium',
-        id: '2',
-      },
-      {
-        task: 'Brainstorm ideas for new content or new content',
-        priority: 'Medium',
-        id: '3',
-      },
-      {
-        task: 'Brainstorm ideas for new content or new content',
-        priority: 'Medium',
-        id: '4',
-      },
-      {
-        task: 'Brainstorm ideas for new content or new content',
-        priority: 'Medium',
-        id: '22',
-      },
-      {
-        task: 'Brainstorm ideas for new content or new content',
-        priority: 'Medium',
-        id: '23',
-      },
-    ],
-    'In progress': [
-      {
-        task: 'Brainstorm ideas for new content or new content',
-        priority: 'Low',
-        id: '5',
-      },
-      {
-        task: 'Brainstorm ideas for new content or new content',
-        priority: 'Low',
-        id: '6',
-      },
-      {
-        task: 'Brainstorm ideas for new content or new content',
-        priority: 'Low',
-        id: '7',
-      },
-      {
-        task: 'Brainstorm ideas for new content or new content',
-        priority: 'Low  ',
-        id: '8',
-      },
-    ],
-    Done: [
-      {
-        task: 'Brainstorm ideas for new content or new content',
-        priority: 'High',
-        id: '9',
-      },
-      {
-        task: 'Brainstorm ideas for new content or new content',
-        priority: 'High',
-        id: '10',
-      },
-    ],
+  const [modal, setModal] = useState(false);
+  const [category, setCategory] = useState(null);
+
+  const showModal = (category) => {
+    setModal(true);
+    setCategory(category);
+    // setTaskId(id);
   };
+
+  const closeModal = () => {
+    setModal(false);
+  };
+
+  const { currentDay } = useParams();
+
+  const filteredTasks = { 'To do': [], 'In progress': [], Done: [] };
+
+  const { currentData: data } = useGetMonthlyTasksQuery(currentDay);
+
+  if (data) {
+    const tasks = data.data;
+
+    tasks.map((task) => {
+      const { category, date } = task;
+      if (date === currentDay) {
+        switch (category) {
+          case 'to-do':
+            filteredTasks['To do'].push(task);
+            break;
+          case 'in-progress':
+            filteredTasks['In progress'].push(task);
+            break;
+
+          default:
+            filteredTasks['Done'].push(task);
+            break;
+        }
+      }
+      return;
+    });
+  }
   return (
     <ChoosedDaySection>
       {/* <DayCalendarHead /> */}
-      <TasksColumnsList filteredTasks={filteredTasks} />
+      <TasksColumnsList filteredTasks={filteredTasks} showModal={showModal} />
+      {modal && <TaskModal category={category} closeModal={closeModal} />}
     </ChoosedDaySection>
   );
 }

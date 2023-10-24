@@ -6,14 +6,14 @@ export const AuthNavLink = styled(NavLink)`
   font-family: InterSemiBold;
   font-size: 12px;
   line-height: 1.17;
-  color: #3E85F3;
+  color: var(--main-blue);
   text-decoration:underline;
   text-align:center;
   transition: color 250ms linear;
 
    &:hover,
    &:focus {
-    color: #2B78EF;
+    color: var(--hover-blue);
   }
 
   @media screen and (min-width: 768px) {
