@@ -5,22 +5,30 @@ import {
   TaskToolbarModalText,
   TaskToolbarModalWrapper,
 } from './TaskToolbarModal.styled';
-import { useEditTasksMutation } from '../../../../redux/tasks/tasksApi';
+import {
+  useEditTasksMutation,
+  useGetMonthlyTasksQuery,
+} from '../../../../redux/tasks/tasksApi';
 
-export default function TaskToolbarModal({ category, id, tasksData }) {
+const categoryStandardization = (categotyName) =>
+  categotyName
+    .split(' ')
+    .map((word) => word.toLowerCase())
+    .join('-');
+
+export default function TaskToolbarModal({ id }) {
   const categories = ['To do', 'In progress', 'Done'];
+
+  const { currentDay } = useParams();
+  const { currentData: tasksByDay } = useGetMonthlyTasksQuery(currentDay);
+
+  const [taskObj] = tasksByDay.data.filter((task) => task._id === id);
+  const { category: taskCategory } = taskObj;
 
   const [editTask] = useEditTasksMutation();
 
-  const handleOnClick = (categorie) => {
-    const [currentTask] = tasksData.filter((task) => {
-      return task._id === id;
-    });
-    const prettier = categorie
-      .split(' ')
-      .map((word) => word.toLowerCase())
-      .join('-');
-    const body = { ...currentTask, category: prettier };
+  const handleOnClick = (category) => {
+    const body = { ...taskObj, category: categoryStandardization(category) };
     delete body._id;
     delete body.date;
     editTask({ id, ...body });
@@ -28,16 +36,16 @@ export default function TaskToolbarModal({ category, id, tasksData }) {
 
   return (
     <TaskToolbarModalWrapper>
-      {categories.map((categorie) => {
-        if (categorie !== category) {
+      {categories.map((category) => {
+        if (taskCategory !== categoryStandardization(category)) {
           return (
             <TaskToolbarModalBtn
-              key={categorie}
+              key={category}
               onClick={() => {
-                handleOnClick(categorie);
+                handleOnClick(category);
               }}
             >
-              <TaskToolbarModalText>{categorie}</TaskToolbarModalText>
+              <TaskToolbarModalText>{category}</TaskToolbarModalText>
               <SwipeIcon />
             </TaskToolbarModalBtn>
           );
