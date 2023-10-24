@@ -11,6 +11,7 @@ import { selectUser } from '../../../redux/auth/selectors';
 
 const UserInfo = () => {
   const {userName, avatarURL} = useSelector(selectUser);
+
   const getInitials = (userName) => {
     if (userName) {
       const initials = userName
@@ -18,7 +19,7 @@ const UserInfo = () => {
         .map((word) => word.charAt(0))
         .join('')
         .toUpperCase();
-      return initials;
+        return initials;
     } else {
       return userName;
     }
@@ -42,7 +43,7 @@ const UserInfo = () => {
 
   return (
     <UserInfoWrapper>
-      <UserName>{getFirstName(name)}</UserName>
+      <UserName>{getFirstName(userName)}</UserName>
       <UserAvatar>{displayName}</UserAvatar>
     </UserInfoWrapper>
   );

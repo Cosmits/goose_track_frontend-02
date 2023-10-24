@@ -70,18 +70,21 @@ const Header = ({ openSideBar }) => {
 
   return (
     <HeaderWrapper>
-       {(isDesktop && isDayPage && tasks.length>0)?(
-        <NoTaskWrapper>
-          <LogoHeader src={logoHeader} alt="LogoHeader" />
-          <div>
-            <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
-            <NoTaskTitle>
-              <HeaderTask>Let go</HeaderTask> of the past and focus on the
-              present!
-            </NoTaskTitle>
-          </div>
-        </NoTaskWrapper>
-      ):(<HeaderCurrentPage>{currentPage}</HeaderCurrentPage>)}
+       {isDesktop ? (
+    isDayPage && tasks.length > 0 ? (
+      <NoTaskWrapper>
+        <LogoHeader src={logoHeader} alt="LogoHeader" />
+        <div>
+          <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
+          <NoTaskTitle>
+            <HeaderTask>Let go</HeaderTask> of the past and focus on the present!
+          </NoTaskTitle>
+        </div>
+      </NoTaskWrapper>
+    ) : (
+      <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
+    )
+  ) : null}
 
       {!isDesktop && <BurgerMenu onClick={openSideBar} />}
       <HeaderUser>
