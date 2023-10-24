@@ -9,7 +9,6 @@ import { useGetMonthlyTasksQuery } from "../../../redux/tasks/tasksApi";
 import { useScreenSize } from "../../../hooks/useScreenSize";
 import logoHeader from '../../../images/header/logoHeader.png';
 
-
 const Header = ({ openSideBar }) => {
   const { isDesktop } = useScreenSize();
   const [showModal, setShowModal] = useState(false);
@@ -17,11 +16,12 @@ const Header = ({ openSideBar }) => {
   const [tasks, setTasks] = useState([])
 
   const location = useLocation();
+  
   const openModal = () => {
     setShowModal(true);
     document.body.style.overflow = 'hidden';
-
   };
+
   const closeModal = () => {
     setShowModal(false);
     document.body.style.overflow = 'auto';
@@ -32,13 +32,10 @@ const Header = ({ openSideBar }) => {
   const { data } = useGetMonthlyTasksQuery(date, {
     skip: date === undefined,
   });
-  useEffect(()=>{
-    if (data) {
-      console.log(data.data)
-      setTasks(data.data)
-        }
-  },[data])
-  
+
+  useEffect(() => {
+    if (data) setTasks(data.data)
+  }, [data])
 
   const isDayPage = path.includes('/calendar/day');
 
@@ -62,21 +59,21 @@ const Header = ({ openSideBar }) => {
 
   return (
     <HeaderWrapper>
-       {isDesktop ? (
-    isDayPage && tasks.length > 0 ? (
-      <NoTaskWrapper>
-        <LogoHeader src={logoHeader} alt="LogoHeader" />
-        <div>
+      {isDesktop ? (
+        isDayPage && tasks.length > 0 ? (
+          <NoTaskWrapper>
+            <LogoHeader src={logoHeader} alt="LogoHeader" />
+            <div>
+              <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
+              <NoTaskTitle>
+                <HeaderTask>Let go</HeaderTask> of the past and focus on the present!
+              </NoTaskTitle>
+            </div>
+          </NoTaskWrapper>
+        ) : (
           <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
-          <NoTaskTitle>
-            <HeaderTask>Let go</HeaderTask> of the past and focus on the present!
-          </NoTaskTitle>
-        </div>
-      </NoTaskWrapper>
-    ) : (
-      <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
-    )
-  ) : null}
+        )
+      ) : null}
 
       {!isDesktop && <BurgerMenu onClick={openSideBar} />}
       <HeaderUser>

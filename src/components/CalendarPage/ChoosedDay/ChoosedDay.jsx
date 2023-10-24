@@ -32,7 +32,7 @@ export default function ChoosedDay() {
       setFilteredTasks(initialFilteredTasks);
       setTaskInfo(null);
     };
-  }, [tasksByDay]);
+  }, [currentDay, tasksByDay]);
 
   const toogleModal = (idOfCompletion) => {
     setTaskInfo(idOfCompletion);
