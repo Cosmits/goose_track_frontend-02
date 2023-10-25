@@ -1,6 +1,33 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+export const ActiveDay = styled(NavLink)`
+  padding: 4px 6px;
+  color: #343434;
+  transition:
+    background-color 300ms linear,
+    color 300ms linear;
+
+  &.active {
+    border-radius: 6px;
+    background-color: #3e85f3;
+    color: #fff;
+
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+  }
+  &:hover {
+    border-radius: 6px;
+    background-color: #dcebf7;
+    color: #343434;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 4px 8px;
+  }
+`;
+
 export const DayCalendarHeadWrapper = styled.div`
   width: 335px;
   padding: 14px 18px;
@@ -24,14 +51,14 @@ export const DayCalendarHeadWrapper = styled.div`
 `;
 
 export const DayCalendarHeadDay = styled.div`
-  width: 26px;
+  /* width: 26px; */
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 6px;
 
   @media screen and (min-width: 768px) {
-    width: 29px;
+    /* width: 29px; */
     gap: 4px;
   }
 `;
@@ -53,8 +80,6 @@ export const DayCalendarHeadText = styled.p`
 `;
 
 export const DayCalendarHeadNumber = styled.p`
-  color: #343434;
-
   /* font-family: Inter; */
   font-size: 12px;
   font-style: normal;

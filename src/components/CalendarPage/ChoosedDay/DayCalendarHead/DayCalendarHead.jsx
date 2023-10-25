@@ -1,43 +1,52 @@
 import { addDays, format } from 'date-fns';
+import { useParams } from 'react-router-dom';
+
 import {
+  ActiveDay,
   DayCalendarHeadDay,
   DayCalendarHeadNumber,
   DayCalendarHeadText,
   DayCalendarHeadWrapper,
 } from './DayCalendarHead.styled';
-import { Link, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+
+import { useMediaQuery } from 'react-responsive';
 
 function getOtherWeekDays(date) {
   const daysOfWeek = [];
 
   // Додаємо поточну дату до масиву
-  daysOfWeek.push(format(date, 'EEEEE-d-MM-yyyy'));
+  daysOfWeek.push(format(date, '	iii-EEEEE-d-dd-MM-yyyy'));
 
   // Додаємо наступні шість днів тижня
   for (let i = 1; i <= 6; i++) {
     const nextDay = addDays(date, i);
-    daysOfWeek.push(format(nextDay, 'EEEEE-d-dd-MM-yyyy'));
+    daysOfWeek.push(format(nextDay, '	iii-EEEEE-d-dd-MM-yyyy'));
   }
 
   return daysOfWeek;
 }
 
 export default function DayCalendarHead() {
-  const days = [];
   const { currentDay } = useParams();
+
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const otherWeekDays = getOtherWeekDays(new Date(currentDay));
   return (
     <DayCalendarHeadWrapper>
       {otherWeekDays.map((day) => {
-        const [weekDay, monthDay, currentDay, month, year] = day.split('-');
+        const [weekDay, weekDayMobile, monthDay, currentDay, month, year] =
+          day.split('-');
         return (
-          <Link key={day} to={`/calendar/day/${year}-${month}-${currentDay}`}>
-            <DayCalendarHeadDay>
-              <DayCalendarHeadText>{weekDay}</DayCalendarHeadText>
+          <DayCalendarHeadDay key={day}>
+            <DayCalendarHeadText>
+              {isMobile ? weekDayMobile : weekDay}
+            </DayCalendarHeadText>
+            <ActiveDay to={`/calendar/day/${year}-${month}-${currentDay}`}>
               <DayCalendarHeadNumber>{monthDay}</DayCalendarHeadNumber>
-            </DayCalendarHeadDay>
-          </Link>
+            </ActiveDay>
+          </DayCalendarHeadDay>
         );
       })}
     </DayCalendarHeadWrapper>
