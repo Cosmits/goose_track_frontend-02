@@ -10,6 +10,8 @@ export const DataBtn = styled.div`
   line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
+
+
   @media screen and (min-width: 768px) {
     margin-top: 33px;
     margin-bottom: 33px;
@@ -193,7 +195,9 @@ export const CalendarGlobalStyles = createGlobalStyle`
   .date-picker-btn-next:hover,
   .date-picker-btn-prev:focus,
   .date-picker-btn-next:focus {
+
     color: ${({ theme }) => theme.secondaryTextColor};
+   
   }
   .date-picker-btn-prev {
     margin-left: 8px;
@@ -215,16 +219,29 @@ export const TitleWrapper = styled.button`
   text-align: center;
   text-transform: uppercase;
   padding: 8px 12px;
-  margin-bottom: 6px;
+  /* margin-bottom: 6px; */
   font-size: 16px;
   justify-content: space-around;
   align-items: center;
+
+
+  &:hover,
+  &:focus{
+  
+    box-shadow: 0px 1px 2px 0px rgba(52, 52, 52, 0.7); 
+       transform: scale(1.01);   
+      transition: 250ms linear;
+  }
+
+ 
+
 `;
 
 export const BtnWrapper = styled.div`
   display: flex;
   align-items: stretch;
   justify-content: center;
+  
 `;
 
 export const DatePickerContainer = styled.div`
@@ -232,6 +249,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 margin-bottom: 20px;
+
 
 @media screen and (min-width: 768px){
   margin-bottom: 0px;
