@@ -41,6 +41,7 @@ export const lightTheme = {
   scrollbarTrack: '#f2f2f2',
   scrollbarThumb: '#e7e5e5',
   taskCardSuccessText: '#F7F6F9',
+  userRoleColor: '#343434',
 };
 
 export const darkTheme = {
@@ -88,4 +89,5 @@ export const darkTheme = {
   btnTextColor: '#3E85F3',
   taskCardSuccessText: 'FFFFFF',
   btnActive: '#CAE8FF',
+  userRoleColor: 'rgba(250, 250, 250, 0.3)',
 };

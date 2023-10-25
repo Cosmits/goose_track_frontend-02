@@ -42,7 +42,7 @@ export const Container = styled.div`
 `;
 
 export const UserName = styled.h2`
-  color: var(--calendar-date-color);
+  color: ${({ theme }) => theme.secondaryTextColor};
   font-size: 14px;
   font-weight: 700;
   line-height: 18px;
@@ -58,7 +58,7 @@ export const Image = styled.img`
   height: 72px;
   border-radius: 50%;
   object-fit: cover;
-
+  border: 2px solid var(--main-blue);
   @media screen and (min-width: 768px) {
     width: 124px;
     height: 124px;
@@ -131,7 +131,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const Text = styled.p`
-  color: var(--calendar-date-color);
+  color: ${({ theme }) => theme.userRoleColor};
   font-size: 12px;
   font-weight: 600;
   line-height: 14px;
@@ -191,7 +191,7 @@ export const Forma = styled.form`
     width: 100%;
     height: 42px;
     border-radius: 8px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid ${({ theme }) => theme.borderInputColor};
     padding: 12px 14px;
     font-size: 14px;
     line-height: 18px;
@@ -201,10 +201,16 @@ export const Forma = styled.form`
     background-color: inherit;
 
     &::placeholder {
-      color: var(--calendar-date-color);
+      color: ${({ theme }) => theme.borderInputColor};
+      font-weight: 600;
       font-size: 14px;
       line-height: 18px;
       font-weight: 400;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: var(--black);
     }
 
     @media screen and (min-width: 375px) and (max-width: 767px) {
@@ -234,7 +240,7 @@ export const Forma = styled.form`
     width: 100%;
     height: 42px;
     border-radius: 8px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid ${({ theme }) => theme.borderInputColor};
     padding: 12px 14px;
     font-size: 14px;
     line-height: 18px;
@@ -244,10 +250,14 @@ export const Forma = styled.form`
     background-color: inherit;
 
     &::placeholder {
-      color: var(--calendar-date-color);
+      color: ${({ theme }) => theme.borderInputColor};
       font-size: 14px;
       line-height: 18px;
       font-weight: 400;
+    }
+    &:hover,
+    &:focus {
+      border-color: var(--black);
     }
 
     @media screen and (min-width: 375px) and (max-width: 767px) {
@@ -267,7 +277,6 @@ export const Forma = styled.form`
     margin-bottom: 8px;
   }
 `;
-
 
 export const Button = styled.button`
   max-width: 195px;
@@ -291,7 +300,7 @@ export const Button = styled.button`
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
   &:disabled {
-    background-color: #3E85F380;
+    background-color: #3e85f380;
     cursor: not-allowed;
   }
 
@@ -311,7 +320,7 @@ export const CustomInput = styled.input`
   width: 100%;
   height: 42px;
   border-radius: 8px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid ${({ theme }) => theme.borderInputColor};
   padding: 12px 14px;
   font-size: 14px;
   line-height: 18px;
@@ -320,11 +329,14 @@ export const CustomInput = styled.input`
   outline: none;
   background-color: inherit;
 
-  &::placeholder {
-    color: var(--modal-input-lable-color);
+  &::placeh${({ theme }) => theme.borderInputColor};
     font-size: 14px;
     line-height: 18px;
     font-weight: 400;
+  }
+  &:hover,
+  &:focus {
+    border-color: var(--black);
   }
 
   @media screen and (min-width: 375px) and (max-width: 767px) {
@@ -336,5 +348,3 @@ export const CustomInput = styled.input`
     height: 46px;
   }
 `;
-
-
