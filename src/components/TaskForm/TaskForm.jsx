@@ -1,11 +1,21 @@
 import { useState, useEffect } from 'react';
 import {
-  AddTask, ButtonContainer, CloseIcon, ContainerForm,
-  ContainerRadio, Label, PencilIcon,
-  StyledAdd, StyledCancel, StyledEdit,
-  StyledInput, StyledInputTime,
-  StyledLabel, StyledRadioHigh,
-  StyledRadioLow, StyledRadioMedium,
+  AddTask,
+  ButtonContainer,
+  CloseIcon,
+  ContainerForm,
+  ContainerRadio,
+  Label,
+  PencilIcon,
+  StyledAdd,
+  StyledCancel,
+  StyledEdit,
+  StyledInput,
+  StyledInputTime,
+  StyledLabel,
+  StyledRadioHigh,
+  StyledRadioLow,
+  StyledRadioMedium,
   StyledTime,
 } from './TaskForm.styled';
 
@@ -132,24 +142,26 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
 
   return (
     <ContainerForm>
-      <CloseIcon onClick={() => {closeModal()}} />
+      <CloseIcon
+        onClick={() => {
+          closeModal();
+        }}
+      />
       <form onSubmit={handleSubmit}>
-        <StyledLabel>
-          Title
-          <StyledInput
-            type="text"
-            name="title"
-            value={formData?.title || ''}
-            onChange={handleInputChange}
-            placeholder="Enter text"
-            required
-            maxLength="250"
-          />
-        </StyledLabel>
-
+        <StyledLabel htmlFor="title">Title</StyledLabel>
+        <StyledInput
+          type="text"
+          name="title"
+          value={formData?.title || ''}
+          onChange={handleInputChange}
+          placeholder="Enter text"
+          required
+          maxLength="250"
+        />
         <StyledTime>
-          <StyledLabel>
-            Start
+          <div>
+            <StyledLabel htmlFor="start"> Start</StyledLabel>
+
             <StyledInputTime
               type="time"
               name="start"
@@ -158,9 +170,9 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
               required
               pattern="[0-1][0-9]:[0-5][0-9]"
             />
-          </StyledLabel>
-          <StyledLabel>
-            End
+          </div>
+          <div>
+            <StyledLabel htmlFor="end">End</StyledLabel>
             <StyledInputTime
               type="time"
               name="end"
@@ -170,9 +182,8 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
               pattern="[0-1][0-9]:[0-5][0-9]"
               min={formData?.start}
             />
-          </StyledLabel>
+          </div>
         </StyledTime>
-
         <ContainerRadio>
           <Label>
             <StyledRadioLow
@@ -208,9 +219,7 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
             High
           </Label>
         </ContainerRadio>
-
         {errorMessage && <div>{errorMessage}</div>}
-
         <ButtonContainer>
           {isEdit ? (
             <StyledEdit onClick={handleEdit} type="submit">

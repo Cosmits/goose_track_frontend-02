@@ -7,6 +7,20 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   flex: 1;
+  padding-top: 28px;
+  padding-bottom: 29px;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 335px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
+    max-width: none;
+    width: 468px;
+  }
 `;
 
 export const RatingLabel = styled.p`
@@ -31,14 +45,14 @@ export const TextAreaLabel = styled.label`
   align-items: center;
   justify-content: space-between;
   color: ${({ theme }) => theme.formLabelColor};
-  font-family: "InterTightMedium";
+  font-family: 'InterTightMedium';
   font-size: 12px;
   line-height: 1.17;
 `;
 
 export const TextArea = styled.textarea`
   padding: 14px 18px;
-  margin-bottom: 18px;
+  /* margin-bottom: 18px; */
   min-height: 130px;
   height: auto;
   resize: none;
