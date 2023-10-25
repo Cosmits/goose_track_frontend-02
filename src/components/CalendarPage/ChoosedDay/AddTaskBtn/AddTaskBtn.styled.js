@@ -11,7 +11,7 @@ export const AddTaskButton = styled.button`
   align-items: center;
   border-radius: 8px;
   border: 1px dashed #3e85f3;
-  background-color: ${({ theme }) => theme.btnNoActive};
+  background-color: ${({ theme }) => theme.sidebarActiveBtnBG};
   cursor: pointer;
   transition: background-color 300ms linear;
 
@@ -29,13 +29,7 @@ export const AddTaskButtonIcon = styled(AddTaskBtnIcon)`
   width: 24px;
   height: 24px;
   stroke: ${({ theme }) => theme.mainTextColor};
-  /* transition: stroke 300ms linear; */
   cursor: pointer;
-
-  /* &:hover,
-  &:focus {
-    stroke: #3e85f3;
-  } */
 `;
 
 export const AddTaskBtnTitle = styled.p`

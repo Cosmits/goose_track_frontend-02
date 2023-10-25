@@ -3,14 +3,14 @@ import styled from 'styled-components';
 
 export const ActiveDay = styled(NavLink)`
   padding: 4px 6px;
-  color: #343434;
+  color: ${({ theme }) => theme.secondaryTextColor};
   transition:
     background-color 300ms linear,
     color 300ms linear;
 
   &.active {
     border-radius: 6px;
-    background-color: #3e85f3;
+    background-color: ${({ theme }) => theme.btnTextColor};
     color: #fff;
 
     pointer-events: none;
@@ -20,7 +20,7 @@ export const ActiveDay = styled(NavLink)`
   &:hover {
     border-radius: 6px;
     background-color: #dcebf7;
-    color: #343434;
+    color: ${({ theme }) => theme.secondaryBgColor};
   }
 
   @media screen and (min-width: 768px) {
@@ -36,7 +36,8 @@ export const DayCalendarHeadWrapper = styled.div`
   justify-content: space-between;
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.5);
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: ${({ theme }) => theme.secondaryBgColor};
 
   @media screen and (min-width: 768px) {
     width: 640px;
@@ -51,22 +52,19 @@ export const DayCalendarHeadWrapper = styled.div`
 `;
 
 export const DayCalendarHeadDay = styled.div`
-  /* width: 26px; */
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 6px;
 
   @media screen and (min-width: 768px) {
-    /* width: 29px; */
     gap: 4px;
   }
 `;
 
 export const DayCalendarHeadText = styled.p`
-  color: #343434;
-
-  /* font-family: Inter; */
+  color: ${({ theme }) => theme.secondaryTextColor};
+  font-family: 'InterSemiBold', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -80,7 +78,7 @@ export const DayCalendarHeadText = styled.p`
 `;
 
 export const DayCalendarHeadNumber = styled.p`
-  /* font-family: Inter; */
+  font-family: 'InterTightBold', sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 700;

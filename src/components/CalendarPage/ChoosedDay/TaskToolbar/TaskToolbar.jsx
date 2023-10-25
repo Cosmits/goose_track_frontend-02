@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Popover from '@mui/material/Popover';
 
 import {
   TaskToolbarButton,
@@ -16,15 +17,22 @@ import { useModal } from '../modalContext';
 export default function TaskToolbar({ id }) {
   const { toogleModal } = useModal();
 
-  const [isShowSwipeModal, setIsShowSwipeModal] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const [deleteToDo] = useDeleteTasksMutation();
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const idMui = open ? 'simple-popover' : undefined;
+
   const toolbarList = {
     swipe: [
-      <SwipeIcon />,
-      () => {
-        setIsShowSwipeModal(!isShowSwipeModal);
+      <SwipeIcon aria-describedby={idMui} />,
+      (event) => {
+        setAnchorEl(event.currentTarget);
       },
     ],
     edit: [
@@ -56,7 +64,18 @@ export default function TaskToolbar({ id }) {
             </TaskToolbarItem>
           );
         })}
-        {isShowSwipeModal && <TaskToolbarModal id={id} />}
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+        >
+          <TaskToolbarModal id={id} />
+        </Popover>
       </TaskToolbarList>
     </>
   );

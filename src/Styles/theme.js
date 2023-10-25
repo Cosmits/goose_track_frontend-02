@@ -14,7 +14,7 @@ export const lightTheme = {
   sidebarHoverText: '#3E85F3',
   popUpBg: '#F6F6F6',
   popUpBgBtn: '#EFEFEF',
-  colorScheme: "light",
+  colorScheme: 'light',
 
   labelTextColor: '#111111',
   borderInputColor: 'rgba(17, 17, 17, 0.15)',
@@ -59,7 +59,7 @@ export const darkTheme = {
   mainSideBarText: '#FFFFFF',
   popUpBg: '#171820',
   popUpBgBtn: '#EFEFEF',
-  colorScheme: "dark",
+  colorScheme: 'dark',
 
   labelTextColor: 'rgba(250, 250, 250, 0.30)',
   borderInputColor: 'rgba(255, 255, 255, 0.15)',
