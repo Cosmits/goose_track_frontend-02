@@ -39,7 +39,7 @@ export const DayCalendarHeadWrapper = styled.div`
   background-color: ${({ theme }) => theme.secondaryBgColor};
 
   @media screen and (min-width: 768px) {
-    width: 640px;
+    width: 704px;
     padding: 10px 32px;
     margin-bottom: 16px;
   }
