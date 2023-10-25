@@ -2,23 +2,18 @@ import PropTypes from 'prop-types';
 
 import TaskColumnCard from '../TaskColumnCard/TaskColumnCard';
 import { TasksList } from './ColumnsTasksList.styled';
-import { useSelector } from 'react-redux';
-import { selectUserAvatar } from '../../../../redux/auth/selectors';
 
-export default function ColumnsTasksList({ tasks, showModal }) {
-  const avatar = useSelector(selectUserAvatar);
+export default function ColumnsTasksList({ tasks }) {
   return (
     <TasksList>
-      {tasks.map((taskObj) => {
-        const { _id: id, title, priority } = taskObj;
+      {tasks.map((task) => {
+        const { _id: id, title, priority } = task;
         return (
           <TaskColumnCard
-            showModal={showModal}
-            key={id}
-            id={id}
             taskTitle={title}
             priority={priority}
-            avatar={avatar}
+            key={id}
+            id={id}
           />
         );
       })}

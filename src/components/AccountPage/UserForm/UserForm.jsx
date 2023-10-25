@@ -1,274 +1,207 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addDays, format, isWeekend, parse } from 'date-fns';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { toast } from 'react-toastify';
-
-import { updateUser } from '../../../redux/auth/operations';
-import { selectIsLoggedIn, selectUser } from '../../../redux/auth/selectors';
-
+import { useState, useEffect, useRef } from 'react';
 import {
-  StyledForm, StyledAvatarImg,
-  StyledAvatarPlug, StyledPhotoLabel,
-  StyledAddPhotoIcon, StyledPhotoInput,
-  StyledUserNameP, StyledUserStatusP,
-  StyledInputWrapperDiv, StyledInputSecondWrapperDiv,
-  StyledInputThumbDiv, StyledLabel,
-  StyledInput, StyledCalendarDiv,
-  StyledDatePicker, StyledButton,
+  ContainerWrapper,
+  Container,
+  InputWrapper,
+  UserName,
+  Image,
+  ImageContainer,
+  IconContainer,
+  Text,
+  Forma,
+  Letter,
+  Button,
+  CustomInput,
 } from './UserForm.styled';
+
+import DatePicker, { registerLocale } from 'react-datepicker';
+import uk from 'date-fns/locale/uk';
 import 'react-datepicker/dist/react-datepicker.css';
-import { globalRegex } from '../../../Styles/GlobalStyles';
+import './CustomDatePicker.css';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { format, parse } from 'date-fns';
+
+import { selectUser } from '../../../redux/auth/selectors';
+import { updateUser } from '../../../redux/auth/operations';
+
+registerLocale('uk', uk);
 
 export const UserForm = () => {
+  const { userName, email, phone, skype, birthday, avatarURL } =
+    useSelector(selectUser);
+
+  const [startDate, setStartDate] = useState(
+    birthday === '' ? new Date() : parse(birthday, 'dd/MM/yyyy', new Date()),
+  );
+  const [newUserName, setNewUserName] = useState(userName ?? '');
+  const [newEmail, setNewEmail] = useState(email ?? '');
+  const [newPhone, setNewPhone] = useState(phone ?? '');
+  const [newSkype, setNewSkype] = useState(skype ?? '');
+  const [newAvatar, setNewAvatar] = useState(avatarURL ?? '');
+  const [avatarPreviewUrl, setAvatarPreviewUrl] = useState('');
 
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const user = useSelector(selectUser);
+  const avatarInputRef = useRef(null);
 
-  const [avatar, setAvatar] = useState('');
-
-  const initialValues = {
-    userName: user.userName ? user.userName : '',
-    birthday: user.birthday ? parse(user.birthday, 'dd/MM/yyyy', new Date()) : '',
-    email: user.email ? user.email : '',
-    phone: user.phone ? user.phone : '',
-    telegram: user.telegram ? user.telegram : '',
-    avatarFile: '',
-  };
-
-  const schema = Yup.object().shape({
-    avatarFile: Yup.mixed().test(
-      'fileType',
-      'Invalid file type. Allowed .jpeg or .png',
-      (value) => {
-        if (!value) return true;
-        return ['image/jpg', 'image/jpeg', 'image/png'].includes(value.type);
-      },
-    ),
-    name: Yup.string()
-      .min(3, 'The name must be at least 3 characters.')
-      .max(16, 'The name must be 16 characters or less.')
-      .required('The name is required.'),
-    email: Yup.string()
-      .matches(
-        globalRegex.emailRegexp,
-        'Invalid email address.',
-      )
-      .required('The email is required'),
-    birthday: Yup.string()
-      .nullable()
-      .transform((v) => (v === '' ? null : v)),
-    phone: Yup.string()
-      .matches(
-        globalRegex.phoneRegexp,
-        'Invalid number. Format number must be 11 (111) 111 11 11',
-      )
-      .nullable()
-      .transform((v) => (v === '' ? null : v)),
-    skype: Yup.string()
-      .min(3, 'The name must be at least 3 characters.')
-      .max(16, 'The telegram must be 16 characters or less.')
-      .nullable()
-      .transform((v) => (v === '' ? null : v)),
-  });
-
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setFieldValue('avatarFile', file);
-      setAvatar(reader.result);
-    };
-
-    reader.readAsDataURL(file);
-  };
-
-  const onSubmit = async (_, actions) => {
-    // event.preventDefault();
-    const { userName, birthday, email, phone, skype, avatarFile } = values;
-
-    const formData = new FormData();
-    formData.append('userName', userName);
-    formData.append('birthday', birthday);
-    formData.append('email', email);
-    formData.append('phone', phone);
-    formData.append('skype', skype);
-    if (avatarFile) {
-      formData.append('avatarFile', avatarFile);
-    }
-    dispatch(updateUser(formData))
-      .unwrap()
-      .then(() => {
-        toast.success('Your profile has been changed successfully.');
-        actions.setSubmitting(true);
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
-  };
-
-  const { values, errors, touched, dirty, isSubmitting,
-    setFieldValue, handleBlur, handleChange, handleSubmit, setSubmitting, }
-    = useFormik({ initialValues, validationSchema: schema, onSubmit, });
+  let someChanges =
+    userName !== newUserName ||
+    email !== newEmail ||
+    phone !== newPhone ||
+    skype !== newSkype ||
+    birthday !== format(startDate, 'dd/MM/yyyy') ||
+    avatarPreviewUrl !== '';
 
   useEffect(() => {
-    if (isLoggedIn) {
-      const { userName, birthday, email, phone, skype, avatarURL } = user;
-      setAvatar(avatarURL);
-      setFieldValue('userName', userName);
-      setFieldValue('email', email);
-      setFieldValue('birthday', birthday ? parse(birthday, 'dd/MM/yyyy', new Date()) : '');
-      setFieldValue('phone', phone);
-      setFieldValue('skype', skype);
+    return () => {
+      if (avatarPreviewUrl) {
+        URL.revokeObjectURL(avatarPreviewUrl);
+      }
+    };
+  }, [avatarPreviewUrl]);
+
+  const firstName = userName?.split(' ')[0];
+  const firstLetter = firstName[0]?.toUpperCase();
+
+  const handleIconContainerClick = () => {
+    if (avatarInputRef.current) {
+      avatarInputRef.current.click();
     }
-  }, [isLoggedIn, setFieldValue, user]);
+  };
+
+  const handleIconOnClick = (e) => {
+    const file = e.target.files[0];
+    setNewAvatar(file);
+
+    if (file) {
+      const previewUrl = URL.createObjectURL(file);
+      setAvatarPreviewUrl(previewUrl);
+    } else {
+      setAvatarPreviewUrl(avatarURL);
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!someChanges) return;
+    const formData = new FormData();
+    if (userName !== newUserName) {
+      formData.append('userName', newUserName);
+    }
+    if (email !== newEmail) {
+      formData.append('email', newEmail);
+    }
+    if (phone !== newPhone) {
+      formData.append('phone', newPhone);
+    }
+    if (skype !== newSkype) {
+      formData.append('skype', newSkype);
+    }
+    if (birthday !== format(startDate, 'dd/MM/yyyy')) {
+      formData.append('birthday', format(startDate, 'dd/MM/yyyy'));
+    }
+    if (avatarPreviewUrl !== '') {
+      formData.append('avatarURL', newAvatar);
+    }
+    dispatch(updateUser(formData));
+  };
 
   return (
-    <StyledForm
-      autoComplete="off"
-      encType="multipart/form-data"
-      onSubmit={handleSubmit}
-    >
-      {avatar ? (
-        <StyledAvatarImg src={avatar} alt="User's avatar"></StyledAvatarImg>
-      ) : (
-        <StyledAvatarPlug />
-      )}
-
-      <StyledPhotoLabel>
-        <StyledAddPhotoIcon />
-        <StyledPhotoInput
-          type="file"
-          name="avatarFile"
-          onBlur={handleBlur}
-          onChange={(event) => {
-            handleImageUpload(event);
-            setSubmitting(false);
-          }}
-        ></StyledPhotoInput>
-      </StyledPhotoLabel>
-      <div>{errors.avatarFile}</div>
-      <StyledUserNameP>
-        {values.userName.length > 1 ? values.userName : 'Name'}
-      </StyledUserNameP>
-      <StyledUserStatusP>User</StyledUserStatusP>
-
-      <StyledInputWrapperDiv>
-        <StyledInputSecondWrapperDiv>
-          <StyledInputThumbDiv>
-            <StyledLabel htmlFor="userName">User Name</StyledLabel>
-            <StyledInput
-              type="text"
-              name="userName"
-              placeholder="Enter your name"
-              value={values.userName}
-              onBlur={handleBlur}
-              onChange={(event) => {
-                handleChange(event);
-                setSubmitting(false);
-              }}
+    <ContainerWrapper>
+      <Container>
+        <Forma onSubmit={handleSubmit}>
+          <ImageContainer>
+            {avatarPreviewUrl ? (
+              <Image src={avatarPreviewUrl} alt={userName} />
+            ) : avatarURL ? (
+              <Image src={avatarURL} alt={userName} />
+            ) : (
+              <Letter>{firstLetter}</Letter>
+            )}
+            <IconContainer onClick={handleIconContainerClick} />
+            <input
+              type="file"
+              accept="image/*"
+              ref={avatarInputRef}
+              onChange={handleIconOnClick}
+              style={{ display: 'none' }}
+              name="avatar"
             />
-            {errors.userName && touched.userName ? (
-              <div>{errors.userName}</div>
-            ) : (
-              <div></div>
-            )}
-          </StyledInputThumbDiv>
-          <StyledInputThumbDiv>
-            <StyledLabel htmlFor="birthday">Birthday</StyledLabel>
-            <StyledCalendarDiv>
-              <StyledDatePicker
-                name="birthday"
-                placeholderText={format(new Date(), 'dd/MM/yyyy')}
-                selected={values.birthday}
-                value={values.birthday}
-                onBlur={handleBlur}
-                onChange={(date) => {
-                  setFieldValue('birthday', date);
-                  setSubmitting(false);
-                }}
-                dateFormat="dd/MM/yyyy"
-                calendarStartDay={1}
-                maxDate={addDays(new Date(), 0)}
-                highlightDates={(date) => isWeekend(date)}
-              />
-            </StyledCalendarDiv>
-            {errors.birthday && touched.birthday ? (
-              <div>{errors.birthday}</div>
-            ) : (
-              <div></div>
-            )}
-          </StyledInputThumbDiv>
-          <StyledInputThumbDiv>
-            <StyledLabel htmlFor="email">Email</StyledLabel>
-            <StyledInput
-              type="email"
-              name="email"
-              value={values.email}
-              onBlur={handleBlur}
-              placeholder="Add a email"
-              onChange={(event) => {
-                handleChange(event);
-                setSubmitting(false);
-              }}
-              required
-            />
-            {errors.email && touched.email ? (
-              <div>{errors.email}</div>
-            ) : (
-              <div></div>
-            )}
-          </StyledInputThumbDiv>
-        </StyledInputSecondWrapperDiv>
-        <StyledInputSecondWrapperDiv>
-          <StyledInputThumbDiv>
-            <StyledLabel htmlFor="phone">Phone</StyledLabel>
-            <StyledInput
-              type="text"
-              name="phone"
-              placeholder="Add a phone number"
-              value={values.phone}
-              onBlur={handleBlur}
-              onChange={(event) => {
-                handleChange(event);
-                setSubmitting(false);
-              }}
-            />
-            {errors.phone && touched.phone ? (
-              <div>{errors.phone}</div>
-            ) : (
-              <div></div>
-            )}
-          </StyledInputThumbDiv>
-          <StyledInputThumbDiv>
-            <StyledLabel htmlFor="skype">Skype</StyledLabel>
-            <StyledInput
-              type="text"
-              name="skype"
-              placeholder="Add a skype number"
-              value={values.skype}
-              onBlur={handleBlur}
-              onChange={(event) => {
-                handleChange(event);
-                setSubmitting(false);
-              }}
-            />
+          </ImageContainer>
+          <UserName>{userName}</UserName>
+          <Text>User</Text>
+          <InputWrapper>
+            <div>
+              <label>
+                <p>User Name</p>
+                <input
+                  type="text"
+                  name="userName"
+                  placeholder="Enter your name"
+                  value={newUserName}
+                  onChange={(e) => setNewUserName(e.target.value)}
+                />
+              </label>
+              <label>
+                <p>Birthday</p>
+                <DatePicker
+                  dateFormat="dd/MM/yyyy"
+                  calendarStartDay={1}
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  customInput={
+                    <CustomInput
+                      type="text"
+                      name="birthday"
+                      placeholder={format(new Date(), 'dd/MM/yyyy')}
+                      value={startDate.toString()}
+                    />
+                  }
+                />
+              </label>
 
-            {errors.skype && touched.skype ? (
-              <div>{errors.skype}</div>
-            ) : (
-              <div></div>
-            )}
-          </StyledInputThumbDiv>
-        </StyledInputSecondWrapperDiv>
-      </StyledInputWrapperDiv>
+              <div>
+                <label>
+                  <p>Email</p>
+                  <input
+                    type="text"
+                    name="email"
+                    placeholder="Enter your email address"
+                    value={newEmail}
+                    onChange={(e) => setNewEmail(e.target.value)}
+                  />
+                </label>
+              </div>
+            </div>
 
-      <StyledButton type="submit" disabled={!dirty || isSubmitting}>
-        Save changes
-      </StyledButton>
-    </StyledForm>
+            <div>
+              <label>
+                <p>Phone</p>
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Enter phone number"
+                  value={newPhone}
+                  onChange={(e) => setNewPhone(e.target.value)}
+                />
+              </label>
+              <label>
+                <p>Skype</p>
+                <input
+                  type="text"
+                  name="skype"
+                  placeholder="Enter skype"
+                  value={newSkype}
+                  onChange={(e) => setNewSkype(e.target.value)}
+                />
+              </label>
+            </div>
+            <Button type="submit" disabled={!someChanges}>
+              Save
+            </Button>
+          </InputWrapper>
+        </Forma>
+      </Container>
+    </ContainerWrapper>
   );
 };

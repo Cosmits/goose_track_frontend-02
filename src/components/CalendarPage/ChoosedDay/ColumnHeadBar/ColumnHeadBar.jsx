@@ -5,17 +5,18 @@ import {
   ColumnHeadBarTitle,
   ColumnHeadBarWrapper,
 } from './ColumnHeadBar.styled';
+import { useModal } from '../modalContext';
 
-export default function ColumnHeadBar({ title, category, showModal }) {
+export default function ColumnHeadBar({ title, idOfCompletion }) {
+  const { toogleModal } = useModal();
   return (
     <ColumnHeadBarWrapper>
       <ColumnHeadBarTitle>{title}</ColumnHeadBarTitle>
       <button
         type="button"
-        onClick={() =>
-          // console.log(`Column Head Bar Add Task Btn click ${category}`)
-          showModal(category)
-        }
+        onClick={() => {
+          toogleModal(idOfCompletion);
+        }}
       >
         <ColumnHeadBarAddTaskIcon />
       </button>
@@ -25,5 +26,5 @@ export default function ColumnHeadBar({ title, category, showModal }) {
 
 ColumnHeadBar.propTypes = {
   title: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
+  idOfCompletion: PropTypes.string.isRequired,
 };

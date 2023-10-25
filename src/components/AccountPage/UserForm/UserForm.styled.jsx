@@ -1,412 +1,340 @@
-// Serhii
+import { AiFillPlusCircle } from 'react-icons/ai';
 import styled from 'styled-components';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { HiPlus } from 'react-icons/hi';
-import userSvg from '../../../../src/icons/popUp/user.svg';
 
-// const breakpoints = {
-//   mobile: 375,
-//   tablet: 768,
-//   laptop: 1440,
-// };
-
-// @media screen and(min - width: 375px) { }
-// @media screen and(min - width: 768px) { }
-// @media screen and(min - width: 1440px) { }
-
-const StyledForm = styled.form`
-  position: relative;
-  /* Замінити margi-buttom для mobile із 64 px на 95px у header */
-  margin-top: 95px;
-  /*--------------------------- */
+export const ContainerWrapper = styled.div`
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  padding-top: 59px;
-  padding-bottom: 40px;
-  padding-left: 18px;
-  padding-right: 18px;
-  border-radius: 16px;
-  background-color: ${({ theme }) => theme.secondaryBgColor};
+  padding: 0 20px 40px;
 
-  @media (min-width: 768px) {
-    padding-top: 40px;
-    gap: 24px;
+  @media screen and (min-width: 768px) {
+    padding: 0 32px 40px;
   }
 
-  @media (min-width: 1440px) {
-    padding-top: 60px;
+  @media screen and (min-width: 1440px) {
+    padding: 0 32px 32px;
   }
 `;
 
-const StyledAvatarImg = styled.img`
-  position: absolute;
+export const Container = styled.div`
+  flex: 1;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  top: -31px;
-  width: 72px;
-  height: 72px;
-  object-fit: cover;
-  border: 2px solid var(--gradient-blue);
-  border-radius: 50%;
+
+  padding: 60px 10px 40px;
   background-color: ${({ theme }) => theme.secondaryBgColor};
 
-  @media (min-width: 768px) {
-    position: relative;
-    top: 0;
+  border-radius: 16px;
+  text-align: center;
+  position: relative;
+
+  @media screen and (min-width: 768px) {
+    padding: 40px 0;
+  }
+
+  @media screen and (min-width: 1440px) {
+    /* padding: 60px 0; */
+    height: 100%;
+  }
+`;
+
+export const UserName = styled.h2`
+  color: var(--calendar-date-color);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  margin-bottom: 5px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
+`;
+
+export const Image = styled.img`
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  @media screen and (min-width: 768px) {
     width: 124px;
     height: 124px;
   }
 `;
 
-const StyledAvatarPlug = styled.div`
-  position: absolute;
+export const ImageContainer = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
-  top: -31px;
+  align-items: center;
+
   width: 72px;
   height: 72px;
-  padding: 2px;
-  stroke: red;
-  background-color: inherit;
-  background-image: url(${userSvg});
-  fill: red;
-  background-repeat: no-repeat;
-  background-size: 50% 50%;
-  background-position: center;
-  border: 2px solid var(--gradient-blue);
+  margin-bottom: 18px;
+
+  background-color: var(--main-background-color);
   border-radius: 50%;
+  border: 1px solid rgb(47, 103, 228);
+
+  @media screen and (max-width: 767px) {
+    position: absolute;
+    top: -31px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media screen and (min-width: 768px) {
+    position: relative;
+    width: 124px;
+    height: 124px;
+    margin-bottom: 20px;
+  }
 `;
 
-const StyledPhotoLabel = styled.label`
+export const IconContainer = styled(AiFillPlusCircle)`
   position: absolute;
-  left: calc(50% + 16px);
-  top: 34px;
-  transform: translate(-50%, -50%);
+  bottom: -3px;
+  right: 12px;
+  background-color: var(--white);
+  border-radius: 100%;
   width: 14px;
   height: 14px;
-
-  cursor: pointer;
-  border: none;
-  border-radius: 50%;
-  background: var(--gradient-blue);
-
-  &:hover,
-  &:focus {
-    box-shadow: black;
-    background: var(--hover-blue);
-  }
-`;
-
-const StyledAddPhotoIcon = styled(HiPlus)`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  color: var(--white);
-`;
-
-const StyledPhotoInput = styled.input`
-  opacity: 0;
-  width: 0.1px;
-  height: 0.1px;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-`;
-
-const StyledUserNameP = styled.p`
-  font-family: 'InterTightBold', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.28;
-  margin-bottom: 4px;
-  color: ${({ theme }) => theme.secondaryTextColor};
-`;
-
-const StyledUserStatusP = styled.p`
-  font-family: 'InterSemiBold', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.13;
-  color: ${({ theme }) => theme.userStatusColor};
-`;
-
-const StyledInputWrapperDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-
-  @media (min-width: 1440px) {
-    flex-direction: row;
-    gap: 50px;
-  }
-`;
-
-const StyledInputSecondWrapperDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-`;
-
-const StyledInputThumbDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-const StyledLabel = styled.label`
-  color: ${({ theme }) => theme.labelTextColor};
-  font-family: 'InterTightRegular', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.16;
-
-  @media (min-width: 768px) {
-    font-size: 14px;
-    line-height: 1.28;
-  }
-`;
-
-const StyledInput = styled.input`
-  width: 100%;
-  height: 42px;
-  padding: 0 14px;
-  font-family: 'InterSemiBold', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.28;
-  border-radius: 8px;
-  border: 1px solid ${({ theme }) => theme.borderInputColor};
-  color: ${({ theme }) => theme.mainTextColor};
-  background-color: inherit;
-
-  &::placeholder {
-    color: var(--input-gray);
-  }
-  &:focus,
-  &:hover {
-    border-color: var(--black);
-  }
-
-  @media (min-width: 375px) {
-    width: 299px;
-  }
-
-  @media (min-width: 768px) {
-    width: 354px;
-  }
-`;
-
-const StyledCalendarDiv = styled.div`
-  .react-datepicker {
-    max-width: 327px;
-    height: 100%;
-
-    border-radius: 16px;
-    border-color: var(--main-blue);
-    font-family: inherit;
-    font-size: 18px;
-    line-height: 1.3;
-    color: var(--white);
-    background-color: var(--main-blue);
-  }
-
-  .react-datepicker__triangle {
-    &::before,
-    &::after {
-      content: none;
-      display: none;
-    }
-  }
-
-  .react-datepicker__header {
-    position: relative;
-    padding-bottom: 4px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: var(--main-blue);
-  }
-
-  .react-datepicker__navigation {
-    top: 20px;
-  }
-
-  .react-datepicker__navigation-icon {
-    &::before {
-      border-color: var(--white);
-    }
-  }
-
-  .react-datepicker__current-month {
-    margin-bottom: 0;
-    text-align: center;
-
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 1.2;
-    color: var(--white);
-  }
-
-  .react-datepicker__day-names {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 8px;
-    margin-bottom: 0;
-  }
-
-  .react-datepicker__day-name {
-    color: var(--white);
-    font-size: 18px;
-    text-align: center;
-    text-transform: uppercase;
-    width: 36px;
-  }
-
-  .react-datepicker__header__dropdown {
-    margin-top: 10px;
-  }
-
-  .react-datepicker__month-dropdown,
-  .react-datepicker__year-dropdown {
-    margin-top: 12px;
-    background-color: var(--main-blue);
-    color: var(--white);
-  }
-  .react-datepicker__month-option,
-  .react-datepicker__year-option {
-    &:hover {
-      background-color: var(--hover-blue);
-      color: var(--white);
-    }
-  }
-
-  .react-datepicker__month-read-view--down-arrow,
-  .react-datepicker__year-read-view--down-arrow {
-    border-color: var(--white);
-  }
-
-  .react-datepicker__month-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 8px;
-    margin-bottom: 12px;
-  }
-
-  .react-datepicker__day {
-    width: 2.3rem;
-    height: 2.3rem;
-    line-height: 2.3rem;
-    text-align: center;
-    margin: 2px;
-    border-radius: 50%;
-    font-weight: 400;
-    font-size: 18px;
-    color: var(--white);
-
-    &:hover {
-      border-radius: 50%;
-      background-color: var(--white);
-      color: var(--main-blue);
-    }
-  }
-
-  .react-datepicker__day--selected,
-  .react-datepicker__day--keyboard-selected,
-  .react-datepicker__day--weekend.react-datepicker__day--selected,
-  .react-datepicker__day--weekend.react-datepicker__day--keyboard-selected {
-    background-color: var(--white);
-    color: var(--main-blue);
-  }
-
-  .react-datepicker__day--weekend {
-    color: rgba(255, 255, 255, 0.2);
-  }
-
-  .react-datepicker__day--outside-month {
-    visibility: hidden;
-  }
-
-  .react-datepicker__day--disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-`;
-
-const StyledDatePicker = styled(DatePicker)`
-  width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 2px;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.28;
-  color: var(--black);
-  background-color: inherit;
-  border: 1px solid var(--input-gray);
-  border-radius: 8px;
-
-  @media (min-width: 375px) {
-    width: 299px;
-  }
-
-  &:focus-visible {
-    outline: none;
-  }
-
-  &:hover,
-  &:focus {
-    border: 1px solid var(--black);
-  }
-`;
-
-const StyledButton = styled.button`
-  margin-top: 88px;
-  display: flex;
-  width: 195px;
-  height: 46px;
   justify-content: center;
   align-items: center;
-  border-radius: 16px;
-  background-color: #3e85f3;
+  display: flex;
+  color: rgb(47, 103, 228);
   border: none;
-  color: #fff;
-  font-family: 'InterSemiBold', sans-serif;
-  font-size: 14px;
-  font-style: normal;
+  cursor: pointer;
+  @media screen and (min-width: 375px) and (max-width: 767px) {
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    right: 18px;
+    bottom: -4px;
+  }
+`;
+
+export const InputWrapper = styled.div`
+  @media screen and (min-width: 1440px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    justify-items: center;
+    flex: 1;
+
+    grid-column-gap: 50px;
+  }
+`;
+
+export const Text = styled.p`
+  color: var(--calendar-date-color);
+  font-size: 12px;
   font-weight: 600;
-  line-height: 18px;
-  box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
+  line-height: 14px;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+`;
+
+export const Letter = styled.p`
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 33px;
+  line-height: 1.28;
+
+  @media screen and (min-width: 768px) {
+    font-size: 50px;
+  }
+`;
+
+export const Forma = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+
+  & > div > div {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 768px) {
+      gap: 18px;
+    }
+
+    @media screen and (min-width: 768px) {
+      gap: 24px;
+    }
+  }
+
+  & > div > div:nth-of-type(1) {
+    margin-bottom: 18px;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 24px;
+    }
+  }
+
+  & > div > div > label {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
+
+  & > div > div > label > input {
+    width: 100%;
+    height: 42px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 12px 14px;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+    color: var(--calendar-date-color);
+    outline: none;
+    background-color: inherit;
+
+    &::placeholder {
+      color: var(--calendar-date-color);
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 400;
+    }
+
+    @media screen and (min-width: 375px) and (max-width: 767px) {
+      width: 299px;
+    }
+
+    @media screen and (min-width: 768px) {
+      width: 354px;
+      height: 46px;
+    }
+  }
+
+  & > div > div > label > p {
+    color: var(--title-text-main-color);
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 8px;
+  }
+
+  & > div > div > div > label {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
+
+  & > div > div > div > label > input {
+    width: 100%;
+    height: 42px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 12px 14px;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+    color: var(--calendar-date-color);
+    outline: none;
+    background-color: inherit;
+
+    &::placeholder {
+      color: var(--calendar-date-color);
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 400;
+    }
+
+    @media screen and (min-width: 375px) and (max-width: 767px) {
+      width: 299px;
+    }
+
+    @media screen and (min-width: 768px) {
+      width: 354px;
+      height: 46px;
+    }
+  }
+
+  & > div > div > div > label > p {
+    color: var(--label-text-color);
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 8px;
+  }
+`;
+
+
+export const Button = styled.button`
+  max-width: 195px;
+  height: 46px;
+  border-radius: 16px;
+  background-color: var(--main-blue, #3e85f3);
+  border: none;
+  padding: 14px 50px;
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+  cursor: pointer;
+  outline: none;
+  margin-top: 40px;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
     background-color: var(--hover-blue);
+    box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
   &:disabled {
-    background-color: red;
+    background-color: #3E85F380;
+    cursor: not-allowed;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 262px;
+    height: 48px;
+    padding: 10px 20px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: auto;
+    grid-column: span 2;
   }
 `;
 
-export {
-  StyledForm,
-  StyledAvatarImg,
-  StyledAvatarPlug,
-  StyledPhotoLabel,
-  StyledAddPhotoIcon,
-  StyledPhotoInput,
-  StyledUserNameP,
-  StyledUserStatusP,
-  StyledInputWrapperDiv,
-  StyledInputSecondWrapperDiv,
-  StyledInputThumbDiv,
-  StyledLabel,
-  StyledInput,
-  StyledCalendarDiv,
-  StyledDatePicker,
-  StyledButton,
-};
+export const CustomInput = styled.input`
+  width: 100%;
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  color: var(--calendar-date-color);
+  outline: none;
+  background-color: inherit;
+
+  &::placeholder {
+    color: var(--modal-input-lable-color);
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 767px) {
+    width: 299px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 354px;
+    height: 46px;
+  }
+`;
+
+
