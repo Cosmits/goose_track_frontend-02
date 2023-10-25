@@ -107,16 +107,16 @@ export const LoginBtn = styled.button`
   border-radius: 16px;
   box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   background-color: var(--white);
+  transition: 250ms linear;
 
   &:hover,
   &:focus {
     transform: scale(1.1);
-    transition: 250ms linear;
   }
 
-  &:not(:hover):not(:focus) {
+  /* &:not(:hover):not(:focus) {
     transition: 250ms linear;
-  }
+  } */
 
   @media screen and (min-width: 768px) {
     padding: 14px 22px;
@@ -172,15 +172,12 @@ export const SignupLink = styled(NavLink)`
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.04),
     0px 47px 355px rgba(0, 0, 0, 0.07);
   text-decoration-line: underline;
+  transition: 250ms linear;
 
   &:hover,
   &:focus {
     transform: scale(1.3);
     text-decoration-line: none;
-    transition: 250ms linear;
-  }
-  &:not(:hover):not(:focus) {
-    transition: 250ms linear;
   }
 
   @media screen and (min-width: 768px) {
