@@ -25,7 +25,7 @@ const Datepicker = ({onDateChange}) => {
 
   const handlePrevMonth = () => {
     setSelectedDate((prevDate) => subMonths(prevDate, 1));
-    onDateChange('PREV')
+    onDateChange('PREV');
   };
 
   return (
