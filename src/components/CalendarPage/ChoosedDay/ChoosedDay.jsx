@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import TaskModal from '../../TaskModal/TaskModal';
 import filterTasksByCompletion from './filterTasksByCompletion ';
 import { ModalContext } from './modalContext';
+import DayCalendarHead from './DayCalendarHead/DayCalendarHead';
 
 const initialFilteredTasks = {
   'To do': [],
@@ -42,7 +43,7 @@ export default function ChoosedDay() {
   return (
     <ChoosedDaySection>
       <ModalContext.Provider value={{ toogleModal }}>
-        {/* <DayCalendarHead /> */}
+        <DayCalendarHead />
         <TasksColumnsList filteredTasks={filteredTasks} />
         {modal && <TaskModal category={taskInfo} closeModal={toogleModal} />}
       </ModalContext.Provider>
