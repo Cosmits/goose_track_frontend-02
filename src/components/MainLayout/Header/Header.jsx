@@ -17,14 +17,13 @@ const Header = ({ openSideBar }) => {
 
   const location = useLocation();
   
-  const openModal = () => {
-    setShowModal(true);
+  const toggleModal = () => {
+    setShowModal(!showModal);
     document.body.style.overflow = 'hidden';
-  };
 
-  const closeModal = () => {
-    setShowModal(false);
-    document.body.style.overflow = 'auto';
+    //disable scrolling
+    if (showModal) { document.body.style.overflow = 'hidden' }
+    else { document.body.style.overflow = 'auto' }
   };
 
   const path = location.pathname;
@@ -77,13 +76,13 @@ const Header = ({ openSideBar }) => {
 
       {!isDesktop && <BurgerMenu onClick={openSideBar} />}
       <HeaderUser>
-        <AddFeedbackBtn openModal={openModal} />
+        <AddFeedbackBtn openModal={toggleModal} />
         <ThemeToggler />
         <Link to="/account">
           <UserInfo />
         </Link>{' '}
       </HeaderUser>
-      {showModal && <AddFeedbackModal onClose={closeModal} />}
+      {showModal && <AddFeedbackModal onClose={toggleModal} />}
     </HeaderWrapper>
   );
 };

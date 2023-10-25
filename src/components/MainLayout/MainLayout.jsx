@@ -1,6 +1,5 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { useScreenSize } from '../../hooks/useScreenSize';
 import Sidebar from './Sidebar/Sidebar';
 import { MainLayoutWrapper, PageWrapper } from './MainLayout.styled';
 import { Container } from '../../Styles/Container.styled';
@@ -9,7 +8,6 @@ import Loader from './Loader/Loader';
 import Header from './Header/Header';
 
 const MainLayout = () => {
-  const { isDesktop } = useScreenSize();
   const [showSideBar, setShowSideBar] = useState(false);
 
   const navigate = useNavigate();
@@ -24,11 +22,9 @@ const MainLayout = () => {
   }, [pathname === '/goose_track_frontend-02/calendar']);
 
   useEffect(() => {
-    if (showSideBar) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    //disable scrolling
+    if (showSideBar) { document.body.style.overflow = 'hidden' }
+    else { document.body.style.overflow = 'auto' }
   }, [showSideBar]);
 
   const toggleSideBarShow = () => {
@@ -37,8 +33,8 @@ const MainLayout = () => {
 
   return (
     <Container>
-      <MainLayoutWrapper> 
-        <Sidebar closeSideBar={toggleSideBarShow} open={showSideBar}/>
+      <MainLayoutWrapper>
+        <Sidebar closeSideBar={toggleSideBarShow} open={showSideBar} />
         <PageWrapper>
           <Header openSideBar={toggleSideBarShow} />
           <Suspense fallback={<Loader />}>
