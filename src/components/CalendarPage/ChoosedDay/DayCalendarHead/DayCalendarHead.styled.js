@@ -36,7 +36,6 @@ export const DayCalendarHeadWrapper = styled.div`
   justify-content: space-between;
   border-radius: 8px;
   border: 1px solid rgba(220, 227, 229, 0.5);
-  /* background-color: #fff; */
   background-color: ${({ theme }) => theme.secondaryBgColor};
 
   @media screen and (min-width: 768px) {

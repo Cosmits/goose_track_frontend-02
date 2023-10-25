@@ -14,6 +14,8 @@ export const TaskToolbarModalWrapper = styled.div`
   background-color: ${({ theme }) => theme.secondaryBgColor};
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 
+  border: ${({ theme }) => theme.toolbarBorder};
+
   @media screen and (min-width: 768px) {
     width: 147px;
     padding: 20px 24px;

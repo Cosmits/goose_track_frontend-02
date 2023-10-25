@@ -29,24 +29,24 @@ export default function TaskToolbar({ id }) {
   const idMui = open ? 'simple-popover' : undefined;
 
   const toolbarList = {
-    swipe: [
-      <SwipeIcon aria-describedby={idMui} />,
-      (event) => {
+    swipe: {
+      component: <SwipeIcon aria-describedby={idMui} />,
+      onClickCallback: (event) => {
         setAnchorEl(event.currentTarget);
       },
-    ],
-    edit: [
-      <EditIcon />,
-      () => {
+    },
+    edit: {
+      component: <EditIcon />,
+      onClickCallback: () => {
         toogleModal(id);
       },
-    ],
-    remove: [
-      <RemoveIcon />,
-      () => {
+    },
+    remove: {
+      component: <RemoveIcon />,
+      onClickCallback: () => {
         deleteToDo(id);
       },
-    ],
+    },
   };
 
   const icons = Object.keys(toolbarList);
@@ -54,12 +54,12 @@ export default function TaskToolbar({ id }) {
     <>
       <TaskToolbarList>
         {icons.map((icon) => {
-          const [svgIcon, iconClick] = toolbarList[icon];
+          const { component, onClickCallback } = toolbarList[icon];
 
           return (
             <TaskToolbarItem key={icon}>
-              <TaskToolbarButton type="button" onClick={iconClick}>
-                {svgIcon}
+              <TaskToolbarButton type="button" onClick={onClickCallback}>
+                {component}
               </TaskToolbarButton>
             </TaskToolbarItem>
           );
@@ -72,6 +72,11 @@ export default function TaskToolbar({ id }) {
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'left',
+          }}
+          PaperProps={{
+            sx: {
+              borderRadius: '8px',
+            },
           }}
         >
           <TaskToolbarModal id={id} />

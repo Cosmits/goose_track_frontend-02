@@ -8,17 +8,14 @@ import {
   DayCalendarHeadText,
   DayCalendarHeadWrapper,
 } from './DayCalendarHead.styled';
-import { useEffect } from 'react';
 
 import { useMediaQuery } from 'react-responsive';
 
 function getOtherWeekDays(date) {
   const daysOfWeek = [];
-
-  // Додаємо поточну дату до масиву
+  
   daysOfWeek.push(format(date, '	iii-EEEEE-d-dd-MM-yyyy'));
-
-  // Додаємо наступні шість днів тижня
+  
   for (let i = 1; i <= 6; i++) {
     const nextDay = addDays(date, i);
     daysOfWeek.push(format(nextDay, '	iii-EEEEE-d-dd-MM-yyyy'));

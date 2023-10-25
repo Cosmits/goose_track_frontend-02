@@ -88,4 +88,6 @@ export const darkTheme = {
   btnTextColor: '#3E85F3',
   taskCardSuccessText: 'FFFFFF',
   btnActive: '#CAE8FF',
+
+  toolbarBorder: '1px solid rgba(255, 255, 255, 0.15)',
 };
