@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const TasksList = styled.ul`
-  height: 40vh;
+  max-height: 40vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -36,6 +36,6 @@ export const TasksList = styled.ul`
   }
 
   @media screen and (min-width: 1440px) {
-    height: 50vh;
+    max-height: 50vh;
   }
 `;
