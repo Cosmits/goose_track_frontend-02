@@ -1,0 +1,1 @@
+import{q as s,v as u,a5 as f}from"./index-7d95435e.js";function p(r,a){s(2,arguments);var e=u(r),t=f(a);return isNaN(t)?new Date(NaN):(t&&e.setDate(e.getDate()+t),e)}function o(r,a){return o=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(t,n){return t.__proto__=n,t},o(r,a)}export{o as _,p as a};
