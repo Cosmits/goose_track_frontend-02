@@ -1,19 +1,17 @@
 import styled from 'styled-components';
 
 export const ChoosedDaySection = styled.section`
-  width: 100%;
+  width: 335px;
   height: 100%;
   margin: 0 auto;
   width: 375px;
 
 
   @media screen and (min-width: 768px) {
-    width: 768px;
-    /* padding: 0 32px 18px 32px; */
+    width: 704px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 1151px;
-    /* padding-bottom: 50px; */
+    width: 1087px;
   }
 `;
