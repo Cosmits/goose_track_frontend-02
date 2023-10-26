@@ -11,7 +11,7 @@ export const Form = styled.form`
   padding-bottom: 29px;
   padding-left: 20px;
   padding-right: 20px;
-  max-width: 335px;
+  width: 335px;
 
   @media screen and (min-width: 768px) {
     padding-top: 32px;
@@ -52,7 +52,7 @@ export const TextAreaLabel = styled.label`
 
 export const TextArea = styled.textarea`
   padding: 14px 18px;
-  /* margin-bottom: 18px; */
+   margin-bottom: 14px; 
   min-height: 130px;
   height: auto;
   resize: none;
@@ -68,6 +68,12 @@ export const TextArea = styled.textarea`
   &::placeholder {
     color: ${({ theme }) => theme.secondaryTextColor};
   }
+
+  @media screen and (min-width: 768px) {
+   margin-bottom: 18px;
+  }
+
+
 `;
 
 export const BtnWrapper = styled.div`

@@ -1,6 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 export const AppCalendarGlobalStyles = createGlobalStyle`
+.calendar-wrapper.rbc-calendar{
+  height: auto;
+}
+
   .rbc-calendar .rbc-month-view {
     border: none;
     z-index: 1;

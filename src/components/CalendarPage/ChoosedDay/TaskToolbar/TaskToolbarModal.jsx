@@ -31,7 +31,7 @@ export default function TaskToolbarModal({ id }) {
     const body = { ...taskObj, category: categoryStandardization(category) };
     delete body._id;
     delete body.date;
-    editTask({ id, ...body });
+    editTask({ id, data: body });
   };
 
   return (

@@ -100,7 +100,12 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
   }, [createTaskError, createTaskIsError, editTaskError, editTaskIsError]);
 
   const handleEdit = () => {
-    editTask(formData._id, formData);
+    const taskId = formData._id;
+
+    delete formData._id;
+    delete formData.date;
+
+    editTask({ id: taskId, data: formData });
     closeModal();
   };
 

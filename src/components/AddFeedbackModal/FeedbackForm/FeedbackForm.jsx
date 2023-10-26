@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 import PropTypes from 'prop-types';
-import { toast } from 'react-toastify';
+ import { toast } from 'react-toastify';
+import Loader from '../../MainLayout/Loader/Loader';
 
 import {
   useCreateReviewMutation,
@@ -30,7 +31,7 @@ const FeedbackForm = ({ onClose }) => {
   const [isEditReview, setIsEditReview] = useState(false);
   const [isDeleteReview, setIsDeleteReview] = useState(false);
 
-  const { data: userReviewData } = useGetUserReviewQuery();
+  const { data: userReviewData} = useGetUserReviewQuery();
   const [createReview] = useCreateReviewMutation();
   const [editReview] = useEditReviewMutation();
   const [deleteReview] = useDeleteReviewMutation();

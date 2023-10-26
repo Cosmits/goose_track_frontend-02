@@ -35,7 +35,7 @@ export const tasksApi = createApi({
     }),
 
     editTasks: builder.mutation({
-      query: ({ id, ...data }) => ({
+      query: ({ id, data }) => ({
         url: `/tasks/${id}`,
         method: 'PATCH',
         body: data,
