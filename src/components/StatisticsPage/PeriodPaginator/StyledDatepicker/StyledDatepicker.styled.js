@@ -147,7 +147,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     padding-top: 10px;
     margin: 0;
   }
-  .date-picker-container .react-datepicker__day--selected {
+  .datepicker-container .react-datepicker__day--selected {
     background-color:white;
      color:#3e85f3; 
     font-size: 14px;
