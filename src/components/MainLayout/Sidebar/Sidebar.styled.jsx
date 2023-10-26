@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const SidebarWrapper = styled.div`
- 
+ position: relative;
   font-family: 'InterSemiBold', sans-serif;
   width: 289px;
-  height: 100vh;
+  /* height: 100vh;  */
   border-right: 1px solid rgba(220, 227, 229, 0.5);
   background: ${({ theme }) => theme.sideBarBG};
   color: ${({ theme }) => theme.mainSideBarText};
@@ -171,8 +171,9 @@ export const SidebarWrapper = styled.div`
     display: none;
   }
   @media (max-width: 1439px) {
-    //display: block;
-    position: absolute;
+    
+    height: 100vh;
+     position: absolute; 
     transform: translateY(-100%);
     z-index: 3;
     &.is-open {

@@ -94,7 +94,7 @@ const AppCalendar = ({ toolbar }) => {
 
   return (
     <>
-      <Calendar
+      <Calendar className='calendar-wrapper'
         formats={formats}
         views={['month']}
         localizer={localizer}
