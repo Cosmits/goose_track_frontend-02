@@ -178,7 +178,7 @@ export const AddTask = styled(AddTaskBtnIcon)`
 `;
 
 export const PencilIcon = styled(Edit)`
-  width: 18px;
+  width: 30px;
   height: 18px;
   stroke: #fff;
 `;
