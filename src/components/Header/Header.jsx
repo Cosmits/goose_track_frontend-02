@@ -26,11 +26,13 @@ const Header = ({ openSideBar }) => {
   const [currentPage, setCurrentPage] = useState('');
 
   const location = useLocation();
-  const openModal = () => {
-    setShowModal(true);
-  };
-  const closeModal = () => {
-    setShowModal(false);
+ 
+  const toggleModal = () => {
+    setShowModal(!showModal);
+    
+    //disable scrolling
+    if (showModal) { document.body.style.overflow = 'hidden' }
+    else { document.body.style.overflow = 'auto' }
   };
 
   useEffect(() => {
@@ -70,13 +72,13 @@ const Header = ({ openSideBar }) => {
 
       {!isDesktop && <BurgerMenu onClick={openSideBar} />}
       <HeaderUser>
-        <AddFeedbackBtn openModal={openModal} />
+        <AddFeedbackBtn openModal={toggleModal} />
         <ThemeToggler />
         <Link to="/account">
           <UserInfo />
         </Link>{' '}
       </HeaderUser>
-      {showModal && <AddFeedbackModal onClose={closeModal} />}
+      {showModal && <AddFeedbackModal onClose={toggleModal} />}
     </HeaderWrapper>
   );
 };
