@@ -84,7 +84,6 @@ export const BtnWrapper = styled.div`
 export const Btn = styled.button`
   width: 144px;
   height: 42px;
-  /* padding: 12px 46px; */
   text-align: center;
   border-radius: 8px;
   border: none;
@@ -121,13 +120,11 @@ export const Btn = styled.button`
     width: 90%;
     max-width: 198px;
     height: 48px;
-    /* padding: 15px 75px; */
   }
 
   @media screen and (min-width: 768px) {
     width: 198px;
     height: 48px;
-    /* padding: 15px 75px; */
   }
 `;
 

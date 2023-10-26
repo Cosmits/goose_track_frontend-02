@@ -58,7 +58,6 @@ const Datepicker = ({onDateChange}) => {
       setSelectedDate(date);
       onDateChange('DATE', date);
     } else {
-      // const parsedDate = parse(date, 'yyyy-MM-dd', new Date());
       const newDate = format(date, 'yyyy-MM-dd');
       navigate(`/calendar/day/${newDate}`);
     }
