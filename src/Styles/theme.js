@@ -41,6 +41,8 @@ export const lightTheme = {
   scrollbarTrack: '#f2f2f2',
   scrollbarThumb: '#e7e5e5',
   taskCardSuccessText: '#F7F6F9',
+
+  inputBorderColor: '#F6F6F6',
 };
 
 export const darkTheme = {
@@ -90,4 +92,6 @@ export const darkTheme = {
   btnActive: '#CAE8FF',
 
   toolbarBorder: '1px solid rgba(255, 255, 255, 0.15)',
+
+  inputBorderColor: 'rgba(255, 255, 255, 0.15)',
 };

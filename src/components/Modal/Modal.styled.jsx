@@ -23,22 +23,22 @@ export const ModalContent = styled.div`
   border: 1px solid rgba(220, 227, 229, 0.8);
   box-shadow: 0px 4px 57px 0px rgba(17, 17, 17, 0.05);
   margin: 0 20px;
-  padding: 28px 20px;
+  /* padding: 28px 20px; */
   overflow: hidden;
 
   @media screen and (max-width: 374px) {
-    width: 90vw;
+    /* width: 90vw; */
   }
 
   @media screen and (min-width: 375px) and (max-width: 767px) {
-    width: 90vw;
-    max-width: 468px;
-    padding: 32px;
+    /* width: 90vw; */
+    /* max-width: 468px; */
+    /* padding: 32px; */
   }
 
   @media screen and (min-width: 768px) {
-    width: 468px;
+    /* width: 468px; */
     margin: 0 auto;
-    padding: 32px;
+    /* padding: 32px; */
   }
 `;
