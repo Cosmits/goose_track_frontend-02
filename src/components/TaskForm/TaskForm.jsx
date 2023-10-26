@@ -86,7 +86,6 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
     }
   }, [category, initialData]);
 
-  //========= Error handling =================================
   useEffect(() => {
     if (createTaskIsError) {
       console.log(createTaskError);
@@ -117,7 +116,6 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Перевірка відповідності категорії в списку допустимих
     const validCategories = ['to-do', 'in-progress', 'done'];
     if (!validCategories.includes(formData.category)) {
       setErrorMessage(
