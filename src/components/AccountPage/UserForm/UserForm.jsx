@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import {
   ContainerWrapper,
@@ -13,6 +12,7 @@ import {
   Letter,
   Button,
   CustomInput,
+  Avatar,
 } from './UserForm.styled';
 
 import DatePicker, { registerLocale } from 'react-datepicker';
@@ -29,12 +29,11 @@ import { updateUser } from '../../../redux/auth/operations';
 registerLocale('uk', uk);
 
 export const UserForm = () => {
-
   const { userName, email, phone, skype, birthday, avatarURL } =
     useSelector(selectUser);
 
   const [startDate, setStartDate] = useState(
-    birthday === '' ? new Date() : parse(birthday, 'dd/MM/yyyy', new Date())
+    birthday === '' ? new Date() : parse(birthday, 'dd/MM/yyyy', new Date()),
   );
   const [newUserName, setNewUserName] = useState(userName ?? '');
   const [newEmail, setNewEmail] = useState(email ?? '');
@@ -42,7 +41,6 @@ export const UserForm = () => {
   const [newSkype, setNewSkype] = useState(skype ?? '');
   const [newAvatar, setNewAvatar] = useState(avatarURL ?? '');
   const [avatarPreviewUrl, setAvatarPreviewUrl] = useState('');
-
 
   const dispatch = useDispatch();
   const avatarInputRef = useRef(null);
@@ -72,7 +70,7 @@ export const UserForm = () => {
     }
   };
 
-  const handleIconOnClick = e => {
+  const handleIconOnClick = (e) => {
     const file = e.target.files[0];
     setNewAvatar(file);
 
@@ -84,7 +82,7 @@ export const UserForm = () => {
     }
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!someChanges) return;
     const formData = new FormData();
@@ -109,7 +107,7 @@ export const UserForm = () => {
     dispatch(updateUser(formData));
   };
 
-   return (
+  return (
     <ContainerWrapper>
       <Container>
         <Forma onSubmit={handleSubmit}>
@@ -119,7 +117,7 @@ export const UserForm = () => {
             ) : avatarURL ? (
               <Image src={avatarURL} alt={userName} />
             ) : (
-              <Letter>{firstLetter}</Letter>
+              <Avatar />
             )}
             <IconContainer onClick={handleIconContainerClick} />
             <input
@@ -132,8 +130,7 @@ export const UserForm = () => {
             />
           </ImageContainer>
           <UserName>{userName}</UserName>
-          <Text>User
-          </Text>
+          <Text>User</Text>
           <InputWrapper>
             <div>
               <label>
@@ -143,7 +140,7 @@ export const UserForm = () => {
                   name="userName"
                   placeholder="Enter your name"
                   value={newUserName}
-                  onChange={e => setNewUserName(e.target.value)}
+                  onChange={(e) => setNewUserName(e.target.value)}
                 />
               </label>
               <label>
@@ -152,7 +149,7 @@ export const UserForm = () => {
                   dateFormat="dd/MM/yyyy"
                   calendarStartDay={1}
                   selected={startDate}
-                  onChange={date => setStartDate(date)}
+                  onChange={(date) => setStartDate(date)}
                   customInput={
                     <CustomInput
                       type="text"
@@ -172,7 +169,7 @@ export const UserForm = () => {
                     name="email"
                     placeholder="Enter your email address"
                     value={newEmail}
-                    onChange={e => setNewEmail(e.target.value)}
+                    onChange={(e) => setNewEmail(e.target.value)}
                   />
                 </label>
               </div>
@@ -186,7 +183,7 @@ export const UserForm = () => {
                   name="phone"
                   placeholder="Enter phone number"
                   value={newPhone}
-                  onChange={e => setNewPhone(e.target.value)}
+                  onChange={(e) => setNewPhone(e.target.value)}
                 />
               </label>
               <label>
@@ -196,7 +193,7 @@ export const UserForm = () => {
                   name="skype"
                   placeholder="Enter skype"
                   value={newSkype}
-                  onChange={e => setNewSkype(e.target.value)}
+                  onChange={(e) => setNewSkype(e.target.value)}
                 />
               </label>
             </div>
@@ -209,4 +206,3 @@ export const UserForm = () => {
     </ContainerWrapper>
   );
 };
-

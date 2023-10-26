@@ -1,5 +1,5 @@
 import { AiFillPlusCircle } from 'react-icons/ai';
-// import userSvg from '../../../../src/icons/popUp/user.svg';
+import userSvg from '../../../../src/icons/popUp/user.svg';
 import styled from 'styled-components';
 
 export const ContainerWrapper = styled.div`
@@ -78,7 +78,6 @@ export const ImageContainer = styled.div`
 
   background-color: var(--main-background-color);
   border-radius: 50%;
-  border: 1px solid rgb(47, 103, 228);
 
   @media screen and (max-width: 767px) {
     position: absolute;
@@ -353,5 +352,26 @@ export const CustomInput = styled.input`
   @media screen and (min-width: 768px) {
     width: 354px;
     height: 46px;
+  }
+`;
+
+export const Avatar = styled.div`
+  position: absolute;
+  top: 6px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--main-blue);
+  background-color: ${({ theme }) => theme.secondaryBgColor};
+  background-image: url(${userSvg});
+
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
+  background-position: center;
+  margin-bottom: 0;
+  @media screen and (min-width: 768px) {
+    width: 124px;
+    height: 124px;
   }
 `;
