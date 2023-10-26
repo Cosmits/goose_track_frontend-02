@@ -9,7 +9,7 @@ import {
   IconContainer,
   Text,
   Forma,
-  Letter,
+  // Letter,
   Button,
   CustomInput,
   Avatar,
@@ -61,8 +61,8 @@ export const UserForm = () => {
     };
   }, [avatarPreviewUrl]);
 
-  const firstName = userName?.split(' ')[0];
-  const firstLetter = firstName[0]?.toUpperCase();
+  // const firstName = userName?.split(' ')[0];
+  // const firstLetter = firstName[0]?.toUpperCase();
 
   const handleIconContainerClick = () => {
     if (avatarInputRef.current) {
