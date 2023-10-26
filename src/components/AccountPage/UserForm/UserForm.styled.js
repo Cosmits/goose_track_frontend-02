@@ -7,15 +7,6 @@ export const ContainerWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding: 0 20px 40px; */
-
-  /* @media screen and (min-width: 768px) {
-    padding: 0 32px 40px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    padding: 0 32px 32px;
-  } */
 `;
 
 export const Container = styled.div`

@@ -6,12 +6,12 @@ import { BtnWrapper, CalendarGlobalStyles, DatePickerContainer, TitleWrapper } f
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { date } from "yup";
 
 const StyledDatepicker = ({ onDayChange }) => {
   const [selectedDate, setSelectedDate] = useState(Date.now());
 
-  const CustomInput = forwardRef(({ value, onClick }, ref) => {
+  // eslint-disable-next-line react/display-name
+  const CustomInput = forwardRef(({ onClick }, ref) => {
     return (
       <TitleWrapper onClick={onClick} ref={ref}>
         {format(selectedDate, " dd MMMM yyyy")}
@@ -54,12 +54,9 @@ const StyledDatepicker = ({ onDayChange }) => {
 };
 
 
-
 StyledDatepicker.propTypes = {
   onDayChange: PropTypes.func.isRequired,
 };
-
-
 
 
 export default StyledDatepicker;

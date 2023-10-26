@@ -9,7 +9,6 @@ import {
   IconContainer,
   Text,
   Forma,
-  // Letter,
   Button,
   CustomInput,
   Avatar,
@@ -62,8 +61,6 @@ export const UserForm = () => {
     };
   }, [avatarPreviewUrl]);
 
-  // const firstName = userName?.split(' ')[0];
-  // const firstLetter = firstName[0]?.toUpperCase();
   useEffect(() => {
     function checkImg() {
       imageExists(avatarURL).then(function (exists) {
@@ -73,9 +70,6 @@ export const UserForm = () => {
     }
     checkImg()
   }, [avatarURL])
-
-  // const firstName = userName?.split(' ')[0];
-  // const firstLetter = firstName[0]?.toUpperCase();
 
   const handleIconContainerClick = () => {
     if (avatarInputRef.current) {
@@ -127,8 +121,8 @@ export const UserForm = () => {
           <ImageContainer>
             {avatarPreviewUrl ? (
               <Image src={avatarPreviewUrl} alt={userName} />
-             ) : newAvatar ? (
-                 <Image src={newAvatar} alt={userName} />
+            ) : newAvatar ? (
+              <Image src={newAvatar} alt={userName} />
             ) : (
               <Avatar />
             )}

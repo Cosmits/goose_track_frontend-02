@@ -1,6 +1,3 @@
-// import { useEffect, useState } from 'react';
-// import { useSearchParams } from 'react-router-dom';
-
 import { Link, useLocation } from 'react-router-dom';
 import UserInfo from './UserInfo/UserInfo';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
@@ -67,8 +64,6 @@ const Header = ({ openSideBar }) => {
           </div>
         </NoTaskWrapper>
       )}
-      {/* {isDesktop && <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>} */}
-      {/* {(isDesktop & currentPage==="calendar/day") && <LogoHeader/>} */}
 
       {!isDesktop && <BurgerMenu onClick={openSideBar} />}
       <HeaderUser>

@@ -4,11 +4,7 @@ import StyledDatepicker from './StyledDatepicker/StyledDatepicker'
 
 export const PeriodPaginator = ({ onDayChange }) => {
 
-   return (
-      <>
-         <StyledDatepicker onDayChange={onDayChange} />
-      </>
-   )
+   return (<StyledDatepicker onDayChange={onDayChange} />)
 }
 
 PeriodPaginator.propTypes = {
