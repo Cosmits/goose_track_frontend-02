@@ -46,6 +46,7 @@ const Datepicker = ({onDateChange}) => {
       onDateChange('PREV');
     } else {
       const prevDay = add(parsedDate, { days: -1 });
+      
       const newDate = format(prevDay, 'yyyy-MM-dd');
       navigate(`/calendar/day/${newDate}`);
     }
@@ -58,6 +59,11 @@ const Datepicker = ({onDateChange}) => {
         onChange={(date) => {
           setSelectedDate(date);
           onDateChange('DATE', date);
+        }}
+        onSelect={(date) => {
+          setSelectedDate(date);
+          onDateChange('DATE', date);
+          // console.log("🚀 ~ file: Datepicker.jsx:49 ~ handlePrevMonth ~ date:", date)
         }}
         customInput={<CustomInput />}
         dateFormat={"dd MM yyyy"}
