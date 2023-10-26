@@ -15,7 +15,7 @@ moment.locale('uk', {
 
 const localizer = momentLocalizer(moment);
 
-const dateHandle = (date, start, end) => {
+const data = (date, start, end) => {
   const [year, month, day] = date.split('-');
   const [startHour, startMin] = start.split(':');
   const [endHour, endMin] = end.split(':');
@@ -61,7 +61,7 @@ const AppCalendar = ({ toolbar }) => {
   const listModifier = (list) => {
     const newList = list.map((item) => {
       const { date, start, end, title, priority, _id } = item;
-      const newDate = dateHandle(date, start, end);
+      const newDate = data(date, start, end);
       return {
         id: _id.$oid,
         title: title,
@@ -78,9 +78,6 @@ const AppCalendar = ({ toolbar }) => {
   useEffect(() => {
     if (tasksData?.data !== undefined) {
       listModifier(tasksData.data);
-    }
-    if(currentData !== undefined) {
-      
     }
   }, [tasksData?.data]);
 
@@ -110,7 +107,6 @@ const AppCalendar = ({ toolbar }) => {
         onNavigate={handleNavigateMonth}
         selectable
         longPressThreshold={1}
-        
       />
       <AppCalendarGlobalStyles />
     </>

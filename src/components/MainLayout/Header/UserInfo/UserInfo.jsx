@@ -8,10 +8,25 @@ import {
   UserNameIcon,
 } from './UserInfo.styled';
 import { selectUser } from '../../../../redux/auth/selectors';
+import { useEffect } from 'react';
+
+import { useState } from 'react';
+import { imageExists } from '../../../../hooks/useImageExists';
 
 
 const UserInfo = () => {
-  const {userName, avatarURL} = useSelector(selectUser);
+  const { userName, avatarURL } = useSelector(selectUser);
+  const [newAvatar, setNewAvatar] = useState(avatarURL ?? '');
+
+  useEffect(() => {
+    function checkImg() { 
+      imageExists(avatarURL).then(function (exists) {
+        if (!exists) setNewAvatar('')
+        else setNewAvatar(avatarURL)
+      });
+    }
+    checkImg()
+  }, [avatarURL])
 
   const getInitials = (userName) => {
     if (userName) {
@@ -20,7 +35,7 @@ const UserInfo = () => {
         .map((word) => word.charAt(0))
         .join('')
         .toUpperCase();
-        return initials;
+      return initials;
     } else {
       return userName;
     }
@@ -34,8 +49,8 @@ const UserInfo = () => {
     }
   };
 
-  const displayName = avatarURL ? (
-    <img src={avatarURL} alt="UserAvatar" />
+  const displayName = newAvatar ? (
+    <img src={newAvatar} alt="UserAvatar" />
   ) : (
     <BackgroundName>
       <UserNameIcon>{getInitials(userName)}</UserNameIcon>

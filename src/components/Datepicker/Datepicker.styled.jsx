@@ -196,7 +196,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     margin-bottom: 32px;
   }
 
-  @media (max-width: 767px) and (min-width: 375px) {
+  @media (max-width: 767px) and (min-width: 320px) {
     .date-picker-container {
       justify-content: space-between;
       margin-bottom: 18px;
@@ -223,7 +223,7 @@ export const TitleWrapper = styled.button`
   text-transform: uppercase;
   padding: 8px 12px;
   font-size: 16px;
-  @media (max-width: 767px) and (min-width: 375px) {
+  @media (max-width: 767px) and (min-width: 320px) {
     width: 155px;
   }
 `;

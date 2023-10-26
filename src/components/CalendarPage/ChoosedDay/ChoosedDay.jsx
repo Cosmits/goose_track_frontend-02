@@ -7,6 +7,7 @@ import TaskModal from '../../TaskModal/TaskModal';
 import filterTasksByCompletion from './filterTasksByCompletion ';
 import { ModalContext } from './modalContext';
 import DayCalendarHead from './DayCalendarHead/DayCalendarHead';
+import CalendarToolBar from '../../CalendarToolBar/CalendarToolBar';
 
 const initialFilteredTasks = {
   'To do': [],
@@ -38,15 +39,23 @@ export default function ChoosedDay() {
   const toogleModal = (idOfCompletion) => {
     setTaskInfo(idOfCompletion);
     setModal(!modal);
+    
+    //disable scrolling
+    if (modal) { document.body.style.overflow = 'auto' }
+    else { document.body.style.overflow = 'hidden' }
+
   };
 
   return (
-    <ChoosedDaySection>
-      <ModalContext.Provider value={{ toogleModal }}>
-        <DayCalendarHead />
-        <TasksColumnsList filteredTasks={filteredTasks} />
-        {modal && <TaskModal category={taskInfo} closeModal={toogleModal} />}
-      </ModalContext.Provider>
-    </ChoosedDaySection>
+    <>
+      <CalendarToolBar />
+      <ChoosedDaySection>
+        <ModalContext.Provider value={{ toogleModal }}>
+          <DayCalendarHead />
+          <TasksColumnsList filteredTasks={filteredTasks} />
+          {modal && <TaskModal category={taskInfo} closeModal={toogleModal} />}
+        </ModalContext.Provider>
+      </ChoosedDaySection>
+    </>
   );
 }
