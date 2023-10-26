@@ -1,19 +1,22 @@
 import styled from 'styled-components';
 
 export const StatisticsContainer = styled.div`
+ /* height: 100vh; */
+ padding: 28px 14px 135px 14px;
 
- height: 100vh; 
- padding: 28px 14px 135px;
  border-radius: 16px;
  background-color: ${({ theme }) => theme.secondaryBgColor}; 
 
 @media screen and (min-width: 768px){ 
- padding: 132px 64px;
+ padding: 132px 32px;
+}
+
+@media screen and (min-width: 1440px){ 
+ padding-top: 134px ;
+ padding-bottom: 104px;
 }
 `
 export const CalendarContainer = styled.div`
-
-
 
 @media screen and (min-width: 768px){
  display: flex;
@@ -79,15 +82,17 @@ export const StyledContainer = styled.div`
  border-color: ${({ theme }) => theme.statisticStrokeColor};
  padding: 40px 14px; 
  border-radius: 20px;
- margin: 0 auto; 
+ margin: 0 auto;  
 
 @media screen and (min-width: 768px){
- max-width: 640px;  
+max-width: 640px;  
+max-height: 424px;
  padding: 32px;
 }
 
 @media screen and (min-width: 1440px){
  max-width: 860px; 
+ max-height: 440px;
  padding: 40px;
 }
 `
