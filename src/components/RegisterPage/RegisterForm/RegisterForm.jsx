@@ -60,7 +60,7 @@ const RegisterForm = () => {
         dispatch(register({ userName: name, email, password }))
             .unwrap()
             .then(() => {
-                toast.success('Registration successfully')
+                toast.success('Registration successfully. Check your email and verify your registration')
                 resetForm();
             })
             .catch(() => toast.error('Something went wrong. Try again'));

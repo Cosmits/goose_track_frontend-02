@@ -13,6 +13,8 @@ import SuccessIcon from '../../images/RegisterPage/success.svg';
 import ErrorIcon from '../../images/RegisterPage/error.svg';
 import LogInIcon from '../../images/RegisterPage/login.svg';
 import { globalRegex } from '../../Styles/GlobalStyles';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 
 const ErrorMessages = ({ name }) => {
     return (
@@ -37,15 +39,18 @@ const schema = yup.object().shape({
 
 const SendVerifyEmailForm = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const handleVerifySubmit = (values, { resetForm }) => {
+    const handleVerifySubmit = async (values, { resetForm }) => {
         const { email } = values;
-        dispatch(sendVerifyEmailUser({ email }))
-            .unwrap()
-            // .then(() => toast.success('Verify email successfully'))
-            // .catch(() => toast.error('An error has occurred. Try again'));
-
-        resetForm();
+        try {
+            await dispatch(sendVerifyEmailUser({ email }))
+            resetForm();
+            navigate(`/goose_track_frontend-02/login`)
+            toast.success('Sent verify email successfully')
+        } catch (error) {
+            toast.error('Error sent verify email')   
+        }
     };
 
     return (

@@ -89,8 +89,8 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(getVerifyEmailUser.fulfilled, state => {
-        state.user.verify = true;
-        state.user.verificationToken = "Verify"
+        state.user = null;
+        state.token = null;
       })
       .addCase(getVerifyEmailUser.rejected, (state, action) => {
         state.error = action.payload;
