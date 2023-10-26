@@ -1,4 +1,5 @@
 import { AiFillPlusCircle } from 'react-icons/ai';
+// import userSvg from '../../../../src/icons/popUp/user.svg';
 import styled from 'styled-components';
 
 export const ContainerWrapper = styled.div`
@@ -44,7 +45,6 @@ export const Container = styled.div`
 export const UserName = styled.h2`
   color: var(--calendar-date-color);
   font-size: 14px;
-  font-style: normal;
   font-weight: 700;
   line-height: 18px;
   margin-bottom: 5px;
@@ -59,6 +59,7 @@ export const Image = styled.img`
   height: 72px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid var(--main-blue);
 
   @media screen and (min-width: 768px) {
     width: 124px;
@@ -99,14 +100,14 @@ export const IconContainer = styled(AiFillPlusCircle)`
   bottom: -3px;
   right: 12px;
   background-color: var(--white);
-  border-radius: 100%;
+  border-radius: 50%;
   width: 14px;
   height: 14px;
   justify-content: center;
   align-items: center;
   display: flex;
-  color: rgb(47, 103, 228);
-  border: none;
+  color: var(--main-blue);
+
   cursor: pointer;
   @media screen and (min-width: 375px) and (max-width: 767px) {
   }
@@ -202,10 +203,16 @@ export const Forma = styled.form`
     background-color: inherit;
 
     &::placeholder {
-      color: var(--calendar-date-color);
+      color: ${({ theme }) => theme.borderInputColor};
+      font-weight: 600;
       font-size: 14px;
       line-height: 18px;
       font-weight: 400;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: var(--black);
     }
 
     @media screen and (min-width: 375px) and (max-width: 767px) {
@@ -219,10 +226,13 @@ export const Forma = styled.form`
   }
 
   & > div > div > label > p {
-    color: var(--title-text-main-color);
+    color: ${({ theme }) => theme.labelTextColor};
     font-size: 12px;
     line-height: 14px;
     margin-bottom: 8px;
+    @media screen and (min-width: 768px) {
+      font-size: 14px;
+    }
   }
 
   & > div > div > div > label {
@@ -235,7 +245,7 @@ export const Forma = styled.form`
     width: 100%;
     height: 42px;
     border-radius: 8px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid ${({ theme }) => theme.borderInputColor};
     padding: 12px 14px;
     font-size: 14px;
     line-height: 18px;
@@ -250,6 +260,10 @@ export const Forma = styled.form`
       line-height: 18px;
       font-weight: 400;
     }
+    &:hover,
+    &:focus {
+      border-color: var(--black);
+    }
 
     @media screen and (min-width: 375px) and (max-width: 767px) {
       width: 299px;
@@ -262,13 +276,12 @@ export const Forma = styled.form`
   }
 
   & > div > div > div > label > p {
-    color: var(--label-text-color);
+    color: ${({ theme }) => theme.labelTextColor};
     font-size: 12px;
     line-height: 14px;
     margin-bottom: 8px;
   }
 `;
-
 
 export const Button = styled.button`
   max-width: 195px;
@@ -292,7 +305,7 @@ export const Button = styled.button`
     box-shadow: 4px 2px 16px 0px rgba(136, 165, 191, 0.48);
   }
   &:disabled {
-    background-color: #3E85F380;
+    background-color: #3e85f380;
     cursor: not-allowed;
   }
 
@@ -312,7 +325,7 @@ export const CustomInput = styled.input`
   width: 100%;
   height: 42px;
   border-radius: 8px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid ${({ theme }) => theme.borderInputColor};
   padding: 12px 14px;
   font-size: 14px;
   line-height: 18px;
@@ -322,10 +335,15 @@ export const CustomInput = styled.input`
   background-color: inherit;
 
   &::placeholder {
-    color: var(--modal-input-lable-color);
+    color: ${({ theme }) => theme.borderInputColor};
     font-size: 14px;
     line-height: 18px;
     font-weight: 400;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: var(--black);
   }
 
   @media screen and (min-width: 375px) and (max-width: 767px) {
@@ -337,5 +355,3 @@ export const CustomInput = styled.input`
     height: 46px;
   }
 `;
-
-
