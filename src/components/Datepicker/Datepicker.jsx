@@ -26,12 +26,12 @@ const Datepicker = ({onDateChange}) => {
   });
 
   const handleNextMonth = () => {
-    const parsedDate = parse(currentDate, 'yyyy-MM-dd', new Date());
     
     if (monthOrDay === 'month') {
       setSelectedDate((prevDate) => addMonths(prevDate, 1));
       onDateChange('NEXT');
     } else {
+      const parsedDate = parse(currentDate, 'yyyy-MM-dd', new Date());
       const prevDay = add(parsedDate, { days: 1 });
       const newDate = format(prevDay, 'yyyy-MM-dd');
       navigate(`/calendar/day/${newDate}`);
@@ -39,26 +39,38 @@ const Datepicker = ({onDateChange}) => {
   };
 
   const handlePrevMonth = () => {
-    const parsedDate = parse(currentDate, 'yyyy-MM-dd', new Date());
-
+    
     if (monthOrDay === 'month') {
       setSelectedDate((prevDate) => subMonths(prevDate, 1));
       onDateChange('PREV');
     } else {
+      const parsedDate = parse(currentDate, 'yyyy-MM-dd', new Date());
       const prevDay = add(parsedDate, { days: -1 });
       const newDate = format(prevDay, 'yyyy-MM-dd');
       navigate(`/calendar/day/${newDate}`);
     }
   };
 
+  const handleSelectDate = (date) => {
+    
+    
+    if (monthOrDay === 'month') {
+      setSelectedDate(date);
+      onDateChange('DATE', date);
+    } else {
+      // const parsedDate = parse(date, 'yyyy-MM-dd', new Date());
+      const newDate = format(date, 'yyyy-MM-dd');
+      navigate(`/calendar/day/${newDate}`);
+    }
+
+  }
+  
+
   return (
     <div className="date-picker-container">
       <DatePicker
         selected={selectedDate}
-        onChange={(date) => {
-          setSelectedDate(date);
-          onDateChange('DATE', date);
-        }}
+        onChange={handleSelectDate}
         customInput={<CustomInput />}
         dateFormat={"dd MM yyyy"}
         calendarStartDay={1}
