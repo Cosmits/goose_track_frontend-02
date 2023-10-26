@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from './redux/auth/operations';
 
 import { ToastContainer } from 'react-toastify';
@@ -10,6 +10,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import RestrictedRoute from './components/RestrictedRoute';
 import PrivateRoute from './components/PrivateRoute';
 import MainLayout from './components/MainLayout/MainLayout';
+import { selectIsFetchingCurrentUser } from './redux/auth/selectors';
+import Loader from './components/MainLayout/Loader/Loader';
 
 const MainPage = lazy(() => import('./pages/MainPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
@@ -28,14 +30,16 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 function App() {
 
   //  console.log(test);
-
+  const isRefreshing = useSelector(selectIsFetchingCurrentUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <Suspense >
       <Routes>
         <Route index path="/" element={<RestrictedRoute redirectTo="/calendar" component={<MainPage />} />} />

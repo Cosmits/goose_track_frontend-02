@@ -57,7 +57,7 @@ const LoginForm = () => {
         dispatch(logIn({ email, password }))
             .unwrap()
             .then(() => toast.success('Login successfully'))
-            .catch(() => toast.error('An error has occurred. Try again'));
+         //   .catch(() => toast.error('An error has occurred. Try again'));
 
         resetForm();
     };

@@ -25,6 +25,7 @@ import { format, parse } from 'date-fns';
 
 import { selectUser } from '../../../redux/auth/selectors';
 import { updateUser } from '../../../redux/auth/operations';
+import { imageExists } from '../../../hooks/useImageExists';
 
 registerLocale('uk', uk);
 
@@ -60,6 +61,18 @@ export const UserForm = () => {
       }
     };
   }, [avatarPreviewUrl]);
+
+  // const firstName = userName?.split(' ')[0];
+  // const firstLetter = firstName[0]?.toUpperCase();
+  useEffect(() => {
+    function checkImg() {
+      imageExists(avatarURL).then(function (exists) {
+        if (!exists) setNewAvatar('')
+        else setNewAvatar(avatarURL)
+      });
+    }
+    checkImg()
+  }, [avatarURL])
 
   // const firstName = userName?.split(' ')[0];
   // const firstLetter = firstName[0]?.toUpperCase();
@@ -114,8 +127,8 @@ export const UserForm = () => {
           <ImageContainer>
             {avatarPreviewUrl ? (
               <Image src={avatarPreviewUrl} alt={userName} />
-            ) : avatarURL ? (
-              <Image src={avatarURL} alt={userName} />
+             ) : newAvatar ? (
+                 <Image src={newAvatar} alt={userName} />
             ) : (
               <Avatar />
             )}

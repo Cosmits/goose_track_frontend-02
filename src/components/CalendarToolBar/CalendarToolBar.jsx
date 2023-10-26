@@ -1,7 +1,6 @@
-import React from 'react'
 import Datepicker from '../Datepicker/Datepicker';
 import { useLocation, useNavigate  } from 'react-router-dom';
-import { format, getYear, getMonth } from 'date-fns';
+import { format } from 'date-fns';
 import { ToolBarGlobalStyles } from './CalendarToolBar.styled';
 
 
@@ -26,14 +25,14 @@ const CalendarToolBar = ({onNavigate}) => {
       <Datepicker onDateChange={onNavigate}/>
       <div className='navigation-btns'>
         <button
-          onClick={handleMonthClick}
-          className={location.pathname === `/calendar/month/${currentMonthFormatted}` ? 'active' : ''}
+          onClick={handleMonthClick} 
+          className={location.pathname.includes(`/calendar/month/`) ? 'active' : ''}
         >
           Month
         </button>
         <button
           onClick={handleDayClick}
-          className={location.pathname === `/calendar/day/${format(currentDate, 'yyyy-MM-dd')}` ? 'active' : ''}
+          className={location.pathname.includes(`/calendar/day/`) ? 'active' : ''}
         >
           Day
         </button>
