@@ -21,14 +21,13 @@ const MainLayout = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname === '/goose_track_frontend-02/calendar']);
 
-  useEffect(() => {
+  
+  const toggleSideBarShow = () => {
+    setShowSideBar(() => !showSideBar);
+    
     //disable scrolling
     if (showSideBar) { document.body.style.overflow = 'hidden' }
     else { document.body.style.overflow = 'auto' }
-  }, [showSideBar]);
-
-  const toggleSideBarShow = () => {
-    setShowSideBar(() => !showSideBar);
   };
 
   return (
