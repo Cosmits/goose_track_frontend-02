@@ -103,6 +103,21 @@ export const updateUser = createAsyncThunk(
 );
 
 //================================================================
+export const updatePassword = createAsyncThunk(
+  '/users/edit/password',
+  async (formData, thunkApi) => {
+
+    try {
+      const response = await axios.patch('/users/edit/password', formData);
+      return response.data;
+    } catch (error) {
+      toast.error(error.response.data.message);
+      return thunkApi.rejectWithValue(error.response.data.message);
+    }
+  },
+);
+
+//================================================================
 export const sendVerifyEmailUser = createAsyncThunk(
   '/users/verify',
   async (credentials, thunkAPI) => {
@@ -128,4 +143,21 @@ export const getVerifyEmailUser = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
+);
+
+//================================================================
+export const deleteUser = createAsyncThunk(
+  '/users/delete',
+  async (secretKey, thunkApi) => {
+    try {
+      const response = await axios.delete('/users/delete', {
+        data: secretKey,
+      });
+
+      return response.data;
+    } catch (error) {
+      toast.error(error.response.data.message);
+      return thunkApi.rejectWithValue(error.response);
+    }
+  },
 );

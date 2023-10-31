@@ -22,6 +22,8 @@ export const globalRegex = {
   phoneRegexp: /^\+\d{1,13}$/,
   birthdayRegexp: /^\d{2}\/\d{2}\/\d{4}$/,
   passwordRegexp: /^(?=.*\d)[A-Za-z\d]{6,}$/,
+
+  customFieldRegexp: /^[A-Za-z0-9]{3,30}$/,
 }
 
 export const GlobalStyle = createGlobalStyle`

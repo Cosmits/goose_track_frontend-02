@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import {
   register, logIn, logOut,
-  getCurrentUser, updateUser, getVerifyEmailUser,
+  getCurrentUser, updateUser, getVerifyEmailUser, updatePassword, deleteUser,
 } from './operations';
 
 const initialState = {
@@ -95,7 +95,39 @@ const authSlice = createSlice({
       .addCase(getVerifyEmailUser.rejected, (state, action) => {
         state.error = action.payload;
      
-      });
+      })
+      //================================================================
+      .addCase(updatePassword.pending, (state) => {
+        state.isFetchingCurrentUser = true;
+        state.error = null;
+      })
+      .addCase(updatePassword.fulfilled, (state) => {
+        state.isFetchingCurrentUser = false;
+        state.error = null;
+        state.isLoggedIn = true;
+      })
+      .addCase(updatePassword.rejected, (state, action) => {
+        state.isFetchingCurrentUser = false;
+        state.error = action.error.message;
+        state.isLoggedIn = false;
+      })
+      //================================================================
+      .addCase(deleteUser.pending, (state) => {
+        state.isFetchingCurrentUser = true;
+        state.error = null;
+      })
+      .addCase(deleteUser.fulfilled, (state) => {
+        state.isFetchingCurrentUser = false;
+        state.isLoggedIn = false;
+        state.user = null;
+        state.token = null;
+      })
+      .addCase(deleteUser.rejected, (state, action) => {
+        state.isLoggedIn = false;
+        state.isFetchingCurrentUser = false;
+        state.error = action.payload;
+      })
+      ;
 
   },
 });

@@ -176,6 +176,7 @@ export const Forma = styled.form`
 
 
   & > div > div > label {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -228,6 +229,7 @@ export const Forma = styled.form`
   }
 
   & > div > div > div > label {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -284,6 +286,7 @@ export const Button = styled.button`
   border: none;
   padding: 14px 50px;
   color: var(--white);
+  font-family: 'InterSemiBold';
   font-size: 14px;
   font-weight: 600;
   line-height: 17px;
@@ -311,6 +314,7 @@ export const Button = styled.button`
   @media screen and (min-width: 1440px) {
     margin-top: auto;
     grid-column: span 2;
+    /* margin-top: 64px; */
   }
 `;
 
@@ -369,3 +373,47 @@ export const Avatar = styled.div`
     height: 124px;
   }
 `;
+export const InputIcon = styled.img`
+  position: absolute;
+  bottom: 14px;
+  right:14px;
+  
+  width: 24px;
+  height: 24px;
+
+  @media screen and (min-width: 768px) {
+    right:14px;
+    bottom:11px;
+  }
+`;
+
+export const PasswordBtn = styled(Button)`
+background-color: transparent;
+color: var(--main-blue);
+width: auto;
+/* border-radius: 10px; */
+padding: 10px 30px;
+
+@media screen and (min-width: 1440px) {
+  grid-row-gap: 24px;
+  }
+
+
+&:hover{
+  color: var(--white);
+}
+`
+export const DeleteBtn = styled(Button)`
+background-color: transparent;
+width: auto;
+padding: 10px 30px;
+color: var(--error-color);
+
+&:hover{
+  background-color:var(--error-color);
+  color: var(--white);
+}
+
+
+
+`
