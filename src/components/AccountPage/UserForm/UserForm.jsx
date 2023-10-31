@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import { Checkmark } from 'react-checkmark'
+
 import {
   ContainerWrapper,
   Container,
@@ -12,6 +14,9 @@ import {
   Button,
   CustomInput,
   Avatar,
+  InputIcon,
+  PasswordBtn,
+  DeleteBtn,
 } from './UserForm.styled';
 
 import DatePicker, { registerLocale } from 'react-datepicker';
@@ -26,7 +31,14 @@ import { selectUser } from '../../../redux/auth/selectors';
 import { updateUser } from '../../../redux/auth/operations';
 import { imageExists } from '../../../hooks/useImageExists';
 
+import { globalRegex } from '../../../Styles/GlobalStyles';
+import { CheckmarkModal } from '../Chekmark/Checkmark';
+
+import SuccessIcon from '../../../images/RegisterPage/success.svg';
+import ErrorIcon from '../../../images/RegisterPage/error.svg';
+
 registerLocale('uk', uk);
+
 
 export const UserForm = () => {
   const { userName, email, phone, skype, birthday, avatarURL } =
@@ -41,6 +53,12 @@ export const UserForm = () => {
   const [newSkype, setNewSkype] = useState(skype ?? '');
   const [newAvatar, setNewAvatar] = useState(avatarURL ?? '');
   const [avatarPreviewUrl, setAvatarPreviewUrl] = useState('');
+
+  const [isSaving, setIsSaving] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [isNameValid, setIsNameValid]= useState(true);
+  const [isPhoneValid, setIsPhoneValid] =useState(true)
+  const [isSkypeValid, setIsSkypeValid] = useState(false)
 
   const dispatch = useDispatch();
   const avatarInputRef = useRef(null);
@@ -92,6 +110,9 @@ export const UserForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!someChanges) return;
+
+    setIsSaving(true);   
+
     const formData = new FormData();
     if (userName !== newUserName) {
       formData.append('userName', newUserName);
@@ -112,9 +133,17 @@ export const UserForm = () => {
       formData.append('avatarURL', newAvatar);
     }
     dispatch(updateUser(formData));
+  
+  };
+  const handleSaveClick = () => {
+    setIsModalOpen(true);
   };
 
+
+
+
   return (
+   
     <ContainerWrapper>
       <Container>
         <Forma onSubmit={handleSubmit}>
@@ -147,8 +176,12 @@ export const UserForm = () => {
                   name="userName"
                   placeholder="Enter your name"
                   value={newUserName}
-                  onChange={(e) => setNewUserName(e.target.value)}
+                  onChange={(e) =>{ setNewUserName(e.target.value);  
+                                    setIsNameValid(globalRegex.customFieldRegexp.test(e.target.value))
+                                  }}
+                  style={{ borderColor: newUserName ? (isNameValid ? 'var(--correct-color)' : 'var(--error-color)') : '', }}
                 />
+                  {newUserName ?( isNameValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />) ): null}
               </label>
               <label>
                 <p>Birthday</p>
@@ -176,8 +209,15 @@ export const UserForm = () => {
                     name="email"
                     placeholder="Enter your email address"
                     value={newEmail}
-                    onChange={(e) => setNewEmail(e.target.value)}
+                     onChange={(e) => {
+                      setNewEmail(e.target.value)
+                      setIsEmailValid(globalRegex.emailRegexp.test(e.target.value));
+                    }}
+                    style={{
+                      borderColor: newEmail ? (isEmailValid ? 'var(--correct-color)' : 'var(--error-color)') : '',
+                    }}
                   />
+                 {newEmail ?( isEmailValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />) ): null}
                 </label>
               </div>
             </div>
@@ -190,8 +230,15 @@ export const UserForm = () => {
                   name="phone"
                   placeholder="Enter phone number"
                   value={newPhone}
-                  onChange={(e) => setNewPhone(e.target.value)}
+                  onChange={(e) =>{
+                    setNewPhone(e.target.value);
+                    setIsPhoneValid(globalRegex.phoneRegexp.test(e.target.value))
+                  }}
+                  style={{
+                    borderColor: newPhone ? (isPhoneValid ? 'var(--correct-color)' : 'var(--error-color)') : '',
+                  }}
                 />
+                {newPhone ?(  isPhoneValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />) ): null}
               </label>
               <label>
                 <p>Skype</p>
@@ -200,13 +247,23 @@ export const UserForm = () => {
                   name="skype"
                   placeholder="Enter skype"
                   value={newSkype}
-                  onChange={(e) => setNewSkype(e.target.value)}
+                  onChange={(e) => {setNewSkype(e.target.value)
+                    setIsSkypeValid(globalRegex.customFieldRegexp.test(e.target.value))
+                  }}
+                  style={{
+                    borderColor: newSkype ? (isSkypeValid  ? 'var(--correct-color)' : 'var(--error-color)') : '',
+                  }}
                 />
+                 {newSkype ?(  isSkypeValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />) ): null}
               </label>
             </div>
-            <Button type="submit" disabled={!someChanges}>
+            {isSaving  ? <Checkmark /> : (
+            <Button type="submit"  disabled={isSaving || !someChanges} >
               Save
             </Button>
+            )}
+            <PasswordBtn>Change Password</PasswordBtn>
+             <DeleteBtn>Delete account</DeleteBtn> 
           </InputWrapper>
         </Forma>
       </Container>
