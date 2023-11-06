@@ -1,8 +1,9 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useSearchParams } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from './redux/auth/operations';
+import { setToken } from './redux/auth/slice';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -32,11 +33,23 @@ function App() {
   //  console.log(test);
   const isRefreshing = useSelector(selectIsFetchingCurrentUser);
   const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
 
+  useEffect(() => {
+    const accessToken = searchParams.get('token');
+    if (!accessToken) {
+      return;
+    } else {
+      dispatch(setToken(accessToken));
+      dispatch(getCurrentUser());
+    }
+
+  }, [dispatch, searchParams]);
+  
   return isRefreshing ? (
     <Loader />
   ) : (

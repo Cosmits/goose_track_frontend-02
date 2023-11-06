@@ -4,7 +4,7 @@ export const ChoosedDaySection = styled.section`
   width: 335px;
   height: 100%;
   margin: 0 auto;
-  width: 375px;
+  /* width: 375px; */
 
 
   @media screen and (min-width: 768px) {

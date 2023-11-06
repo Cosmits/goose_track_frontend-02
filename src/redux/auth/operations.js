@@ -80,7 +80,7 @@ export const getCurrentUser = createAsyncThunk('/users/current',
     } catch (error) {
       if (error.response) {
         const { status } = error.response;
-        if (status === 401) toast.error('Not authorized.');
+        // if (status === 401) toast.error('Not authorized.');
         if (status === 500) toast.error('Server error.');
       }
       return thunkAPI.rejectWithValue(error.message);
