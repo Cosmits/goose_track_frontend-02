@@ -99,10 +99,10 @@ export const Button = styled.button`
   padding-top: 14px;
   padding-bottom: 14px;
   border-radius: 16px;
-  background-color: var(--main-blue);
-  border: none;
+  background-color: ${props => props.className === 'googleAuth' ? 'var(--white)' : 'var(--main-blue)'};
+  border: ${props => props.className === 'googleAuth' ? '1px solid var(--input-gray)' : 'none'};
   cursor: pointer;
-  color: var(--white);
+  color: ${props => props.className === 'googleAuth' ? 'var(--black)' : 'var(--white)'};
   font-size: 14px;
   font-family:InterSemiBold;
   line-height: 1.29;
@@ -115,13 +115,14 @@ export const Button = styled.button`
     line-height: 1.33;
   }
 
- &:focus,
+  &:focus,
   &:hover  {
-    background-color: var(--hover-blue);
+    background-color: ${props => props.className === 'googleAuth' ? 'var(--white)' : 'var(--hover-blue)'};
     box-shadow: 4px 2px 16px 0px #88A5BF7A;
 
   }
 `;
+
 
 export const LogInPicture = styled.img`
   width: 18px;
@@ -131,6 +132,13 @@ export const LogInPicture = styled.img`
     width: 20px;
     height:20px;
   }
+`
+
+export const SpanText = styled.span`
+  
+  font-size: 12px;
+  font-family:InterTightRegular;
+  line-height: 1.17;
 `
 
 export const Error = styled.p`

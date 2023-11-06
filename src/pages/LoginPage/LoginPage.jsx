@@ -16,7 +16,7 @@ const LoginPage = () => {
 
       <LinkWrap>
         <AuthNavigate route="/register" textContent="Sign Up" />
-        <AuthNavigate route="/send-verify-email" textContent="Verify Email" />
+        {/* <AuthNavigate route="/send-verify-email" textContent="Verify Email" /> */}
       </LinkWrap>
 
       <PictureWrap >
