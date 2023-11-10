@@ -13,9 +13,11 @@ import LogInIcon from '../../../images/RegisterPage/login.svg';
 import {
     Button, DontShowIcon, Error, Icon,
     Input, InputWrap, Label, List, LogInPicture,
-    PasswordButton, ShowIcon, Title
+    PasswordButton, ShowIcon, SpanText, Title
 } from './RegisterForm.styled';
 import { globalRegex } from '../../../Styles/GlobalStyles';
+import GoogleIcon from '../../../images/RegisterPage/GoogleIcon.svg'
+import { Divider } from '@mui/material';
 
 const ErrorMessages = ({ name }) => {
     return (
@@ -67,6 +69,10 @@ const RegisterForm = () => {
        
     };
 
+    const handleGoogleAuth = () => {
+        window.location.href = 'https://goose-track-backend-02.onrender.com/users/google/';
+    }
+
     return (
         <Formik
             initialValues={initialValues}
@@ -76,6 +82,15 @@ const RegisterForm = () => {
             {({ values, errors, touched }) => (
                 <Form>
                     <Title>Sign Up</Title>
+
+                    <Button type="button" onClick={handleGoogleAuth} className={"googleAuth"} >
+                        <LogInPicture src={GoogleIcon} />
+                        Sign up using Google
+                    </Button>
+                    <Divider sx={{ margin: '24px auto' }}>
+                        <SpanText>or continue with google</SpanText>
+                    </Divider>
+
                     <List>
                         <InputWrap>
                             <Label

@@ -10,12 +10,14 @@ import { logIn } from '../../../redux/auth/operations';
 import {
     Button, DontShowIcon, Error, Icon,
     Input, InputWrap, Label, List, LogInPicture,
-    PasswordButton, ShowIcon, Title
+    PasswordButton, ShowIcon, SpanText, Title
 } from '../../RegisterPage/RegisterForm/RegisterForm.styled'
 import SuccessIcon from '../../../images/RegisterPage/success.svg';
 import ErrorIcon from '../../../images/RegisterPage/error.svg';
 import LogInIcon from '../../../images/RegisterPage/login.svg';
 import { globalRegex } from '../../../Styles/GlobalStyles';
+import GoogleIcon from '../../../images/RegisterPage/GoogleIcon.svg'
+import { Divider } from '@mui/material';
 
 const ErrorMessages = ({ name }) => {
     return (
@@ -56,10 +58,14 @@ const LoginForm = () => {
 
         dispatch(logIn({ email, password }))
             .unwrap()
-            .then(() => toast.success('Login successfully')) 
+            .then(() => toast.success('Login successfully'))
 
         resetForm();
     };
+
+    const handleGoogleAuth = () => {
+        window.location.href = 'https://goose-track-backend-02.onrender.com/users/google/';
+    }
 
     return (
         <Formik
@@ -70,6 +76,15 @@ const LoginForm = () => {
             {({ values, errors, touched }) => (
                 <Form>
                     <Title>Log In</Title>
+                   
+                    <Button type="button" onClick={handleGoogleAuth} className={"googleAuth"} >
+                        <LogInPicture src={GoogleIcon} />
+                        Sign up using Google
+                    </Button>
+                    <Divider sx={{ margin: '24px auto' }}>
+                        <SpanText>or continue with google</SpanText>
+                    </Divider>
+
                     <List>
                         <InputWrap>
                             <Label
@@ -125,10 +140,11 @@ const LoginForm = () => {
                     <Button type="submit">
                         Log In
                         <LogInPicture src={LogInIcon} />
-                    </Button>
+                    </Button>         
                 </Form>
             )}
         </Formik>
+
     );
 };
 
