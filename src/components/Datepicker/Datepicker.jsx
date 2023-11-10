@@ -76,8 +76,12 @@ const Datepicker = ({onDateChange}) => {
         formatWeekDay={(day) => day.substr(0, 1)}
       />
       <ButtonWrapper>
-        <button className="date-picker-btn-prev" onClick={handlePrevMonth}><FontAwesomeIcon icon={faChevronLeft} /></button>
-        <button className="date-picker-btn-next" onClick={handleNextMonth}><FontAwesomeIcon icon={faChevronRight} /></button>
+        <button className="date-picker-btn-prev" onClick={handlePrevMonth}>
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </button>
+        <button className="date-picker-btn-next" onClick={handleNextMonth}>
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
       </ButtonWrapper>
       <CalendarGlobalStyles />
     </div>

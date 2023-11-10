@@ -1,5 +1,6 @@
 
 import { useSelector } from 'react-redux';
+import { selectUser } from '../../../../redux/auth/selectors';
 import {
   BackgroundName,
   UserAvatar,
@@ -7,10 +8,7 @@ import {
   UserName,
   UserNameIcon,
 } from './UserInfo.styled';
-import { selectUser } from '../../../../redux/auth/selectors';
-import { useEffect } from 'react';
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { imageExists } from '../../../../hooks/useImageExists';
 
 
@@ -26,7 +24,7 @@ const UserInfo = () => {
       });
     }
     checkImg()
-  }, [avatarURL])
+  }, [avatarURL, newAvatar])
 
   const getInitials = (userName) => {
     if (userName) {
