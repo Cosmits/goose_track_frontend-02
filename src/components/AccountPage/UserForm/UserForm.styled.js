@@ -70,6 +70,13 @@ export const ImageContainer = styled.div`
   background-color: var(--main-background-color);
   border-radius: 50%;
 
+  transition: all 0.5s;
+
+  &:hover,
+  &:focus {
+    scale: 1.1;
+  }
+
   @media screen and (max-width: 767px) {
     position: absolute;
     top: -31px;
