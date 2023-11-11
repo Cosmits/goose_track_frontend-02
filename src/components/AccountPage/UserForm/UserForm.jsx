@@ -32,7 +32,6 @@ import { updateUser } from '../../../redux/auth/operations';
 import { imageExists } from '../../../hooks/useImageExists';
 
 import { globalRegex } from '../../../Styles/GlobalStyles';
-// import { CheckmarkModal } from '../Chekmark/Checkmark';
 
 import SuccessIcon from '../../../images/RegisterPage/success.svg';
 import ErrorIcon from '../../../images/RegisterPage/error.svg';
@@ -42,23 +41,26 @@ registerLocale('uk', uk);
 
 export const UserForm = () => {
   const { userName, email, phone, skype, birthday, avatarURL } =
-    useSelector(selectUser);
+    useSelector(selectUser)
 
   const [startDate, setStartDate] = useState(
     birthday === '' ? new Date() : parse(birthday, 'dd/MM/yyyy', new Date()),
-  );
-  const [newUserName, setNewUserName] = useState(userName ?? '');
-  const [newEmail, setNewEmail] = useState(email ?? '');
-  const [newPhone, setNewPhone] = useState(phone ?? '');
-  const [newSkype, setNewSkype] = useState(skype ?? '');
-  const [newAvatar, setNewAvatar] = useState(avatarURL ?? '');
-  const [avatarPreviewUrl, setAvatarPreviewUrl] = useState('');
+  )
 
-  const [isSaving, setIsSaving] = useState(false);
-  const [isEmailValid, setIsEmailValid] = useState(true);
-  const [isNameValid, setIsNameValid] = useState(true);
+  const [newUserName, setNewUserName] = useState(userName ?? '')
+  const [newEmail, setNewEmail] = useState(email ?? '')
+  const [newPhone, setNewPhone] = useState(phone ?? '')
+  const [newSkype, setNewSkype] = useState(skype ?? '')
+  const [newAvatar, setNewAvatar] = useState(avatarURL ?? '')
+  const [avatarPreviewUrl, setAvatarPreviewUrl] = useState('')
+
+  const [isSaving, setIsSaving] = useState(false)
+  const [isEmailValid, setIsEmailValid] = useState(true)
+  const [isNameValid, setIsNameValid] = useState(true)
   const [isPhoneValid, setIsPhoneValid] = useState(true)
-  const [isSkypeValid, setIsSkypeValid] = useState(false)
+  const [isSkypeValid, setIsSkypeValid] = useState(true)
+  const [isBirthdayValid, setIsBirthdayValid] = useState(true)
+
 
   const dispatch = useDispatch();
   const avatarInputRef = useRef(null);
@@ -68,7 +70,7 @@ export const UserForm = () => {
     email !== newEmail ||
     phone !== newPhone ||
     skype !== newSkype ||
-    birthday !== format(startDate, 'dd/MM/yyyy') ||
+    birthday !== (startDate && format(startDate, 'dd/MM/yyyy')) ||
     avatarPreviewUrl !== '';
 
   useEffect(() => {
@@ -88,6 +90,19 @@ export const UserForm = () => {
     }
     checkImg()
   }, [avatarURL])
+
+
+  useEffect(() => {
+    if (isSaving) {
+      const id = setTimeout(() => {
+        setIsSaving(false);
+
+      }, 3000);
+      return () => {
+        clearTimeout(id)
+      }
+    }
+  }, [isSaving])
 
   const handleIconContainerClick = () => {
     if (avatarInputRef.current) {
@@ -136,10 +151,6 @@ export const UserForm = () => {
 
   };
 
-  // const handleSaveClick = () => {
-  //   setIsModalOpen(true);
-  // };
-
   return (
 
     <ContainerWrapper>
@@ -182,24 +193,35 @@ export const UserForm = () => {
                 />
                 {newUserName ? (isNameValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
               </label>
-              <label>
-                <p>Birthday</p>
-                <DatePicker
-                  dateFormat="dd/MM/yyyy"
-                  calendarStartDay={1}
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  customInput={
-                    <CustomInput
-                      type="text"
-                      name="birthday"
-                      placeholder={format(new Date(), 'dd/MM/yyyy')}
-                      value={startDate.toString()}
-                    />
-                  }
-                />
-              </label>
+              <div>
+                <label>
+                  <p>Birthday</p>
+                  <DatePicker
+                    dateFormat="dd/MM/yyyy"
+                    calendarStartDay={1}
+                    selected={startDate}
+                    onChange={(date) => {
+                      setStartDate(date)
+                      if (date) {
+                        setIsBirthdayValid(globalRegex.birthdayRegexp.test(format(date, 'dd/MM/yyyy')));
+                      } else {
+                        setIsBirthdayValid(false);
+                      }
 
+                    }}
+                    customInput={
+                      <CustomInput
+                        type="text"
+                        name="birthday"
+                        placeholder={format(new Date(), 'dd/MM/yyyy')}
+                        value={startDate?.toString()}
+                        style={{ borderColor: birthday ? (isBirthdayValid ? 'var(--correct-color)' : 'var(--error-color)') : '', }}
+                      />
+                    }
+                  />
+                  {birthday ? (isBirthdayValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
+                </label>
+              </div>
               <div>
                 <label>
                   <p>Email</p>
@@ -248,7 +270,7 @@ export const UserForm = () => {
                   value={newSkype}
                   onChange={(e) => {
                     setNewSkype(e.target.value)
-                    setIsSkypeValid(globalRegex.customFieldRegexp.test(e.target.value))
+                    setIsSkypeValid(globalRegex.SkypeRegexp.test(e.target.value))
                   }}
                   style={{
                     borderColor: newSkype ? (isSkypeValid ? 'var(--correct-color)' : 'var(--error-color)') : '',
@@ -257,7 +279,11 @@ export const UserForm = () => {
                 {newSkype ? (isSkypeValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
               </label>
             </div>
-            {isSaving ? <Checkmark /> : (
+            {isSaving ? (
+              <div style={{ marginTop: '8px' }} >
+                <Checkmark />
+              </div>
+            ) : (
               <Button type="submit" disabled={isSaving || !someChanges} >
                 Save
               </Button>

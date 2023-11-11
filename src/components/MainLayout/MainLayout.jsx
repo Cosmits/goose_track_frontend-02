@@ -26,7 +26,7 @@ const MainLayout = () => {
     setShowSideBar(() => !showSideBar);
     
     //disable scrolling
-    if (showSideBar) { document.body.style.overflow = 'hidden' }
+    if (!showSideBar) { document.body.style.overflow = 'hidden' }
     else { document.body.style.overflow = 'auto' }
   };
 

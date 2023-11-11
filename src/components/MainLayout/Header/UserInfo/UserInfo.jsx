@@ -17,7 +17,7 @@ const UserInfo = () => {
   const [newAvatar, setNewAvatar] = useState(avatarURL ?? '');
 
   useEffect(() => {
-    function checkImg() { 
+    function checkImg() {
       imageExists(avatarURL).then(function (exists) {
         if (!exists) setNewAvatar('')
         else setNewAvatar(avatarURL)
@@ -47,9 +47,7 @@ const UserInfo = () => {
     }
   };
 
-  const displayName = newAvatar ? (
-    <img src={newAvatar} alt="UserAvatar" />
-  ) : (
+  const displayName = newAvatar ? (<img src={newAvatar} alt="UserAvatar" />) : (
     <BackgroundName>
       <UserNameIcon>{getInitials(userName)}</UserNameIcon>
     </BackgroundName>
