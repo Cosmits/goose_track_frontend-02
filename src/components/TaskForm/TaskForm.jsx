@@ -20,15 +20,19 @@ import {
 } from './TaskForm.styled';
 
 import { useParams } from 'react-router';
-import { toast } from 'react-toastify';
 import {
   useCreateTasksMutation,
   useEditTasksMutation,
   useGetMonthlyTasksQuery,
 } from '../../redux/tasks/tasksApi';
+import { showErrorToast } from '../../services/showToast';
+import { selectTheme } from '../../redux/theme/themeSlice';
+import { useSelector } from 'react-redux';
 
 const TaskForm = ({ initialData, closeModal, category = '' }) => {
   const { currentDay } = useParams();
+
+  const theme = useSelector(selectTheme);
 
   const [isEdit, setIsEdit] = useState(false);
 
@@ -90,14 +94,14 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
   useEffect(() => {
     if (createTaskIsError) {
       console.log(createTaskError);
-      toast.error('Error creating task');
+      showErrorToast('Error creating task', theme);
     }
 
     if (editTaskIsError) {
       console.log(editTaskError);
-      toast.error('Error creating task');
+      showErrorToast('Error creating task', theme);
     }
-  }, [createTaskError, createTaskIsError, editTaskError, editTaskIsError]);
+  }, [createTaskError, createTaskIsError, editTaskError, editTaskIsError, theme]);
 
   const handleEdit = () => {
     const taskId = formData._id;

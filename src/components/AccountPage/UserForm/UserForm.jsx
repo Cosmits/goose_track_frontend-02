@@ -38,7 +38,6 @@ import ErrorIcon from '../../../images/RegisterPage/error.svg';
 
 registerLocale('uk', uk);
 
-
 export const UserForm = () => {
   const { userName, email, phone, skype, birthday, avatarURL } =
     useSelector(selectUser)
@@ -61,7 +60,6 @@ export const UserForm = () => {
   const [isSkypeValid, setIsSkypeValid] = useState(true)
   const [isBirthdayValid, setIsBirthdayValid] = useState(true)
 
-
   const dispatch = useDispatch();
   const avatarInputRef = useRef(null);
 
@@ -80,7 +78,7 @@ export const UserForm = () => {
       }
     };
   }, [avatarPreviewUrl]);
-
+  
   useEffect(() => {
     function checkImg() {
       imageExists(avatarURL).then(function (exists) {
@@ -91,12 +89,12 @@ export const UserForm = () => {
     checkImg()
   }, [avatarURL])
 
-
+  
   useEffect(() => {
     if (isSaving) {
       const id = setTimeout(() => {
         setIsSaving(false);
-
+        
       }, 3000);
       return () => {
         clearTimeout(id)
