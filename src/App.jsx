@@ -39,7 +39,7 @@ function App() {
   useEffect(() => {
     const accessToken = searchParams.get('token');
     if (!!accessToken || !!tokenInStore) {
-      if (accessToken) setToken(accessToken);
+      if (accessToken) dispatch(setToken(accessToken));
       dispatch(getCurrentUser());
     }
   }, [dispatch, searchParams, tokenInStore]);
