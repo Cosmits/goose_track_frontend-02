@@ -28,6 +28,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-big-calendar": "^1.8.4",
+    "react-checkmark": "^1.4.0",
     "react-datepicker": "^4.20.0",
     "react-dom": "^18.2.0",
     "react-icon": "^1.0.0",

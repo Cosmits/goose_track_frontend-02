@@ -4,7 +4,8 @@ export const SidebarWrapper = styled.div`
  position: relative;
   font-family: 'InterSemiBold', sans-serif;
   width: 289px;
-  /* height: 100vh;  */
+  height: 100vh;
+  min-height: 480px;
   border-right: 1px solid rgba(220, 227, 229, 0.5);
   background: ${({ theme }) => theme.sideBarBG};
   color: ${({ theme }) => theme.mainSideBarText};

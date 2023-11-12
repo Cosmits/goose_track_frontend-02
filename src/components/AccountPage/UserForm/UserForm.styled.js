@@ -70,6 +70,13 @@ export const ImageContainer = styled.div`
   background-color: var(--main-background-color);
   border-radius: 50%;
 
+  transition: all 0.5s;
+
+  &:hover,
+  &:focus {
+    scale: 1.1;
+  }
+
   @media screen and (max-width: 767px) {
     position: absolute;
     top: -31px;
@@ -119,7 +126,7 @@ export const InputWrapper = styled.div`
     flex: 1;
 
     grid-column-gap: 50px;
-    grid-row-gap: 64px;
+    grid-row-gap: 24px;
   }
 `;
 
@@ -176,9 +183,15 @@ export const Forma = styled.form`
 
 
   & > div > div > label {
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: baseline;
+    align-items: flex-start;
+
+    @media screen and (min-width: 768px) {
+      align-items: center;
+     }
+
   }
 
   & > div > div > label > input {
@@ -207,11 +220,7 @@ export const Forma = styled.form`
       border-color: var(--black);
     }
 
-    @media screen and (min-width: 375px) and (max-width: 767px) {
-      width: 299px;
-    }
-
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1440px) {
       width: 354px;
       height: 46px;
     }
@@ -228,9 +237,14 @@ export const Forma = styled.form`
   }
 
   & > div > div > div > label {
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: baseline;
+    align-items: flex-start;
+
+    @media screen and (min-width: 768px) {
+      align-items: center;
+     }
   }
 
   & > div > div > div > label > input {
@@ -257,11 +271,7 @@ export const Forma = styled.form`
       border-color: var(--black);
     }
 
-    @media screen and (min-width: 375px) and (max-width: 767px) {
-      width: 299px;
-    }
-
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1440px) {
       width: 354px;
       height: 46px;
     }
@@ -284,6 +294,7 @@ export const Button = styled.button`
   border: none;
   padding: 14px 50px;
   color: var(--white);
+  font-family: 'InterSemiBold';
   font-size: 14px;
   font-weight: 600;
   line-height: 17px;
@@ -339,11 +350,7 @@ export const CustomInput = styled.input`
     border-color: var(--black);
   }
 
-  @media screen and (min-width: 375px) and (max-width: 767px) {
-    width: 299px;
-  }
-
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1440px) {
     width: 354px;
     height: 46px;
   }
@@ -368,4 +375,47 @@ export const Avatar = styled.div`
     width: 124px;
     height: 124px;
   }
-`;
+`
+
+export const InputIcon = styled.img`
+  position: absolute;
+  bottom: 9px;
+  right: 9px;
+  width: 24px;
+  height: 24px;
+
+  @media screen and (min-width: 768px) {
+    bottom: 10px;
+  }
+  
+  @media screen and (min-width: 1440px) {
+    right: 8px;
+  }  
+`
+
+export const PasswordBtn = styled(Button)`
+  background-color: transparent;
+  color: var(--main-blue);
+  width: auto;
+  padding: 10px 30px;
+
+  @media screen and (min-width: 1440px) {
+    grid-row-gap: 24px;
+  }
+
+  &:hover{
+    color: var(--white);
+  }
+`
+
+export const DeleteBtn = styled(Button)`
+  background-color: transparent;
+  width: auto;
+  padding: 10px 30px;
+  color: var(--error-color);
+
+  &:hover{
+    background-color:var(--error-color);
+    color: var(--white);
+  }
+`

@@ -1,0 +1,66 @@
+.icon-group {
+  height: 50px;
+  width: 60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: all 1s ease;
+}
+
+.icon-group:hover {
+  width: 140px;
+  justify-content: space-around;
+  transition: all 1s ease;
+}
+
+
+.icon-group:nth-child(1) {
+  border: 2px solid #3e85f3;
+}
+
+.fa-facebook{
+  width: 24px;
+  height: 24px;
+}
+
+.icon-group:hover .fa-facebook,
+.icon-group:hover .icon-text {
+  color: #fff;
+  transition: all 1s ease;
+}
+
+.icon-group .icon-text {
+  width: 0;
+  overflow: hidden;
+}
+
+.icon-group:hover .icon-text {
+  width: fit-content;
+  transition: width 1s ease;
+}
+
+.icon-group .fa-facebook,
+.icon-group .icon-text {
+  z-index: 2;
+}
+
+.icon-group .icon-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  clip-path: circle(50% at -100% 50%);
+  z-index: 1;
+}
+
+.icon-group:hover .icon-bg {
+  clip-path: circle(150% at 0% 50%);
+  transition: all 1s ease;
+}
+
+.icon-group:nth-child(1) .icon-bg {
+  background-color: #3e85f3;
+}

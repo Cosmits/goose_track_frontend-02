@@ -37,7 +37,7 @@ gap: 8px;`
 
 export const NoTaskTitle = styled.p`
 color: ${({ theme }) => theme.mainTextColor};
-font-family: ${GlobalStyle.InterSemiBold};
+font-family: 'InterSemiBold';
 font-size: 14px;
 font-weight: 600;
 line-height: 1.28;

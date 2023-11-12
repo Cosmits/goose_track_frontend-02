@@ -58,7 +58,7 @@ const Header = ({ openSideBar }) => {
 
   return (
     <HeaderWrapper>
-      {isDesktop ? (
+      {isDesktop && (
         isDayPage && tasks.length > 0 ? (
           <NoTaskWrapper>
             <LogoHeader src={logoHeader} alt="LogoHeader" />
@@ -72,7 +72,7 @@ const Header = ({ openSideBar }) => {
         ) : (
           <HeaderCurrentPage>{currentPage}</HeaderCurrentPage>
         )
-      ) : null}
+      )}
 
       {!isDesktop && <BurgerMenu onClick={openSideBar} />}
       <HeaderUser>

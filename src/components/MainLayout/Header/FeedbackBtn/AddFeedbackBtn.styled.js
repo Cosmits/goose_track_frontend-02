@@ -1,16 +1,14 @@
 import styled from 'styled-components';
-import { GlobalStyle } from '../../../../Styles/GlobalStyles'
-
 
 export const AddFeedbackButton = styled.button`
   border: none;
   border-radius: 10px;
   background: var(--main-blue, #3e85f3);
-  padding: 8px 20px;
+  /* padding: 8px 20px; */
   margin-right: 18px;
 
   /* text */
-  font-family: ${GlobalStyle.InterSemiBold};
+  font-family: 'InterSemiBold';
   color: #fff;
   font-weight:600;
   font-size: 14px;

@@ -2,7 +2,6 @@
 
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
@@ -18,6 +17,7 @@ import LogInIcon from '../../../images/RegisterPage/login.svg';
 import { globalRegex } from '../../../Styles/GlobalStyles';
 import GoogleIcon from '../../../images/RegisterPage/GoogleIcon.svg'
 import { Divider } from '@mui/material';
+import { showSuccessToast } from '../../../services/showToast';
 
 const ErrorMessages = ({ name }) => {
     return (
@@ -58,7 +58,7 @@ const LoginForm = () => {
 
         dispatch(logIn({ email, password }))
             .unwrap()
-            .then(() => toast.success('Login successfully'))
+            .then(() => showSuccessToast('Login successfully'))
 
         resetForm();
     };

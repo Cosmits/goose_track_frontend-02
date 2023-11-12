@@ -2,7 +2,6 @@
 
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
@@ -62,11 +61,8 @@ const RegisterForm = () => {
         dispatch(register({ userName: name, email, password }))
             .unwrap()
             .then(() => {
-                toast.success('Registration successfully. Check your email and verify your registration')
                 resetForm();
-            })
-            .catch(() => toast.error('Something went wrong. Try again'));
-       
+            });
     };
 
     const handleGoogleAuth = () => {

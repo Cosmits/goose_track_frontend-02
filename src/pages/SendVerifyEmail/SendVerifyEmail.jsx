@@ -7,7 +7,6 @@ import gooseVerifyEmail2xWebp from '../../images/VerifyEmailPage/goose-verify-em
 import SendVerifyEmailForm from '../../components/SendVerifyEmailPage/SendVerifyEmailForm';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
 import { getVerifyEmailUser } from '../../redux/auth/operations';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -25,11 +24,8 @@ const SendVerifyEmail = () => {
       const tryVerify = async (verificationToken) => {
         try {
           await dispatch(getVerifyEmailUser(verificationToken)).unwrap()
-          toast.success('Verification Account successfully')
           setRedirect(true)
-        } catch (error) {
-          toast.error('Error verification account')
-        }
+        } catch (error) { /* empty */ }
         navigate(`/login`)
       };
       tryVerify(verificationToken);

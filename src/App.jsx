@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import RestrictedRoute from './components/RestrictedRoute';
 import PrivateRoute from './components/PrivateRoute';
 import MainLayout from './components/MainLayout/MainLayout';
-import { selectIsFetchingCurrentUser } from './redux/auth/selectors';
+import { selectIsFetchingCurrentUser, selectToken } from './redux/auth/selectors';
 import Loader from './components/MainLayout/Loader/Loader';
 
 const MainPage = lazy(() => import('./pages/MainPage'));
@@ -32,24 +32,18 @@ function App() {
 
   //  console.log(test);
   const isRefreshing = useSelector(selectIsFetchingCurrentUser);
+  const tokenInStore = useSelector(selectToken);
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    dispatch(getCurrentUser());
-  }, [dispatch]);
-
-  useEffect(() => {
     const accessToken = searchParams.get('token');
-    if (!accessToken) {
-      return;
-    } else {
-      dispatch(setToken(accessToken));
+    if (!!accessToken || !!tokenInStore) {
+      if (accessToken) setToken(accessToken);
       dispatch(getCurrentUser());
     }
+  }, [dispatch, searchParams, tokenInStore]);
 
-  }, [dispatch, searchParams]);
-  
   return isRefreshing ? (
     <Loader />
   ) : (
@@ -72,7 +66,7 @@ function App() {
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      <ToastContainer autoClose={2000} />
+      <ToastContainer/>
     </Suspense>
   );
 

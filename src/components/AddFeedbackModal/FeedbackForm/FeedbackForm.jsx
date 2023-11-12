@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 import PropTypes from 'prop-types';
- import { toast } from 'react-toastify';
-
 
 import {
   useCreateReviewMutation,
@@ -24,6 +22,9 @@ import {
   TextArea,
   TextAreaLabel,
 } from './FeedbackForm.styled';
+import { showErrorToast, showSuccessToast } from '../../../services/showToast';
+import { selectTheme } from '../../../redux/theme/themeSlice';
+import { useSelector } from 'react-redux';
 
 
 const FeedbackForm = ({ onClose }) => {
@@ -32,12 +33,13 @@ const FeedbackForm = ({ onClose }) => {
   const [isEditReview, setIsEditReview] = useState(false);
   const [isDeleteReview, setIsDeleteReview] = useState(false);
 
-   const { data: userReviewData} = useGetUserReviewQuery();
-  
+  const { data: userReviewData } = useGetUserReviewQuery();
+
   const [createReview] = useCreateReviewMutation();
   const [editReview] = useEditReviewMutation();
   const [deleteReview] = useDeleteReviewMutation();
- 
+
+  const theme = useSelector(selectTheme);
 
   useEffect(() => {
     if (userReviewData) {
@@ -64,7 +66,7 @@ const FeedbackForm = ({ onClose }) => {
     if (text.length <= 300) {
       setComment(text);
     } else {
-      toast.error('Feedback length cannot exceed 300 characters');
+      showErrorToast('Feedback length cannot exceed 300 characters', theme);
     }
   };
 
@@ -73,19 +75,19 @@ const FeedbackForm = ({ onClose }) => {
     if (isEditReview) {
       try {
         await editReview({ comment, rating }).unwrap();
-        toast.success('Review successfully edited');
+        showSuccessToast('Review successfully edited', theme);
         setIsEditReview(false);
         onClose();
       } catch (error) {
-        toast.error('All fields are required');
+        showErrorToast('All fields are required', theme);
       }
     } else {
       try {
         await createReview({ comment, rating }).unwrap();
-        toast.success('Thanks for your review');
+        showSuccessToast('Thanks for your review', theme);
         onClose();
       } catch (error) {
-        toast.error('All fields are required');
+        showErrorToast('All fields are required', theme);
       }
     }
   };
@@ -93,11 +95,11 @@ const FeedbackForm = ({ onClose }) => {
   const handleDelete = async () => {
     try {
       await deleteReview();
-      toast.success('Review successfully deleted');
+      showSuccessToast('Review successfully deleted', theme);
       setIsDeleteReview(false);
       onClose();
     } catch (error) {
-      toast.error('Sorry, your review has not deleted');
+      showErrorToast('Sorry, your review has not deleted', theme);
     }
   };
 
