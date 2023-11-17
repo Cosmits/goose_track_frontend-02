@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Rating } from 'react-simple-star-rating';
 import PropTypes from 'prop-types';
 
@@ -7,7 +8,9 @@ import {
   useDeleteReviewMutation,
   useEditReviewMutation,
   useGetUserReviewQuery,
-} from '../../../redux/reviews/reviewsApi';
+} from '../../../../redux/reviews/reviewsApi';
+import { selectTheme } from '../../../../redux/theme/themeSlice';
+import { showErrorToast, showSuccessToast } from '../../../../services/showToast';
 
 import {
   RatingLabel,
@@ -22,9 +25,6 @@ import {
   TextArea,
   TextAreaLabel,
 } from './FeedbackForm.styled';
-import { showErrorToast, showSuccessToast } from '../../../services/showToast';
-import { selectTheme } from '../../../redux/theme/themeSlice';
-import { useSelector } from 'react-redux';
 
 
 const FeedbackForm = ({ onClose }) => {

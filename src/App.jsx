@@ -18,13 +18,13 @@ const MainPage = lazy(() => import('./pages/MainPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const SendVerifyEmail = lazy(() => import('./pages/SendVerifyEmail/SendVerifyEmail'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 const AccountPage = lazy(() => import('./pages/AccountPage'));
 const StatisticsPage = lazy(() => import('./pages/StatisticsPage'));
 const CalendarPage = lazy(() => import('./pages/CalendarPage'));
 const ChoosedDay = lazy(() => import('./components/CalendarPage/ChoosedDay/ChoosedDay'));
 const ChoosedMonth = lazy(() => import('./components/CalendarPage/ChoosedMonth/ChoosedMonth'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 // const test = import.meta.env.VITE_API_TEST;
 
@@ -45,7 +45,10 @@ function App() {
   }, [dispatch, searchParams, tokenInStore]);
 
   return isRefreshing ? (
-    <Loader />
+    <>
+      <Loader />
+      <h2 style={{ marginTop: "160px", textAlign: "center" }} > Please wait, BackEnd https://goose-track-backend-02.onrender.com now is not ready ... </h2>
+    </>
   ) : (
     <Suspense >
       <Routes>

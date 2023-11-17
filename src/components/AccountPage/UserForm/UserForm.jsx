@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { Checkmark } from 'react-checkmark'
 
 import {
   ContainerWrapper,
@@ -78,7 +77,7 @@ export const UserForm = () => {
       }
     };
   }, [avatarPreviewUrl]);
-  
+
   useEffect(() => {
     function checkImg() {
       imageExists(avatarURL).then(function (exists) {
@@ -89,12 +88,12 @@ export const UserForm = () => {
     checkImg()
   }, [avatarURL])
 
-  
+
   useEffect(() => {
     if (isSaving) {
       const id = setTimeout(() => {
         setIsSaving(false);
-        
+
       }, 3000);
       return () => {
         clearTimeout(id)
@@ -277,15 +276,9 @@ export const UserForm = () => {
                 {newSkype ? (isSkypeValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
               </label>
             </div>
-            {isSaving ? (
-              <div style={{ marginTop: '8px' }} >
-                <Checkmark />
-              </div>
-            ) : (
-              <Button type="submit" disabled={isSaving || !someChanges} >
-                Save
-              </Button>
-            )}
+            <Button type="submit" disabled={isSaving || !someChanges} >
+              Save
+            </Button>
             <PasswordBtn>Change Password</PasswordBtn>
             <DeleteBtn>Delete account</DeleteBtn>
           </InputWrapper>

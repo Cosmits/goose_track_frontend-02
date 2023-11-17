@@ -3,11 +3,11 @@ import { useGetMonthlyTasksQuery } from '../../../redux/tasks/tasksApi';
 import { ChoosedDaySection } from './ChoosedDay.styled';
 import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
 import { useParams } from 'react-router-dom';
-import TaskModal from '../../TaskModal/TaskModal';
+import TaskModal from '../../ModalPages/TaskModal/TaskModal';
 import filterTasksByCompletion from './filterTasksByCompletion ';
 import { ModalContext } from './modalContext';
 import DayCalendarHead from './DayCalendarHead/DayCalendarHead';
-import CalendarToolBar from '../../CalendarToolBar/CalendarToolBar';
+import CalendarToolBar from '../CalendarToolBar/CalendarToolBar';
 
 const initialFilteredTasks = {
   'To do': [],
@@ -39,7 +39,7 @@ export default function ChoosedDay() {
   const toogleModal = (idOfCompletion) => {
     setTaskInfo(idOfCompletion);
     setModal(!modal);
-    
+
     //disable scrolling
     if (modal) { document.body.style.overflow = 'auto' }
     else { document.body.style.overflow = 'hidden' }

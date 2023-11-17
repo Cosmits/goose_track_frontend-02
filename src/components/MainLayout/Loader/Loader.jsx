@@ -11,7 +11,7 @@ function Loader() {
         position: 'absolute',
         top: 30,
         left: 30,
-        width: '100%',
+        minWidth: '90%',
         margin: '0 auto',
         zIndex: 1,
       }}

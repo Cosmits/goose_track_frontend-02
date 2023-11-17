@@ -1,4 +1,4 @@
-import { addDays, format } from 'date-fns';
+import { addDays, format, startOfWeek } from 'date-fns';
 import { useParams } from 'react-router-dom';
 
 import {
@@ -13,11 +13,12 @@ import { useMediaQuery } from 'react-responsive';
 
 function getOtherWeekDays(date) {
   const daysOfWeek = [];
+  const startOfWeekDate = startOfWeek(date, { weekStartsOn: 1 });
   
-  daysOfWeek.push(format(date, '	iii-EEEEE-d-dd-MM-yyyy'));
+  daysOfWeek.push(format(startOfWeekDate, '	iii-EEEEE-d-dd-MM-yyyy'));
   
   for (let i = 1; i <= 6; i++) {
-    const nextDay = addDays(date, i);
+    const nextDay = addDays(startOfWeekDate, i);
     daysOfWeek.push(format(nextDay, '	iii-EEEEE-d-dd-MM-yyyy'));
   }
 
