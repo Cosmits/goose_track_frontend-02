@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { SidebarWrapper } from './Sidebar.styled';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../../redux/auth/operations';
-import sidebarLogo from '/src/images/goose_logo_desktop@1x.png';
+import sidebarLogo from 'images/goose_logo_desktop@1x.png';
 import MyAccountIcon from '/src/icons/Sidebar/MyAccountIcon';
 import CloseIcon from '../../../icons/Sidebar/CloseIcon';
 import CalendarIcon from '../../../icons/Sidebar/CalendarIcon';

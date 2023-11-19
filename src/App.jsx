@@ -78,7 +78,7 @@ function App() {
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      <ToastContainer/>
+      <ToastContainer />
     </Suspense>
   );
 

@@ -9,7 +9,7 @@ import {
   UserNameIcon,
 } from './UserInfo.styled';
 import { useState, useEffect } from 'react';
-import { imageExists } from '../../../../hooks/useImageExists';
+import { imageExists } from 'hooks/useImageExists';
 
 
 const UserInfo = () => {
@@ -47,11 +47,14 @@ const UserInfo = () => {
     }
   };
 
-  const displayName = newAvatar ? (<img src={newAvatar} alt="UserAvatar" />) : (
-    <BackgroundName>
-      <UserNameIcon>{getInitials(userName)}</UserNameIcon>
-    </BackgroundName>
-  );
+  const displayName = newAvatar ?
+    (
+      <img src={newAvatar} alt="UserAvatar" />
+    ) : (
+      <BackgroundName>
+        <UserNameIcon>{getInitials(userName)}</UserNameIcon>
+      </BackgroundName>
+    );
 
   return (
     <UserInfoWrapper>

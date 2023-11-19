@@ -9,9 +9,9 @@ import {
     Button, Error, Icon, Title,
     Input, Label, LogInPicture, VerifyEmailInput
 } from '../RegisterPage/RegisterForm/RegisterForm.styled';
-import SuccessIcon from '../../images/RegisterPage/success.svg';
-import ErrorIcon from '../../images/RegisterPage/error.svg';
-import LogInIcon from '../../images/RegisterPage/login.svg';
+import SuccessIcon from 'images/RegisterPage/success.svg';
+import ErrorIcon from 'images/RegisterPage/error.svg';
+import LogInIcon from 'images/RegisterPage/login.svg';
 import { globalRegex } from '../../Styles/GlobalStyles';
 import { useNavigate } from 'react-router';
 

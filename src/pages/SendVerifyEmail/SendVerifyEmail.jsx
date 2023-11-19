@@ -1,15 +1,18 @@
-import AuthNavigate from '../../components/LoginPage/AuthNavigate/AuthNavigate';
-import { AuthFormWrap, AuthPageWrap, Picture } from '../LoginPage/LoginPage.styled';
-import gooseVerifyEmailPng from '../../images/VerifyEmailPage/goose-verify-email.png';
-import gooseVerifyEmail2xPng from '../../images/VerifyEmailPage/goose-verify-email@2x.png';
-import gooseVerifyEmailWebp from '../../images/VerifyEmailPage/goose-verify-email.webp';
-import gooseVerifyEmail2xWebp from '../../images/VerifyEmailPage/goose-verify-email@2x.webp';
-import SendVerifyEmailForm from '../../components/SendVerifyEmailPage/SendVerifyEmailForm';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
 import { getVerifyEmailUser } from '../../redux/auth/operations';
-import { useEffect } from 'react';
-import { useState } from 'react';
+
+import { AuthFormWrap, AuthPageWrap, Picture } from '../LoginPage/LoginPage.styled';
+
+import gooseVerifyEmailPng from 'images/VerifyEmailPage/goose-verify-email.png';
+import gooseVerifyEmail2xPng from 'images/VerifyEmailPage/goose-verify-email@2x.png';
+import gooseVerifyEmailWebp from 'images/VerifyEmailPage/goose-verify-email.webp';
+import gooseVerifyEmail2xWebp from 'images/VerifyEmailPage/goose-verify-email@2x.webp';
+
+import AuthNavigate from 'components/LoginPage/AuthNavigate/AuthNavigate';
+import SendVerifyEmailForm from 'components/SendVerifyEmailPage/SendVerifyEmailForm';
+
 
 const SendVerifyEmail = () => {
 

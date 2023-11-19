@@ -1,27 +1,27 @@
 import { useMediaQuery } from 'react-responsive';
-import sidebarImg from '../../../images/DescriptionList/mobile-sideBar@1x.jpg'
-import sidebarImgRetina from '../../../images/DescriptionList/mobile-sideBar@2x.jpg';
-import calendarImg from '../../../images/DescriptionList/mobile-calendar@1x.jpg';
-import calendarImgRetina from '../../../images/DescriptionList/mobile-calendar@2x.jpg';
-import taskImg from '../../../images/DescriptionList/mobile-tasks@1x.jpg';
-import taskImgRetina from '../../../images/DescriptionList/mobile-tasks@2x.jpg';
+import sidebarImg from 'images/DescriptionList/mobile-sideBar@1x.jpg'
+import sidebarImgRetina from 'images/DescriptionList/mobile-sideBar@2x.jpg';
+import calendarImg from 'images/DescriptionList/mobile-calendar@1x.jpg';
+import calendarImgRetina from 'images/DescriptionList/mobile-calendar@2x.jpg';
+import taskImg from 'images/DescriptionList/mobile-tasks@1x.jpg';
+import taskImgRetina from 'images/DescriptionList/mobile-tasks@2x.jpg';
 
-import tabletSidebarImg from '../../../images/DescriptionList/tablet-sideBar@1x.jpg';
-import tabletSidebarImgRetina from '../../../images/DescriptionList/tablet-sideBar@2x.jpg'
-import tabletCalendarImg from '../../../images/DescriptionList/tablet-calendar@1x.jpg';
-import tabletCalendarImgRetina from '../../../images/DescriptionList/tablet-calendar@2x.jpg';
-import tabletTaskImg from '../../../images/DescriptionList/tablet-tasks@1x.jpg';
-import tabletTaskImgRetina from '../../../images/DescriptionList/tablet-tasks@2x.jpg';
+import tabletSidebarImg from 'images/DescriptionList/tablet-sideBar@1x.jpg';
+import tabletSidebarImgRetina from 'images/DescriptionList/tablet-sideBar@2x.jpg'
+import tabletCalendarImg from 'images/DescriptionList/tablet-calendar@1x.jpg';
+import tabletCalendarImgRetina from 'images/DescriptionList/tablet-calendar@2x.jpg';
+import tabletTaskImg from 'images/DescriptionList/tablet-tasks@1x.jpg';
+import tabletTaskImgRetina from 'images/DescriptionList/tablet-tasks@2x.jpg';
 
-import deckSidebarImg from '../../../images/DescriptionList/desk-sideBar@1x.jpg';
-import deskSidebarImgRetina from '../../../images/DescriptionList/desk-sideBar@2x.jpg';
-import deskCalendarImg from '../../../images/DescriptionList/desk-calendar@1x.jpg';
-import deskCalendarImgRetina from '../../../images/DescriptionList/desk-calendar@2x.jpg';
-import deskTaskImg from '../../../images/DescriptionList/desk-tasks@1x.jpg';
-import deskTaskImgRetina from '../../../images/DescriptionList/desk-tasks@2x.jpg';
+import deckSidebarImg from 'images/DescriptionList/desk-sideBar@1x.jpg';
+import deskSidebarImgRetina from 'images/DescriptionList/desk-sideBar@2x.jpg';
+import deskCalendarImg from 'images/DescriptionList/desk-calendar@1x.jpg';
+import deskCalendarImgRetina from 'images/DescriptionList/desk-calendar@2x.jpg';
+import deskTaskImg from 'images/DescriptionList/desk-tasks@1x.jpg';
+import deskTaskImgRetina from 'images/DescriptionList/desk-tasks@2x.jpg';
 
 import { DescriptionImg, MiddleItem, StyledContainer, DescriptionTitle, StyledDescription, DescriptionItem, DescriptionList, StyledNumber, DescriptionPreTitle} from './Description.styled';
-import { useScreenSize } from '../../../hooks/useScreenSize';
+import { useScreenSize } from 'hooks/useScreenSize';
 
 const Description = () => {
 

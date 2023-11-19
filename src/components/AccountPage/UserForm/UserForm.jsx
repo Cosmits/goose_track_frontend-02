@@ -28,12 +28,12 @@ import { format, parse } from 'date-fns';
 
 import { selectUser } from '../../../redux/auth/selectors';
 import { updateUser } from '../../../redux/auth/operations';
-import { imageExists } from '../../../hooks/useImageExists';
+import { imageExists } from 'hooks/useImageExists';
 
 import { globalRegex } from '../../../Styles/GlobalStyles';
 
-import SuccessIcon from '../../../images/RegisterPage/success.svg';
-import ErrorIcon from '../../../images/RegisterPage/error.svg';
+import SuccessIcon from 'images/RegisterPage/success.svg';
+import ErrorIcon from 'images/RegisterPage/error.svg';
 
 registerLocale('uk', uk);
 

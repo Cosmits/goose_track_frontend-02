@@ -1,5 +1,5 @@
-import { ReactComponent as Moon } from '../../../../images/header/moon.svg';
-import { ReactComponent as Sun } from '../../../../images/header/sun.svg';
+import { ReactComponent as Moon } from 'images/header/moon.svg';
+import { ReactComponent as Sun } from 'images/header/sun.svg';
 import styled from 'styled-components';
 
 export const MoonSVG = styled(Moon)`

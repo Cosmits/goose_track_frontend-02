@@ -1,22 +1,24 @@
 // Yulia
 
-import { Formik, Form, ErrorMessage } from 'formik';
-import * as yup from 'yup';
-import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { Divider } from '@mui/material';
+import * as yup from 'yup';
+import { Formik, Form, ErrorMessage } from 'formik';
+import { useDispatch } from 'react-redux';
 
 import { register } from '../../../redux/auth/operations';
-import SuccessIcon from '../../../images/RegisterPage/success.svg';
-import ErrorIcon from '../../../images/RegisterPage/error.svg';
-import LogInIcon from '../../../images/RegisterPage/login.svg';
+
+import SuccessIcon from 'images/RegisterPage/success.svg';
+import ErrorIcon from 'images/RegisterPage/error.svg';
+import LogInIcon from 'images/RegisterPage/login.svg';
+import GoogleIcon from 'images/RegisterPage/GoogleIcon.svg'
+
 import {
     Button, DontShowIcon, Error, Icon,
     Input, InputWrap, Label, List, LogInPicture,
     PasswordButton, ShowIcon, SpanText, Title
 } from './RegisterForm.styled';
 import { globalRegex } from '../../../Styles/GlobalStyles';
-import GoogleIcon from '../../../images/RegisterPage/GoogleIcon.svg'
-import { Divider } from '@mui/material';
 
 const ErrorMessages = ({ name }) => {
     return (

@@ -6,8 +6,8 @@ import ThemeToggler from "./ThemeToggler/ThemeToggler";
 import UserInfo from "./UserInfo/UserInfo";
 import AddFeedbackModal from "../../ModalPages/AddFeedbackModal/AddFeedbackModal";
 import { useGetMonthlyTasksQuery } from "../../../redux/tasks/tasksApi";
-import { useScreenSize } from "../../../hooks/useScreenSize";
-import logoHeader from '../../../images/header/logoHeader.png';
+import { useScreenSize } from "hooks/useScreenSize";
+import logoHeader from 'images/header/logoHeader.png';
 
 const Header = ({ openSideBar }) => {
   const { isDesktop } = useScreenSize();
