@@ -35,6 +35,10 @@ import { globalRegex } from '../../../Styles/GlobalStyles';
 import SuccessIcon from 'images/RegisterPage/success.svg';
 import ErrorIcon from 'images/RegisterPage/error.svg';
 
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css'
+import { isValidPhoneNumber } from 'libphonenumber-js';
+
 registerLocale('uk', uk);
 
 export const UserForm = () => {
@@ -243,7 +247,7 @@ export const UserForm = () => {
             <div>
               <label>
                 <p>Phone</p>
-                <input
+                {/* <input
                   type="text"
                   name="phone"
                   placeholder="Enter phone number"
@@ -255,12 +259,31 @@ export const UserForm = () => {
                   style={{
                     borderColor: newPhone ? (isPhoneValid ? 'var(--correct-color)' : 'var(--error-color)') : '',
                   }}
-                />
+                /> */}
+                <PhoneInput
+                  inputClass={isPhoneValid ? 'react-phone-input valid-phone-number' : 'react-phone-input invalid-phone-number'}
+                  buttonClass={isPhoneValid ? ' valid-phone-number' : ' invalid-phone-number'}
+                  name="phone"
+                  placeholder="Enter phone number"
+                  value={newPhone}
+                  enableSearch
+                  onChange={(value, country) => {
+                    const phoneNumber = `+${value}`;
+                    setNewPhone(phoneNumber);
+                    setIsPhoneValid(isValidPhoneNumber(phoneNumber, country.countryCode))
+                  }}
+                  style={{
+                    borderColor: newPhone ? (isPhoneValid ? 'var(--correct-color) !important' : 'var(--error-color) !important') : '',
+                  }}
+                >
+
+                </PhoneInput>
                 {newPhone ? (isPhoneValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
               </label>
               <label>
                 <p>Skype</p>
                 <input
+                  
                   type="text"
                   name="skype"
                   placeholder="Enter skype"

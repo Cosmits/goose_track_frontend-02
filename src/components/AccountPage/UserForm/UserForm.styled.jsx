@@ -194,11 +194,12 @@ export const Forma = styled.form`
 
   }
 
-  & > div > div > label > input {
-    width: 100%;
-    height: 42px;
-    border-radius: 8px;
-    border: 1px solid ${({ theme }) => theme.borderInputColor};
+  & > div > div > label > input,
+  .react-phone-input {
+    width: 100% !important;
+    height: 42px !important;
+    border-radius: 8px !important;
+    border: 1px solid ${({ theme }) => theme.borderInputColor} ;
     padding: 12px 14px;
     font-size: 14px;
     line-height: 18px;
@@ -221,10 +222,18 @@ export const Forma = styled.form`
     }
 
     @media screen and (min-width: 1440px) {
-      width: 354px;
-      height: 46px;
+      width: 354px !important;
+      height: 46px !important;
     }
   }
+
+.valid-phone-number {
+  border-color: var(--correct-color) !important;
+}
+
+.invalid-phone-number {
+  border-color: var(--error-color) !important;
+}
 
   & > div > div > label > p {
     color: ${({ theme }) => theme.labelTextColor};
