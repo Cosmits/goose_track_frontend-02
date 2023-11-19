@@ -244,7 +244,7 @@ export const Forma = styled.form`
     background-color: inherit !important;
     border-radius: 8px;
   }
-  
+  .react-tel-input .flag-dropdown,
   .flag-dropdown {
     border-radius: 8px 0 0 8px
   }

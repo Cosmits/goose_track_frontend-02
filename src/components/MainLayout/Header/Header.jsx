@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { BurgerMenu, HeaderCurrentPage, HeaderTask, HeaderUser, HeaderWrapper, LogoHeader, NoTaskTitle, NoTaskWrapper } from "./Header.styled";
+import { useLocation } from "react-router-dom";
+import {
+  AccountLink,
+  BurgerMenu, HeaderCurrentPage,
+  HeaderTask, HeaderUser, HeaderWrapper, LogoHeader,
+  NoTaskTitle, NoTaskWrapper
+} from "./Header.styled";
 import AddFeedbackBtn from "./FeedbackBtn/AddFeedbackBtn";
 import ThemeToggler from "./ThemeToggler/ThemeToggler";
 import UserInfo from "./UserInfo/UserInfo";
@@ -78,9 +83,9 @@ const Header = ({ openSideBar }) => {
       <HeaderUser>
         <AddFeedbackBtn openModal={toggleModal} />
         <ThemeToggler />
-        <Link to="/account">
+        <AccountLink to="/account">
           <UserInfo />
-        </Link>{' '}
+        </AccountLink>{' '}
       </HeaderUser>
       {showModal && <AddFeedbackModal onClose={toggleModal} />}
     </HeaderWrapper>
