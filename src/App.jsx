@@ -47,7 +47,16 @@ function App() {
   return isRefreshing ? (
     <>
       <Loader />
-      <h2 style={{ marginTop: "160px", textAlign: "center" }} > Please wait, BackEnd https://goose-track-backend-02.onrender.com now is not ready ... </h2>
+      <h2 style={{
+        marginTop: "160px",
+        textAlign: "center",
+        position: 'absolute',
+        top: 150,
+        left: 30,
+        minWidth: '90%',
+        margin: '0 auto',
+        zIndex: 1,
+      }} > Please wait, BackEnd https://goose-track-backend-02.onrender.com now is not ready ... </h2>
     </>
   ) : (
     <Suspense >
