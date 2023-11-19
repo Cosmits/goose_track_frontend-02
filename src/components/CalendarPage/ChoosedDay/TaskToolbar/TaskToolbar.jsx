@@ -15,7 +15,7 @@ import { useState } from 'react';
 import { useModal } from '../modalContext';
 
 export default function TaskToolbar({ id }) {
-  const { toogleModal } = useModal();
+  const { toggleModal } = useModal();
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -38,7 +38,7 @@ export default function TaskToolbar({ id }) {
     edit: {
       component: <EditIcon />,
       onClickCallback: () => {
-        toogleModal(id);
+        toggleModal(id);
       },
     },
     remove: {

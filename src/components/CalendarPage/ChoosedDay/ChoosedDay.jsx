@@ -36,7 +36,7 @@ export default function ChoosedDay() {
     };
   }, [currentDay, tasksByDay]);
 
-  const toogleModal = (idOfCompletion) => {
+  const toggleModal = (idOfCompletion) => {
     setTaskInfo(idOfCompletion);
     setModal(!modal);
 
@@ -50,10 +50,10 @@ export default function ChoosedDay() {
     <>
       <CalendarToolBar />
       <ChoosedDaySection>
-        <ModalContext.Provider value={{ toogleModal }}>
+        <ModalContext.Provider value={{ toggleModal }}>
           <DayCalendarHead />
           <TasksColumnsList filteredTasks={filteredTasks} />
-          {modal && <TaskModal category={taskInfo} closeModal={toogleModal} />}
+          {modal && <TaskModal category={taskInfo} closeModal={toggleModal} />}
         </ModalContext.Provider>
       </ChoosedDaySection>
     </>

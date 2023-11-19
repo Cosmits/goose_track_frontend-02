@@ -8,13 +8,13 @@ import {
 import { useModal } from '../modalContext';
 
 export default function AddTaskBtn({ idOfCompletion }) {
-  const { toogleModal } = useModal();
+  const { toggleModal } = useModal();
 
   return (
     <AddTaskButton
       type="button"
       onClick={() => {
-        toogleModal(idOfCompletion);
+        toggleModal(idOfCompletion);
       }}
     >
       <AddTaskButtonIcon />

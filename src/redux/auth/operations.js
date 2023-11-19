@@ -162,7 +162,9 @@ export const deleteUser = createAsyncThunk(
     const theme = thunkAPI.getState()?.theme?.currentTheme;
     try {
       const response = await axios.delete('/users/delete', {
-        data: secretKey,
+        data: {
+          secretKey
+        }
       });
 
       return response.data;
