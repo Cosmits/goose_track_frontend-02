@@ -38,12 +38,23 @@ import ErrorIcon from 'images/RegisterPage/error.svg';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css'
 import { isValidPhoneNumber } from 'libphonenumber-js';
+import DelProfileModal from '../../ModalPages/DelProfileModal/DelProfileModal';
 
 registerLocale('uk', uk);
 
 export const UserForm = () => {
   const { userName, email, phone, skype, birthday, avatarURL } =
     useSelector(selectUser)
+
+
+  const [showModalDel, setShowModalDel] = useState(false);
+  const toggleModalDel = () => {
+    setShowModalDel(!showModalDel);
+
+    //disable scrolling
+    if (showModalDel) { document.body.style.overflow = 'hidden' }
+    else { document.body.style.overflow = 'auto' }
+  };
 
   const [startDate, setStartDate] = useState(
     birthday === '' ? new Date() : parse(birthday, 'dd/MM/yyyy', new Date()),
@@ -261,6 +272,8 @@ export const UserForm = () => {
                   }}
                 /> */}
                 <PhoneInput
+                  containerStyle={{ backgroundColor: 'inherit !important' }}
+                  inputStyle={{ backgroundColor: 'inherit !important' }}
                   inputClass={isPhoneValid ? 'react-phone-input valid-phone-number' : 'react-phone-input invalid-phone-number'}
                   buttonClass={isPhoneValid ? ' valid-phone-number' : ' invalid-phone-number'}
                   name="phone"
@@ -272,9 +285,9 @@ export const UserForm = () => {
                     setNewPhone(phoneNumber);
                     setIsPhoneValid(isValidPhoneNumber(phoneNumber, country.countryCode))
                   }}
-                  style={{
-                    borderColor: newPhone ? (isPhoneValid ? 'var(--correct-color) !important' : 'var(--error-color) !important') : '',
-                  }}
+                  // style={{
+                  //   borderColor: newPhone ? (isPhoneValid ? 'var(--correct-color) !important' : 'var(--error-color) !important') : '',
+                  // }}
                 >
 
                 </PhoneInput>
@@ -283,7 +296,6 @@ export const UserForm = () => {
               <label>
                 <p>Skype</p>
                 <input
-                  
                   type="text"
                   name="skype"
                   placeholder="Enter skype"
@@ -303,10 +315,13 @@ export const UserForm = () => {
               Save
             </Button>
             <PasswordBtn>Change Password</PasswordBtn>
-            <DeleteBtn>Delete account</DeleteBtn>
+            <DeleteBtn onClick={toggleModalDel}>
+              Delete account
+            </DeleteBtn>
           </InputWrapper>
         </Forma>
       </Container>
+      {showModalDel && <DelProfileModal onClose={toggleModalDel} />}
     </ContainerWrapper>
   );
 };

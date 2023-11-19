@@ -130,7 +130,7 @@ export const Label = styled.label`
   cursor: pointer;
 `;
 
-const StyledRadio = styled.input`
+export const StyledRadio = styled.input`
   font-family: 'InterSemiBold', sans-serif;
   margin-right: 16px;
   width: 10px;

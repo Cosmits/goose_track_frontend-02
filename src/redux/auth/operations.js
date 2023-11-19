@@ -2,7 +2,8 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { showSuccessToast, showErrorToast } from '../../services/showToast';
 
-axios.defaults.baseURL = 'https://goose-track-backend-02.onrender.com';
+// axios.defaults.baseURL = 'https://goose-track-backend-02.onrender.com';
+axios.defaults.baseURL = 'http://localhost:5000';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -159,10 +160,13 @@ export const getVerifyEmailUser = createAsyncThunk(
 export const deleteUser = createAsyncThunk(
   '/users/delete',
   async (secretKey, thunkAPI) => {
+    console.log("🚀 ~ file: operations.js:162 ~ secretKey:", secretKey)
     const theme = thunkAPI.getState()?.theme?.currentTheme;
     try {
       const response = await axios.delete('/users/delete', {
-        data: secretKey,
+        data: {
+          secretKey
+        }
       });
 
       return response.data;

@@ -208,6 +208,10 @@ export const Forma = styled.form`
     outline: none;
     background-color: inherit;
 
+    & > div {
+      background-color: inherit;
+    }
+
     &::placeholder {
       color: ${({ theme }) => theme.borderInputColor};
       font-weight: 600;
@@ -219,7 +223,9 @@ export const Forma = styled.form`
     &:hover,
     &:focus {
       border-color: var(--black);
+      background-color: inherit !important;  
     }
+
 
     @media screen and (min-width: 1440px) {
       width: 354px !important;
@@ -227,14 +233,30 @@ export const Forma = styled.form`
     }
   }
 
-.valid-phone-number {
-  border-color: var(--correct-color) !important;
-}
+  .valid-phone-number {
+    border-color: var(--correct-color) !important;
+    background-color: inherit !important;
+    border-radius: 8px;
+  }
 
-.invalid-phone-number {
-  border-color: var(--error-color) !important;
-}
+  .invalid-phone-number {
+    border-color: var(--error-color) !important;
+    background-color: inherit !important;
+    border-radius: 8px;
+  }
+  
+  .flag-dropdown {
+    border-radius: 8px 0 0 8px
+  }
+  
+  .selected-flag,
+  .selected-flag:hover,
+  .selected-flag:focus {
+    background-color: inherit !important;  
+  }
 
+
+  
   & > div > div > label > p {
     color: ${({ theme }) => theme.labelTextColor};
     font-size: 12px;
