@@ -245,8 +245,10 @@ export const Forma = styled.form`
     border-radius: 8px;
   }
   .react-tel-input .flag-dropdown,
-  .flag-dropdown {
-    border-radius: 8px 0 0 8px
+  .flag-dropdown,
+  .react-tel-input .form-control:focus,
+  .react-tel-input .flag-dropdown.open .selected-flag {
+    border-radius: 8px 0 0 8px !important;
   }
   
   .selected-flag,
@@ -292,7 +294,8 @@ export const Forma = styled.form`
     background-color: inherit;
 
     &::placeholder {
-      color: var(--calendar-date-color);
+      color: ${({ theme }) => theme.borderInputColor};
+      font-weight: 600;
       font-size: 14px;
       line-height: 18px;
       font-weight: 400;

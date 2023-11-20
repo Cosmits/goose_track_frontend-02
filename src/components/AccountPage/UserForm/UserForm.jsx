@@ -57,7 +57,7 @@ export const UserForm = () => {
   };
 
   const [startDate, setStartDate] = useState(
-    birthday === '' ? new Date() : parse(birthday, 'dd/MM/yyyy', new Date()),
+    birthday === '' ? '' : parse(birthday, 'dd/MM/yyyy', new Date()),
   )
 
   const [newUserName, setNewUserName] = useState(userName ?? '')
@@ -210,6 +210,8 @@ export const UserForm = () => {
                   <p>Birthday</p>
                   <DatePicker
                     dateFormat="dd/MM/yyyy"
+
+                    placeholderText={'Select your Birthday'}
                     calendarStartDay={1}
                     selected={startDate}
                     onChange={(date) => {
@@ -217,7 +219,7 @@ export const UserForm = () => {
                       if (date) {
                         setIsBirthdayValid(globalRegex.birthdayRegexp.test(format(date, 'dd/MM/yyyy')));
                       } else {
-                        setIsBirthdayValid(false);
+                        setIsBirthdayValid(true);
                       }
 
                     }}
@@ -274,22 +276,19 @@ export const UserForm = () => {
                 <PhoneInput
                   containerStyle={{ backgroundColor: 'inherit !important' }}
                   inputStyle={{ backgroundColor: 'inherit !important' }}
-                  inputClass={isPhoneValid ? 'react-phone-input valid-phone-number' : 'react-phone-input invalid-phone-number'}
-                  buttonClass={isPhoneValid ? ' valid-phone-number' : ' invalid-phone-number'}
+                  inputClass={newPhone ? (isPhoneValid ? 'react-phone-input valid-phone-number' : 'react-phone-input invalid-phone-number'
+                  ) : ('react-phone-input')}
+                  buttonClass={newPhone ? (isPhoneValid ? ' valid-phone-number' : ' invalid-phone-number') : ('')}
                   name="phone"
                   placeholder="Enter phone number"
                   value={newPhone}
                   enableSearch
                   onChange={(value, country) => {
-                    const phoneNumber = `+${value}`;
+                    const phoneNumber = value ? `+${value}` : '';
                     setNewPhone(phoneNumber);
                     setIsPhoneValid(isValidPhoneNumber(phoneNumber, country.countryCode))
                   }}
-                  // style={{
-                  //   borderColor: newPhone ? (isPhoneValid ? 'var(--correct-color) !important' : 'var(--error-color) !important') : '',
-                  // }}
                 >
-
                 </PhoneInput>
                 {newPhone ? (isPhoneValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
               </label>
