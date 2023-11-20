@@ -40,6 +40,7 @@ import 'react-phone-input-2/lib/style.css'
 import { isValidPhoneNumber } from 'libphonenumber-js';
 import DelProfileModal from '../../ModalPages/DelProfileModal/DelProfileModal';
 
+
 registerLocale('uk', uk);
 
 export const UserForm = () => {
@@ -56,12 +57,9 @@ export const UserForm = () => {
     else { document.body.style.overflow = 'auto' }
   };
 
-  const [startDate, setStartDate] = useState(
-    birthday === '' ? '' : parse(birthday, 'dd/MM/yyyy', new Date()),
-  )
-
   const [newUserName, setNewUserName] = useState(userName ?? '')
   const [newEmail, setNewEmail] = useState(email ?? '')
+  const [newBirthday, setNewBirthday] = useState(birthday ?? '')
   const [newPhone, setNewPhone] = useState(phone ?? '')
   const [newSkype, setNewSkype] = useState(skype ?? '')
   const [newAvatar, setNewAvatar] = useState(avatarURL ?? '')
@@ -82,7 +80,7 @@ export const UserForm = () => {
     email !== newEmail ||
     phone !== newPhone ||
     skype !== newSkype ||
-    birthday !== (startDate && format(startDate, 'dd/MM/yyyy')) ||
+    birthday !== newBirthday ||
     avatarPreviewUrl !== '';
 
   useEffect(() => {
@@ -153,8 +151,8 @@ export const UserForm = () => {
     if (skype !== newSkype) {
       formData.append('skype', newSkype);
     }
-    if (birthday !== format(startDate, 'dd/MM/yyyy')) {
-      formData.append('birthday', format(startDate, 'dd/MM/yyyy'));
+    if (birthday !== newBirthday) {
+      formData.append('birthday', newBirthday);
     }
     if (avatarPreviewUrl !== '') {
       formData.append('avatarURL', newAvatar);
@@ -213,27 +211,24 @@ export const UserForm = () => {
 
                     placeholderText={'Select your Birthday'}
                     calendarStartDay={1}
-                    selected={startDate}
+                    selected={newBirthday && parse(newBirthday, 'dd/MM/yyyy', new Date())}
                     onChange={(date) => {
-                      setStartDate(date)
                       if (date) {
+                        setNewBirthday(format(date, 'dd/MM/yyyy'))
                         setIsBirthdayValid(globalRegex.birthdayRegexp.test(format(date, 'dd/MM/yyyy')));
-                      } else {
-                        setIsBirthdayValid(true);
+                      } else { 
+                        setNewBirthday('')
                       }
-
                     }}
                     customInput={
                       <CustomInput
                         type="text"
                         name="birthday"
-                        placeholder={format(new Date(), 'dd/MM/yyyy')}
-                        value={startDate?.toString()}
-                        style={{ borderColor: birthday ? (isBirthdayValid ? 'var(--correct-color)' : 'var(--error-color)') : '', }}
+                        style={{ borderColor: newBirthday ? (isBirthdayValid ? 'var(--correct-color)' : 'var(--error-color)') : '', }}
                       />
                     }
                   />
-                  {birthday ? (isBirthdayValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
+                  {newBirthday ? (isBirthdayValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
                 </label>
               </div>
               <div>
