@@ -1,4 +1,4 @@
-import{s as i,o as e}from"./index-1c3e6e26.js";const t=i.div`
+import{s as i,p as e}from"./index-8aedb9e5.js";const t=i.div`
   background-color: var(--backdrop-blue);
   min-height: 100vh;
   display: flex;
@@ -10,7 +10,7 @@ import{s as i,o as e}from"./index-1c3e6e26.js";const t=i.div`
   @media screen and (min-width: 768px) {
     gap: 24px;
   }
-`,o=i.div`
+`,a=i.div`
   width:335px;
   box-sizing:border-box;
   padding: 40px 24px;
@@ -21,7 +21,7 @@ import{s as i,o as e}from"./index-1c3e6e26.js";const t=i.div`
     width:480px;
     padding: 40px;
   } 
-`,a=i.div`
+`,o=i.div`
   position:absolute;
   bottom: 19px;
   right: 60px;
@@ -37,7 +37,7 @@ import{s as i,o as e}from"./index-1c3e6e26.js";const t=i.div`
    @media screen and (max-width: 1439px) {
     display:none;
   } 
-`,d=i.div`
+`,p=i.div`
   display: flex;
   flex-direction: row;
   gap: 30px
@@ -61,4 +61,4 @@ import{s as i,o as e}from"./index-1c3e6e26.js";const t=i.div`
   font-size: 18px;
   line-height: 1.33;
   }
-`;export{t as A,d as L,a as P,o as a,r as b};
+`;export{t as A,p as L,o as P,a,r as b};
