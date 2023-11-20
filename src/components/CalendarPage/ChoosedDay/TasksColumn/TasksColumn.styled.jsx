@@ -10,6 +10,6 @@ export const TaskColumn = styled.li`
 
   @media screen and (min-width: 768px) {
     width: 344px;
-    padding: 18px 8px 28px 20px;
+    padding: 18px 20px 28px 20px;
   }
 `;

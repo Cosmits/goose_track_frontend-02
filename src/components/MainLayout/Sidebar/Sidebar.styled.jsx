@@ -205,9 +205,6 @@ export const SidebarWrapper = styled.div`
         padding-right: 70px;
       }
     }
-    /* .logo-img {
-      content: url(./src/images/goose_logo_tablet.png);
-    } */
   }
 
   @media (max-width: 768px) {

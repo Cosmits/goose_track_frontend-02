@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { Checkmark } from 'react-checkmark'
 
 import {
   ContainerWrapper,
@@ -29,12 +28,18 @@ import { format, parse } from 'date-fns';
 
 import { selectUser } from '../../../redux/auth/selectors';
 import { updateUser } from '../../../redux/auth/operations';
-import { imageExists } from '../../../hooks/useImageExists';
+import { imageExists } from 'hooks/useImageExists';
 
 import { globalRegex } from '../../../Styles/GlobalStyles';
 
-import SuccessIcon from '../../../images/RegisterPage/success.svg';
-import ErrorIcon from '../../../images/RegisterPage/error.svg';
+import SuccessIcon from 'images/RegisterPage/success.svg';
+import ErrorIcon from 'images/RegisterPage/error.svg';
+
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css'
+import { isValidPhoneNumber } from 'libphonenumber-js';
+import DelProfileModal from '../../ModalPages/DelProfileModal/DelProfileModal';
+
 
 registerLocale('uk', uk);
 
@@ -42,12 +47,19 @@ export const UserForm = () => {
   const { userName, email, phone, skype, birthday, avatarURL } =
     useSelector(selectUser)
 
-  const [startDate, setStartDate] = useState(
-    birthday === '' ? new Date() : parse(birthday, 'dd/MM/yyyy', new Date()),
-  )
+
+  const [showModalDel, setShowModalDel] = useState(false);
+  const toggleModalDel = () => {
+    setShowModalDel(!showModalDel);
+
+    //disable scrolling
+    if (showModalDel) { document.body.style.overflow = 'hidden' }
+    else { document.body.style.overflow = 'auto' }
+  };
 
   const [newUserName, setNewUserName] = useState(userName ?? '')
   const [newEmail, setNewEmail] = useState(email ?? '')
+  const [newBirthday, setNewBirthday] = useState(birthday ?? '')
   const [newPhone, setNewPhone] = useState(phone ?? '')
   const [newSkype, setNewSkype] = useState(skype ?? '')
   const [newAvatar, setNewAvatar] = useState(avatarURL ?? '')
@@ -68,7 +80,7 @@ export const UserForm = () => {
     email !== newEmail ||
     phone !== newPhone ||
     skype !== newSkype ||
-    birthday !== (startDate && format(startDate, 'dd/MM/yyyy')) ||
+    birthday !== newBirthday ||
     avatarPreviewUrl !== '';
 
   useEffect(() => {
@@ -78,7 +90,7 @@ export const UserForm = () => {
       }
     };
   }, [avatarPreviewUrl]);
-  
+
   useEffect(() => {
     function checkImg() {
       imageExists(avatarURL).then(function (exists) {
@@ -89,12 +101,12 @@ export const UserForm = () => {
     checkImg()
   }, [avatarURL])
 
-  
+
   useEffect(() => {
     if (isSaving) {
       const id = setTimeout(() => {
         setIsSaving(false);
-        
+
       }, 3000);
       return () => {
         clearTimeout(id)
@@ -139,8 +151,8 @@ export const UserForm = () => {
     if (skype !== newSkype) {
       formData.append('skype', newSkype);
     }
-    if (birthday !== format(startDate, 'dd/MM/yyyy')) {
-      formData.append('birthday', format(startDate, 'dd/MM/yyyy'));
+    if (birthday !== newBirthday) {
+      formData.append('birthday', newBirthday);
     }
     if (avatarPreviewUrl !== '') {
       formData.append('avatarURL', newAvatar);
@@ -196,28 +208,27 @@ export const UserForm = () => {
                   <p>Birthday</p>
                   <DatePicker
                     dateFormat="dd/MM/yyyy"
-                    calendarStartDay={1}
-                    selected={startDate}
-                    onChange={(date) => {
-                      setStartDate(date)
-                      if (date) {
-                        setIsBirthdayValid(globalRegex.birthdayRegexp.test(format(date, 'dd/MM/yyyy')));
-                      } else {
-                        setIsBirthdayValid(false);
-                      }
 
+                    placeholderText={'Select your Birthday'}
+                    calendarStartDay={1}
+                    selected={newBirthday && parse(newBirthday, 'dd/MM/yyyy', new Date())}
+                    onChange={(date) => {
+                      if (date) {
+                        setNewBirthday(format(date, 'dd/MM/yyyy'))
+                        setIsBirthdayValid(globalRegex.birthdayRegexp.test(format(date, 'dd/MM/yyyy')));
+                      } else { 
+                        setNewBirthday('')
+                      }
                     }}
                     customInput={
                       <CustomInput
                         type="text"
                         name="birthday"
-                        placeholder={format(new Date(), 'dd/MM/yyyy')}
-                        value={startDate?.toString()}
-                        style={{ borderColor: birthday ? (isBirthdayValid ? 'var(--correct-color)' : 'var(--error-color)') : '', }}
+                        style={{ borderColor: newBirthday ? (isBirthdayValid ? 'var(--correct-color)' : 'var(--error-color)') : '', }}
                       />
                     }
                   />
-                  {birthday ? (isBirthdayValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
+                  {newBirthday ? (isBirthdayValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
                 </label>
               </div>
               <div>
@@ -244,7 +255,7 @@ export const UserForm = () => {
             <div>
               <label>
                 <p>Phone</p>
-                <input
+                {/* <input
                   type="text"
                   name="phone"
                   placeholder="Enter phone number"
@@ -256,7 +267,24 @@ export const UserForm = () => {
                   style={{
                     borderColor: newPhone ? (isPhoneValid ? 'var(--correct-color)' : 'var(--error-color)') : '',
                   }}
-                />
+                /> */}
+                <PhoneInput
+                  containerStyle={{ backgroundColor: 'inherit !important' }}
+                  inputStyle={{ backgroundColor: 'inherit !important' }}
+                  inputClass={newPhone ? (isPhoneValid ? 'react-phone-input valid-phone-number' : 'react-phone-input invalid-phone-number'
+                  ) : ('react-phone-input')}
+                  buttonClass={newPhone ? (isPhoneValid ? ' valid-phone-number' : ' invalid-phone-number') : ('')}
+                  name="phone"
+                  placeholder="Enter phone number"
+                  value={newPhone}
+                  enableSearch
+                  onChange={(value, country) => {
+                    const phoneNumber = value ? `+${value}` : '';
+                    setNewPhone(phoneNumber);
+                    setIsPhoneValid(isValidPhoneNumber(phoneNumber, country.countryCode))
+                  }}
+                >
+                </PhoneInput>
                 {newPhone ? (isPhoneValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
               </label>
               <label>
@@ -277,20 +305,17 @@ export const UserForm = () => {
                 {newSkype ? (isSkypeValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
               </label>
             </div>
-            {isSaving ? (
-              <div style={{ marginTop: '8px' }} >
-                <Checkmark />
-              </div>
-            ) : (
-              <Button type="submit" disabled={isSaving || !someChanges} >
-                Save
-              </Button>
-            )}
+            <Button type="submit" disabled={isSaving || !someChanges} >
+              Save
+            </Button>
             <PasswordBtn>Change Password</PasswordBtn>
-            <DeleteBtn>Delete account</DeleteBtn>
+            <DeleteBtn onClick={toggleModalDel}>
+              Delete account
+            </DeleteBtn>
           </InputWrapper>
         </Forma>
       </Container>
+      {showModalDel && <DelProfileModal onClose={toggleModalDel} />}
     </ContainerWrapper>
   );
 };

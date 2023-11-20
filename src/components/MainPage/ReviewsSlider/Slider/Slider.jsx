@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import 'react-multi-carousel/lib/styles.css'; //documentation: https://www.npmjs.com/package/react-multi-carousel
@@ -34,12 +33,13 @@ export default function Slider({ reviews }) {
       >
         {reviews.map((review) => {
           const { owner, rating, comment } = review;
+          console.log("🚀 ~ file: Slider.jsx:36 ~ {reviews.map ~ owner:", owner)
 
           return (
             <ReviewCard
-              key={owner._id}
-              avatar={owner.avatarURL}
-              name={owner.userName}
+              key={owner?._id}
+              avatar={owner?.avatarURL}
+              name={owner?.userName}
               rating={rating}
               comment={comment}
             />

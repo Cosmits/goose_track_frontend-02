@@ -1,4 +1,4 @@
-import Datepicker from '../Datepicker/Datepicker';
+import Datepicker from './Datepicker/Datepicker';
 import { useLocation, useNavigate  } from 'react-router-dom';
 import { format } from 'date-fns';
 import { ToolBarGlobalStyles } from './CalendarToolBar.styled';

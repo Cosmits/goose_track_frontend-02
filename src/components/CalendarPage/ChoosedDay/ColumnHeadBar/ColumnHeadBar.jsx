@@ -8,14 +8,14 @@ import {
 import { useModal } from '../modalContext';
 
 export default function ColumnHeadBar({ title, idOfCompletion }) {
-  const { toogleModal } = useModal();
+  const { toggleModal } = useModal();
   return (
     <ColumnHeadBarWrapper>
       <ColumnHeadBarTitle>{title}</ColumnHeadBarTitle>
       <button
         type="button"
         onClick={() => {
-          toogleModal(idOfCompletion);
+          toggleModal(idOfCompletion);
         }}
       >
         <ColumnHeadBarAddTaskIcon />

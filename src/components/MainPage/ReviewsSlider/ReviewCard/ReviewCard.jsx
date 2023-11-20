@@ -10,6 +10,8 @@ import {
   CardText,
   Comment,
 } from './ReviewCard.styled';
+import { useEffect, useState } from 'react';
+import { imageExists } from 'hooks/useImageExists';
 
 export default function ReviewCard({
   name = 'No name',
@@ -17,11 +19,24 @@ export default function ReviewCard({
   comment = 'No comment',
   avatar = null,
 }) {
+  
+  const [newAvatar, setNewAvatar] = useState(avatar ?? '');
+
+  useEffect(() => {
+    function checkImg() {
+      imageExists(avatar).then(function (exists) {
+        if (!exists) setNewAvatar('')
+        else setNewAvatar(avatar)
+      });
+    }
+    checkImg()
+  }, [avatar, newAvatar])
+
   return (
     <Card>
       <CardInfo>
-        {avatar ? (
-          <AvatarPicture src={avatar} />
+        {newAvatar ? (
+          <AvatarPicture src={newAvatar} />
         ) : (
           <AvatarName>{name[0].toUpperCase()}</AvatarName>
         )}

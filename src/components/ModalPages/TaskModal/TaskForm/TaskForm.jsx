@@ -24,9 +24,9 @@ import {
   useCreateTasksMutation,
   useEditTasksMutation,
   useGetMonthlyTasksQuery,
-} from '../../redux/tasks/tasksApi';
-import { showErrorToast } from '../../services/showToast';
-import { selectTheme } from '../../redux/theme/themeSlice';
+} from '../../../../redux/tasks/tasksApi';
+import { showErrorToast } from '../../../../services/showToast';
+import { selectTheme } from '../../../../redux/theme/themeSlice';
 import { useSelector } from 'react-redux';
 
 const TaskForm = ({ initialData, closeModal, category = '' }) => {

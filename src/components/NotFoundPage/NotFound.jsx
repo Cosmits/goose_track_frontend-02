@@ -1,11 +1,11 @@
-import gooseNotFoundMobileWebp from '../../images/NotFoundPage/error-goose-mobile.webp';
-import gooseNotFoundMobileWebp2x from '../../images/NotFoundPage/error-goose-mobile@2x.webp';
-import gooseNotFoundMobilePng from '../../images/NotFoundPage/error-goose-mobile.png';
-import gooseNotFoundMobilePng2x from '../../images/NotFoundPage/error-goose-mobile@2x.png';
-import gooseNotFoundWebp from '../../images/NotFoundPage/error-goose.webp';
-import gooseNotFoundWebp2x from '../../images/NotFoundPage/error-goose@2x.webp';
-import gooseNotFoundPng from '../../images/NotFoundPage/error-goose.png';
-import gooseNotFoundPng2x from '../../images/NotFoundPage/error-goose@2x.png';
+import gooseNotFoundMobileWebp from 'images/NotFoundPage/error-goose-mobile.webp';
+import gooseNotFoundMobileWebp2x from 'images/NotFoundPage/error-goose-mobile@2x.webp';
+import gooseNotFoundMobilePng from 'images/NotFoundPage/error-goose-mobile.png';
+import gooseNotFoundMobilePng2x from 'images/NotFoundPage/error-goose-mobile@2x.png';
+import gooseNotFoundWebp from 'images/NotFoundPage/error-goose.webp';
+import gooseNotFoundWebp2x from 'images/NotFoundPage/error-goose@2x.webp';
+import gooseNotFoundPng from 'images/NotFoundPage/error-goose.png';
+import gooseNotFoundPng2x from 'images/NotFoundPage/error-goose@2x.png';
 
 import { Button, Container, ErrorText, ImgWrap, Picture, TextWithImg } from './NotFound.styled';
 

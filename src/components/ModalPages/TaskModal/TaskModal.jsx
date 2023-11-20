@@ -1,5 +1,5 @@
 import Modal from '../Modal/Modal';
-import TaskForm from '../TaskForm/TaskForm';
+import TaskForm from './TaskForm/TaskForm';
 
 const TaskModal = ({ initialData, closeModal, category }) => {
   return (

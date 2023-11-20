@@ -11,11 +11,12 @@ import {
     Input, InputWrap, Label, List, LogInPicture,
     PasswordButton, ShowIcon, SpanText, Title
 } from '../../RegisterPage/RegisterForm/RegisterForm.styled'
-import SuccessIcon from '../../../images/RegisterPage/success.svg';
-import ErrorIcon from '../../../images/RegisterPage/error.svg';
-import LogInIcon from '../../../images/RegisterPage/login.svg';
+import SuccessIcon from 'images/RegisterPage/success.svg';
+import ErrorIcon from 'images/RegisterPage/error.svg';
+import LogInIcon from 'images/RegisterPage/login.svg';
+import GoogleIcon from 'images/RegisterPage/GoogleIcon.svg'
+
 import { globalRegex } from '../../../Styles/GlobalStyles';
-import GoogleIcon from '../../../images/RegisterPage/GoogleIcon.svg'
 import { Divider } from '@mui/material';
 import { showSuccessToast } from '../../../services/showToast';
 

@@ -9,7 +9,7 @@ const AddFeedbackModal = ({ onClose }) => {
     <Modal onClose={onClose}>
       <FeedbackForm onClose={onClose} />
     </Modal>
-)
+  )
 };
 
 AddFeedbackModal.propTypes = {

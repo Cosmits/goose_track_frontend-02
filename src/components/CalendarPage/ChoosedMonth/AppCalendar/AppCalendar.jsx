@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
-import { AppCalendarGlobalStyles } from './AppCalendar.styled';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useNavigate } from 'react-router-dom';
-import { useGetMonthlyTasksQuery } from '../../redux/tasks/tasksApi';
 import { format, startOfToday } from 'date-fns';
+
+import { useGetMonthlyTasksQuery } from '../../../../redux/tasks/tasksApi';
+import { AppCalendarGlobalStyles } from './AppCalendar.styled';
 
 moment.locale('uk', {
   week: {
@@ -87,7 +88,7 @@ const AppCalendar = ({ toolbar }) => {
   };
 
   const handleNavigateMonth = (date) => {
-    if(date !== undefined) {
+    if (date !== undefined) {
       setCurrentData(format(date, 'yyyy-MM'));
     }
   };

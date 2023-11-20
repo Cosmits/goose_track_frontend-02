@@ -194,11 +194,12 @@ export const Forma = styled.form`
 
   }
 
-  & > div > div > label > input {
-    width: 100%;
-    height: 42px;
-    border-radius: 8px;
-    border: 1px solid ${({ theme }) => theme.borderInputColor};
+  & > div > div > label > input,
+  .react-phone-input {
+    width: 100% !important;
+    height: 42px !important;
+    border-radius: 8px !important;
+    border: 1px solid ${({ theme }) => theme.borderInputColor} ;
     padding: 12px 14px;
     font-size: 14px;
     line-height: 18px;
@@ -206,6 +207,10 @@ export const Forma = styled.form`
     color: var(--calendar-date-color);
     outline: none;
     background-color: inherit;
+
+    & > div {
+      background-color: inherit;
+    }
 
     &::placeholder {
       color: ${({ theme }) => theme.borderInputColor};
@@ -218,14 +223,42 @@ export const Forma = styled.form`
     &:hover,
     &:focus {
       border-color: var(--black);
+      background-color: inherit !important;  
     }
 
+
     @media screen and (min-width: 1440px) {
-      width: 354px;
-      height: 46px;
+      width: 354px !important;
+      height: 46px !important;
     }
   }
 
+  .valid-phone-number {
+    border-color: var(--correct-color) !important;
+    background-color: inherit !important;
+    border-radius: 8px;
+  }
+
+  .invalid-phone-number {
+    border-color: var(--error-color) !important;
+    background-color: inherit !important;
+    border-radius: 8px;
+  }
+  .react-tel-input .flag-dropdown,
+  .flag-dropdown,
+  .react-tel-input .form-control:focus,
+  .react-tel-input .flag-dropdown.open .selected-flag {
+    border-radius: 8px 0 0 8px !important;
+  }
+  
+  .selected-flag,
+  .selected-flag:hover,
+  .selected-flag:focus {
+    background-color: inherit !important;  
+  }
+
+
+  
   & > div > div > label > p {
     color: ${({ theme }) => theme.labelTextColor};
     font-size: 12px;
@@ -261,7 +294,8 @@ export const Forma = styled.form`
     background-color: inherit;
 
     &::placeholder {
-      color: var(--calendar-date-color);
+      color: ${({ theme }) => theme.borderInputColor};
+      font-weight: 600;
       font-size: 14px;
       line-height: 18px;
       font-weight: 400;

@@ -1,4 +1,5 @@
 import { createGlobalStyle, styled } from "styled-components";
+
 export const DataBtn = styled.div`
   padding: 6px 12px;
   color: #ffffff;
@@ -19,10 +20,8 @@ export const DataBtn = styled.div`
     font-size: 16px;
   }
 `;
+
 export const CalendarGlobalStyles = createGlobalStyle`
-
-
-
   .react-datepicker__wrapper {
     position: relative;
   }
@@ -232,26 +231,22 @@ export const TitleWrapper = styled.button`
        transform: scale(1.01);   
       transition: 250ms linear;
   }
-
- 
-
 `;
 
 export const BtnWrapper = styled.div`
   display: flex;
   align-items: stretch;
   justify-content: center;
-  
 `;
 
 export const DatePickerContainer = styled.div`
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 
 
-@media screen and (min-width: 768px){
-  margin-bottom: 0px;
-}
+  @media screen and (min-width: 768px){
+    margin-bottom: 0px;
+  }
 `

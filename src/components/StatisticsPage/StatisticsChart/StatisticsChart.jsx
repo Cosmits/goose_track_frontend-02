@@ -3,7 +3,7 @@ import { BarChart, CartesianGrid, XAxis, YAxis, Legend, Bar } from 'recharts';
 
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useScreenSize } from '../../../hooks/useScreenSize';
+import { useScreenSize } from 'hooks/useScreenSize';
 
 import { selectTheme } from '../../../redux/theme/themeSlice'
 import { lightTheme, darkTheme } from '../../../Styles/theme.js'

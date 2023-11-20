@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { ReactComponent as AddTaskBtnIcon } from '../../icons/ChoosedDay/add-task-btn-plus.svg.svg';
-import { ReactComponent as Edit } from '../../icons/ChoosedDay/task-card-edit.svg';
-import { ReactComponent as XClose } from '../../icons/popUp/x-close.svg';
+import { ReactComponent as AddTaskBtnIcon } from '../../../../icons/ChoosedDay/add-task-btn-plus.svg.svg';
+import { ReactComponent as Edit } from '../../../../icons/ChoosedDay/task-card-edit.svg';
+import { ReactComponent as XClose } from '../../../../icons/popUp/x-close.svg';
 
 export const ContainerForm = styled.div`
   padding-top: 48px;
@@ -130,7 +130,7 @@ export const Label = styled.label`
   cursor: pointer;
 `;
 
-const StyledRadio = styled.input`
+export const StyledRadio = styled.input`
   font-family: 'InterSemiBold', sans-serif;
   margin-right: 16px;
   width: 10px;
