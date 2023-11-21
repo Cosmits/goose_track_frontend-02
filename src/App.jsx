@@ -54,7 +54,6 @@ function App() {
         top: 150,
         left: 0,
         right: 0,
-        minWidth: '90%',
         margin: '0 auto',
         zIndex: 1,
       }} > Please wait, BackEnd https://goose-track-backend-02.onrender.com now is not ready ... </h2>
