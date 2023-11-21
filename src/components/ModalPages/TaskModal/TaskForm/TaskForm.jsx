@@ -93,12 +93,10 @@ const TaskForm = ({ initialData, closeModal, category = '' }) => {
   //========= Error handling =================================
   useEffect(() => {
     if (createTaskIsError) {
-      console.log(createTaskError);
       showErrorToast('Error creating task', theme);
     }
 
     if (editTaskIsError) {
-      console.log(editTaskError);
       showErrorToast('Error creating task', theme);
     }
   }, [createTaskError, createTaskIsError, editTaskError, editTaskIsError, theme]);

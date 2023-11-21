@@ -33,7 +33,6 @@ export default function Slider({ reviews }) {
       >
         {reviews.map((review) => {
           const { owner, rating, comment } = review;
-          console.log("🚀 ~ file: Slider.jsx:36 ~ {reviews.map ~ owner:", owner)
 
           return (
             <ReviewCard
