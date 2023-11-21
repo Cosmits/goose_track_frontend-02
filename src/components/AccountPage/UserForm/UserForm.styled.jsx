@@ -16,7 +16,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  padding: 60px 10px 40px;
+  padding: 60px 18px 40px;
   background-color: ${({ theme }) => theme.secondaryBgColor};
 
   border-radius: 16px;
@@ -118,12 +118,20 @@ export const IconContainer = styled(AiFillPlusCircle)`
 `;
 
 export const InputWrapper = styled.div`
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+      width: 354px;
+  }
+
   @media screen and (min-width: 1440px) {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
+    width: auto;
+    /* grid-template-columns: repeat(2, 1fr);
     align-items: start;
     justify-items: center;
-    flex: 1;
+    flex: 1; */
 
     grid-column-gap: 50px;
     grid-row-gap: 24px;
@@ -159,6 +167,7 @@ export const Forma = styled.form`
   align-items: center;
   justify-content: center;
   flex: 1;
+  width: 100%;
 
   & > div > div {
     display: flex;
@@ -317,6 +326,11 @@ export const Forma = styled.form`
     line-height: 14px;
     margin-bottom: 8px;
   }
+
+.email-input-disabled {
+  cursor: not-allowed;
+  background-color: ${({ theme }) => theme.borderInputColor};
+}
 `;
 
 
@@ -334,7 +348,6 @@ export const Button = styled.button`
   line-height: 17px;
   cursor: pointer;
   outline: none;
-  margin-top: 40px;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
@@ -427,22 +440,22 @@ export const InputIcon = styled.img`
   }  
 `
 
-export const PasswordBtn = styled(Button)`
-  background-color: transparent;
-  color: var(--main-blue);
-  width: auto;
-  padding: 10px 30px;
+export const ButtonWrap = styled.div`
+  margin-top: 40px;
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
 
   @media screen and (min-width: 1440px) {
-    grid-row-gap: 24px;
+     flex-direction: row;
+     gap: 220px;
   }
 
-  &:hover{
-    color: var(--white);
-  }
 `
 
 export const DeleteBtn = styled(Button)`
+  max-width: 195px;
+  height: 46px;
   background-color: transparent;
   width: auto;
   padding: 10px 30px;
@@ -451,5 +464,15 @@ export const DeleteBtn = styled(Button)`
   &:hover{
     background-color:var(--error-color);
     color: var(--white);
+  }
+   
+  @media screen and (min-width: 768px) {
+    width: 262px;
+    height: 48px;
+    padding: 10px 20px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    grid-column: span 2;
   }
 `

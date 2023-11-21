@@ -14,8 +14,8 @@ import {
   CustomInput,
   Avatar,
   InputIcon,
-  PasswordBtn,
   DeleteBtn,
+  ButtonWrap,
 } from './UserForm.styled';
 
 import DatePicker, { registerLocale } from 'react-datepicker';
@@ -57,20 +57,22 @@ export const UserForm = () => {
     else { document.body.style.overflow = 'auto' }
   };
 
+  const [newAvatar, setNewAvatar] = useState(avatarURL ?? '')
+  const [avatarPreviewUrl, setAvatarPreviewUrl] = useState('')
   const [newUserName, setNewUserName] = useState(userName ?? '')
   const [newEmail, setNewEmail] = useState(email ?? '')
   const [newBirthday, setNewBirthday] = useState(birthday ?? '')
   const [newPhone, setNewPhone] = useState(phone ?? '')
   const [newSkype, setNewSkype] = useState(skype ?? '')
-  const [newAvatar, setNewAvatar] = useState(avatarURL ?? '')
-  const [avatarPreviewUrl, setAvatarPreviewUrl] = useState('')
+  const [newPassword, setNewPassword] = useState('')
 
   const [isSaving, setIsSaving] = useState(false)
-  const [isEmailValid, setIsEmailValid] = useState(true)
   const [isNameValid, setIsNameValid] = useState(true)
+  const [isEmailValid, setIsEmailValid] = useState(true)
+  const [isBirthdayValid, setIsBirthdayValid] = useState(true)
   const [isPhoneValid, setIsPhoneValid] = useState(true)
   const [isSkypeValid, setIsSkypeValid] = useState(true)
-  const [isBirthdayValid, setIsBirthdayValid] = useState(true)
+  const [isPasswordValid, setIsPasswordValid] = useState(true)
 
   const dispatch = useDispatch();
   const avatarInputRef = useRef(null);
@@ -78,9 +80,10 @@ export const UserForm = () => {
   let someChanges =
     userName !== newUserName ||
     email !== newEmail ||
+    birthday !== newBirthday ||
     phone !== newPhone ||
     skype !== newSkype ||
-    birthday !== newBirthday ||
+    newPassword !== '' ||
     avatarPreviewUrl !== '';
 
   useEffect(() => {
@@ -139,24 +142,14 @@ export const UserForm = () => {
     setIsSaving(true);
 
     const formData = new FormData();
-    if (userName !== newUserName) {
-      formData.append('userName', newUserName);
-    }
-    if (email !== newEmail) {
-      formData.append('email', newEmail);
-    }
-    if (phone !== newPhone) {
-      formData.append('phone', newPhone);
-    }
-    if (skype !== newSkype) {
-      formData.append('skype', newSkype);
-    }
-    if (birthday !== newBirthday) {
-      formData.append('birthday', newBirthday);
-    }
-    if (avatarPreviewUrl !== '') {
-      formData.append('avatarURL', newAvatar);
-    }
+    if (avatarPreviewUrl !== '') formData.append('avatarURL', newAvatar);
+    if (userName !== newUserName) formData.append('userName', newUserName);
+    if (email !== newEmail) formData.append('email', newEmail);
+    if (birthday !== newBirthday) formData.append('birthday', newBirthday);
+    if (phone !== newPhone) formData.append('phone', newPhone);
+    if (skype !== newSkype) formData.append('skype', newSkype);
+    if (newPassword !== '') formData.append('newPassword', newPassword);
+
     dispatch(updateUser(formData));
 
   };
@@ -216,7 +209,7 @@ export const UserForm = () => {
                       if (date) {
                         setNewBirthday(format(date, 'dd/MM/yyyy'))
                         setIsBirthdayValid(globalRegex.birthdayRegexp.test(format(date, 'dd/MM/yyyy')));
-                      } else { 
+                      } else {
                         setNewBirthday('')
                       }
                     }}
@@ -238,6 +231,8 @@ export const UserForm = () => {
                     type="text"
                     name="email"
                     placeholder="Enter your email address"
+                    disabled="disabled"
+                    className='email-input-disabled'
                     value={newEmail}
                     onChange={(e) => {
                       setNewEmail(e.target.value)
@@ -304,15 +299,33 @@ export const UserForm = () => {
                 />
                 {newSkype ? (isSkypeValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
               </label>
+              <label>
+                <p>New password</p>
+                <input
+                  type="text"
+                  name="password"
+                  placeholder="Enter new password"
+                  value={newPassword}
+                  onChange={(e) => {
+                    setNewPassword(e.target.value)
+                    setIsPasswordValid(globalRegex.passwordRegexp.test(e.target.value))
+                  }}
+                  style={{
+                    borderColor: newPassword ? (isPasswordValid ? 'var(--correct-color)' : 'var(--error-color)') : '',
+                  }}
+                />
+                {newPassword ? (isPasswordValid ? (<InputIcon src={SuccessIcon} />) : (<InputIcon src={ErrorIcon} />)) : null}
+              </label>
             </div>
+          </InputWrapper>
+          <ButtonWrap>
             <Button type="submit" disabled={isSaving || !someChanges} >
               Save
             </Button>
-            <PasswordBtn>Change Password</PasswordBtn>
             <DeleteBtn onClick={toggleModalDel}>
-              Delete account
+              Delete
             </DeleteBtn>
-          </InputWrapper>
+          </ButtonWrap>
         </Forma>
       </Container>
       {showModalDel && <DelProfileModal onClose={toggleModalDel} />}

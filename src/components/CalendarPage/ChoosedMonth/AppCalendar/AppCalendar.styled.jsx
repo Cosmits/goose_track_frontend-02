@@ -108,7 +108,7 @@ export const AppCalendarGlobalStyles = createGlobalStyle`
     z-index: 20;
   }
 
-  @media (max-width: 767px) and (min-width: 320px) {
+  @media (max-width: 767px)  {
     .rbc-calendar .rbc-month-row {
       min-height: 71px;
     }

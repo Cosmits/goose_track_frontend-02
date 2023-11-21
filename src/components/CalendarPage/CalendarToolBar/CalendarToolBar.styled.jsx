@@ -36,7 +36,7 @@ export const ToolBarGlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.navBtnBgColorActive};
   }
 
-  @media (max-width: 767px) and (min-width: 320px) {
+  @media (max-width: 767px) {
     .datepicker-container {
       flex-direction: column;
       margin-bottom: 24px;
