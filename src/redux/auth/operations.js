@@ -3,6 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { showSuccessToast, showErrorToast } from '../../services/showToast';
 
 axios.defaults.baseURL = 'https://goose-track-backend-02.onrender.com';
+//axios.defaults.baseURL = 'http://localhost:5000';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
