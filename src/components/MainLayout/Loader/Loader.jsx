@@ -9,10 +9,9 @@ function Loader() {
       ariaLabel="blocks-loading"
       wrapperStyle={{
         position: 'absolute',
-        top: 30,
+        top: 0,
         left: 0, 
         right: 0,
-        minWidth: '90%',
         margin: '0 auto',
         zIndex: 1,
       }}
