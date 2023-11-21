@@ -196,11 +196,6 @@ export const Forma = styled.form`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
-    @media screen and (min-width: 768px) {
-      align-items: center;
-     }
-
   }
 
   & > div > div > label > input,
@@ -273,6 +268,7 @@ export const Forma = styled.form`
     font-size: 12px;
     line-height: 14px;
     margin-bottom: 8px;
+    
     @media screen and (min-width: 768px) {
       font-size: 14px;
     }
@@ -283,10 +279,6 @@ export const Forma = styled.form`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
-    @media screen and (min-width: 768px) {
-      align-items: center;
-     }
   }
 
   & > div > div > div > label > input {
@@ -325,6 +317,10 @@ export const Forma = styled.form`
     font-size: 12px;
     line-height: 14px;
     margin-bottom: 8px;
+    
+    @media screen and (min-width: 768px) {
+      font-size: 14px;
+    }
   }
 
 .email-input-disabled {
