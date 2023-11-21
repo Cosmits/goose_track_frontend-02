@@ -150,8 +150,12 @@ export const UserForm = () => {
     if (skype !== newSkype) formData.append('skype', newSkype);
     if (newPassword !== '') formData.append('newPassword', newPassword);
 
+<<<<<<< HEAD
     dispatch(updateUser(formData))
     setNewPassword('')
+=======
+    dispatch(updateUser(formData));
+>>>>>>> 81e694bd539f32dc5c763b7a0bc8e72900709bd7
 
   };
 
