@@ -37,7 +37,6 @@ const DeleteProfileForm = ({ onClose }) => {
     if (email !== user.email) return setError(true);
     setError(false);
     dispatch(deleteUser(user._id.toString()));
-    console.log("🚀 ~ file: DeleteProfileForm.jsx:40 ~ handleSubmit ~ user._id.toString():", user._id.toString())
   };
   return (
     <Formik
