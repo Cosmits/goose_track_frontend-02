@@ -10,7 +10,8 @@ function Loader() {
       wrapperStyle={{
         position: 'absolute',
         top: 30,
-        left: 30,
+        left: 0, 
+        right: 0,
         minWidth: '90%',
         margin: '0 auto',
         zIndex: 1,
